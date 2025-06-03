@@ -6,48 +6,60 @@
 
 @layer base {
   :root {
-    --background: 30 25% 97%;
-    --foreground: 20 10% 15%;
-    --card: 30 25% 97%;
-    --card-foreground: 20 10% 15%;
-    --popover: 30 25% 97%;
-    --popover-foreground: 20 10% 15%;
-    --primary: 15 30% 60%;
-    --primary-foreground: 30 25% 97%;
-    --secondary: 15 15% 90%;
-    --secondary-foreground: 15 30% 40%;
-    --muted: 15 15% 90%;
-    --muted-foreground: 20 10% 40%;
-    --accent: 15 15% 90%;
-    --accent-foreground: 15 30% 40%;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 340 30% 65%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 25 20% 90%;
+    --secondary-foreground: 25 20% 20%;
+    --muted: 25 15% 95%;
+    --muted-foreground: 25 10% 50%;
+    --accent: 15 25% 85%;
+    --accent-foreground: 15 25% 25%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 30 25% 97%;
-    --border: 15 15% 85%;
-    --input: 15 15% 85%;
-    --ring: 15 30% 60%;
-    --radius: 0rem;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 15% 85%;
+    --input: 25 15% 90%;
+    --ring: 340 30% 65%;
+    --radius: 0.5rem;
+    
+    /* Retro colorwave variables */
+    --wave-primary: 340 50% 70%;
+    --wave-secondary: 320 40% 75%;
+    --wave-accent: 300 35% 80%;
+    --wave-highlight: 280 30% 85%;
   }
 
   .dark {
-    --background: 20 10% 10%;
-    --foreground: 30 10% 90%;
-    --card: 20 10% 10%;
-    --card-foreground: 30 10% 90%;
-    --popover: 20 10% 10%;
-    --popover-foreground: 30 10% 90%;
-    --primary: 15 30% 50%;
-    --primary-foreground: 30 10% 90%;
-    --secondary: 15 15% 20%;
-    --secondary-foreground: 30 10% 90%;
-    --muted: 15 15% 20%;
-    --muted-foreground: 15 10% 70%;
-    --accent: 15 15% 20%;
-    --accent-foreground: 30 10% 90%;
+    --background: 25 15% 5%;
+    --foreground: 25 5% 95%;
+    --card: 25 15% 8%;
+    --card-foreground: 25 5% 95%;
+    --popover: 25 15% 8%;
+    --popover-foreground: 25 5% 95%;
+    --primary: 340 40% 75%;
+    --primary-foreground: 25 15% 10%;
+    --secondary: 25 20% 15%;
+    --secondary-foreground: 25 5% 85%;
+    --muted: 25 15% 12%;
+    --muted-foreground: 25 8% 65%;
+    --accent: 15 25% 20%;
+    --accent-foreground: 15 5% 85%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 30 10% 90%;
-    --border: 15 15% 25%;
-    --input: 15 15% 25%;
-    --ring: 15 30% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 25 15% 18%;
+    --input: 25 15% 15%;
+    --ring: 340 40% 75%;
+    
+    /* Dark mode colorwave variables */
+    --wave-primary: 340 40% 40%;
+    --wave-secondary: 320 35% 35%;
+    --wave-accent: 300 30% 30%;
+    --wave-highlight: 280 25% 25%;
   }
 }
 
@@ -57,20 +69,26 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: "Courier New", "Monaco", "Menlo", monospace;
-    image-rendering: pixelated;
-    font-weight: 500;
-    letter-spacing: 0.025em;
+    cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='6' fill='%23d4a574' stroke='%23c49464' stroke-width='2'/%3E%3C/svg%3E") 12 12, auto;
+    position: relative;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Courier New", "Monaco", "Menlo", monospace;
-    letter-spacing: -0.025em;
-    font-weight: 700;
+  
+  /* Retro colorwave background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    z-index: -1;
+    background: 
+      radial-gradient(circle at 20% 80%, hsl(var(--wave-primary)) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(var(--wave-secondary)) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, hsl(var(--wave-accent)) 0%, transparent 50%),
+      radial-gradient(circle at 70% 70%, hsl(var(--wave-highlight)) 0%, transparent 50%);
+    animation: colorwave 20s ease-in-out infinite;
   }
 }
 
@@ -81,56 +99,19 @@
       -2px 0 0 0 hsl(var(--foreground)), 0 -2px 0 0 hsl(var(--foreground));
   }
 
-  .pixel-border-light {
-    box-shadow: 1px 0 0 0 hsl(var(--border)), 0 1px 0 0 hsl(var(--border)), 1px 1px 0 0 hsl(var(--border));
+  .brutalist-shadow {
+    box-shadow: 4px 4px 0px 0px theme("colors.foreground");
   }
-
-  .pixel-image {
-    image-rendering: pixelated;
+  
+  /* Interactive cursor effects */
+  .cursor-pointer {
+    cursor: url("data:image/svg+xml,%3Csvg width='24' height='24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='12' cy='12' r='8' fill='%23c49464' stroke='%23b8855a' stroke-width='2'/%3E%3C/svg%3E") 12 12, pointer;
   }
-
-  .retro-card {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .retro-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: hsl(var(--primary));
-  }
-
-  .elegant-underline {
-    position: relative;
-  }
-
-  .elegant-underline::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -5px;
-    width: 40px;
-    height: 2px;
-    background: hsl(var(--primary));
-  }
-
-  .timeline-line {
-    position: relative;
-  }
-
-  .timeline-line::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: hsl(var(--primary));
-    margin-bottom: 1rem;
+  
+  /* Hover effects with earthy tones */
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsla(var(--primary), 0.2);
+    transition: box-shadow 0.3s ease;
   }
 }
 
@@ -139,7 +120,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar with earthy theme */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -149,59 +130,150 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted));
+  background: hsl(var(--primary));
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--primary-foreground));
 }
 
-/* Add some subtle animations */
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
+/* Colorwave animation */
+@keyframes colorwave {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% {
+    filter: hue-rotate(5deg) brightness(1.1);
   }
   50% {
-    opacity: 0.5;
+    filter: hue-rotate(-5deg) brightness(0.9);
+  }
+  75% {
+    filter: hue-rotate(3deg) brightness(1.05);
   }
 }
 
-.blink {
-  animation: blink 2s infinite;
-}
-
-@keyframes float {
-  0%,
-  100% {
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
   }
-  50% {
-    transform: translateY(-10px);
+}
+
+/* Hero section animations */
+.hero-animate {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-animate-delay-1 {
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.hero-animate-delay-2 {
+  animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.hero-animate-delay-3 {
+  animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Subtle gradient overlays for cards */
+.card-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--card)) 0%, 
+    hsl(var(--muted)) 100%);
+}
+
+/* Link hover effects */
+a:hover {
+  @apply cursor-pointer;
+}
+
+button:hover {
+  @apply cursor-pointer;
+}
+
+/* Mobile responsive ghibli icon */
+@media (max-width: 768px) {
+  .mobile-hero-icon {
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Timeline mobile enhancements */
+  .timeline-mobile {
+    border-left: 2px solid hsl(var(--border));
+    margin-left: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .timeline-mobile .timeline-card {
+    position: relative;
+  }
+  
+  .timeline-mobile .timeline-card::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 1rem;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    border: 2px solid hsl(var(--background));
+    box-shadow: 0 0 0 2px hsl(var(--border));
   }
 }
 
-.float {
-  animation: float 6s ease-in-out infinite;
+/* Enhanced mobile spacing and animations */
+@media (max-width: 640px) {
+  .hero-animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .hero-animate-delay-1 {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .hero-animate-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .hero-animate-delay-3 {
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+  
+  /* Better mobile card spacing */
+  .mobile-timeline-card {
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--muted)/0.3) 100%);
+  }
 }
 
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 50%;
+/* Smooth timeline connector animations */
+@media (min-width: 768px) {
+  .timeline-connector {
+    transition: all 0.3s ease;
   }
-  50% {
-    background-position: 100% 50%;
+  
+  .timeline-connector:hover {
+    background: hsl(var(--primary));
+    box-shadow: 0 0 8px hsla(var(--primary), 0.4);
   }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, hsl(15, 30%, 60%), hsl(25, 35%, 55%));
-  background-size: 200% auto;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 3s linear infinite;
 }

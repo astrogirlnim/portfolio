@@ -8,26 +8,14 @@ import ProjectCard from "@/components/project-card"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
-import EducationSection from "@/components/education-section"
-import RetroCursor from "@/components/retro-cursor"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <RetroCursor />
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/images/ghibli_icon.png"
-              alt="Nataly Moreno-Martinez"
-              width={32}
-              height={32}
-              className="pixel-image"
-            />
-            <div className="font-mono text-lg font-bold gradient-text">NATALY.DEV</div>
-          </div>
+          <div className="font-mono text-lg font-bold">NATALY.DEV</div>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors">
               About
@@ -59,48 +47,44 @@ export default function Home() {
         <section className="py-20 md:py-32 flex flex-col items-start gap-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <Badge variant="outline" className="px-3 py-1 text-sm font-mono">
+              <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate">
                 SENIOR SOFTWARE DEVELOPER
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                Building <span className="text-primary elegant-underline">full-stack</span> solutions with mathematical
-                precision.
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight hero-animate-delay-1">
+                Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Moreno-Martinez
               </h1>
-              <p className="text-lg text-muted-foreground max-w-md">
-                Specializing in cloud technologies, mathematical modeling, and pipeline architecture.
+              <p className="text-lg text-muted-foreground max-w-md hero-animate-delay-2">
+                I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
               </p>
-              <div className="flex flex-wrap gap-4 pt-4">
-                <Button size="lg" asChild>
+              <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
+                <Button size="lg" asChild className="hover-glow">
                   <Link href="#projects">
                     View Work <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="lg" asChild>
+                <Button variant="outline" size="lg" asChild className="hover-glow">
                   <Link href="#contact">Contact Me</Link>
                 </Button>
-                <Button variant="ghost" size="lg">
-                  Download Resume
+                <Button variant="ghost" size="lg" asChild className="hover-glow">
+                  <Link href="/NMM_Resume_Software_Latest.pdf" target="_blank">
+                    Download Resume
+                  </Link>
                 </Button>
               </div>
             </div>
-            <div className="hidden md:block float">
-              <div className="aspect-square bg-muted border border-border relative overflow-hidden">
+            <div className="flex justify-center md:block">
+              <div className="aspect-square relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-3/4 h-3/4 bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center p-8">
-                    <pre className="font-mono text-xs md:text-sm overflow-hidden">
-                      <code className="text-primary">
-                        {`function solve(problem) {
-  if (isSimple(problem)) {
-    return directSolution(problem);
-  }
-  
-  const subproblems = decompose(problem);
-  const solutions = subproblems.map(solve);
-  
-  return combine(solutions);
-}`}
-                      </code>
-                    </pre>
+                  <div className="relative group hero-animate-delay-2">
+                    <Image
+                      src="/ghibli_icon.png"
+                      alt="Nataly Moreno-Martinez"
+                      width={300}
+                      height={300}
+                      className="rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-105 mobile-hero-icon md:w-[300px] md:h-[300px]"
+                      priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/20 rounded-2xl group-hover:from-primary/20 group-hover:to-accent/30 transition-all duration-500"></div>
                   </div>
                 </div>
               </div>
@@ -111,42 +95,35 @@ export default function Home() {
         {/* About/Expertise Section */}
         <section id="about" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">About & Expertise</h2>
+            <h2 className="text-3xl font-bold tracking-tight">About & Expertise</h2>
             <p className="text-lg text-muted-foreground">
-              I'm a Senior Software Developer specializing in full-stack app development, mathematical modeling, with
-              expertise in cloud technologies/infrastructure and pipeline architecture. Mixing Python, C#, and custom
-              Bash/Shell scripting for most projects, I have experience with many other languages and frameworks for
-              professional development.
-            </p>
-            <p className="text-lg text-muted-foreground">
-              I'm an avid learner of the latest tools and platforms; currently exploring computer hardware, AI, and the
-              global internet.
+              Senior Software Developer who specializes in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture. Mixing Python, C#, and custom Bash/Shell scripting for most projects, experience with many other languages and frameworks for professional development. Avid learner of the latest tools and platforms; currently exploring computer hardware, AI, and the global internet.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-              <Card className="retro-card">
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient">
                 <CardContent className="pt-6">
                   <Code2 className="h-10 w-10 mb-4 text-primary" />
                   <h3 className="text-xl font-bold mb-2">Full-Stack Development</h3>
                   <p className="text-muted-foreground">
-                    Building end-to-end applications with a focus on performance and user experience.
+                    Building end-to-end applications with Python, C#, and modern web frameworks.
                   </p>
                 </CardContent>
               </Card>
-              <Card className="retro-card">
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient">
                 <CardContent className="pt-6">
                   <Server className="h-10 w-10 mb-4 text-primary" />
                   <h3 className="text-xl font-bold mb-2">Cloud Infrastructure</h3>
                   <p className="text-muted-foreground">
-                    Designing and implementing scalable, resilient cloud-based solutions.
+                    Multi-cloud implementation expertise with Azure, AWS, and Google Cloud Platform.
                   </p>
                 </CardContent>
               </Card>
-              <Card className="retro-card">
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient">
                 <CardContent className="pt-6">
                   <Database className="h-10 w-10 mb-4 text-primary" />
-                  <h3 className="text-xl font-bold mb-2">Pipeline Architecture</h3>
+                  <h3 className="text-xl font-bold mb-2">Mathematical Modeling</h3>
                   <p className="text-muted-foreground">
-                    Creating efficient data pipelines for processing and analysis at scale.
+                    Computational modeling and machine learning applications for research and industry.
                   </p>
                 </CardContent>
               </Card>
@@ -157,10 +134,9 @@ export default function Home() {
         {/* Technical Skills Section */}
         <section id="skills" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Technical Skills</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
             <p className="text-lg text-muted-foreground">
-              My core expertise spans multiple languages, frameworks, and platforms with a focus on Python, C#, and
-              custom shell scripting.
+              My core expertise spans multiple languages, frameworks, and platforms. I primarily use Python, C#, and custom Bash/Shell scripting, with experience across many other languages and cutting-edge frameworks for professional development.
             </p>
           </div>
           <SkillGrid />
@@ -169,35 +145,37 @@ export default function Home() {
         {/* Featured Projects Section */}
         <section id="projects" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Featured Projects</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
             <p className="text-lg text-muted-foreground">
-              A selection of projects that demonstrate my technical capabilities and problem-solving approach.
+              A selection of projects that demonstrate my technical capabilities across research, medical devices, and aerospace engineering.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProjectCard
-              title="Azure DevOps Migration"
-              description="Completed a full-scale Azure DevOps migration in record 3 months by coordinating team efforts and creating custom programmatic tools."
-              tags={["Azure", "DevOps", "Python", "Automation"]}
-              image="/placeholder.svg?height=300&width=600"
+              title="Stochastic Computational Modeling of HIV"
+              description="A transcriptional cycling model that recapitulates chromatin-dependent features of noisy inducible transcription. Published research on computational modeling of variable activation of quiescent HIV infections in T cells."
+              tags={["MATLAB", "NFSim", "R", "Computational Biology"]}
+              image="/images/project_icon_1.png"
+              link="https://doi.org/10.1371/journal.pcbi.1010152"
             />
             <ProjectCard
-              title="Genomic Sequencing Infrastructure"
-              description="Constructed a multi-cloud implementation of Genomic sequencing testing infrastructure with enhanced performance and reliability."
-              tags={["AWS", "Azure", "Bioinformatics", "Python"]}
-              image="/placeholder.svg?height=300&width=600"
+              title="Simplifying Fracture Treatment: Medical Device Set"
+              description="Developed a medical device that externally fastens Kirschner wires to prevent complications in fracture malformation and sequestering within the body. Prevents wire migration away from fracture sites."
+              tags={["MATLAB", "Python", "CAD", "Medical Device"]}
+              image="/images/project_icon_2.png"
+              link="https://seas.yale.edu/news-events/news/students-present-medical-innovations"
             />
             <ProjectCard
-              title="Application Performance Optimization"
-              description="Increased critical application performance by 400% through re-architecture of existing code and implementation of optimized algorithms."
-              tags={["C#", ".NET", "Performance", "Optimization"]}
-              image="/placeholder.svg?height=300&width=600"
+              title="Project Rocket: Yale Undergraduate Aerospace"
+              description="Designed and constructed hybrid solid-liquid fuel rockets for national IREC competition. Engineering and fabrication of YUAA's rocket with focus on propulsion systems and aerodynamics."
+              tags={["MATLAB", "CAD", "Aerospace Engineering", "Propulsion"]}
+              image="/images/project_icon_3.png"
             />
             <ProjectCard
-              title="Next-Gen Sequencing Tools"
-              description="Developed research tools for next-generation sequencing with integrated web portal for interdepartmental access."
-              tags={["Python", "C++", "Computer Vision", "Web Development"]}
-              image="/placeholder.svg?height=300&width=600"
+              title="Bioinformatics of Protein-Protein Interactions"
+              description="Independent summer computational research visualizing protein-protein interactions using multiple bioinformatic tools. Applied linear regression and random models to TCGA High-Throughput Human data for gene enrichment analyses."
+              tags={["R", "ChimeraX", "Bioinformatics", "TCGA Data"]}
+              image="/images/project_icon_4.png"
             />
           </div>
         </section>
@@ -205,7 +183,7 @@ export default function Home() {
         {/* Professional Journey Section */}
         <section id="journey" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Professional Journey</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Professional Journey</h2>
             <p className="text-lg text-muted-foreground">
               My career path and key milestones that have shaped my expertise and approach to software development.
             </p>
@@ -213,14 +191,11 @@ export default function Home() {
           <Timeline />
         </section>
 
-        {/* Education Section */}
-        <EducationSection />
-
         {/* Contact Section */}
         <section id="contact" className="py-20 border-t border-border">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight elegant-underline">Get in Touch</h2>
+              <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
               <p className="text-lg text-muted-foreground">
                 Interested in working together? Reach out to discuss potential projects or opportunities.
               </p>
@@ -231,67 +206,46 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Linkedin className="h-5 w-5 text-muted-foreground" />
-                  <Link
-                    href="https://linkedin.com/in/nataly-moreno-martinez/"
-                    className="hover:text-primary transition-colors"
-                  >
+                  <Link href="https://www.linkedin.com/in/nataly-moreno-martinez/" className="hover:text-primary transition-colors">
                     linkedin.com/in/nataly-moreno-martinez/
                   </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <Github className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://github.com/nmprojects" className="hover:text-primary transition-colors">
-                    github.com/nmprojects
+                  <Link href="https://github.com/astrogirlnim" className="hover:text-primary transition-colors">
+                    github.com/astrogirlnim
                   </Link>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="h-5 w-5 text-muted-foreground">📞</span>
+                  <span>+1-505-203-6058</span>
                 </div>
               </div>
             </div>
-            <div>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      className="w-full p-2 bg-background border border-border"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="w-full p-2 bg-background border border-border"
-                      placeholder="Your email"
-                    />
-                  </div>
+            <div className="space-y-6">
+              <div className="text-center space-y-4">
+                <h3 className="text-2xl font-bold">Let's Connect</h3>
+                <p className="text-lg text-muted-foreground">
+                  Ready to discuss your next project? I'd love to hear from you.
+                </p>
+                <div className="space-y-4">
+                  <Button size="lg" asChild className="hover-glow">
+                    <Link href="mailto:nmmsoftware@gmail.com">
+                      <Mail className="mr-2 h-5 w-5" />
+                      Send me an email
+                    </Link>
+                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Click the button above to open your email client, or reach out to me directly at{" "}
+                    <Link 
+                      href="mailto:nmmsoftware@gmail.com" 
+                      className="text-primary hover:underline font-medium"
+                    >
+                      nmmsoftware@gmail.com
+                    </Link>
+                  </p>
                 </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">
-                    Subject
-                  </label>
-                  <input id="subject" className="w-full p-2 bg-background border border-border" placeholder="Subject" />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full p-2 bg-background border border-border resize-none"
-                    placeholder="Your message"
-                  />
-                </div>
-                <Button type="submit" className="w-full">
-                  Send Message
-                </Button>
-              </form>
+              </div>
             </div>
           </div>
         </section>
@@ -301,17 +255,17 @@ export default function Home() {
       <footer className="border-t border-border py-8">
         <div className="container flex flex-col md:flex-row justify-between items-center">
           <div className="font-mono text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} • Nataly Moreno-Martinez • Built with precision and purpose
+            © {new Date().getFullYear()} Nataly Moreno-Martinez • Built with precision and purpose
           </div>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/nmprojects">
+              <Link href="https://github.com/astrogirlnim">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://linkedin.com/in/nataly-moreno-martinez/">
+              <Link href="https://www.linkedin.com/in/nataly-moreno-martinez/">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
