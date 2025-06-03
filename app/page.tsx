@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import Image from "next/image"
 import { ArrowRight, Code2, Database, Github, Linkedin, Mail, Server } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -9,13 +8,10 @@ import ProjectCard from "@/components/project-card"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
-import EducationSection from "@/components/education-section"
-import RetroCursor from "@/components/retro-cursor"
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <RetroCursor />
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
@@ -99,13 +95,7 @@ export default function Home() {
         {/* About/Expertise Section */}
         <section id="about" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">About & Expertise</h2>
-            <p className="text-lg text-muted-foreground">
-              I'm a Senior Software Developer specializing in full-stack app development, mathematical modeling, with
-              expertise in cloud technologies/infrastructure and pipeline architecture. Mixing Python, C#, and custom
-              Bash/Shell scripting for most projects, I have experience with many other languages and frameworks for
-              professional development.
-            </p>
+            <h2 className="text-3xl font-bold tracking-tight">About & Expertise</h2>
             <p className="text-lg text-muted-foreground">
               Senior Software Developer who specializes in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture. Mixing Python, C#, and custom Bash/Shell scripting for most projects, experience with many other languages and frameworks for professional development. Avid learner of the latest tools and platforms; currently exploring computer hardware, AI, and the global internet.
             </p>
@@ -144,7 +134,7 @@ export default function Home() {
         {/* Technical Skills Section */}
         <section id="skills" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Technical Skills</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
             <p className="text-lg text-muted-foreground">
               My core expertise spans multiple languages, frameworks, and platforms. I primarily use Python, C#, and custom Bash/Shell scripting, with experience across many other languages and cutting-edge frameworks for professional development.
             </p>
@@ -155,7 +145,7 @@ export default function Home() {
         {/* Featured Projects Section */}
         <section id="projects" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Featured Projects</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
             <p className="text-lg text-muted-foreground">
               A selection of projects that demonstrate my technical capabilities across research, medical devices, and aerospace engineering.
             </p>
@@ -193,7 +183,7 @@ export default function Home() {
         {/* Professional Journey Section */}
         <section id="journey" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Professional Journey</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Professional Journey</h2>
             <p className="text-lg text-muted-foreground">
               My career path and key milestones that have shaped my expertise and approach to software development.
             </p>
@@ -201,21 +191,17 @@ export default function Home() {
           <Timeline />
         </section>
 
-        {/* Education Section */}
-        <EducationSection />
-
         {/* Contact Section */}
         <section id="contact" className="py-20 border-t border-border">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight elegant-underline">Get in Touch</h2>
+              <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
               <p className="text-lg text-muted-foreground">
                 Interested in working together? Reach out to discuss potential projects or opportunities.
               </p>
               <div className="flex flex-col gap-4 mt-6">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-muted-foreground" />
-                  <span>nmmsoftware@gmail.com</span>
                   <span>nmmsoftware@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -245,7 +231,7 @@ export default function Home() {
                     </label>
                     <input
                       id="name"
-                      className="w-full p-2 bg-background border border-border"
+                      className="w-full p-2 bg-background border border-border rounded-md"
                       placeholder="Your name"
                     />
                   </div>
@@ -256,7 +242,7 @@ export default function Home() {
                     <input
                       id="email"
                       type="email"
-                      className="w-full p-2 bg-background border border-border"
+                      className="w-full p-2 bg-background border border-border rounded-md"
                       placeholder="Your email"
                     />
                   </div>
@@ -265,7 +251,11 @@ export default function Home() {
                   <label htmlFor="subject" className="text-sm font-medium">
                     Subject
                   </label>
-                  <input id="subject" className="w-full p-2 bg-background border border-border" placeholder="Subject" />
+                  <input
+                    id="subject"
+                    className="w-full p-2 bg-background border border-border rounded-md"
+                    placeholder="Subject"
+                  />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium">
@@ -274,7 +264,7 @@ export default function Home() {
                   <textarea
                     id="message"
                     rows={5}
-                    className="w-full p-2 bg-background border border-border resize-none"
+                    className="w-full p-2 bg-background border border-border rounded-md resize-none"
                     placeholder="Your message"
                   />
                 </div>
@@ -307,7 +297,6 @@ export default function Home() {
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="mailto:nmmsoftware@gmail.com">
               <Link href="mailto:nmmsoftware@gmail.com">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
