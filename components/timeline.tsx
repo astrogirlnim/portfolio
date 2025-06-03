@@ -122,7 +122,7 @@ export default function Timeline() {
           >
             {/* Card Container */}
             <div className="w-1/2 flex justify-end">
-              <div className={`w-full max-w-xl lg:max-w-2xl ${
+              <div className={`w-full max-w-xl lg:max-w-2xl relative ${
                 index % 2 === 0 ? "mr-20" : "ml-20"
               }`}>
                 <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group border-l-4 border-l-primary/30 hover:border-l-primary/60">
@@ -153,17 +153,10 @@ export default function Timeline() {
               </div>
             </div>
 
-            {/* Desktop: Center dot and horizontal connecting line only */}
+            {/* Desktop: Center dot only - no horizontal lines to avoid overlap */}
             <div className="absolute left-1/2 top-8 transform -translate-x-1/2">
               {/* Center dot */}
               <div className="w-4 h-4 bg-primary border-4 border-background rounded-full z-10 shadow-lg"></div>
-              
-              {/* Horizontal connecting line only */}
-              <div className={`absolute top-2 h-0.5 bg-border timeline-connector ${
-                index % 2 === 0 
-                  ? "left-2 w-16" 
-                  : "right-2 w-16"
-              }`}></div>
             </div>
 
             {/* Empty space for layout balance */}
