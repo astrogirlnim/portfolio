@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Code2, Database, Github, Linkedin, Mail, Server } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -7,11 +8,7 @@ import ProjectCard from "@/components/project-card"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
-
-// Add the education section import and component
 import EducationSection from "@/components/education-section"
-
-// Add the retro cursor import at the top
 import RetroCursor from "@/components/retro-cursor"
 
 export default function Home() {
@@ -21,7 +18,16 @@ export default function Home() {
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
-          <div className="font-mono text-lg font-bold gradient-text">NATALY.DEV</div>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/images/ghibli_icon.png"
+              alt="Nataly Moreno-Martinez"
+              width={32}
+              height={32}
+              className="pixel-image"
+            />
+            <div className="font-mono text-lg font-bold gradient-text">NATALY.DEV</div>
+          </div>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors">
               About
