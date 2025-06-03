@@ -3,43 +3,51 @@ import { Badge } from "@/components/ui/badge"
 
 const timelineItems = [
   {
-    year: "2023 - Present",
+    year: "March 2023 - Present",
     role: "Senior Software Developer",
-    company: "Tech Innovations Inc.",
+    company: "Bruker NANO (formerly PhenomeX)",
     description: "Leading development of cloud-native applications and infrastructure automation tools.",
     achievements: [
-      "Reduced deployment time by 70%",
-      "Implemented ML-powered analytics platform",
-      "Mentored junior developers",
+      "Completed full-scale Azure DevOps migration in record 3 months",
+      "Expedited application runtime by 75% with code rewrite",
+      "Built critical testing functionality ahead of schedule",
+      "Constructed multi-cloud genomic sequencing testing infrastructure",
     ],
   },
   {
-    year: "2020 - 2023",
-    role: "Software Engineer",
-    company: "Data Systems Corp.",
-    description: "Designed and built data processing pipelines and analytics solutions.",
+    year: "Dec 2022 - March 2023",
+    role: "Senior Software Developer",
+    company: "IsoPlexis Corp., a PhenomeX Company",
+    description: "Led re-architecture of existing code and DevOps pipeline refactoring.",
     achievements: [
-      "Scaled data pipeline to handle 10TB+ daily",
-      "Optimized processing algorithms by 40%",
-      "Led migration to cloud infrastructure",
+      "Increased critical application performance by 400%",
+      "Improved software quality with automated testing",
+      "Developed Python libraries and custom tools",
+      "Created technology solutions for high-level business goals",
     ],
   },
   {
-    year: "2018 - 2020",
-    role: "Full Stack Developer",
-    company: "Web Solutions Ltd.",
-    description: "Developed web applications and services for enterprise clients.",
-    achievements: ["Built microservices architecture", "Implemented CI/CD pipeline", "Reduced page load time by 60%"],
+    year: "Jan 2022 - Dec 2022",
+    role: "Software Developer",
+    company: "IsoPlexis Corp., a PhenomeX Company",
+    description: "Developed research tools for next-gen sequencing and web portal for interdepartmental access.",
+    achievements: [
+      "Main developer for next-gen sequencing tools",
+      "Developed web portal for interdepartmental access",
+      "Introduced automated unit and integration testing",
+      "Worked with C++ computer vision libraries",
+    ],
   },
   {
-    year: "2016 - 2018",
-    role: "Junior Developer",
-    company: "StartUp Ventures",
-    description: "Contributed to frontend and backend development of SaaS products.",
+    year: "Sep 2021 - Jan 2022",
+    role: "Computer Systems Engineer",
+    company: "McMaster-Carr",
+    description: "Created internal communications hub and developed website features end to end.",
     achievements: [
-      "Developed key product features",
-      "Improved test coverage to 90%",
-      "Participated in agile development process",
+      "Created internal communications hub",
+      "Developed website features end to end",
+      "Integrated legacy systems with modern applications",
+      "Worked with established SDLC processes",
     ],
   },
 ]
@@ -56,7 +64,7 @@ export default function Timeline() {
           >
             <div className="md:w-1/2 flex justify-end">
               <div className={`w-full md:max-w-md ${index % 2 === 0 ? "md:mr-8" : "md:ml-8"}`}>
-                <Card>
+                <Card className="retro-card">
                   <CardContent className="p-6">
                     <Badge variant="outline" className="mb-2 font-mono">
                       {item.year}
@@ -67,7 +75,7 @@ export default function Timeline() {
                     <ul className="space-y-1">
                       {item.achievements.map((achievement, i) => (
                         <li key={i} className="text-sm flex items-start gap-2">
-                          <div className="h-1.5 w-1.5 bg-primary rounded-full mt-1.5"></div>
+                          <div className="h-1.5 w-1.5 bg-primary mt-1.5"></div>
                           <span>{achievement}</span>
                         </li>
                       ))}
@@ -76,7 +84,7 @@ export default function Timeline() {
                 </Card>
               </div>
             </div>
-            <div className="absolute left-0 md:left-1/2 -ml-3 md:-ml-3.5 mt-6 md:mt-10 flex items-center justify-center w-7 h-7 rounded-full border-4 border-background bg-primary"></div>
+            <div className="absolute left-0 md:left-1/2 -ml-3 md:-ml-3.5 mt-6 md:mt-10 flex items-center justify-center w-7 h-7 border-4 border-background bg-primary"></div>
           </div>
         ))}
       </div>

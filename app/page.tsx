@@ -8,13 +8,20 @@ import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
 
+// Add the education section import and component
+import EducationSection from "@/components/education-section"
+
+// Add the retro cursor import at the top
+import RetroCursor from "@/components/retro-cursor"
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <RetroCursor />
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
-          <div className="font-mono text-lg font-bold">DEV.PORTFOLIO</div>
+          <div className="font-mono text-lg font-bold gradient-text">NATALY.DEV</div>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors">
               About
@@ -50,7 +57,8 @@ export default function Home() {
                 SENIOR SOFTWARE DEVELOPER
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                Building <span className="text-primary">full-stack</span> solutions with mathematical precision.
+                Building <span className="text-primary elegant-underline">full-stack</span> solutions with mathematical
+                precision.
               </h1>
               <p className="text-lg text-muted-foreground max-w-md">
                 Specializing in cloud technologies, mathematical modeling, and pipeline architecture.
@@ -69,7 +77,7 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="hidden md:block">
+            <div className="hidden md:block float">
               <div className="aspect-square bg-muted border border-border relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-3/4 h-3/4 bg-background/80 backdrop-blur-sm border border-border flex items-center justify-center p-8">
@@ -97,13 +105,19 @@ export default function Home() {
         {/* About/Expertise Section */}
         <section id="about" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl">
-            <h2 className="text-3xl font-bold tracking-tight">About & Expertise</h2>
+            <h2 className="text-3xl font-bold tracking-tight elegant-underline">About & Expertise</h2>
             <p className="text-lg text-muted-foreground">
-              I'm a Senior Software Developer with extensive experience in full-stack development, cloud infrastructure,
-              and mathematical modeling. My approach combines technical depth with architectural vision.
+              I'm a Senior Software Developer specializing in full-stack app development, mathematical modeling, with
+              expertise in cloud technologies/infrastructure and pipeline architecture. Mixing Python, C#, and custom
+              Bash/Shell scripting for most projects, I have experience with many other languages and frameworks for
+              professional development.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              I'm an avid learner of the latest tools and platforms; currently exploring computer hardware, AI, and the
+              global internet.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-              <Card>
+              <Card className="retro-card">
                 <CardContent className="pt-6">
                   <Code2 className="h-10 w-10 mb-4 text-primary" />
                   <h3 className="text-xl font-bold mb-2">Full-Stack Development</h3>
@@ -112,7 +126,7 @@ export default function Home() {
                   </p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="retro-card">
                 <CardContent className="pt-6">
                   <Server className="h-10 w-10 mb-4 text-primary" />
                   <h3 className="text-xl font-bold mb-2">Cloud Infrastructure</h3>
@@ -121,7 +135,7 @@ export default function Home() {
                   </p>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="retro-card">
                 <CardContent className="pt-6">
                   <Database className="h-10 w-10 mb-4 text-primary" />
                   <h3 className="text-xl font-bold mb-2">Pipeline Architecture</h3>
@@ -137,7 +151,7 @@ export default function Home() {
         {/* Technical Skills Section */}
         <section id="skills" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
+            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Technical Skills</h2>
             <p className="text-lg text-muted-foreground">
               My core expertise spans multiple languages, frameworks, and platforms with a focus on Python, C#, and
               custom shell scripting.
@@ -149,34 +163,34 @@ export default function Home() {
         {/* Featured Projects Section */}
         <section id="projects" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
+            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Featured Projects</h2>
             <p className="text-lg text-muted-foreground">
               A selection of projects that demonstrate my technical capabilities and problem-solving approach.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ProjectCard
-              title="Cloud Data Pipeline"
-              description="Designed and implemented a scalable data processing pipeline handling 10TB+ of data daily with real-time analytics capabilities."
-              tags={["Python", "AWS", "Kafka", "Spark"]}
+              title="Azure DevOps Migration"
+              description="Completed a full-scale Azure DevOps migration in record 3 months by coordinating team efforts and creating custom programmatic tools."
+              tags={["Azure", "DevOps", "Python", "Automation"]}
               image="/placeholder.svg?height=300&width=600"
             />
             <ProjectCard
-              title="Mathematical Modeling Framework"
-              description="Built a framework for creating and solving complex mathematical models, with applications in finance and scientific computing."
-              tags={["C#", "CUDA", "Linear Algebra", "Optimization"]}
+              title="Genomic Sequencing Infrastructure"
+              description="Constructed a multi-cloud implementation of Genomic sequencing testing infrastructure with enhanced performance and reliability."
+              tags={["AWS", "Azure", "Bioinformatics", "Python"]}
               image="/placeholder.svg?height=300&width=600"
             />
             <ProjectCard
-              title="Infrastructure Automation Suite"
-              description="Developed a comprehensive suite of tools for automating cloud infrastructure deployment and management."
-              tags={["Bash", "Terraform", "Docker", "Kubernetes"]}
+              title="Application Performance Optimization"
+              description="Increased critical application performance by 400% through re-architecture of existing code and implementation of optimized algorithms."
+              tags={["C#", ".NET", "Performance", "Optimization"]}
               image="/placeholder.svg?height=300&width=600"
             />
             <ProjectCard
-              title="AI-Powered Analytics Platform"
-              description="Created an analytics platform that leverages machine learning to provide predictive insights from complex datasets."
-              tags={["Python", "TensorFlow", "React", "GraphQL"]}
+              title="Next-Gen Sequencing Tools"
+              description="Developed research tools for next-generation sequencing with integrated web portal for interdepartmental access."
+              tags={["Python", "C++", "Computer Vision", "Web Development"]}
               image="/placeholder.svg?height=300&width=600"
             />
           </div>
@@ -185,7 +199,7 @@ export default function Home() {
         {/* Professional Journey Section */}
         <section id="journey" className="py-20 border-t border-border">
           <div className="space-y-4 max-w-3xl mb-10">
-            <h2 className="text-3xl font-bold tracking-tight">Professional Journey</h2>
+            <h2 className="text-3xl font-bold tracking-tight elegant-underline">Professional Journey</h2>
             <p className="text-lg text-muted-foreground">
               My career path and key milestones that have shaped my expertise and approach to software development.
             </p>
@@ -193,29 +207,35 @@ export default function Home() {
           <Timeline />
         </section>
 
+        {/* Education Section */}
+        <EducationSection />
+
         {/* Contact Section */}
         <section id="contact" className="py-20 border-t border-border">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
+              <h2 className="text-3xl font-bold tracking-tight elegant-underline">Get in Touch</h2>
               <p className="text-lg text-muted-foreground">
                 Interested in working together? Reach out to discuss potential projects or opportunities.
               </p>
               <div className="flex flex-col gap-4 mt-6">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-muted-foreground" />
-                  <span>contact@example.com</span>
+                  <span>nmmsoftware@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Linkedin className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://linkedin.com" className="hover:text-primary transition-colors">
-                    linkedin.com/in/yourprofile
+                  <Link
+                    href="https://linkedin.com/in/nataly-moreno-martinez/"
+                    className="hover:text-primary transition-colors"
+                  >
+                    linkedin.com/in/nataly-moreno-martinez/
                   </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <Github className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://github.com" className="hover:text-primary transition-colors">
-                    github.com/yourusername
+                  <Link href="https://github.com/nmprojects" className="hover:text-primary transition-colors">
+                    github.com/nmprojects
                   </Link>
                 </div>
               </div>
@@ -229,7 +249,7 @@ export default function Home() {
                     </label>
                     <input
                       id="name"
-                      className="w-full p-2 bg-background border border-border rounded-md"
+                      className="w-full p-2 bg-background border border-border"
                       placeholder="Your name"
                     />
                   </div>
@@ -240,7 +260,7 @@ export default function Home() {
                     <input
                       id="email"
                       type="email"
-                      className="w-full p-2 bg-background border border-border rounded-md"
+                      className="w-full p-2 bg-background border border-border"
                       placeholder="Your email"
                     />
                   </div>
@@ -249,11 +269,7 @@ export default function Home() {
                   <label htmlFor="subject" className="text-sm font-medium">
                     Subject
                   </label>
-                  <input
-                    id="subject"
-                    className="w-full p-2 bg-background border border-border rounded-md"
-                    placeholder="Subject"
-                  />
+                  <input id="subject" className="w-full p-2 bg-background border border-border" placeholder="Subject" />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium">
@@ -262,7 +278,7 @@ export default function Home() {
                   <textarea
                     id="message"
                     rows={5}
-                    className="w-full p-2 bg-background border border-border rounded-md resize-none"
+                    className="w-full p-2 bg-background border border-border resize-none"
                     placeholder="Your message"
                   />
                 </div>
@@ -279,23 +295,23 @@ export default function Home() {
       <footer className="border-t border-border py-8">
         <div className="container flex flex-col md:flex-row justify-between items-center">
           <div className="font-mono text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} • Built with precision and purpose
+            © {new Date().getFullYear()} • Nataly Moreno-Martinez • Built with precision and purpose
           </div>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com">
+              <Link href="https://github.com/nmprojects">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://linkedin.com">
+              <Link href="https://linkedin.com/in/nataly-moreno-martinez/">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="mailto:contact@example.com">
+              <Link href="mailto:nmmsoftware@gmail.com">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
               </Link>

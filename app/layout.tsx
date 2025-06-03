@@ -6,10 +6,11 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({ subsets: ["latin"] })
 
+// Update the metadata
 export const metadata: Metadata = {
-  title: "Senior Software Developer Portfolio",
+  title: "Nataly Moreno-Martinez | Senior Software Developer",
   description:
-    "Personal portfolio showcasing expertise in full-stack development, cloud technologies, and mathematical modeling",
+    "Personal portfolio of Nataly Moreno-Martinez, showcasing expertise in full-stack development, cloud technologies, and mathematical modeling",
     generator: 'v0.dev'
 }
 
