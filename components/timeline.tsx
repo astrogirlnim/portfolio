@@ -72,32 +72,79 @@ const timelineItems = [
 
 export default function Timeline() {
   return (
-    <div className="relative max-w-4xl mx-auto">
-      {/* Center line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-border transform -translate-x-px"></div>
+    <div className="relative max-w-6xl mx-auto px-4">
+      {/* Center line - hidden on mobile, visible on desktop */}
+      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border transform -translate-x-px"></div>
 
-      <div className="space-y-12">
+      {/* Mobile timeline container with left border */}
+      <div className="md:hidden timeline-mobile">
+        <div className="space-y-6">
+          {timelineItems.map((item, index) => (
+            <div key={index} className="timeline-card mobile-timeline-card">
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group border-l-4 border-l-primary/30 hover:border-l-primary/60">
+                <CardContent className="p-4 sm:p-5">
+                  <Badge variant="outline" className="mb-2 font-mono hover-glow text-xs">
+                    {item.year}
+                  </Badge>
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 leading-tight">
+                    {item.role}
+                  </h3>
+                  <p className="text-primary font-medium mb-1 text-sm sm:text-base">{item.company}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-3">{item.location}</p>
+                  <p className="text-sm sm:text-base text-muted-foreground mb-3 group-hover:text-foreground transition-colors duration-300 leading-relaxed">
+                    {item.description}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {item.achievements.map((achievement, i) => (
+                      <li key={i} className="text-xs sm:text-sm flex items-start gap-2 group/item">
+                        <div className="h-1 w-1 bg-primary rounded-full mt-2 flex-shrink-0 group-hover/item:bg-accent transition-colors duration-300"></div>
+                        <span className="group-hover/item:text-primary transition-colors duration-300 leading-relaxed">
+                          {achievement}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop timeline */}
+      <div className="hidden md:block space-y-16">
         {timelineItems.map((item, index) => (
           <div
             key={index}
-            className={`relative flex flex-col md:flex-row gap-8 ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+            className={`relative flex flex-row gap-12 ${
+              index % 2 === 0 ? "flex-row-reverse" : ""
+            }`}
           >
-            <div className="md:w-1/2 flex justify-end">
-              <div className={`w-full md:max-w-md ${index % 2 === 0 ? "md:mr-8" : "md:ml-8"}`}>
-                <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+            {/* Card Container */}
+            <div className="w-1/2 flex justify-end">
+              <div className={`w-full max-w-xl lg:max-w-2xl ${
+                index % 2 === 0 ? "mr-20" : "ml-20"
+              }`}>
+                <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group border-l-4 border-l-primary/30 hover:border-l-primary/60">
                   <CardContent className="p-6">
-                    <Badge variant="outline" className="mb-2 font-mono hover-glow">
+                    <Badge variant="outline" className="mb-3 font-mono hover-glow text-xs">
                       {item.year}
                     </Badge>
-                    <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors duration-300">{item.role}</h3>
-                    <p className="text-primary font-medium mb-1">{item.company}</p>
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 leading-tight">
+                      {item.role}
+                    </h3>
+                    <p className="text-primary font-medium mb-1 text-base">{item.company}</p>
                     <p className="text-sm text-muted-foreground mb-3">{item.location}</p>
-                    <p className="text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300">{item.description}</p>
-                    <ul className="space-y-1">
+                    <p className="text-base text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                    <ul className="space-y-2">
                       {item.achievements.map((achievement, i) => (
                         <li key={i} className="text-sm flex items-start gap-2 group/item">
                           <div className="h-1.5 w-1.5 bg-primary rounded-full mt-1.5 flex-shrink-0 group-hover/item:bg-accent transition-colors duration-300"></div>
-                          <span className="group-hover/item:text-primary transition-colors duration-300">{achievement}</span>
+                          <span className="group-hover/item:text-primary transition-colors duration-300 leading-relaxed">
+                            {achievement}
+                          </span>
                         </li>
                       ))}
                     </ul>
@@ -106,8 +153,21 @@ export default function Timeline() {
               </div>
             </div>
 
-            {/* Center dot */}
-            <div className="absolute left-1/2 top-6 w-4 h-4 bg-primary border-4 border-background transform -translate-x-1/2"></div>
+            {/* Desktop: Center dot and horizontal connecting line only */}
+            <div className="absolute left-1/2 top-8 transform -translate-x-1/2">
+              {/* Center dot */}
+              <div className="w-4 h-4 bg-primary border-4 border-background rounded-full z-10 shadow-lg"></div>
+              
+              {/* Horizontal connecting line only */}
+              <div className={`absolute top-2 h-0.5 bg-border timeline-connector ${
+                index % 2 === 0 
+                  ? "left-2 w-16" 
+                  : "right-2 w-16"
+              }`}></div>
+            </div>
+
+            {/* Empty space for layout balance */}
+            <div className="w-1/2"></div>
           </div>
         ))}
       </div>

@@ -208,4 +208,72 @@ button:hover {
     width: 200px;
     height: 200px;
   }
+  
+  /* Timeline mobile enhancements */
+  .timeline-mobile {
+    border-left: 2px solid hsl(var(--border));
+    margin-left: 1rem;
+    padding-left: 1.5rem;
+  }
+  
+  .timeline-mobile .timeline-card {
+    position: relative;
+  }
+  
+  .timeline-mobile .timeline-card::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 1rem;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--primary));
+    border-radius: 50%;
+    border: 2px solid hsl(var(--background));
+    box-shadow: 0 0 0 2px hsl(var(--border));
+  }
+}
+
+/* Enhanced mobile spacing and animations */
+@media (max-width: 640px) {
+  .hero-animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .hero-animate-delay-1 {
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .hero-animate-delay-2 {
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .hero-animate-delay-3 {
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+  
+  /* Better mobile card spacing */
+  .mobile-timeline-card {
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--muted)/0.3) 100%);
+  }
+}
+
+/* Smooth timeline connector animations */
+@media (min-width: 768px) {
+  .timeline-connector {
+    transition: all 0.3s ease;
+  }
+  
+  .timeline-connector:hover {
+    background: hsl(var(--primary));
+    box-shadow: 0 0 8px hsla(var(--primary), 0.4);
+  }
 }

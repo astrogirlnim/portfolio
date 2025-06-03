@@ -8,6 +8,7 @@ import ProjectCard from "@/components/project-card"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
+import ContactForm from "@/components/contact-form"
 
 export default function Home() {
   return (
@@ -155,27 +156,27 @@ export default function Home() {
               title="Stochastic Computational Modeling of HIV"
               description="A transcriptional cycling model that recapitulates chromatin-dependent features of noisy inducible transcription. Published research on computational modeling of variable activation of quiescent HIV infections in T cells."
               tags={["MATLAB", "NFSim", "R", "Computational Biology"]}
-              image="/placeholder.svg?height=300&width=600"
+              image="/images/project_icon_1.png"
               link="https://doi.org/10.1371/journal.pcbi.1010152"
             />
             <ProjectCard
               title="Simplifying Fracture Treatment: Medical Device Set"
               description="Developed a medical device that externally fastens Kirschner wires to prevent complications in fracture malformation and sequestering within the body. Prevents wire migration away from fracture sites."
               tags={["MATLAB", "Python", "CAD", "Medical Device"]}
-              image="/placeholder.svg?height=300&width=600"
+              image="/images/project_icon_2.png"
               link="https://seas.yale.edu/news-events/news/students-present-medical-innovations"
             />
             <ProjectCard
               title="Project Rocket: Yale Undergraduate Aerospace"
               description="Designed and constructed hybrid solid-liquid fuel rockets for national IREC competition. Engineering and fabrication of YUAA's rocket with focus on propulsion systems and aerodynamics."
               tags={["MATLAB", "CAD", "Aerospace Engineering", "Propulsion"]}
-              image="/placeholder.svg?height=300&width=600"
+              image="/images/project_icon_3.png"
             />
             <ProjectCard
               title="Bioinformatics of Protein-Protein Interactions"
               description="Independent summer computational research visualizing protein-protein interactions using multiple bioinformatic tools. Applied linear regression and random models to TCGA High-Throughput Human data for gene enrichment analyses."
               tags={["R", "ChimeraX", "Bioinformatics", "TCGA Data"]}
-              image="/placeholder.svg?height=300&width=600"
+              image="/images/project_icon_4.png"
             />
           </div>
         </section>
@@ -223,55 +224,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
-                      Name
-                    </label>
-                    <input
-                      id="name"
-                      className="w-full p-2 bg-background border border-border rounded-md"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      className="w-full p-2 bg-background border border-border rounded-md"
-                      placeholder="Your email"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="subject" className="text-sm font-medium">
-                    Subject
-                  </label>
-                  <input
-                    id="subject"
-                    className="w-full p-2 bg-background border border-border rounded-md"
-                    placeholder="Subject"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={5}
-                    className="w-full p-2 bg-background border border-border rounded-md resize-none"
-                    placeholder="Your message"
-                  />
-                </div>
-                <Button type="submit" className="w-full">
-                  Send Message
-                </Button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </section>
