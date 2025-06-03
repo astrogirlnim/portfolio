@@ -8,7 +8,6 @@ import ProjectCard from "@/components/project-card"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
-import ContactForm from "@/components/contact-form"
 
 export default function Home() {
   return (
@@ -223,8 +222,30 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div>
-              <ContactForm />
+            <div className="space-y-6">
+              <div className="text-center space-y-4">
+                <h3 className="text-2xl font-bold">Let's Connect</h3>
+                <p className="text-lg text-muted-foreground">
+                  Ready to discuss your next project? I'd love to hear from you.
+                </p>
+                <div className="space-y-4">
+                  <Button size="lg" asChild className="hover-glow">
+                    <Link href="mailto:nmmsoftware@gmail.com">
+                      <Mail className="mr-2 h-5 w-5" />
+                      Send me an email
+                    </Link>
+                  </Button>
+                  <p className="text-sm text-muted-foreground">
+                    Click the button above to open your email client, or reach out to me directly at{" "}
+                    <Link 
+                      href="mailto:nmmsoftware@gmail.com" 
+                      className="text-primary hover:underline font-medium"
+                    >
+                      nmmsoftware@gmail.com
+                    </Link>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
