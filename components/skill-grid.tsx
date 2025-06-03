@@ -4,19 +4,23 @@ import { Card, CardContent } from "@/components/ui/card"
 const skills = [
   {
     category: "Languages",
-    items: ["Python", "R", "C#", "C/C++", "Bash/Shell", "JavaScript", "SQL"],
+    items: ["Python", "R", "C#", "C", "C++", "VB", "Bash", "Matlab", "JavaScript", "HTML", "CSS", "SQL", "Racket", "Lisp"],
   },
   {
-    category: "Cloud & Infrastructure",
-    items: ["Azure", "AWS", "Google Cloud", "Docker", "CI/CD", "DevOps"],
+    category: "Frameworks",
+    items: [".NET", "WPF/XAML", "Scikit", "OpenCV", "Flask", "ReactJS", "NextFlow", "Luigi"],
   },
   {
-    category: "Frameworks & Tools",
-    items: [".NET", "WPF/XAML", "Flask", "ReactJS", "NextFlow", "Luigi"],
+    category: "Tools",
+    items: ["Docker", "Git", "PostgreSQL", "IIS", "Visual Studio", "VS Code", "Vim"],
   },
   {
-    category: "Data & Analytics",
-    items: ["Scikit", "OpenCV", "Mathematical Modeling", "Machine Learning", "Genomic Sequencing"],
+    category: "Platforms",
+    items: ["Linux", "Web", "Google Cloud Platform", "Azure", "AWS", "JIRA", "GitHub", "Bitbucket"],
+  },
+  {
+    category: "Concepts",
+    items: ["OOP", "SOLID", "Agile Development", "Unit Testing", "Integration Testing", "Mathematical Modeling", "Machine Learning"],
   },
   {
     category: "Current Focus",
@@ -28,16 +32,16 @@ export default function SkillGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {skills.map((skillGroup) => (
-        <Card key={skillGroup.category} className="overflow-hidden retro-card">
-          <div className="bg-primary/10 border-b border-border p-4">
+        <Card key={skillGroup.category} className="overflow-hidden hover-glow transition-all duration-300 hover:scale-105 card-gradient">
+          <div className="bg-primary/10 border-b border-border p-4 group-hover:bg-primary/20 transition-colors duration-300">
             <h3 className="font-bold text-lg">{skillGroup.category}</h3>
           </div>
           <CardContent className="p-4">
             <ul className="grid grid-cols-2 gap-2">
               {skillGroup.items.map((skill) => (
-                <li key={skill} className="flex items-center gap-2">
-                  <div className="h-1.5 w-1.5 bg-primary"></div>
-                  <span className="text-sm">{skill}</span>
+                <li key={skill} className="flex items-center gap-2 group">
+                  <div className="h-1.5 w-1.5 bg-primary rounded-full group-hover:bg-accent transition-colors duration-300"></div>
+                  <span className="text-sm group-hover:text-primary transition-colors duration-300">{skill}</span>
                 </li>
               ))}
             </ul>
