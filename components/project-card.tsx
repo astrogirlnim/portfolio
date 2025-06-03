@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, tags, image, link }: ProjectCardProps) {
   return (
-    <Card className="overflow-hidden group transition-all duration-300 hover:border-primary/50">
+    <Card className="overflow-hidden group transition-all duration-300 hover:border-primary/50 retro-card">
       <div className="relative h-48 overflow-hidden">
         <Image
           src={image || "/placeholder.svg"}
