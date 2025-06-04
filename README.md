@@ -2,8 +2,7 @@
 
 *Portfolio website showcasing professional experience and skills*
 
-[![Deploy to GitHub Pages](https://github.com/username/portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/username/portfolio/actions/workflows/deploy.yml)
-[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+Hi, I'm Nataly Moreno-Martinez. I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
 
 ## Overview
 
