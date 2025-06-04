@@ -192,11 +192,3 @@ export default function RetroCursor() {
     />
   )
 }
-
-// Utility functions for demonstration
-export const triggerLoadingState = () => {
-  document.dispatchEvent(new CustomEvent('loading-start'))
-  setTimeout(() => {
-    document.dispatchEvent(new CustomEvent('loading-end'))
-  }, 2000)
-}

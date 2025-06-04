@@ -8,7 +8,6 @@ import ProjectCard from "@/components/project-card"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
-import CursorDemo from "@/components/cursor-demo"
 import { getImagePath } from "@/lib/utils"
 
 export default function Home() {
@@ -246,7 +245,6 @@ export default function Home() {
                       nmmsoftware@gmail.com
                     </Link>
                   </p>
-                  <CursorDemo />
                 </div>
               </div>
             </div>
