@@ -2,7 +2,7 @@
 
 *Portfolio website showcasing professional experience and skills*
 
-Hi, I'm Nataly Moreno-Martinez. I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
+I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture. This is my portfolio website!
 
 ## Overview
 
