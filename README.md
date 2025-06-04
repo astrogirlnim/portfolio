@@ -1,4 +1,4 @@
-# Senior software developer portfolio
+# Nataly.Dev
 
 *Portfolio website showcasing professional experience and skills*
 
