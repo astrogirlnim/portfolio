@@ -7,18 +7,12 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Get the correct image path for the current environment
- * In development: returns the path as-is (no basePath)
- * In production: adds the /portfolio prefix for GitHub Pages
+ * Next.js automatically handles the basePath from next.config.mjs
  */
 export function getImagePath(path: string): string {
   // Remove leading slash if present to normalize the path
   const normalizedPath = path.startsWith('/') ? path.slice(1) : path
   
-  // In production, add the basePath prefix
-  if (process.env.NODE_ENV === 'production') {
-    return `/portfolio/${normalizedPath}`
-  }
-  
-  // In development, use the path as-is (no basePath)
+  // Return the path with a leading slash - Next.js will handle basePath automatically
   return `/${normalizedPath}`
 }
