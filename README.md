@@ -12,26 +12,6 @@ This is a modern portfolio website built with Next.js, designed to showcase prof
 
 This repository is configured for automatic deployment to GitHub Pages using GitHub Actions.
 
-### Setup Instructions
-
-1. **Push your code to GitHub** (if not already done)
-2. **Enable GitHub Pages** in your repository settings:
-   - Go to Settings → Pages
-   - Source: "GitHub Actions"
-3. **The site will automatically deploy** when you push to the main branch
-
-### Manual Deployment
-
-If you prefer to deploy manually:
-
-```bash
-# Build the static site
-npm run export
-
-# The static files will be in the 'out' directory
-# Upload the contents of 'out' to your GitHub Pages repository
-```
-
 ## 🛠️ Development
 
 ### Prerequisites
@@ -83,10 +63,6 @@ The development server will be available at `http://localhost:3000` (or next ava
 - ✅ SEO optimized
 - ✅ Fast loading and optimized assets
 
-## 🌐 Live Site
-
-Your portfolio will be available at: `https://[username].github.io/[repository-name]`
-
 ## 📝 Customization
 
 The site content is based on the resume information in `NMM_Resume_Software_Latest.tex`. To update:
@@ -99,4 +75,3 @@ The site content is based on the resume information in `NMM_Resume_Software_Late
 ## 🤝 Contributing
 
 This is a personal portfolio, but suggestions and improvements are welcome via issues and pull requests.
-# GitHub Pages Deploy Test
