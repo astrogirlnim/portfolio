@@ -8,6 +8,7 @@ import ProjectCard from "@/components/project-card"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
+import CursorDemo from "@/components/cursor-demo"
 
 export default function Home() {
   return (
@@ -244,6 +245,7 @@ export default function Home() {
                       nmmsoftware@gmail.com
                     </Link>
                   </p>
+                  <CursorDemo />
                 </div>
               </div>
             </div>
