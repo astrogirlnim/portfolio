@@ -99,8 +99,8 @@
     /* Removed mix-blend-mode for better performance */
     /* Use will-change to optimize for transforms */
     will-change: transform;
-    /* Use hardware acceleration */
-    transform: translate3d(-50%, -50%, 0);
+    /* Use hardware acceleration with CSS custom properties for positioning */
+    transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%);
     /* Faster transition with reduced property count */
     transition: width 0.1s ease-out, height 0.1s ease-out, background 0.1s ease-out;
   }
@@ -220,13 +220,13 @@
 
 /* Cursor animations */
 @keyframes cursor-spin {
-  0% { transform: translate3d(-50%, -50%, 0) rotate(0deg); }
-  100% { transform: translate3d(-50%, -50%, 0) rotate(360deg); }
+  0% { transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%) rotate(360deg); }
 }
 
 @keyframes cursor-pulse {
-  0% { opacity: 0.6; transform: translate3d(-50%, -50%, 0) scale(0.9); }
-  100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1.1); }
+  0% { opacity: 0.6; transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%) scale(0.9); }
+  100% { opacity: 1; transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%) scale(1.1); }
 }
 
 /* Smooth scrolling */

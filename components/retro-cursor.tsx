@@ -86,9 +86,10 @@ export default function RetroCursor() {
       setPosition(newPosition)
       setIsVisible(true)
       
-      // Update cursor ref position directly for smoother movement
+      // Update cursor ref position using CSS custom properties for better animation compatibility
       if (cursorRef.current) {
-        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`
+        cursorRef.current.style.setProperty('--cursor-x', `${e.clientX}px`)
+        cursorRef.current.style.setProperty('--cursor-y', `${e.clientY}px`)
       }
       
       // Only check element under cursor every few updates to reduce overhead
@@ -184,8 +185,9 @@ export default function RetroCursor() {
       ref={cursorRef}
       className={`custom-cursor ${finalCursorState}`}
       style={{
-        transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
-      }}
+        '--cursor-x': position.x + 'px',
+        '--cursor-y': position.y + 'px',
+      } as React.CSSProperties}
       aria-hidden="true"
     />
   )
