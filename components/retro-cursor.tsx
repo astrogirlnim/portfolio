@@ -15,7 +15,11 @@ export default function RetroCursor() {
   const [cursorState, setCursorState] = useState<CursorState>('default')
   const [isLoading, setIsLoading] = useState(false)
   const cursorRef = useRef<HTMLDivElement>(null)
+  const lastUpdate = useRef<number>(0)
+  const rafId = useRef<number | undefined>(undefined)
+  const lastElement = useRef<Element | null>(null)
 
+  // Optimized cursor state detection with pre-compiled selectors
   const updateCursorState = useCallback((element: Element | null) => {
     if (!element) {
       setCursorState('default')
@@ -23,49 +27,89 @@ export default function RetroCursor() {
     }
 
     try {
-      // Check for text input elements
-      if (element.matches('input[type="text"], input[type="email"], input[type="password"], input[type="search"], textarea, [contenteditable="true"]')) {
-        setCursorState('text')
-        return
+      // Use cached element properties where possible
+      const tagName = element.tagName.toLowerCase()
+      const classList = element.classList
+      
+      // Quick checks using tag names and common classes first
+      if (tagName === 'input' || tagName === 'textarea' || element.hasAttribute('contenteditable')) {
+        const inputType = (element as HTMLInputElement).type
+        if (!inputType || ['text', 'email', 'password', 'search'].includes(inputType)) {
+          setCursorState('text')
+          return
+        }
       }
-
-      // Check for interactive elements (including your specific classes)
-      if (element.matches('a, button, [role="button"], [data-cursor="hover"], .cursor-hover, .hover-glow, input[type="button"], input[type="submit"], select, [tabindex="0"]:not(input):not(textarea)')) {
+      
+      // Check for interactive elements using faster methods
+      if (tagName === 'a' || tagName === 'button' || 
+          classList.contains('cursor-hover') || 
+          classList.contains('hover-glow') ||
+          element.hasAttribute('data-cursor') ||
+          element.getAttribute('role') === 'button' ||
+          (element.hasAttribute('tabindex') && tagName !== 'input' && tagName !== 'textarea')) {
         setCursorState('hover')
         return
       }
 
       // Check for loading states
-      if (element.matches('[data-loading="true"], .loading, [aria-busy="true"], .cursor-loading')) {
+      if (element.hasAttribute('data-loading') || 
+          classList.contains('loading') || 
+          element.getAttribute('aria-busy') === 'true' ||
+          classList.contains('cursor-loading')) {
         setCursorState('loading')
         return
       }
 
       setCursorState('default')
     } catch (error) {
-      // Fallback to default if selector fails
       console.warn('Cursor state update failed:', error)
       setCursorState('default')
     }
   }, [])
 
+  // Throttle mouse position updates using requestAnimationFrame
   const updatePosition = useCallback((e: MouseEvent) => {
-    const newPosition = { x: e.clientX, y: e.clientY }
-    setPosition(newPosition)
-    setIsVisible(true)
+    const now = performance.now()
     
-    try {
-      // Update cursor state based on the element under the cursor
-      const elementUnderCursor = document.elementFromPoint(e.clientX, e.clientY)
-      updateCursorState(elementUnderCursor)
-    } catch (error) {
-      console.warn('Failed to get element under cursor:', error)
+    // Skip update if less than 16ms has passed (60fps throttling)
+    if (now - lastUpdate.current < 16) return
+    
+    lastUpdate.current = now
+    
+    // Cancel any pending animation frame
+    if (rafId.current) {
+      cancelAnimationFrame(rafId.current)
     }
+    
+    rafId.current = requestAnimationFrame(() => {
+      const newPosition = { x: e.clientX, y: e.clientY }
+      setPosition(newPosition)
+      setIsVisible(true)
+      
+      // Update cursor ref position directly for smoother movement
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`
+      }
+      
+      // Only check element under cursor every few updates to reduce overhead
+      if (now % 5 === 0) { // Check every 5th frame
+        try {
+          const elementUnderCursor = document.elementFromPoint(e.clientX, e.clientY)
+          if (elementUnderCursor !== lastElement.current) {
+            lastElement.current = elementUnderCursor
+            updateCursorState(elementUnderCursor)
+          }
+        } catch (error) {
+          console.warn('Failed to get element under cursor:', error)
+        }
+      }
+    })
   }, [updateCursorState])
 
   const handleMouseLeave = useCallback(() => {
     setIsVisible(false)
     setCursorState('default')
+    lastElement.current = null
   }, [])
 
   const handleMouseEnter = useCallback(() => {
@@ -112,14 +156,20 @@ export default function RetroCursor() {
     // Only add listeners on client side
     if (typeof window === 'undefined') return
 
+    // Use passive event listeners for better performance
     window.addEventListener("mousemove", updatePosition, { passive: true })
-    document.addEventListener("mouseleave", handleMouseLeave)
-    document.addEventListener("mouseenter", handleMouseEnter)
+    document.addEventListener("mouseleave", handleMouseLeave, { passive: true })
+    document.addEventListener("mouseenter", handleMouseEnter, { passive: true })
 
     return () => {
       window.removeEventListener("mousemove", updatePosition)
       document.removeEventListener("mouseleave", handleMouseLeave)
       document.removeEventListener("mouseenter", handleMouseEnter)
+      
+      // Clean up animation frame
+      if (rafId.current) {
+        cancelAnimationFrame(rafId.current)
+      }
     }
   }, [updatePosition, handleMouseLeave, handleMouseEnter])
 
@@ -134,8 +184,7 @@ export default function RetroCursor() {
       ref={cursorRef}
       className={`custom-cursor ${finalCursorState}`}
       style={{
-        left: position.x,
-        top: position.y,
+        transform: `translate3d(${position.x}px, ${position.y}px, 0) translate(-50%, -50%)`,
       }}
       aria-hidden="true"
     />
