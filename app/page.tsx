@@ -9,6 +9,7 @@ import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
 import CursorDemo from "@/components/cursor-demo"
+import { getImagePath } from "@/lib/utils"
 
 export default function Home() {
   return (
@@ -67,7 +68,7 @@ export default function Home() {
                   <Link href="#contact">Contact Me</Link>
                 </Button>
                 <Button variant="ghost" size="lg" asChild className="hover-glow">
-                  <Link href="/NMM_Resume_Software_Latest.pdf" target="_blank">
+                  <Link href={getImagePath("NMM_Resume_Software_Latest.pdf")} target="_blank">
                     Download Resume
                   </Link>
                 </Button>
@@ -78,7 +79,7 @@ export default function Home() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="relative group hero-animate-delay-2">
                     <Image
-                      src="/portfolio/ghibli_icon.png"
+                      src={getImagePath("ghibli_icon.png")}
                       alt="Nataly Moreno-Martinez"
                       width={300}
                       height={300}
@@ -156,27 +157,27 @@ export default function Home() {
               title="Stochastic Computational Modeling of HIV"
               description="A transcriptional cycling model that recapitulates chromatin-dependent features of noisy inducible transcription. Published research on computational modeling of variable activation of quiescent HIV infections in T cells."
               tags={["MATLAB", "NFSim", "R", "Computational Biology"]}
-              image="/portfolio/images/project_icon_1.png"
+              image={getImagePath("images/project_icon_1.png")}
               link="https://doi.org/10.1371/journal.pcbi.1010152"
             />
             <ProjectCard
               title="Simplifying Fracture Treatment: Medical Device Set"
               description="Developed a medical device that externally fastens Kirschner wires to prevent complications in fracture malformation and sequestering within the body. Prevents wire migration away from fracture sites."
               tags={["MATLAB", "Python", "CAD", "Medical Device"]}
-              image="/portfolio/images/project_icon_2.png"
+              image={getImagePath("images/project_icon_2.png")}
               link="https://seas.yale.edu/news-events/news/students-present-medical-innovations"
             />
             <ProjectCard
               title="Project Rocket: Yale Undergraduate Aerospace"
               description="Designed and constructed hybrid solid-liquid fuel rockets for national IREC competition. Engineering and fabrication of YUAA's rocket with focus on propulsion systems and aerodynamics."
               tags={["MATLAB", "CAD", "Aerospace Engineering", "Propulsion"]}
-              image="/portfolio/images/project_icon_3.png"
+              image={getImagePath("images/project_icon_3.png")}
             />
             <ProjectCard
               title="Bioinformatics of Protein-Protein Interactions"
               description="Independent summer computational research visualizing protein-protein interactions using multiple bioinformatic tools. Applied linear regression and random models to TCGA High-Throughput Human data for gene enrichment analyses."
               tags={["R", "ChimeraX", "Bioinformatics", "TCGA Data"]}
-              image="/portfolio/images/project_icon_4.png"
+              image={getImagePath("images/project_icon_4.png")}
             />
           </div>
         </section>
