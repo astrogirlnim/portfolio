@@ -9,15 +9,59 @@ interface CursorPosition {
   y: number
 }
 
+// Mobile detection utility function
+const isMobileDevice = (): boolean => {
+  if (typeof window === 'undefined') return false
+  
+  // Check for touch capability
+  const hasTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+  
+  // Check media queries
+  const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches
+  const isNoHover = window.matchMedia('(hover: none)').matches
+  
+  // Check user agent (fallback)
+  const userAgent = navigator.userAgent.toLowerCase()
+  const mobileKeywords = ['mobile', 'android', 'iphone', 'ipad', 'tablet', 'blackberry', 'webos']
+  const isMobileUserAgent = mobileKeywords.some(keyword => userAgent.includes(keyword))
+  
+  // Check screen size (additional check for small screens)
+  const isSmallScreen = window.innerWidth <= 768 || window.innerHeight <= 768
+  
+  return hasTouch && (isCoarsePointer || isNoHover || isMobileUserAgent || isSmallScreen)
+}
+
 export default function RetroCursor() {
   const [position, setPosition] = useState<CursorPosition>({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const [cursorState, setCursorState] = useState<CursorState>('default')
   const [isLoading, setIsLoading] = useState(false)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
   const cursorRef = useRef<HTMLDivElement>(null)
   const lastUpdate = useRef<number>(0)
   const rafId = useRef<number | undefined>(undefined)
   const lastElement = useRef<Element | null>(null)
+
+  // Check for mobile device on mount and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(isMobileDevice())
+    }
+    
+    // Initial check
+    checkMobile()
+    
+    // Listen for resize events to detect orientation changes or screen size changes
+    window.addEventListener('resize', checkMobile)
+    
+    // Listen for orientation change events (mobile specific)
+    window.addEventListener('orientationchange', checkMobile)
+    
+    return () => {
+      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('orientationchange', checkMobile)
+    }
+  }, [])
 
   // Optimized cursor state detection with pre-compiled selectors
   const updateCursorState = useCallback((element: Element | null) => {
@@ -154,8 +198,8 @@ export default function RetroCursor() {
   }, [])
 
   useEffect(() => {
-    // Only add listeners on client side
-    if (typeof window === 'undefined') return
+    // Only add listeners on client side and not on mobile
+    if (typeof window === 'undefined' || isMobile) return
 
     // Use passive event listeners for better performance
     window.addEventListener("mousemove", updatePosition, { passive: true })
@@ -172,13 +216,13 @@ export default function RetroCursor() {
         cancelAnimationFrame(rafId.current)
       }
     }
-  }, [updatePosition, handleMouseLeave, handleMouseEnter])
+  }, [updatePosition, handleMouseLeave, handleMouseEnter, isMobile])
 
   // Override cursor state if globally loading
   const finalCursorState = isLoading ? 'loading' : cursorState
 
-  // Don't render on server
-  if (typeof window === 'undefined' || !isVisible) return null
+  // Don't render on server, mobile devices, or when not visible
+  if (typeof window === 'undefined' || isMobile || !isVisible) return null
 
   return (
     <div
