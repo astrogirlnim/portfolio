@@ -14,9 +14,9 @@ const spaceMono = Space_Mono({
 
 // Update the metadata
 export const metadata: Metadata = {
-  title: "Nataly Moreno-Martinez | Senior Software Developer",
+  title: "Nataly Smith | Senior Software Developer",
   description:
-    "Personal portfolio of Nataly Moreno-Martinez, showcasing expertise in full-stack development, cloud technologies, and mathematical modeling",
+    "Personal portfolio of Nataly Smith, showcasing expertise in full-stack development, cloud technologies, and mathematical modeling",
     generator: 'v0.dev'
 }
 

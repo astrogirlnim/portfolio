@@ -52,7 +52,7 @@ export default function Home() {
                 SENIOR SOFTWARE DEVELOPER
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold tracking-tight hero-animate-delay-1">
-                Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Moreno-Martinez
+                Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
               </h1>
               <p className="text-lg text-muted-foreground max-w-md hero-animate-delay-2">
                 I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
@@ -79,7 +79,7 @@ export default function Home() {
                   <div className="relative group hero-animate-delay-2">
                     <Image
                       src={getImagePath("ghibli_icon.png")}
-                      alt="Nataly Moreno-Martinez"
+                      alt="Nataly Smith"
                       width={300}
                       height={300}
                       className="rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-105 mobile-hero-icon md:w-[300px] md:h-[300px]"
@@ -207,8 +207,8 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Linkedin className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://www.linkedin.com/in/nataly-moreno-martinez/" className="hover:text-primary transition-colors">
-                    linkedin.com/in/nataly-moreno-martinez/
+                  <Link href="https://www.linkedin.com/in/nataly-smith/" className="hover:text-primary transition-colors">
+                    linkedin.com/in/nataly-smith/
                   </Link>
                 </div>
                 <div className="flex items-center gap-3">
@@ -256,7 +256,7 @@ export default function Home() {
       <footer className="border-t border-border py-8">
         <div className="container flex flex-col md:flex-row justify-between items-center">
           <div className="font-mono text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} Nataly Moreno-Martinez • Built with precision and purpose
+            © {new Date().getFullYear()} Nataly Smith • Built with precision and purpose
           </div>
           <div className="flex items-center gap-4">
             <Button variant="ghost" size="icon" asChild>
@@ -266,7 +266,7 @@ export default function Home() {
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
-              <Link href="https://www.linkedin.com/in/nataly-moreno-martinez/">
+              <Link href="https://www.linkedin.com/in/nataly-smith/">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
