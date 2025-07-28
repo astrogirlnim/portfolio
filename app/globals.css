@@ -432,4 +432,10 @@ button:hover {
     background: hsl(var(--primary));
     box-shadow: 0 0 8px hsla(var(--primary), 0.4);
   }
+
+  /* Fix for header overlap when navigating to sections */
+  section[id], 
+  div[id^="project-"] {
+    scroll-margin-top: 5rem; /* 80px to account for header + padding */
+  }
 }
