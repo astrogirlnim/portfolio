@@ -206,7 +206,7 @@ export default function Home() {
             <div className="mb-12">
               <VideoProjectShowcase
                 title="Children of Singularity"
-                description="A 2D / 2.5D multiplayer sci-fi salvage simulation inspired by Moebius, Planetes, and Nausicaä. Players explore cluttered orbital zones, collect and trade space debris, upgrade their ships (or themselves), and gradually uncover an unsettling AI-controlled ecosystem."
+                description="A 2.5D/3D multiplayer sci-fi salvage simulation inspired by Moebius, Planetes, and Nausicaä. Players explore cluttered orbital zones, collect and trade space debris, upgrade their ships (or themselves), and gradually uncover an unsettling AI-controlled ecosystem."
                 tags={["Godot", "Game Development", "Sci-fi", "Multiplayer", "GDScript", "2D/2.5D"]}
                 video="/videos/ChildrenOfSingularity_Demo.mov"
                 githubLink="https://github.com/astrogirlnim/Children_of_Singularity"
