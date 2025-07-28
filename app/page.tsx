@@ -80,8 +80,8 @@ export default function Home() {
                   <Link href="#contact">Contact Me</Link>
                 </Button>
                 <Button variant="ghost" size="lg" asChild className="hover-glow font-medium">
-                  <Link href={getImagePath("NMM_Resume_Software_Latest.pdf")} target="_blank">
-                    Download Resume
+                                  <Link href={getImagePath("images/NMM_Resume_Updated.pdf")} target="_blank">
+                  Download Resume
                   </Link>
                 </Button>
               </div>
