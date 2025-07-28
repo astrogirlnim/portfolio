@@ -64,7 +64,7 @@ export default function Home() {
               <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate w-fit">
                 SENIOR SOFTWARE DEVELOPER
               </Badge>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-poppins font-semibold tracking-tight hero-animate-delay-1">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold tracking-tight hero-animate-delay-1">
                 Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl hero-animate-delay-2 font-light leading-relaxed">

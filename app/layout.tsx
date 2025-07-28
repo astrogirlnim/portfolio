@@ -1,26 +1,20 @@
 import type React from "react"
 import "./globals.css"
 import type { Metadata } from "next"
-import { Poppins, Source_Sans_3, Space_Mono } from "next/font/google"
+import { Inter, JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import RetroCursor from "@/components/retro-cursor"
 
-const poppins = Poppins({ 
+const inter = Inter({ 
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins"
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter"
 })
 
-const sourceSans = Source_Sans_3({ 
+const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-source-sans"
-})
-
-const spaceMono = Space_Mono({ 
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-space-mono"
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-jetbrains-mono"
 })
 
 // Update the metadata
@@ -38,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${sourceSans.className} ${poppins.variable} ${sourceSans.variable} ${spaceMono.variable}`}>
+      <body className={`${inter.className} ${inter.variable} ${jetbrainsMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           {children}
           <RetroCursor />

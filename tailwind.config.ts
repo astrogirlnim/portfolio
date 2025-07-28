@@ -20,9 +20,9 @@ const config = {
     },
     extend: {
       fontFamily: {
-        poppins: ["var(--font-poppins)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
-        sans: ["var(--font-source-sans)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
-        mono: ["var(--font-space-mono)", ...require("tailwindcss/defaultTheme").fontFamily.mono],
+        sans: ["var(--font-inter)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
+        mono: ["var(--font-jetbrains-mono)", ...require("tailwindcss/defaultTheme").fontFamily.mono],
+        display: ["var(--font-inter)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",
