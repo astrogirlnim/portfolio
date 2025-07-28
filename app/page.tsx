@@ -162,7 +162,7 @@ export default function Home() {
             <div className="mb-16">
               <VideoProjectShowcase
                 title="MarketSnap"
-                description="A cross-platform mobile application built with Flutter that connects small vendors and farmers' markets with customers through a Snapchat-style social platform. Features real-time messaging, location-based discovery, vendor management tools, and comprehensive Firebase backend integration with advanced security and development workflows."
+                description="MarketSnap enables farmers-market vendors to share real-time 'fresh-stock' photos and 5-second clips that work offline first, sync transparently when connectivity returns, and auto-expire after 24 hours—driving foot traffic before produce spoils. A cross-platform mobile application built with Flutter and Firebase backend, supporting both iOS and Android platforms."
                 tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
                 video="/videos/Final_Demo_V2.mov"
                 githubLink="https://github.com/astrogirlnim/MarketSnap"
