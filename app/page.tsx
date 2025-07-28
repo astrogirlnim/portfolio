@@ -182,6 +182,18 @@ export default function Home() {
               />
             </div>
             
+            {/* Personyx Video Project Showcase */}
+            <div className="mb-12">
+              <VideoProjectShowcase
+                title="Personyx"
+                description="Personyx is a compliant desktop app that ingests raw customer-interview transcripts, clusters insights by persona, scores new PRDs for evidence, and lets devs/PMs chat with persona bots while they work. Give makers instant, persona-specific proof that a feature is worth building—before they write code—and live feedback while they do."
+                tags={["Electron", "TypeScript", "React", "AI/ML", "Desktop App", "Product Management"]}
+                video="/videos/Personyx_Demo.mov"
+                githubLink="https://github.com/astrogirlnim/Personyx"
+                videoPosition="right"
+              />
+            </div>
+            
             {/* Additional Projects Grid */}
             <div className="space-y-4 mb-8">
               <h3 className="text-2xl font-bold tracking-tight">Additional Projects</h3>
