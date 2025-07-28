@@ -12,6 +12,7 @@ import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
 import ProjectNavigation from "@/components/project-navigation"
+import InteractiveTerminal from "@/components/interactive-terminal"
 import { getImagePath } from "@/lib/utils"
 
 export default function Home() {
@@ -91,6 +92,11 @@ export default function Home() {
                     Download Resume
                     </Link>
                   </Button>
+                </div>
+                
+                {/* Interactive Terminal Section - Hidden on mobile for better UX */}
+                <div className="mt-8 hero-animate-delay-3 hidden lg:block">
+                  <InteractiveTerminal />
                 </div>
               </div>
             </div>
