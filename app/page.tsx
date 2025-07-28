@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import ProjectCard from "@/components/project-card"
 import VideoProjectShowcase from "@/components/video-project-showcase"
 import ImageProjectShowcase from "@/components/image-project-showcase"
+import WebDemoProjectShowcase from "@/components/web-demo-project-showcase"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
@@ -155,7 +156,7 @@ export default function Home() {
             <div className="space-y-4 max-w-3xl mb-6">
               <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
               <p className="text-lg text-muted-foreground">
-                A selection of projects that demonstrate my technical capabilities across AI-enhanced mathematical computing, mobile development, research, medical devices, and aerospace engineering.
+                A selection of projects that demonstrate my technical capabilities across AI-enhanced vertical full-stack app development, mobile development, game development, mathematical modeling, and more.
               </p>
             </div>
             
@@ -223,6 +224,19 @@ export default function Home() {
                 video="/videos/Personyx_Demo.mov"
                 githubLink="https://github.com/astrogirlnim/Personyx"
                 videoPosition="right"
+              />
+            </div>
+            
+            {/* FunnelFluent Web Demo Project Showcase */}
+            <div className="mb-12">
+              <WebDemoProjectShowcase
+                title="FunnelFluent"
+                description="FunnelFluent AI: Grammarly for sales funnels. Grammarly-like application made for professional making business proposals or marketing materials. A Next.js-based writing assistant powered by Firebase and AI, featuring real-time collaboration, grammar checking, and intelligent writing suggestions."
+                tags={["Next.js", "Firebase", "TypeScript", "React", "AI/ML", "Real-time Collaboration", "Writing Assistant"]}
+                demoUrl="https://wordwise-ai-mvp.web.app/?demo=true"
+                githubLink="https://github.com/astrogirlnim/WordWiseAI"
+                liveLink="https://wordwise-ai-mvp.web.app/sign-in/"
+                demoPosition="left"
               />
             </div>
             
