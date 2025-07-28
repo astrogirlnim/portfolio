@@ -170,6 +170,19 @@ export default function Home() {
               />
             </div>
             
+            {/* Children of Singularity Video Project Showcase */}
+            <div className="mb-12">
+              <VideoProjectShowcase
+                title="Children of Singularity"
+                description="A 2D / 2.5D multiplayer sci-fi salvage simulation inspired by Moebius, Planetes, and Nausicaä. Players explore cluttered orbital zones, collect and trade space debris, upgrade their ships (or themselves), and gradually uncover an unsettling AI-controlled ecosystem."
+                tags={["Godot", "Game Development", "Sci-fi", "Multiplayer", "GDScript", "2D/2.5D"]}
+                video="/videos/ChildrenOfSingularity_Demo.mov"
+                githubLink="https://github.com/astrogirlnim/Children_of_Singularity"
+                liveLink="https://nisgames.itch.io/children-of-the-singularity"
+                videoPosition="left"
+              />
+            </div>
+            
             {/* MarketSnap Video Project Showcase */}
             <div className="mb-12">
               <VideoProjectShowcase
@@ -178,7 +191,7 @@ export default function Home() {
                 tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
                 video="/videos/Final_Demo_V2.mov"
                 githubLink="https://github.com/astrogirlnim/MarketSnap"
-                videoPosition="left"
+                videoPosition="right"
               />
             </div>
             
@@ -190,7 +203,7 @@ export default function Home() {
                 tags={["Electron", "TypeScript", "React", "AI/ML", "Desktop App", "Product Management"]}
                 video="/videos/Personyx_Demo.mov"
                 githubLink="https://github.com/astrogirlnim/Personyx"
-                videoPosition="right"
+                videoPosition="left"
               />
             </div>
             
