@@ -166,6 +166,7 @@ export default function Home() {
                 tags={["Fortran", "C/C++", "AI/ML", "Linear Algebra", "Scientific Computing", "Performance Optimization"]}
                 video="/videos/LAPACK_DEMO_FINAL.mov"
                 githubLink="https://github.com/astrogirlnim/lapack_ai"
+                videoPosition="right"
               />
             </div>
             
@@ -177,6 +178,7 @@ export default function Home() {
                 tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
                 video="/videos/Final_Demo_V2.mov"
                 githubLink="https://github.com/astrogirlnim/MarketSnap"
+                videoPosition="left"
               />
             </div>
             
