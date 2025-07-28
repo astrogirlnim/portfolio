@@ -159,6 +159,24 @@ export default function Home() {
               </p>
             </div>
             
+            {/* GeneKnow Image Project Showcase */}
+            <div className="mb-12">
+              <ImageProjectShowcase
+                title="GeneKnow"
+                description="GeneKnow is a privacy-first and local-first genomic risk assessment platform that processes genetic data entirely on your local machine. No data ever leaves your device, ensuring complete privacy for sensitive genetic information."
+                tags={["Tauri", "Rust", "React", "TypeScript", "LangGraph", "Genomics", "Privacy-First", "Machine Learning"]}
+                images={[
+                  "/geneknow_photos/image_1.png",
+                  "/geneknow_photos/image_2.png",
+                  "/geneknow_photos/image_3.png"
+                ]}
+                githubLink="https://github.com/astrogirlnim/GeneKnow"
+                liveLink="https://astrogirlnim.github.io/GeneKnow/"
+                whitepaperLink="/GeneKnow_Whitepaper_Final.pdf"
+                imagePosition="right"
+              />
+            </div>
+            
             {/* LAPACK AI Video Project Showcase */}
             <div className="mb-12">
               <VideoProjectShowcase
@@ -167,7 +185,7 @@ export default function Home() {
                 tags={["Fortran", "C/C++", "AI/ML", "Linear Algebra", "Scientific Computing", "Performance Optimization"]}
                 video="/videos/LAPACK_DEMO_FINAL.mov"
                 githubLink="https://github.com/astrogirlnim/lapack_ai"
-                videoPosition="right"
+                videoPosition="left"
               />
             </div>
             
@@ -180,7 +198,7 @@ export default function Home() {
                 video="/videos/ChildrenOfSingularity_Demo.mov"
                 githubLink="https://github.com/astrogirlnim/Children_of_Singularity"
                 liveLink="https://nisgames.itch.io/children-of-the-singularity"
-                videoPosition="left"
+                videoPosition="right"
               />
             </div>
             
@@ -192,7 +210,7 @@ export default function Home() {
                 tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
                 video="/videos/Final_Demo_V2.mov"
                 githubLink="https://github.com/astrogirlnim/MarketSnap"
-                videoPosition="right"
+                videoPosition="left"
               />
             </div>
             
@@ -204,25 +222,7 @@ export default function Home() {
                 tags={["Electron", "TypeScript", "React", "AI/ML", "Desktop App", "Product Management"]}
                 video="/videos/Personyx_Demo.mov"
                 githubLink="https://github.com/astrogirlnim/Personyx"
-                videoPosition="left"
-              />
-            </div>
-            
-            {/* GeneKnow Image Project Showcase */}
-            <div className="mb-12">
-              <ImageProjectShowcase
-                title="GeneKnow"
-                description="GeneKnow is a privacy-first and local-first genomic risk assessment platform that processes genetic data entirely on your local machine. No data ever leaves your device, ensuring complete privacy for sensitive genetic information."
-                tags={["Tauri", "Rust", "React", "TypeScript", "Genomics", "Privacy-First", "Machine Learning"]}
-                images={[
-                  "/geneknow_photos/image_1.png",
-                  "/geneknow_photos/image_2.png",
-                  "/geneknow_photos/image_3.png"
-                ]}
-                githubLink="https://github.com/astrogirlnim/GeneKnow"
-                liveLink="https://astrogirlnim.github.io/GeneKnow/"
-                whitepaperLink="/GeneKnow_Whitepaper_Final.pdf"
-                imagePosition="right"
+                videoPosition="right"
               />
             </div>
             
