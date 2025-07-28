@@ -32,7 +32,7 @@ export default function ProjectNavigation() {
         console.log(`[ProjectNavigation] Found element ${NAVIGATION_IDS[index]}, scrolling...`)
         element.scrollIntoView({ 
           behavior: "smooth", 
-          block: "center",
+          block: "start",
           inline: "nearest"
         })
         setCurrentSectionIndex(index)
