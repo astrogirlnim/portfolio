@@ -6,27 +6,22 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Get the correct image path for the current environment
- * Handles both images and other files (like PDFs) correctly for GitHub Pages deployment
+ * Get the correct asset path for the current environment
+ * Handles images, videos, PDFs, and other static assets for GitHub Pages deployment
  */
-export function getImagePath(path: string): string {
+export function getAssetPath(path: string): string {
   // Remove leading slash if present to normalize the path
   const normalizedPath = path.startsWith('/') ? path.slice(1) : path
   
-  // Check if this is an image file
-  const isImage = /\.(png|jpg|jpeg|gif|svg|webp)$/i.test(normalizedPath)
-  
-  // For production builds with static export
+  // For production builds with static export on GitHub Pages
   if (process.env.NODE_ENV === 'production') {
-    if (isImage) {
-      // For images, we need to include the basePath since assetPrefix handles this
-      return `/portfolio/${normalizedPath}`
-    } else {
-      // For non-images (like PDFs), let Next.js handle the basePath automatically
-      return `/${normalizedPath}`
-    }
+    // Since we have assetPrefix set to '/portfolio/', we need to add it manually for consistency
+    return `/portfolio/${normalizedPath}`
   }
   
   // For development, return the path with a leading slash
   return `/${normalizedPath}`
 }
+
+// Keep backward compatibility
+export const getImagePath = getAssetPath

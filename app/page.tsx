@@ -13,7 +13,7 @@ import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
 import ProjectNavigation from "@/components/project-navigation"
 import InteractiveTerminal from "@/components/interactive-terminal"
-import { getImagePath } from "@/lib/utils"
+import { getImagePath, getAssetPath } from "@/lib/utils"
 
 export default function Home() {
   return (
@@ -174,13 +174,13 @@ export default function Home() {
                 description="GeneKnow is a privacy-first and local-first genomic risk assessment platform that processes genetic data entirely on your local machine. No data ever leaves your device, ensuring complete privacy for sensitive genetic information."
                 tags={["Tauri", "Rust", "React", "TypeScript", "LangGraph", "Genomics", "Privacy-First", "Machine Learning"]}
                 images={[
-                  "/geneknow_photos/image_1.png",
-                  "/geneknow_photos/image_2.png",
-                  "/geneknow_photos/image_3.png"
+                  getAssetPath("geneknow_photos/image_1.png"),
+                  getAssetPath("geneknow_photos/image_2.png"),
+                  getAssetPath("geneknow_photos/image_3.png")
                 ]}
                 githubLink="https://github.com/astrogirlnim/GeneKnow"
                 liveLink="https://astrogirlnim.github.io/GeneKnow/"
-                whitepaperLink="/GeneKnow_Whitepaper_Final.pdf"
+                whitepaperLink={getAssetPath("GeneKnow_Whitepaper_Final.pdf")}
                 imagePosition="right"
               />
             </div>
@@ -191,7 +191,7 @@ export default function Home() {
                 title="LAPACK AI"
                 description="The first complete, open-source implementation of DeepMind's AlphaTensor 4x4 matrix multiplication algorithm in LAPACK. This landmark computational mathematics project implements a 49-operation algorithm with professional-grade precision, featuring multi-phase CPU optimizations, OpenCL GPU acceleration and kernel implementation on NVIDIA hardware, and seamless LAPACK integration."
                 tags={["Fortran", "C/C++", "AI/ML", "Linear Algebra", "Scientific Computing", "Performance Optimization"]}
-                video="/videos/LAPACK_DEMO_FINAL.mov"
+                video={getAssetPath("videos/LAPACK_DEMO_FINAL.mov")}
                 githubLink="https://github.com/astrogirlnim/lapack_ai"
                 videoPosition="left"
               />
@@ -203,7 +203,7 @@ export default function Home() {
                 title="MarketSnap"
                 description="MarketSnap enables farmers-market vendors to share real-time 'fresh-stock' photos and 5-second clips that work offline first, sync transparently when connectivity returns, and auto-expire after 24 hours—driving foot traffic before produce spoils. A cross-platform mobile application built with Flutter and Firebase backend, supporting both iOS and Android platforms."
                 tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
-                video="/videos/Final_Demo_V2.mov"
+                video={getAssetPath("videos/Final_Demo_V2.mov")}
                 githubLink="https://github.com/astrogirlnim/MarketSnap"
                 videoPosition="right"
               />
@@ -215,7 +215,7 @@ export default function Home() {
                 title="Children of Singularity"
                 description="A 2.5D/3D multiplayer sci-fi salvage simulation inspired by Moebius, Planetes, and Nausicaä. Players explore cluttered orbital zones, collect and trade space debris, upgrade their ships (or themselves), and gradually uncover an unsettling AI-controlled ecosystem."
                 tags={["Godot", "Game Development", "Sci-fi", "Multiplayer", "GDScript", "2D/2.5D"]}
-                video="/videos/ChildrenOfSingularity_Demo.mov"
+                video={getAssetPath("videos/ChildrenOfSingularity_Demo.mov")}
                 githubLink="https://github.com/astrogirlnim/Children_of_Singularity"
                 liveLink="https://nisgames.itch.io/children-of-the-singularity"
                 videoPosition="left"
@@ -228,7 +228,7 @@ export default function Home() {
                 title="Personyx"
                 description="Personyx is a compliant desktop app that ingests raw customer-interview transcripts, clusters insights by persona, scores new PRDs for evidence, and lets devs/PMs chat with persona bots while they work. Give makers instant, persona-specific proof that a feature is worth building—before they write code—and live feedback while they do."
                 tags={["Electron", "TypeScript", "React", "AI/ML", "Desktop App", "Product Management"]}
-                video="/videos/Personyx_Demo.mov"
+                video={getAssetPath("videos/Personyx_Demo.mov")}
                 githubLink="https://github.com/astrogirlnim/Personyx"
                 videoPosition="right"
               />
