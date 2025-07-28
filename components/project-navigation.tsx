@@ -16,6 +16,7 @@ const NAVIGATION_IDS = [
   "project-children-of-singularity",
   "project-personyx",
   "project-funnelfluent",
+  "additional-projects",
   "experience",
   "contact"
 ]

@@ -435,7 +435,8 @@ button:hover {
 
   /* Fix for header overlap when navigating to sections */
   section[id], 
-  div[id^="project-"] {
+  div[id^="project-"],
+  div[id="additional-projects"] {
     scroll-margin-top: 5rem; /* 80px to account for header + padding */
   }
 }

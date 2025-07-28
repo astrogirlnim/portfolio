@@ -248,7 +248,7 @@ export default function Home() {
             </div>
             
             {/* Additional Projects Grid */}
-            <div className="space-y-4 mb-8">
+            <div id="additional-projects" className="space-y-4 mb-8">
               <h3 className="text-2xl font-bold tracking-tight">Additional Projects</h3>
               <p className="text-muted-foreground">
                 Research and engineering projects spanning computational biology, medical devices, and aerospace systems.
