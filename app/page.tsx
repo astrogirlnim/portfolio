@@ -68,7 +68,7 @@ export default function Home() {
                 Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground max-w-2xl hero-animate-delay-2 font-light leading-relaxed">
-                I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
+                I specialize in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>.
               </p>
               <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
                 <Button size="lg" asChild className="hover-glow font-medium">
@@ -94,7 +94,7 @@ export default function Home() {
           <div className="space-y-4 max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tight">About & Expertise</h2>
             <p className="text-lg text-muted-foreground">
-              Senior Software Developer who specializes in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture. Mixing Python, C#, and custom Bash/Shell scripting for most projects, experience with many other languages and frameworks for professional development. Avid learner of the latest tools and platforms; currently exploring computer hardware, AI, and the global internet.
+              Senior Software Developer who specializes in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>. Mixing Python, C#, and custom Bash/Shell scripting for most projects, experience with many other languages and frameworks for professional development. Avid learner of the latest tools and platforms; currently exploring computer hardware, AI, and the global internet.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
               <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient">
