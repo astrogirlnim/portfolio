@@ -237,9 +237,10 @@
   100% { opacity: 1; transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%) scale(1.1); }
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling with offset for fixed header */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Account for fixed header height + extra space */
 }
 
 /* Custom scrollbar with earthy theme */

@@ -16,7 +16,9 @@ export default function Home() {
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
-          <div className="font-mono text-lg font-bold">NATALY.DEV</div>
+          <Link href="#" className="font-mono text-lg font-bold hover:text-primary transition-colors">
+            NATALY.DEV
+          </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors">
               About
@@ -186,7 +188,7 @@ export default function Home() {
         </section>
 
         {/* Professional Journey Section */}
-        <section id="journey" className="min-h-screen flex flex-col justify-center border-t border-border">
+        <section id="journey" className="min-h-screen py-20 border-t border-border">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
               <h2 className="text-3xl font-bold tracking-tight">Professional Journey</h2>
