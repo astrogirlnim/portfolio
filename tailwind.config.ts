@@ -20,6 +20,8 @@ const config = {
     },
     extend: {
       fontFamily: {
+        poppins: ["var(--font-poppins)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
+        sans: ["var(--font-source-sans)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
         mono: ["var(--font-space-mono)", ...require("tailwindcss/defaultTheme").fontFamily.mono],
       },
       colors: {

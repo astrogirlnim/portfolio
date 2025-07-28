@@ -47,47 +47,47 @@ export default function Home() {
         {/* Hero Section */}
         <section className="py-20 md:py-32 flex flex-col items-start gap-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate">
-                SENIOR SOFTWARE DEVELOPER
-              </Badge>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight hero-animate-delay-1">
-                Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-md hero-animate-delay-2">
-                I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
-              </p>
-              <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
-                <Button size="lg" asChild className="hover-glow">
-                  <Link href="#projects">
-                    View Work <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild className="hover-glow">
-                  <Link href="#contact">Contact Me</Link>
-                </Button>
-                <Button variant="ghost" size="lg" asChild className="hover-glow">
-                  <Link href={getImagePath("NMM_Resume_Software_Latest.pdf")} target="_blank">
-                    Download Resume
-                  </Link>
-                </Button>
-              </div>
-            </div>
             <div className="flex justify-center md:block">
-              <div className="aspect-square relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
+              <div className="relative overflow-hidden max-w-[300px] w-full">
+                <div className="relative flex items-center justify-center">
                   <div className="relative group hero-animate-delay-2">
                     <Image
-                      src={getImagePath("ghibli_icon.png")}
+                      src={getImagePath("images/Profile_pic_new.jpg")}
                       alt="Nataly Smith"
                       width={300}
-                      height={300}
-                      className="rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-105 mobile-hero-icon md:w-[300px] md:h-[300px]"
+                      height={400}
+                      className="rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-105 mobile-hero-icon w-full h-auto object-cover"
                       priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/20 rounded-2xl group-hover:from-primary/20 group-hover:to-accent/30 transition-all duration-500"></div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate">
+                SENIOR SOFTWARE DEVELOPER
+              </Badge>
+              <h1 className="text-4xl md:text-6xl font-poppins font-semibold tracking-tight hero-animate-delay-1">
+                Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-md hero-animate-delay-2 font-light leading-relaxed">
+                I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
+                <Button size="lg" asChild className="hover-glow font-medium">
+                  <Link href="#projects">
+                    View Work <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" asChild className="hover-glow font-medium">
+                  <Link href="#contact">Contact Me</Link>
+                </Button>
+                <Button variant="ghost" size="lg" asChild className="hover-glow font-medium">
+                  <Link href={getImagePath("NMM_Resume_Software_Latest.pdf")} target="_blank">
+                    Download Resume
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
