@@ -11,6 +11,7 @@ import WebDemoProjectShowcase from "@/components/web-demo-project-showcase"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
+import ProjectNavigation from "@/components/project-navigation"
 import { getImagePath } from "@/lib/utils"
 
 export default function Home() {
@@ -161,7 +162,7 @@ export default function Home() {
             </div>
             
             {/* GeneKnow Image Project Showcase */}
-            <div className="mb-12">
+            <div className="mb-12" id="project-geneknow">
               <ImageProjectShowcase
                 title="GeneKnow"
                 description="GeneKnow is a privacy-first and local-first genomic risk assessment platform that processes genetic data entirely on your local machine. No data ever leaves your device, ensuring complete privacy for sensitive genetic information."
@@ -179,7 +180,7 @@ export default function Home() {
             </div>
             
             {/* LAPACK AI Video Project Showcase */}
-            <div className="mb-12">
+            <div className="mb-12" id="project-lapack-ai">
               <VideoProjectShowcase
                 title="LAPACK AI"
                 description="The first complete, open-source implementation of DeepMind's AlphaTensor 4x4 matrix multiplication algorithm in LAPACK. This landmark computational mathematics project implements a 49-operation algorithm with professional-grade precision, featuring multi-phase CPU optimizations, OpenCL GPU acceleration and kernel implementation on NVIDIA hardware, and seamless LAPACK integration."
@@ -191,7 +192,7 @@ export default function Home() {
             </div>
             
             {/* MarketSnap Video Project Showcase */}
-            <div className="mb-12">
+            <div className="mb-12" id="project-marketsnap">
               <VideoProjectShowcase
                 title="MarketSnap"
                 description="MarketSnap enables farmers-market vendors to share real-time 'fresh-stock' photos and 5-second clips that work offline first, sync transparently when connectivity returns, and auto-expire after 24 hours—driving foot traffic before produce spoils. A cross-platform mobile application built with Flutter and Firebase backend, supporting both iOS and Android platforms."
@@ -203,7 +204,7 @@ export default function Home() {
             </div>
             
             {/* Children of Singularity Video Project Showcase */}
-            <div className="mb-12">
+            <div className="mb-12" id="project-children-of-singularity">
               <VideoProjectShowcase
                 title="Children of Singularity"
                 description="A 2.5D/3D multiplayer sci-fi salvage simulation inspired by Moebius, Planetes, and Nausicaä. Players explore cluttered orbital zones, collect and trade space debris, upgrade their ships (or themselves), and gradually uncover an unsettling AI-controlled ecosystem."
@@ -216,7 +217,7 @@ export default function Home() {
             </div>
             
             {/* Personyx Video Project Showcase */}
-            <div className="mb-12">
+            <div className="mb-12" id="project-personyx">
               <VideoProjectShowcase
                 title="Personyx"
                 description="Personyx is a compliant desktop app that ingests raw customer-interview transcripts, clusters insights by persona, scores new PRDs for evidence, and lets devs/PMs chat with persona bots while they work. Give makers instant, persona-specific proof that a feature is worth building—before they write code—and live feedback while they do."
@@ -228,7 +229,7 @@ export default function Home() {
             </div>
             
             {/* FunnelFluent Web Demo Project Showcase */}
-            <div className="mb-12">
+            <div className="mb-12" id="project-funnelfluent">
               <WebDemoProjectShowcase
                 title="FunnelFluent"
                 description="FunnelFluent AI: Grammarly for sales funnels. Grammarly-like application made for professional making business proposals or marketing materials. A Next.js-based writing assistant powered by Firebase and AI, featuring real-time collaboration, grammar checking, and intelligent writing suggestions."
@@ -352,6 +353,9 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Project Navigation */}
+      <ProjectNavigation />
 
       {/* Footer */}
       <footer className="border-t border-border py-8">
