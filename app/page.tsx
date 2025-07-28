@@ -162,7 +162,7 @@ export default function Home() {
             <div className="mb-12">
               <VideoProjectShowcase
                 title="LAPACK AI"
-                description="AI-enhanced LAPACK development repository featuring intelligent optimizations for numerical linear algebra computations. This project modernizes the foundational Fortran mathematical library with machine learning capabilities for automatic performance tuning, algorithm selection, and computational optimization—revolutionizing scientific computing workflows."
+                description="The first complete, open-source implementation of DeepMind's AlphaTensor 4x4 matrix multiplication algorithm in LAPACK. This landmark computational mathematics project implements a 49-operation algorithm with professional-grade precision, featuring multi-phase CPU optimizations, OpenCL GPU acceleration and kernel implementation on NVIDIA hardware, and seamless LAPACK integration."
                 tags={["Fortran", "C/C++", "AI/ML", "Linear Algebra", "Scientific Computing", "Performance Optimization"]}
                 video="/videos/LAPACK_DEMO_FINAL.mov"
                 githubLink="https://github.com/astrogirlnim/lapack_ai"
