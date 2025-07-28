@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import ProjectCard from "@/components/project-card"
+import VideoProjectShowcase from "@/components/video-project-showcase"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
@@ -153,7 +154,26 @@ export default function Home() {
             <div className="space-y-4 max-w-3xl mb-10">
               <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
               <p className="text-lg text-muted-foreground">
-                A selection of projects that demonstrate my technical capabilities across research, medical devices, and aerospace engineering.
+                A selection of projects that demonstrate my technical capabilities across mobile development, research, medical devices, and aerospace engineering.
+              </p>
+            </div>
+            
+            {/* Video Project Showcase */}
+            <div className="mb-16">
+              <VideoProjectShowcase
+                title="MarketSnap"
+                description="A cross-platform mobile application built with Flutter that connects small vendors and farmers' markets with customers through a Snapchat-style social platform. Features real-time messaging, location-based discovery, vendor management tools, and comprehensive Firebase backend integration with advanced security and development workflows."
+                tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
+                video="/videos/Final_Demo_V2.mov"
+                githubLink="https://github.com/astrogirlnim/MarketSnap"
+              />
+            </div>
+            
+            {/* Additional Projects Grid */}
+            <div className="space-y-4 mb-8">
+              <h3 className="text-2xl font-bold tracking-tight">Additional Projects</h3>
+              <p className="text-muted-foreground">
+                Research and engineering projects spanning computational biology, medical devices, and aerospace systems.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
