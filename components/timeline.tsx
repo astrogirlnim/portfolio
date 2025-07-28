@@ -85,15 +85,21 @@ const timelineItems = [
 export default function Timeline() {
   return (
     <div className="relative max-w-6xl mx-auto px-4">
-      {/* Center line - hidden on mobile, visible on desktop */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-border transform -translate-x-px"></div>
+      {/* Enhanced center line with gradient - hidden on mobile, visible on desktop */}
+      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 transform -translate-x-px">
+        <div className="w-full h-full bg-gradient-to-b from-primary/20 via-primary/60 to-primary/20 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/30 to-transparent animate-pulse"></div>
+        </div>
+      </div>
 
-      {/* Mobile timeline container with left border */}
-      <div className="md:hidden timeline-mobile">
-        <div className="space-y-6">
+      {/* Mobile timeline container with enhanced left border */}
+      <div className="md:hidden timeline-mobile relative">
+        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/60 to-primary/20"></div>
+        <div className="space-y-8 pl-8">
           {timelineItems.map((item, index) => (
-            <div key={index} className="timeline-card mobile-timeline-card">
-              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group border-l-4 border-l-primary/30 hover:border-l-primary/60">
+            <div key={index} className="timeline-card mobile-timeline-card relative">
+              <div className="absolute -left-10 top-6 w-3 h-3 bg-primary border-2 border-background rounded-full shadow-lg animate-pulse"></div>
+              <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border border-border/50 hover:border-primary/50 backdrop-blur-sm bg-background/95">
                 <CardContent className="p-4 sm:p-5">
                   <Badge variant="outline" className="mb-2 font-mono hover-glow text-xs">
                     {item.year}
@@ -106,10 +112,13 @@ export default function Timeline() {
                   <p className="text-sm sm:text-base text-muted-foreground mb-3 group-hover:text-foreground transition-colors duration-300 leading-relaxed">
                     {item.description}
                   </p>
-                  <ul className="space-y-1.5">
+                                      <ul className="space-y-2">
                     {item.achievements.map((achievement, i) => (
-                      <li key={i} className="text-xs sm:text-sm flex items-start gap-2 group/item">
-                        <div className="h-1 w-1 bg-primary rounded-full mt-2 flex-shrink-0 group-hover/item:bg-accent transition-colors duration-300"></div>
+                      <li key={i} className="text-xs sm:text-sm flex items-start gap-3 group/item">
+                        <div className="relative mt-2 flex-shrink-0">
+                          <div className="h-1.5 w-1.5 bg-primary rounded-full group-hover/item:bg-accent transition-all duration-300 group-hover/item:scale-125"></div>
+                          <div className="absolute inset-0 h-1.5 w-1.5 bg-primary/30 rounded-full animate-ping group-hover/item:bg-accent/30"></div>
+                        </div>
                         <span className="group-hover/item:text-primary transition-colors duration-300 leading-relaxed">
                           {achievement}
                         </span>
@@ -123,21 +132,25 @@ export default function Timeline() {
         </div>
       </div>
 
-      {/* Desktop timeline */}
-      <div className="hidden md:block space-y-16">
+      {/* Enhanced desktop timeline */}
+      <div className="hidden md:block space-y-20">
         {timelineItems.map((item, index) => (
           <div
             key={index}
-            className={`relative flex flex-row gap-12 ${
+            className={`relative flex flex-row gap-12 timeline-item ${
               index % 2 === 0 ? "flex-row-reverse" : ""
             }`}
+            style={{
+              animationDelay: `${index * 0.2}s`
+            }}
           >
-            {/* Card Container */}
+            {/* Card Container with enhanced styling */}
             <div className="w-1/2 flex justify-end">
-              <div className={`w-full max-w-xl lg:max-w-2xl relative ${
+              <div className={`w-full max-w-xl lg:max-w-2xl relative transition-all duration-700 hover:translate-y-[-4px] ${
                 index % 2 === 0 ? "mr-20" : "ml-20"
               }`}>
-                <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group border-l-4 border-l-primary/30 hover:border-l-primary/60">
+                <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border border-border/50 hover:border-primary/50 backdrop-blur-sm bg-background/95 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <CardContent className="p-6">
                     <Badge variant="outline" className="mb-3 font-mono hover-glow text-xs">
                       {item.year}
@@ -150,10 +163,13 @@ export default function Timeline() {
                     <p className="text-base text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 leading-relaxed">
                       {item.description}
                     </p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3 relative z-10">
                       {item.achievements.map((achievement, i) => (
-                        <li key={i} className="text-sm flex items-start gap-2 group/item">
-                          <div className="h-1.5 w-1.5 bg-primary rounded-full mt-1.5 flex-shrink-0 group-hover/item:bg-accent transition-colors duration-300"></div>
+                        <li key={i} className="text-sm flex items-start gap-3 group/item">
+                          <div className="relative mt-1.5 flex-shrink-0">
+                            <div className="h-1.5 w-1.5 bg-primary rounded-full group-hover/item:bg-accent transition-all duration-300 group-hover/item:scale-125 shadow-sm"></div>
+                            <div className="absolute inset-0 h-1.5 w-1.5 bg-primary/30 rounded-full animate-ping group-hover/item:bg-accent/30"></div>
+                          </div>
                           <span className="group-hover/item:text-primary transition-colors duration-300 leading-relaxed">
                             {achievement}
                           </span>
@@ -165,10 +181,18 @@ export default function Timeline() {
               </div>
             </div>
 
-            {/* Desktop: Center dot only - no horizontal lines to avoid overlap */}
-            <div className="absolute left-1/2 top-8 transform -translate-x-1/2">
-              {/* Center dot */}
-              <div className="w-4 h-4 bg-primary border-4 border-background rounded-full z-10 shadow-lg"></div>
+            {/* Enhanced center dot with pulsing animation */}
+            <div className="absolute left-1/2 top-8 transform -translate-x-1/2 z-20">
+              <div className="relative">
+                {/* Outer pulsing ring */}
+                <div className="absolute inset-0 w-6 h-6 bg-primary/20 rounded-full animate-ping -translate-x-1 -translate-y-1"></div>
+                {/* Middle glow ring */}
+                <div className="absolute inset-0 w-5 h-5 bg-primary/40 rounded-full animate-pulse -translate-x-0.5 -translate-y-0.5"></div>
+                {/* Center dot */}
+                <div className="relative w-4 h-4 bg-gradient-to-br from-primary to-primary/80 border-3 border-background rounded-full shadow-xl group-hover:scale-110 transition-transform duration-300">
+                  <div className="absolute inset-0.5 bg-gradient-to-br from-primary-foreground/20 to-transparent rounded-full"></div>
+                </div>
+              </div>
             </div>
 
             {/* Empty space for layout balance */}

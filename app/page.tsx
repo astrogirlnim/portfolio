@@ -32,8 +32,8 @@ export default function Home() {
             <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
               Projects
             </Link>
-            <Link href="#journey" className="text-sm font-medium hover:text-primary transition-colors">
-              Journey
+            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors">
+              Experience
             </Link>
             <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
               Contact
@@ -233,7 +233,7 @@ export default function Home() {
                 title="FunnelFluent"
                 description="FunnelFluent AI: Grammarly for sales funnels. Grammarly-like application made for professional making business proposals or marketing materials. A Next.js-based writing assistant powered by Firebase and AI, featuring real-time collaboration, grammar checking, and intelligent writing suggestions."
                 tags={["Next.js", "Firebase", "TypeScript", "React", "AI/ML", "Real-time Collaboration", "Writing Assistant"]}
-                demoUrl="https://wordwise-ai-mvp.web.app/?demo=true"
+                demoUrl="https://wordwise-ai-mvp.web.app/"
                 githubLink="https://github.com/astrogirlnim/WordWiseAI"
                 liveLink="https://wordwise-ai-mvp.web.app/sign-in/"
                 demoPosition="left"
@@ -278,11 +278,11 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Professional Journey Section */}
-        <section id="journey" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
+        {/* Relevant Experience Section */}
+        <section id="experience" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
-              <h2 className="text-3xl font-bold tracking-tight">Professional Journey</h2>
+              <h2 className="text-3xl font-bold tracking-tight">Relevant Experience</h2>
               <p className="text-lg text-muted-foreground">
                 My career path and key milestones that have shaped my expertise and approach to software development.
               </p>
