@@ -258,10 +258,16 @@ html {
     opacity: 0.8;
   }
   
+  /* Remove focus outline boxes but keep accessibility for keyboard users */
   a[href^="#"]:focus {
+    outline: none;
+  }
+  
+  /* Only show focus for keyboard navigation */
+  a[href^="#"]:focus-visible {
     outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
-    transition: outline-offset 0.2s ease;
+    border-radius: 4px;
   }
 }
 
