@@ -154,11 +154,22 @@ export default function Home() {
             <div className="space-y-4 max-w-3xl mb-6">
               <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
               <p className="text-lg text-muted-foreground">
-                A selection of projects that demonstrate my technical capabilities across mobile development, research, medical devices, and aerospace engineering.
+                A selection of projects that demonstrate my technical capabilities across AI-enhanced mathematical computing, mobile development, research, medical devices, and aerospace engineering.
               </p>
             </div>
             
-            {/* Video Project Showcase */}
+            {/* LAPACK AI Video Project Showcase */}
+            <div className="mb-12">
+              <VideoProjectShowcase
+                title="LAPACK AI"
+                description="AI-enhanced LAPACK development repository featuring intelligent optimizations for numerical linear algebra computations. This project modernizes the foundational Fortran mathematical library with machine learning capabilities for automatic performance tuning, algorithm selection, and computational optimization—revolutionizing scientific computing workflows."
+                tags={["Fortran", "C/C++", "AI/ML", "Linear Algebra", "Scientific Computing", "Performance Optimization"]}
+                video="/videos/LAPACK_DEMO_FINAL.mov"
+                githubLink="https://github.com/astrogirlnim/lapack_ai"
+              />
+            </div>
+            
+            {/* MarketSnap Video Project Showcase */}
             <div className="mb-12">
               <VideoProjectShowcase
                 title="MarketSnap"
