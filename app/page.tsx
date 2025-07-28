@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import ProjectCard from "@/components/project-card"
 import VideoProjectShowcase from "@/components/video-project-showcase"
+import ImageProjectShowcase from "@/components/image-project-showcase"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import ThemeToggle from "@/components/theme-toggle"
@@ -204,6 +205,24 @@ export default function Home() {
                 video="/videos/Personyx_Demo.mov"
                 githubLink="https://github.com/astrogirlnim/Personyx"
                 videoPosition="left"
+              />
+            </div>
+            
+            {/* GeneKnow Image Project Showcase */}
+            <div className="mb-12">
+              <ImageProjectShowcase
+                title="GeneKnow"
+                description="GeneKnow is a privacy-first and local-first genomic risk assessment platform that processes genetic data entirely on your local machine. No data ever leaves your device, ensuring complete privacy for sensitive genetic information."
+                tags={["Tauri", "Rust", "React", "TypeScript", "Genomics", "Privacy-First", "Machine Learning"]}
+                images={[
+                  "/geneknow_photos/image_1.png",
+                  "/geneknow_photos/image_2.png",
+                  "/geneknow_photos/image_3.png"
+                ]}
+                githubLink="https://github.com/astrogirlnim/GeneKnow"
+                liveLink="https://astrogirlnim.github.io/GeneKnow/"
+                whitepaperLink="/GeneKnow_Whitepaper_Final.pdf"
+                imagePosition="right"
               />
             </div>
             
