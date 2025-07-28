@@ -7,71 +7,71 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 220 8% 20%;
+    --foreground: 20 4% 25%;
     --card: 0 0% 100%;
-    --card-foreground: 220 8% 20%;
+    --card-foreground: 20 4% 25%;
     --popover: 0 0% 100%;
-    --popover-foreground: 220 8% 20%;
-    --primary: 140 15% 45%;
+    --popover-foreground: 20 4% 25%;
+    --primary: 90 8% 45%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 210 12% 88%;
-    --secondary-foreground: 220 8% 25%;
-    --muted: 210 10% 94%;
-    --muted-foreground: 220 6% 50%;
-    --accent: 150 8% 75%;
-    --accent-foreground: 220 8% 25%;
+    --secondary: 120 4% 88%;
+    --secondary-foreground: 20 4% 30%;
+    --muted: 120 3% 94%;
+    --muted-foreground: 30 3% 50%;
+    --accent: 100 6% 75%;
+    --accent-foreground: 20 4% 25%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 12% 90%;
-    --input: 210 12% 92%;
-    --ring: 140 15% 45%;
+    --border: 120 4% 90%;
+    --input: 120 4% 92%;
+    --ring: 90 8% 45%;
     --radius: 0.5rem;
     
-    /* Neutral grey-green tone variables matching photo */
-    --wave-primary: 140 12% 55%;
-    --wave-secondary: 160 8% 65%;
-    --wave-accent: 180 6% 75%;
-    --wave-highlight: 200 5% 80%;
+    /* Photo-accurate neutral tone variables */
+    --wave-primary: 90 8% 55%;
+    --wave-secondary: 120 6% 65%;
+    --wave-accent: 100 6% 75%;
+    --wave-highlight: 80 4% 80%;
     
     /* Custom cursor color variables */
-    --cursor-primary: 140 15% 45%;
-    --cursor-secondary: 160 12% 50%;
-    --cursor-accent: 180 8% 65%;
-    --cursor-glow: 140 15% 45%;
+    --cursor-primary: 90 8% 45%;
+    --cursor-secondary: 100 6% 50%;
+    --cursor-accent: 120 6% 65%;
+    --cursor-glow: 90 8% 45%;
   }
 
   .dark {
-    --background: 220 15% 12%;
-    --foreground: 210 8% 88%;
-    --card: 220 12% 15%;
-    --card-foreground: 210 8% 88%;
-    --popover: 220 12% 15%;
-    --popover-foreground: 210 8% 88%;
-    --primary: 150 18% 65%;
-    --primary-foreground: 220 15% 15%;
-    --secondary: 220 10% 22%;
-    --secondary-foreground: 210 8% 82%;
-    --muted: 220 12% 18%;
-    --muted-foreground: 210 6% 60%;
-    --accent: 160 8% 28%;
-    --accent-foreground: 210 8% 82%;
+    --background: 20 8% 11%;
+    --foreground: 120 4% 88%;
+    --card: 20 6% 15%;
+    --card-foreground: 120 4% 88%;
+    --popover: 20 6% 15%;
+    --popover-foreground: 120 4% 88%;
+    --primary: 100 8% 65%;
+    --primary-foreground: 20 8% 15%;
+    --secondary: 30 3% 22%;
+    --secondary-foreground: 120 4% 82%;
+    --muted: 20 6% 18%;
+    --muted-foreground: 30 3% 60%;
+    --accent: 90 6% 28%;
+    --accent-foreground: 120 4% 82%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 12% 22%;
-    --input: 220 12% 18%;
-    --ring: 150 18% 65%;
+    --border: 30 3% 22%;
+    --input: 20 6% 18%;
+    --ring: 100 8% 65%;
     
-    /* Dark mode neutral grey-green variables */
-    --wave-primary: 140 15% 35%;
-    --wave-secondary: 160 12% 30%;
-    --wave-accent: 180 8% 28%;
-    --wave-highlight: 200 6% 25%;
+    /* Dark mode slate-like variables using photo colors */
+    --wave-primary: 90 6% 35%;
+    --wave-secondary: 100 4% 30%;
+    --wave-accent: 30 3% 28%;
+    --wave-highlight: 20 4% 25%;
     
     /* Dark mode cursor colors */
-    --cursor-primary: 150 18% 65%;
-    --cursor-secondary: 160 15% 60%;
-    --cursor-accent: 180 12% 70%;
-    --cursor-glow: 150 18% 65%;
+    --cursor-primary: 100 8% 65%;
+    --cursor-secondary: 90 6% 60%;
+    --cursor-accent: 120 6% 70%;
+    --cursor-glow: 100 8% 65%;
   }
 }
 

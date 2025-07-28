@@ -46,32 +46,28 @@ export default function Home() {
       <main className="container pt-24">
         {/* Hero Section */}
         <section className="py-20 md:py-32 flex flex-col items-start gap-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="flex justify-center md:block">
-              <div className="relative overflow-hidden max-w-[300px] w-full">
-                <div className="relative flex items-center justify-center">
-                  <div className="relative group hero-animate-delay-2">
-                    <Image
-                      src={getImagePath("images/Profile_pic_new.jpg")}
-                      alt="Nataly Smith"
-                      width={300}
-                      height={400}
-                      className="rounded-2xl shadow-2xl transition-transform duration-500 group-hover:scale-105 mobile-hero-icon w-full h-auto object-cover"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-accent/20 rounded-2xl group-hover:from-primary/20 group-hover:to-accent/30 transition-all duration-500"></div>
-                  </div>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center w-full">
+            <div className="lg:col-span-2 flex justify-center">
+              <div className="relative group hero-animate-delay-2 w-full max-w-[400px] lg:max-w-none">
+                <Image
+                  src={getImagePath("images/Profile_pic_new.jpg")}
+                  alt="Nataly Smith"
+                  width={450}
+                  height={600}
+                  className="rounded-3xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] w-full h-auto object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/8 to-accent/15 rounded-3xl group-hover:from-primary/12 group-hover:to-accent/20 transition-all duration-500"></div>
               </div>
             </div>
-            <div className="space-y-6">
-              <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate">
+            <div className="lg:col-span-3 space-y-6 flex flex-col justify-center">
+              <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate w-fit">
                 SENIOR SOFTWARE DEVELOPER
               </Badge>
-              <h1 className="text-4xl md:text-6xl font-poppins font-semibold tracking-tight hero-animate-delay-1">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-poppins font-semibold tracking-tight hero-animate-delay-1">
                 Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
               </h1>
-              <p className="text-lg text-muted-foreground max-w-md hero-animate-delay-2 font-light leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl hero-animate-delay-2 font-light leading-relaxed">
                 I specialize in full-stack app development, mathematical modeling, with expertise in cloud technologies/infrastructure and pipeline architecture.
               </p>
               <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
