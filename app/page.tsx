@@ -189,6 +189,18 @@ export default function Home() {
               />
             </div>
             
+            {/* MarketSnap Video Project Showcase */}
+            <div className="mb-12">
+              <VideoProjectShowcase
+                title="MarketSnap"
+                description="MarketSnap enables farmers-market vendors to share real-time 'fresh-stock' photos and 5-second clips that work offline first, sync transparently when connectivity returns, and auto-expire after 24 hours—driving foot traffic before produce spoils. A cross-platform mobile application built with Flutter and Firebase backend, supporting both iOS and Android platforms."
+                tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
+                video="/videos/Final_Demo_V2.mov"
+                githubLink="https://github.com/astrogirlnim/MarketSnap"
+                videoPosition="right"
+              />
+            </div>
+            
             {/* Children of Singularity Video Project Showcase */}
             <div className="mb-12">
               <VideoProjectShowcase
@@ -198,18 +210,6 @@ export default function Home() {
                 video="/videos/ChildrenOfSingularity_Demo.mov"
                 githubLink="https://github.com/astrogirlnim/Children_of_Singularity"
                 liveLink="https://nisgames.itch.io/children-of-the-singularity"
-                videoPosition="right"
-              />
-            </div>
-            
-            {/* MarketSnap Video Project Showcase */}
-            <div className="mb-12">
-              <VideoProjectShowcase
-                title="MarketSnap"
-                description="MarketSnap enables farmers-market vendors to share real-time 'fresh-stock' photos and 5-second clips that work offline first, sync transparently when connectivity returns, and auto-expire after 24 hours—driving foot traffic before produce spoils. A cross-platform mobile application built with Flutter and Firebase backend, supporting both iOS and Android platforms."
-                tags={["Flutter", "Dart", "Firebase", "Mobile App", "Cross-Platform", "Real-time"]}
-                video="/videos/Final_Demo_V2.mov"
-                githubLink="https://github.com/astrogirlnim/MarketSnap"
                 videoPosition="left"
               />
             </div>
