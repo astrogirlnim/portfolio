@@ -16,7 +16,7 @@ export default function Home() {
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
-          <Link href="#" className="font-mono text-lg font-bold hover:text-primary transition-colors">
+          <Link href="#hero" className="font-mono text-lg font-bold hover:text-primary transition-colors">
             NATALY.DEV
           </Link>
           <nav className="hidden md:flex items-center gap-6">
@@ -47,7 +47,7 @@ export default function Home() {
 
       <main>
         {/* Hero Section */}
-        <section className="min-h-screen flex flex-col justify-center items-start gap-8 pt-16">
+        <section id="hero" className="min-h-screen flex flex-col justify-center items-start gap-8 pt-16">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center w-full">
               <div className="lg:col-span-2 flex justify-center">
@@ -65,7 +65,7 @@ export default function Home() {
               </div>
               <div className="lg:col-span-3 space-y-6 flex flex-col justify-center">
                 <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate w-fit">
-                  SENIOR SOFTWARE DEVELOPER
+                  AI ENGINEER & SENIOR SOFTWARE DEVELOPER
                 </Badge>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold tracking-tight hero-animate-delay-1">
                   Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
@@ -74,14 +74,14 @@ export default function Home() {
                   I specialize in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
-                  <Button size="lg" asChild className="hover-glow font-medium">
-                    <Link href="#projects">
-                      View Work <ArrowRight className="ml-2 h-4 w-4" />
-                    </Link>
-                  </Button>
-                  <Button variant="outline" size="lg" asChild className="hover-glow font-medium">
-                    <Link href="#contact">Contact Me</Link>
-                  </Button>
+                                  <Button size="lg" asChild className="hover-glow font-medium">
+                  <Link href="#projects">
+                    View Work <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button variant="outline" size="lg" asChild className="hover-glow font-medium">
+                  <Link href="#contact">Contact Me</Link>
+                </Button>
                   <Button variant="ghost" size="lg" asChild className="hover-glow font-medium">
                                     <Link href={getImagePath("images/NMM_Resume_Updated.pdf")} target="_blank">
                     Download Resume
@@ -94,7 +94,7 @@ export default function Home() {
         </section>
 
         {/* About/Expertise Section */}
-        <section id="about" className="min-h-screen flex flex-col justify-center border-t border-border">
+        <section id="about" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl">
               <h2 className="text-3xl font-bold tracking-tight">About & Expertise</h2>
@@ -135,7 +135,7 @@ export default function Home() {
         </section>
 
         {/* Technical Skills Section */}
-        <section id="skills" className="min-h-screen flex flex-col justify-center border-t border-border">
+        <section id="skills" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
               <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
@@ -148,7 +148,7 @@ export default function Home() {
         </section>
 
         {/* Featured Projects Section */}
-        <section id="projects" className="min-h-screen flex flex-col justify-center border-t border-border">
+        <section id="projects" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
               <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
@@ -188,7 +188,7 @@ export default function Home() {
         </section>
 
         {/* Professional Journey Section */}
-        <section id="journey" className="min-h-screen py-20 border-t border-border">
+        <section id="journey" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
               <h2 className="text-3xl font-bold tracking-tight">Professional Journey</h2>
@@ -201,7 +201,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="min-h-screen flex flex-col justify-center border-t border-border">
+        <section id="contact" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-4">

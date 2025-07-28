@@ -237,10 +237,37 @@
   100% { opacity: 1; transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%) scale(1.1); }
 }
 
-/* Smooth scrolling with offset for fixed header */
+/* Enhanced smooth scrolling with offset for fixed header */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem; /* Account for fixed header height + extra space */
+  scroll-padding-top: 8rem; /* Account for fixed header height + extra space */
+}
+
+/* Enhanced smooth scrolling for all anchor links */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Smooth transitions for focus states and hover */
+  a[href^="#"] {
+    transition: color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  a[href^="#"]:hover {
+    opacity: 0.8;
+  }
+  
+  a[href^="#"]:focus {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    transition: outline-offset 0.2s ease;
+  }
+}
+
+/* Ensure sections have proper spacing for smooth scrolling */
+section[id] {
+  position: relative;
 }
 
 /* Custom scrollbar with earthy theme */
