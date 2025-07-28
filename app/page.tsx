@@ -151,7 +151,7 @@ export default function Home() {
         {/* Featured Projects Section */}
         <section id="projects" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
-            <div className="space-y-4 max-w-3xl mb-10">
+            <div className="space-y-4 max-w-3xl mb-6">
               <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
               <p className="text-lg text-muted-foreground">
                 A selection of projects that demonstrate my technical capabilities across mobile development, research, medical devices, and aerospace engineering.
@@ -159,7 +159,7 @@ export default function Home() {
             </div>
             
             {/* Video Project Showcase */}
-            <div className="mb-16">
+            <div className="mb-12">
               <VideoProjectShowcase
                 title="MarketSnap"
                 description="MarketSnap enables farmers-market vendors to share real-time 'fresh-stock' photos and 5-second clips that work offline first, sync transparently when connectivity returns, and auto-expire after 24 hours—driving foot traffic before produce spoils. A cross-platform mobile application built with Flutter and Firebase backend, supporting both iOS and Android platforms."
