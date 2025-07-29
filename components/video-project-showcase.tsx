@@ -76,18 +76,16 @@ export default function VideoProjectShowcase({
         {/* Video Section - Takes up 3/4 of the space */}
         <div className="lg:col-span-3 relative flex items-center justify-center p-4 lg:p-6 bg-gradient-to-br from-background/50 to-muted/20 rounded-lg overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center">
-            <video
-              src={video}
-              className="w-full h-auto max-h-[calc(100%-2rem)] rounded-lg shadow-2xl transition-transform duration-300 group-hover:scale-[1.02] object-contain"
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls
-            >
-              Your browser does not support the video tag.
-            </video>
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/10 rounded-lg group-hover:from-primary/10 group-hover:to-accent/15 transition-all duration-300 pointer-events-none"></div>
+            <div className="w-full h-full min-h-[500px] lg:min-h-[600px] rounded-lg overflow-hidden shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
+              <iframe
+                src={video}
+                className="w-full h-full border-0 rounded-lg"
+                title={`${title} Demo Video`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
           </div>
         </div>
         
