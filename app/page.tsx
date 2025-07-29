@@ -104,41 +104,155 @@ export default function Home() {
         </section>
 
         {/* About/Expertise Section */}
-        <section id="about" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
+        <section id="about" className="py-24 border-t border-border">
           <div className="container">
-            <div className="space-y-4 max-w-3xl">
-              <h2 className="text-3xl font-bold tracking-tight">About & Expertise</h2>
-              <p className="text-lg text-muted-foreground">
-                Senior Software Developer who specializes in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>. Mixing Python, C#, and custom Bash/Shell scripting for most projects, experience with many other languages and frameworks for professional development. Avid learner of the latest tools and platforms; currently exploring computer hardware, AI, and the global internet.
+            {/* Header Section */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">About & Expertise</h2>
+              <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                Senior Software Developer who specializes in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>. 
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient">
-                  <CardContent className="pt-6">
-                    <Code2 className="h-10 w-10 mb-4 text-primary" />
-                    <h3 className="text-xl font-bold mb-2">Full-Stack Development</h3>
-                    <p className="text-muted-foreground">
-                      Building end-to-end applications with Python, C#, and modern web frameworks.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient">
-                  <CardContent className="pt-6">
-                    <Server className="h-10 w-10 mb-4 text-primary" />
-                    <h3 className="text-xl font-bold mb-2">Cloud Infrastructure</h3>
-                    <p className="text-muted-foreground">
-                      Multi-cloud implementation expertise with Azure, AWS, and Google Cloud Platform.
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient">
-                  <CardContent className="pt-6">
-                    <Database className="h-10 w-10 mb-4 text-primary" />
-                    <h3 className="text-xl font-bold mb-2">Mathematical Modeling</h3>
-                    <p className="text-muted-foreground">
-                      Computational modeling and machine learning applications for research and industry.
-                    </p>
-                  </CardContent>
-                </Card>
+            </div>
+
+            {/* Statistics/Highlights Bar */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">15+</div>
+                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">Technologies</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">6</div>
+                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">Major Projects</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">4</div>
+                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">Research Areas</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">3</div>
+                <div className="text-sm font-medium text-muted-foreground uppercase tracking-wide">Published Works</div>
+              </div>
+            </div>
+
+            {/* Detailed Description */}
+            <div className="max-w-4xl mx-auto mb-16">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                I blend cutting-edge technology with mathematical rigor to solve complex problems across multiple domains. From <span className="font-bold text-[#b0b4ab]">implementing DeepMind's AlphaTensor algorithm in LAPACK</span> to building <span className="font-bold text-[#b0b4ab]">privacy-first genomic platforms</span>, my work spans the intersection of AI, scientific computing, and real-world applications.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                My expertise extends from low-level <span className="font-bold text-[#b0b4ab]">Fortran and C++ optimization</span> to modern <span className="font-bold text-[#b0b4ab]">Rust/Tauri desktop applications</span>, <span className="font-bold text-[#b0b4ab]">Flutter mobile development</span>, and <span className="font-bold text-[#b0b4ab]">AI-powered full-stack systems</span>. I thrive on projects that require both technical innovation and practical impact.
+              </p>
+            </div>
+
+            {/* Expertise Cards - Enhanced Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+                <CardContent className="pt-6">
+                  <Code2 className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-xl font-bold mb-3">Full-Stack Development</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Building end-to-end applications with modern frameworks and languages across web, mobile, and desktop platforms.
+                  </p>
+                  <div className="text-sm text-primary font-medium">
+                    Featured: GeneKnow (Tauri/Rust), FunnelFluent (Next.js), MarketSnap (Flutter)
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+                <CardContent className="pt-6">
+                  <Server className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-xl font-bold mb-3">Cloud Infrastructure</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Multi-cloud implementation expertise with Azure, AWS, and Google Cloud Platform for scalable, resilient systems.
+                  </p>
+                  <div className="text-sm text-primary font-medium">
+                    Featured: Firebase backends, real-time synchronization, offline-first architecture
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+                <CardContent className="pt-6">
+                  <Database className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                  <h3 className="text-xl font-bold mb-3">Mathematical Modeling</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Computational modeling and machine learning applications for research, with published work in computational biology.
+                  </p>
+                  <div className="text-sm text-primary font-medium">
+                    Featured: HIV transcriptional modeling, genomic risk assessment, TCGA data analysis
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+                <CardContent className="pt-6">
+                  <div className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+                    <span className="text-2xl font-bold">AI</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">AI & Machine Learning</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Advanced AI implementations from algorithm research to production systems, including LangGraph and neural networks.
+                  </p>
+                  <div className="text-sm text-primary font-medium">
+                    Featured: LAPACK AI (AlphaTensor), Personyx (ML clustering), GeneKnow (ML genomics)
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+                <CardContent className="pt-6">
+                  <div className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+                    <span className="text-2xl">🔬</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Scientific Computing</h3>
+                  <p className="text-muted-foreground mb-4">
+                    High-performance computing, numerical algorithms, and optimization for scientific research and industry applications.
+                  </p>
+                  <div className="text-sm text-primary font-medium">
+                    Featured: LAPACK integration, GPU acceleration, linear algebra optimization
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+                <CardContent className="pt-6">
+                  <div className="h-12 w-12 mb-4 text-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center">
+                    <span className="text-2xl">🎮</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">Game & Interactive Development</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Creating immersive experiences through game development, interactive systems, and real-time applications.
+                  </p>
+                  <div className="text-sm text-primary font-medium">
+                    Featured: Children of Singularity (Godot), multiplayer systems, 2.5D/3D development
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Technical Approach Section */}
+            <div className="bg-gradient-to-r from-background/80 to-muted/30 rounded-lg p-8 border border-border/40">
+              <h3 className="text-2xl font-bold mb-4 text-center">Technical Approach</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div>
+                  <h4 className="font-bold mb-2 text-primary">Research-Driven</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Implementing cutting-edge algorithms and methodologies from academic research into production systems
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold mb-2 text-primary">Cross-Platform</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Building for web, mobile, desktop, and cloud with technology-agnostic solutions
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold mb-2 text-primary">Performance-First</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Optimizing from GPU kernels to UI interactions with focus on efficiency and user experience
+                  </p>
+                </div>
               </div>
             </div>
           </div>
