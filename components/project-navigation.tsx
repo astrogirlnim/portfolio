@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { ChevronUp, ChevronDown } from "lucide-react"
 
@@ -25,7 +25,7 @@ export default function ProjectNavigation() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0)
 
   // Function to scroll to a specific section
-  const scrollToSection = (index: number) => {
+  const scrollToSection = useCallback((index: number) => {
     console.log(`[ProjectNavigation] Scrolling to section ${index}: ${NAVIGATION_IDS[index]}`)
     
     if (index >= 0 && index < NAVIGATION_IDS.length) {
@@ -42,21 +42,21 @@ export default function ProjectNavigation() {
         console.warn(`[ProjectNavigation] Element with ID ${NAVIGATION_IDS[index]} not found`)
       }
     }
-  }
+  }, [])
 
   // Navigate to previous section
-  const navigateToPrevious = () => {
+  const navigateToPrevious = useCallback(() => {
     console.log(`[ProjectNavigation] Navigate to previous from index ${currentSectionIndex}`)
     const prevIndex = currentSectionIndex > 0 ? currentSectionIndex - 1 : NAVIGATION_IDS.length - 1
     scrollToSection(prevIndex)
-  }
+  }, [currentSectionIndex, scrollToSection])
 
   // Navigate to next section
-  const navigateToNext = () => {
+  const navigateToNext = useCallback(() => {
     console.log(`[ProjectNavigation] Navigate to next from index ${currentSectionIndex}`)
     const nextIndex = currentSectionIndex < NAVIGATION_IDS.length - 1 ? currentSectionIndex + 1 : 0
     scrollToSection(nextIndex)
-  }
+  }, [currentSectionIndex, scrollToSection])
 
   // Keyboard event handler
   useEffect(() => {
@@ -97,7 +97,7 @@ export default function ProjectNavigation() {
     return () => {
       window.removeEventListener("keydown", handleKeyDown, true)
     }
-  }, [currentSectionIndex])
+  }, [navigateToPrevious, navigateToNext])
 
   // Intersection Observer to track which section is currently visible
   useEffect(() => {
