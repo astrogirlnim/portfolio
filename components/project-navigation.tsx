@@ -21,6 +21,17 @@ const NAVIGATION_IDS = [
   "contact"
 ]
 
+// Main sections that should be prioritized for navigation
+const MAIN_SECTIONS = [
+  "hero",
+  "about", 
+  "skills",
+  "projects",
+  "additional-projects",
+  "experience",
+  "contact"
+]
+
 export default function ProjectNavigation() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0)
 
@@ -113,9 +124,27 @@ export default function ProjectNavigation() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionIndex = NAVIGATION_IDS.indexOf(entry.target.id)
+          const isMainSection = MAIN_SECTIONS.includes(entry.target.id)
+          const currentSectionId = NAVIGATION_IDS[currentSectionIndex]
+          
           if (sectionIndex !== -1 && sectionIndex !== currentSectionIndex) {
-            console.log(`[ProjectNavigation] Section ${entry.target.id} is now visible, updating index to ${sectionIndex}`)
-            setCurrentSectionIndex(sectionIndex)
+            // Always update for main sections
+            if (isMainSection) {
+              console.log(`[ProjectNavigation] Main section ${entry.target.id} is now visible, updating index to ${sectionIndex}`)
+              setCurrentSectionIndex(sectionIndex)
+            } 
+            // For project sections, only update if we're not already in the projects area
+            else if (entry.target.id.startsWith('project-') && currentSectionId !== 'projects' && !currentSectionId.startsWith('project-')) {
+              console.log(`[ProjectNavigation] Project section ${entry.target.id} is now visible, updating index to ${sectionIndex}`)
+              setCurrentSectionIndex(sectionIndex)
+            }
+            // If we're in the projects section and see a specific project, stay at projects level for navigation
+            else if (entry.target.id.startsWith('project-') && (currentSectionId === 'projects' || currentSectionId.startsWith('project-'))) {
+              console.log(`[ProjectNavigation] Project section ${entry.target.id} visible but staying at projects level for navigation`)
+              if (currentSectionId !== 'projects') {
+                setCurrentSectionIndex(3) // Set to projects section index
+              }
+            }
           }
         }
       })
