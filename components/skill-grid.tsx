@@ -1,5 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card"
-
 // Update the skills to match Nataly's resume
 const skills = [
   {
@@ -32,21 +30,21 @@ export default function SkillGrid() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {skills.map((skillGroup) => (
-        <Card key={skillGroup.category} className="overflow-hidden hover-glow transition-all duration-300 hover:scale-105 card-gradient">
-          <div className="bg-primary/10 border-b border-border p-4 group-hover:bg-primary/20 transition-colors duration-300">
-            <h3 className="font-bold text-lg">{skillGroup.category}</h3>
+        <div key={skillGroup.category} className="rounded-lg bg-card/50 text-card-foreground shadow-sm overflow-hidden hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
+          <div className="bg-primary/10 p-4 group-hover:bg-primary/20 transition-colors duration-300">
+            <h3 className="font-semibold text-lg">{skillGroup.category}</h3>
           </div>
-          <CardContent className="p-4">
+          <div className="p-4">
             <ul className="grid grid-cols-2 gap-2">
               {skillGroup.items.map((skill) => (
                 <li key={skill} className="flex items-center gap-2 group">
                   <div className="h-1.5 w-1.5 bg-primary rounded-full group-hover:bg-accent transition-colors duration-300"></div>
-                  <span className="text-sm group-hover:text-primary transition-colors duration-300">{skill}</span>
+                  <span className="text-sm group-hover:text-primary transition-colors duration-300 font-light">{skill}</span>
                 </li>
               ))}
             </ul>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       ))}
     </div>
   )

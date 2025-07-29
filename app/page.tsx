@@ -108,77 +108,69 @@ export default function Home() {
           <div className="container">
             {/* Header Section */}
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">About & Expertise</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                Senior Software Developer who specializes in <span className="font-bold text-[#b0b4ab]">full-stack vertical web development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>.
+              <h2 className="text-3xl md:text-4xl font-display font-semibold tracking-tight mb-4">About & Expertise</h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+                Senior Software Developer who specializes in <span className="font-semibold text-[#b0b4ab]">full-stack vertical web development</span>, <span className="font-semibold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-semibold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-semibold text-[#b0b4ab]">pipeline architecture</span>.
               </p>
             </div>
 
             {/* Detailed Description */}
             <div className="max-w-4xl mx-auto mb-12">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-4">
-                I blend cutting-edge technology with mathematical rigor to solve complex problems across multiple domains. From <span className="font-bold text-[#b0b4ab]">implementing DeepMind's AlphaTensor algorithm in LAPACK</span> to building <span className="font-bold text-[#b0b4ab]">privacy-first genomic platforms</span>, my work spans the intersection of AI, scientific computing, and real-world applications.
+              <p className="text-lg text-muted-foreground font-light leading-relaxed mb-4">
+                I blend cutting-edge technology with mathematical rigor to solve complex problems across multiple domains. From <span className="font-semibold text-[#b0b4ab]">implementing DeepMind's AlphaTensor algorithm in LAPACK</span> to building <span className="font-semibold text-[#b0b4ab]">privacy-first genomic platforms</span>, my work spans the intersection of AI, scientific computing, and real-world applications.
               </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                My expertise extends from low-level <span className="font-bold text-[#b0b4ab]">C and C++ optimization</span> to high-level <span className="font-bold text-[#b0b4ab]">Python development</span>, modern <span className="font-bold text-[#b0b4ab]">C# applications</span>, <span className="font-bold text-[#b0b4ab]">Rust/Tauri desktop applications</span>, <span className="font-bold text-[#b0b4ab]">Flutter mobile development</span>, and <span className="font-bold text-[#b0b4ab]">AI-powered full-stack systems</span>.
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+                My expertise extends from low-level <span className="font-semibold text-[#b0b4ab]">C and C++ optimization</span> to high-level <span className="font-semibold text-[#b0b4ab]">Python development</span>, modern <span className="font-semibold text-[#b0b4ab]">C# applications</span>, <span className="font-semibold text-[#b0b4ab]">Rust/Tauri desktop applications</span>, <span className="font-semibold text-[#b0b4ab]">Flutter mobile development</span>, and <span className="font-semibold text-[#b0b4ab]">AI-powered full-stack systems</span>.
               </p>
             </div>
 
             {/* Expertise Cards - Core Areas */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
-                <CardContent className="pt-6">
-                  <Code2 className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-xl font-bold mb-3">Full-Stack Vertical Development</h3>
-                  <p className="text-muted-foreground mb-3">
-                    Building complete vertical solutions across web, mobile, and desktop platforms.
-                  </p>
-                  <div className="text-sm text-primary font-medium">
-                    Python, C#, Tauri/Rust, Next.js, Flutter
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+                <Code2 className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl font-semibold mb-3">Full-Stack Vertical Development</h3>
+                <p className="text-muted-foreground mb-3 font-light leading-relaxed">
+                  Building complete vertical solutions across web, mobile, and desktop platforms.
+                </p>
+                <div className="text-sm text-primary font-medium">
+                  Python, C#, Tauri/Rust, Next.js, Flutter
+                </div>
+              </div>
 
-              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
-                <CardContent className="pt-6">
-                  <Server className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-xl font-bold mb-3">Cloud Infrastructure</h3>
-                  <p className="text-muted-foreground mb-3">
-                    Multi-cloud implementation with Azure, AWS, and Google Cloud Platform.
-                  </p>
-                  <div className="text-sm text-primary font-medium">
-                    Firebase, Real-time Systems, Pipeline Architecture
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+                <Server className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl font-semibold mb-3">Cloud Infrastructure</h3>
+                <p className="text-muted-foreground mb-3 font-light leading-relaxed">
+                  Multi-cloud implementation with Azure, AWS, and Google Cloud Platform.
+                </p>
+                <div className="text-sm text-primary font-medium">
+                  Firebase, Real-time Systems, Pipeline Architecture
+                </div>
+              </div>
 
-              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
-                <CardContent className="pt-6">
-                  <Database className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-xl font-bold mb-3">Mathematical Modeling</h3>
-                  <p className="text-muted-foreground mb-3">
-                    Computational modeling and machine learning for research and industry.
-                  </p>
-                  <div className="text-sm text-primary font-medium">
-                    Python, MATLAB, R, Scientific Computing
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+                <Database className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl font-semibold mb-3">Mathematical Modeling</h3>
+                <p className="text-muted-foreground mb-3 font-light leading-relaxed">
+                  Computational modeling and machine learning for research and industry.
+                </p>
+                <div className="text-sm text-primary font-medium">
+                  Python, MATLAB, R, Scientific Computing
+                </div>
+              </div>
 
-              <Card className="hover-glow transition-all duration-300 hover:scale-105 card-gradient group">
-                <CardContent className="pt-6">
-                  <div className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center border border-primary/20 rounded-lg">
-                    <span className="text-lg font-bold">AI</span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">AI & Scientific Computing</h3>
-                  <p className="text-muted-foreground mb-3">
-                    Advanced algorithms from research to production systems.
-                  </p>
-                  <div className="text-sm text-primary font-medium">
-                    C/C++, AlphaTensor, LangGraph, GPU Optimization
-                  </div>
-                </CardContent>
-              </Card>
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+                <div className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center border border-primary/20 rounded-lg">
+                  <span className="text-lg font-semibold">AI</span>
+                </div>
+                <h3 className="text-xl font-semibold mb-3">AI & Scientific Computing</h3>
+                <p className="text-muted-foreground mb-3 font-light leading-relaxed">
+                  Advanced algorithms from research to production systems.
+                </p>
+                <div className="text-sm text-primary font-medium">
+                  C/C++, AlphaTensor, LangGraph, GPU Optimization
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -187,8 +179,8 @@ export default function Home() {
         <section id="skills" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
-              <h2 className="text-3xl font-bold tracking-tight">Technical Skills</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="text-3xl font-display font-semibold tracking-tight">Technical Skills</h2>
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 My core expertise spans multiple languages, frameworks, and platforms. I primarily use Python, C#, and custom Bash/Shell scripting, with experience across many other languages and cutting-edge frameworks for professional development.
               </p>
             </div>
@@ -200,8 +192,8 @@ export default function Home() {
         <section id="projects" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-6">
-              <h2 className="text-3xl font-bold tracking-tight">Featured Projects</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="text-3xl font-display font-semibold tracking-tight">Featured Projects</h2>
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 A selection of projects that demonstrate my technical capabilities across AI-enhanced vertical full-stack app development, mobile development, game development, mathematical modeling, and more.
               </p>
             </div>
@@ -288,8 +280,8 @@ export default function Home() {
             
             {/* Additional Projects Grid */}
             <div id="additional-projects" className="space-y-4 mb-8">
-              <h3 className="text-2xl font-bold tracking-tight">Additional Projects</h3>
-              <p className="text-muted-foreground">
+              <h3 className="text-2xl font-display font-semibold tracking-tight">Additional Projects</h3>
+              <p className="text-muted-foreground font-light leading-relaxed">
                 Research and engineering projects spanning computational biology, medical devices, and aerospace systems.
               </p>
             </div>
@@ -328,8 +320,8 @@ export default function Home() {
         <section id="experience" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
-              <h2 className="text-3xl font-bold tracking-tight">Relevant Experience</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="text-3xl font-display font-semibold tracking-tight">Relevant Experience</h2>
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 My career path and key milestones that have shaped my expertise and approach to software development.
               </p>
             </div>
@@ -342,8 +334,8 @@ export default function Home() {
           <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold tracking-tight">Get in Touch</h2>
-              <p className="text-lg text-muted-foreground">
+              <h2 className="text-3xl font-display font-semibold tracking-tight">Get in Touch</h2>
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 Interested in working together? Reach out to discuss potential projects or opportunities.
               </p>
               <div className="flex flex-col gap-4 mt-6">
@@ -371,8 +363,8 @@ export default function Home() {
             </div>
             <div className="space-y-6">
               <div className="text-center space-y-4">
-                <h3 className="text-2xl font-bold">Let's Connect</h3>
-                <p className="text-lg text-muted-foreground">
+                <h3 className="text-2xl font-display font-semibold">Let's Connect</h3>
+                <p className="text-lg text-muted-foreground font-light leading-relaxed">
                   Ready to discuss your next project? I'd love to hear from you.
                 </p>
                 <div className="space-y-4">
