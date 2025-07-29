@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, tags, image, link }: ProjectCardProps) {
   return (
-    <Card className="group transition-all duration-300 hover:border-primary/50 hover-glow hover:scale-105 card-gradient">
+    <Card className="group transition-all duration-300 hover:border-primary/50 hover-glow hover:scale-105 card-gradient border-0">
       <CardContent className="p-6">
         <div className="flex items-center gap-4 mb-4">
           <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-primary/5 p-2 group-hover:bg-primary/10 transition-colors duration-300">

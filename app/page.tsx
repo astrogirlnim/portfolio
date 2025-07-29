@@ -104,7 +104,7 @@ export default function Home() {
         </section>
 
         {/* About/Expertise Section */}
-        <section id="about" className="py-20 border-t border-border">
+        <section id="about" className="py-20">
           <div className="container">
             {/* Header Section */}
             <div className="text-center mb-12">
@@ -176,7 +176,7 @@ export default function Home() {
         </section>
 
         {/* Technical Skills Section */}
-        <section id="skills" className="py-16 border-t border-border">
+        <section id="skills" className="py-16">
           <div className="container">
             <div className="space-y-3 max-w-3xl mb-8">
               <h2 className="text-3xl font-display font-semibold tracking-tight">Technical Skills</h2>
@@ -189,7 +189,7 @@ export default function Home() {
         </section>
 
         {/* Featured Projects Section */}
-        <section id="projects" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
+        <section id="projects" className="min-h-screen flex flex-col justify-center pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-6">
               <h2 className="text-3xl font-display font-semibold tracking-tight">Featured Projects</h2>
@@ -317,7 +317,7 @@ export default function Home() {
         </section>
 
         {/* Relevant Experience Section */}
-        <section id="experience" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
+        <section id="experience" className="min-h-screen flex flex-col justify-center pt-20">
           <div className="container">
             <div className="space-y-4 max-w-3xl mb-10">
               <h2 className="text-3xl font-display font-semibold tracking-tight">Relevant Experience</h2>
@@ -330,7 +330,7 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
+        <section id="contact" className="min-h-screen flex flex-col justify-center pt-20">
           <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div className="space-y-4">
@@ -395,7 +395,7 @@ export default function Home() {
       <ProjectNavigation />
 
       {/* Footer */}
-      <footer className="border-t border-border py-8">
+      <footer className="py-8">
         <div className="container flex flex-col md:flex-row justify-between items-center">
           <div className="font-mono text-sm mb-4 md:mb-0">
             © {new Date().getFullYear()} Nataly Smith • Built with precision and purpose

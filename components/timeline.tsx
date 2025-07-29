@@ -99,7 +99,7 @@ export default function Timeline() {
           {timelineItems.map((item, index) => (
             <div key={index} className="timeline-card mobile-timeline-card relative">
               <div className="absolute -left-10 top-6 w-3 h-3 bg-primary border-2 border-background rounded-full shadow-lg animate-pulse"></div>
-              <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border border-border/50 hover:border-primary/50 backdrop-blur-sm bg-background/95">
+              <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border-0 backdrop-blur-sm bg-background/95">
                 <CardContent className="p-4 sm:p-5">
                   <Badge variant="outline" className="mb-2 font-mono hover-glow text-xs">
                     {item.year}
@@ -149,7 +149,7 @@ export default function Timeline() {
               <div className={`w-full max-w-xl lg:max-w-2xl relative transition-all duration-700 hover:translate-y-[-4px] ${
                 index % 2 === 0 ? "mr-20" : "ml-20"
               }`}>
-                <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border border-border/50 hover:border-primary/50 backdrop-blur-sm bg-background/95 relative overflow-hidden">
+                <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border-0 backdrop-blur-sm bg-background/95 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <CardContent className="p-6">
                     <Badge variant="outline" className="mb-3 font-mono hover-glow text-xs">
