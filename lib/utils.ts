@@ -7,19 +7,14 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Get the correct asset path for the current environment
- * Handles images, videos, PDFs, and other static assets for GitHub Pages deployment
+ * Works with Next.js basePath configuration for GitHub Pages deployment
  */
 export function getAssetPath(path: string): string {
   // Remove leading slash if present to normalize the path
   const normalizedPath = path.startsWith('/') ? path.slice(1) : path
   
-  // For production builds with static export on GitHub Pages
-  if (process.env.NODE_ENV === 'production') {
-    // GitHub Pages requires the repository name in the path
-    return `/portfolio/${normalizedPath}`
-  }
-  
-  // For development, return the path with a leading slash
+  // Next.js basePath handles the /portfolio/ prefix automatically in production
+  // So we just need to return the path with a leading slash
   return `/${normalizedPath}`
 }
 

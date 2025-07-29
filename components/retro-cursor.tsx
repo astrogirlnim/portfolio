@@ -2,11 +2,19 @@
 
 import { useEffect, useState, useCallback, useRef } from "react"
 
-type CursorState = 'default' | 'hover' | 'loading' | 'text'
+type CursorState = 'default' | 'hover' | 'loading' | 'text' | 'magnetic'
 
 interface CursorPosition {
   x: number
   y: number
+}
+
+interface TrailParticle {
+  id: number
+  x: number
+  y: number
+  opacity: number
+  scale: number
 }
 
 // Mobile detection utility function
@@ -33,14 +41,19 @@ const isMobileDevice = (): boolean => {
 
 export default function RetroCursor() {
   const [position, setPosition] = useState<CursorPosition>({ x: 0, y: 0 })
+  const [targetPosition, setTargetPosition] = useState<CursorPosition>({ x: 0, y: 0 })
   const [isVisible, setIsVisible] = useState(false)
   const [cursorState, setCursorState] = useState<CursorState>('default')
   const [isLoading, setIsLoading] = useState(false)
   const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [trailParticles, setTrailParticles] = useState<TrailParticle[]>([])
+  const [magneticTarget, setMagneticTarget] = useState<Element | null>(null)
+  
   const cursorRef = useRef<HTMLDivElement>(null)
   const lastUpdate = useRef<number>(0)
   const rafId = useRef<number | undefined>(undefined)
   const lastElement = useRef<Element | null>(null)
+  const particleIdCounter = useRef<number>(0)
 
   // Check for mobile device on mount and window resize
   useEffect(() => {
@@ -63,28 +76,106 @@ export default function RetroCursor() {
     }
   }, [])
 
-  // Optimized cursor state detection with pre-compiled selectors
+  // Smooth cursor movement with magnetic attraction
+  useEffect(() => {
+    let animationFrame: number
+    
+    const animateCursor = () => {
+      setPosition(prev => {
+        const dx = targetPosition.x - prev.x
+        const dy = targetPosition.y - prev.y
+        
+        // Smooth easing with magnetic effect
+        const easing = magneticTarget ? 0.15 : 0.1
+        const newX = prev.x + dx * easing
+        const newY = prev.y + dy * easing
+        
+        // Update cursor ref position
+        if (cursorRef.current) {
+          cursorRef.current.style.setProperty('--cursor-x', `${newX}px`)
+          cursorRef.current.style.setProperty('--cursor-y', `${newY}px`)
+        }
+        
+        return { x: newX, y: newY }
+      })
+      
+      animationFrame = requestAnimationFrame(animateCursor)
+    }
+    
+    if (!isMobile) {
+      animateCursor()
+    }
+    
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame)
+      }
+    }
+  }, [targetPosition, magneticTarget, isMobile])
+
+  // Trail particles effect
+  useEffect(() => {
+    if (isMobile) return
+    
+    const updateTrail = () => {
+      setTrailParticles(prev => {
+        // Add new particle at current position
+        const newParticles = [
+          ...prev,
+          {
+            id: particleIdCounter.current++,
+            x: position.x,
+            y: position.y,
+            opacity: 0.6,
+            scale: 1
+          }
+        ].slice(-8) // Keep only last 8 particles
+        
+        // Update existing particles (fade and shrink)
+        return newParticles.map((particle, index) => ({
+          ...particle,
+          opacity: particle.opacity * 0.9,
+          scale: particle.scale * 0.95
+        })).filter(particle => particle.opacity > 0.1)
+      })
+    }
+    
+    const interval = setInterval(updateTrail, 50)
+    return () => clearInterval(interval)
+  }, [position, isMobile])
+
+  // Enhanced cursor state detection with magnetic elements
   const updateCursorState = useCallback((element: Element | null) => {
     if (!element) {
       setCursorState('default')
+      setMagneticTarget(null)
       return
     }
 
     try {
-      // Use cached element properties where possible
       const tagName = element.tagName.toLowerCase()
       const classList = element.classList
       
-      // Quick checks using tag names and common classes first
+      // Check for magnetic elements
+      if (classList.contains('cursor-magnetic') || 
+          tagName === 'button' ||
+          (tagName === 'a' && element.getAttribute('href'))) {
+        setMagneticTarget(element)
+        setCursorState('magnetic')
+        return
+      }
+      
+      // Text input elements
       if (tagName === 'input' || tagName === 'textarea' || element.hasAttribute('contenteditable')) {
         const inputType = (element as HTMLInputElement).type
         if (!inputType || ['text', 'email', 'password', 'search'].includes(inputType)) {
           setCursorState('text')
+          setMagneticTarget(null)
           return
         }
       }
       
-      // Check for interactive elements using faster methods
+      // Interactive elements
       if (tagName === 'a' || tagName === 'button' || 
           classList.contains('cursor-hover') || 
           classList.contains('hover-glow') ||
@@ -92,52 +183,73 @@ export default function RetroCursor() {
           element.getAttribute('role') === 'button' ||
           (element.hasAttribute('tabindex') && tagName !== 'input' && tagName !== 'textarea')) {
         setCursorState('hover')
+        setMagneticTarget(null)
         return
       }
 
-      // Check for loading states
+      // Loading states
       if (element.hasAttribute('data-loading') || 
           classList.contains('loading') || 
           element.getAttribute('aria-busy') === 'true' ||
           classList.contains('cursor-loading')) {
         setCursorState('loading')
+        setMagneticTarget(null)
         return
       }
 
       setCursorState('default')
+      setMagneticTarget(null)
     } catch (error) {
       console.warn('Cursor state update failed:', error)
       setCursorState('default')
+      setMagneticTarget(null)
     }
   }, [])
 
-  // Throttle mouse position updates using requestAnimationFrame
+  // Calculate magnetic attraction
+  const calculateMagneticPosition = useCallback((mouseX: number, mouseY: number, element: Element) => {
+    const rect = element.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    
+    const distance = Math.sqrt(Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2))
+    const maxDistance = Math.min(rect.width, rect.height) * 2
+    
+    if (distance < maxDistance) {
+      const strength = Math.max(0, 1 - distance / maxDistance) * 0.3
+      return {
+        x: mouseX + (centerX - mouseX) * strength,
+        y: mouseY + (centerY - mouseY) * strength
+      }
+    }
+    
+    return { x: mouseX, y: mouseY }
+  }, [])
+
+  // Enhanced mouse position updates with magnetic effects
   const updatePosition = useCallback((e: MouseEvent) => {
     const now = performance.now()
     
-    // Skip update if less than 16ms has passed (60fps throttling)
     if (now - lastUpdate.current < 16) return
-    
     lastUpdate.current = now
     
-    // Cancel any pending animation frame
     if (rafId.current) {
       cancelAnimationFrame(rafId.current)
     }
     
     rafId.current = requestAnimationFrame(() => {
-      const newPosition = { x: e.clientX, y: e.clientY }
-      setPosition(newPosition)
-      setIsVisible(true)
+      let newPosition = { x: e.clientX, y: e.clientY }
       
-      // Update cursor ref position using CSS custom properties for better animation compatibility
-      if (cursorRef.current) {
-        cursorRef.current.style.setProperty('--cursor-x', `${e.clientX}px`)
-        cursorRef.current.style.setProperty('--cursor-y', `${e.clientY}px`)
+      // Apply magnetic effect if target exists
+      if (magneticTarget) {
+        newPosition = calculateMagneticPosition(e.clientX, e.clientY, magneticTarget)
       }
       
-      // Only check element under cursor every few updates to reduce overhead
-      if (now % 5 === 0) { // Check every 5th frame
+      setTargetPosition(newPosition)
+      setIsVisible(true)
+      
+      // Check element under cursor less frequently
+      if (now % 5 === 0) {
         try {
           const elementUnderCursor = document.elementFromPoint(e.clientX, e.clientY)
           if (elementUnderCursor !== lastElement.current) {
@@ -149,11 +261,12 @@ export default function RetroCursor() {
         }
       }
     })
-  }, [updateCursorState])
+  }, [updateCursorState, magneticTarget, calculateMagneticPosition])
 
   const handleMouseLeave = useCallback(() => {
     setIsVisible(false)
     setCursorState('default')
+    setMagneticTarget(null)
     lastElement.current = null
   }, [])
 
@@ -165,20 +278,15 @@ export default function RetroCursor() {
   useEffect(() => {
     const handleLoadingStart = () => {
       setIsLoading(true)
-      // Auto-clear loading state after 3 seconds as fallback
       setTimeout(() => setIsLoading(false), 3000)
     }
     const handleLoadingEnd = () => setIsLoading(false)
 
-    // Listen for navigation events
     window.addEventListener('beforeunload', handleLoadingStart)
     window.addEventListener('load', handleLoadingEnd)
-    
-    // Listen for custom loading events
     document.addEventListener('loading-start', handleLoadingStart)
     document.addEventListener('loading-end', handleLoadingEnd)
 
-    // Listen for link clicks to show loading state
     const handleLinkClick = (e: MouseEvent) => {
       const target = e.target as Element
       if (target.matches('a[href]:not([href^="#"]):not([href^="mailto:"]):not([href^="tel:"]):not([target="_blank"])')) {
@@ -198,10 +306,8 @@ export default function RetroCursor() {
   }, [])
 
   useEffect(() => {
-    // Only add listeners on client side and not on mobile
     if (typeof window === 'undefined' || isMobile) return
 
-    // Use passive event listeners for better performance
     window.addEventListener("mousemove", updatePosition, { passive: true })
     document.addEventListener("mouseleave", handleMouseLeave, { passive: true })
     document.addEventListener("mouseenter", handleMouseEnter, { passive: true })
@@ -211,28 +317,43 @@ export default function RetroCursor() {
       document.removeEventListener("mouseleave", handleMouseLeave)
       document.removeEventListener("mouseenter", handleMouseEnter)
       
-      // Clean up animation frame
       if (rafId.current) {
         cancelAnimationFrame(rafId.current)
       }
     }
   }, [updatePosition, handleMouseLeave, handleMouseEnter, isMobile])
 
-  // Override cursor state if globally loading
   const finalCursorState = isLoading ? 'loading' : cursorState
 
-  // Don't render on server, mobile devices, or when not visible
   if (typeof window === 'undefined' || isMobile || !isVisible) return null
 
   return (
-    <div
-      ref={cursorRef}
-      className={`custom-cursor ${finalCursorState}`}
-      style={{
-        '--cursor-x': position.x + 'px',
-        '--cursor-y': position.y + 'px',
-      } as React.CSSProperties}
-      aria-hidden="true"
-    />
+    <>
+      {/* Main cursor */}
+      <div
+        ref={cursorRef}
+        className={`custom-cursor ${finalCursorState}`}
+        style={{
+          '--cursor-x': position.x + 'px',
+          '--cursor-y': position.y + 'px',
+        } as React.CSSProperties}
+        aria-hidden="true"
+      />
+      
+      {/* Trail particles */}
+      {trailParticles.map((particle) => (
+        <div
+          key={particle.id}
+          className="cursor-trail-particle"
+          style={{
+            '--particle-x': particle.x + 'px',
+            '--particle-y': particle.y + 'px',
+            opacity: particle.opacity,
+            transform: `translate3d(var(--particle-x), var(--particle-y), 0) translate(-50%, -50%) scale(${particle.scale})`,
+          } as React.CSSProperties}
+          aria-hidden="true"
+        />
+      ))}
+    </>
   )
 }

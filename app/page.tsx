@@ -21,29 +21,29 @@ export default function Home() {
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
-          <Link href="#hero" className="font-mono text-lg font-bold hover:text-primary transition-colors">
+          <Link href="#hero" className="font-mono text-lg font-bold hover:text-primary transition-colors cursor-magnetic">
             NATALY.DEV
           </Link>
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               About
             </Link>
-            <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               Skills
             </Link>
-            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               Projects
             </Link>
-            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               Experience
             </Link>
-            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors">
+            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               Contact
             </Link>
           </nav>
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" size="sm" asChild className="cursor-magnetic">
               <Link href="#contact">Get in touch</Link>
             </Button>
           </div>
@@ -79,17 +79,17 @@ export default function Home() {
                   I specialize in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>.
                 </p>
                 <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
-                                  <Button size="lg" asChild className="hover-glow font-medium">
-                  <Link href="#projects">
-                    View Work <ArrowRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild className="hover-glow font-medium">
-                  <Link href="#contact">Contact Me</Link>
-                </Button>
-                  <Button variant="ghost" size="lg" asChild className="hover-glow font-medium">
-                                    <Link href={getImagePath("images/NMM_Resume_Updated.pdf")} target="_blank">
-                    Download Resume
+                  <Button size="lg" asChild className="hover-glow font-medium cursor-magnetic">
+                    <Link href="#projects">
+                      View Work <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button variant="outline" size="lg" asChild className="hover-glow font-medium cursor-magnetic">
+                    <Link href="#contact">Contact Me</Link>
+                  </Button>
+                  <Button variant="ghost" size="lg" asChild className="hover-glow font-medium cursor-magnetic">
+                    <Link href={getImagePath("images/NMM_Resume_Updated.pdf")} target="_blank">
+                      Download Resume
                     </Link>
                   </Button>
                 </div>
@@ -126,7 +126,7 @@ export default function Home() {
 
             {/* Expertise Cards - Core Areas */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
                 <Code2 className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl font-semibold mb-3">Full-Stack Vertical Development</h3>
                 <p className="text-muted-foreground mb-3 font-light leading-relaxed">
@@ -137,7 +137,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
                 <Server className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl font-semibold mb-3">Cloud Infrastructure</h3>
                 <p className="text-muted-foreground mb-3 font-light leading-relaxed">
@@ -148,7 +148,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
                 <Database className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl font-semibold mb-3">Mathematical Modeling</h3>
                 <p className="text-muted-foreground mb-3 font-light leading-relaxed">
@@ -159,7 +159,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
                 <div className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center border border-primary/20 rounded-lg">
                   <span className="text-lg font-semibold">AI</span>
                 </div>
@@ -345,13 +345,13 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Linkedin className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://www.linkedin.com/in/nataly-smith/" className="hover:text-primary transition-colors">
+                  <Link href="https://www.linkedin.com/in/nataly-smith/" className="hover:text-primary transition-colors cursor-magnetic">
                     linkedin.com/in/nataly-smith/
                   </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <Github className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://github.com/astrogirlnim" className="hover:text-primary transition-colors">
+                  <Link href="https://github.com/astrogirlnim" className="hover:text-primary transition-colors cursor-magnetic">
                     github.com/astrogirlnim
                   </Link>
                 </div>
@@ -368,7 +368,7 @@ export default function Home() {
                   Ready to discuss your next project? I'd love to hear from you.
                 </p>
                 <div className="space-y-4">
-                  <Button size="lg" asChild className="hover-glow">
+                  <Button size="lg" asChild className="hover-glow cursor-magnetic">
                     <Link href="mailto:nmmsoftware@gmail.com">
                       <Mail className="mr-2 h-5 w-5" />
                       Send me an email
@@ -378,7 +378,7 @@ export default function Home() {
                     Click the button above to open your email client, or reach out to me directly at{" "}
                     <Link 
                       href="mailto:nmmsoftware@gmail.com" 
-                      className="text-primary hover:underline font-medium"
+                      className="text-primary hover:underline font-medium cursor-magnetic"
                     >
                       nmmsoftware@gmail.com
                     </Link>
@@ -401,19 +401,19 @@ export default function Home() {
             © {new Date().getFullYear()} Nataly Smith • Built with precision and purpose
           </div>
           <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="cursor-magnetic">
               <Link href="https://github.com/astrogirlnim">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="cursor-magnetic">
               <Link href="https://www.linkedin.com/in/nataly-smith/">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" asChild>
+            <Button variant="ghost" size="icon" asChild className="cursor-magnetic">
               <Link href="mailto:nmmsoftware@gmail.com">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
