@@ -133,7 +133,7 @@ export default function Home() {
                   Building complete vertical solutions across web, mobile, and desktop platforms.
                 </p>
                 <div className="text-sm text-primary font-medium">
-                  Python, C#, Tauri/Rust, Next.js, Flutter
+                  Python, C#, Next.js, Flutter
                 </div>
               </div>
 
@@ -168,7 +168,7 @@ export default function Home() {
                   Advanced algorithms from research to production systems.
                 </p>
                 <div className="text-sm text-primary font-medium">
-                  C/C++, AlphaTensor, LangGraph, GPU Optimization
+                  C/C++, LangGraph, GPU Optimization
                 </div>
               </div>
             </div>

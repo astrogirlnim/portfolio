@@ -2,7 +2,7 @@
 const skills = [
   {
     category: "Languages",
-    items: ["Python", "R", "C#", "C", "C++", "Rust", "TypeScript", "JavaScript", "Dart", "Fortran", "GDScript", "VB", "Bash", "Matlab", "HTML", "CSS", "SQL", "Racket", "Lisp"],
+    items: ["Python", "R", "C#", "C", "C++", "TypeScript", "JavaScript", "Dart", "Fortran", "GDScript", "VB", "Bash", "Matlab", "HTML", "CSS", "SQL", "Racket", "Lisp"],
   },
   {
     category: "Frameworks & Libraries",
@@ -14,7 +14,7 @@ const skills = [
   },
   {
     category: "AI & Scientific Computing",
-    items: ["Machine Learning", "AI/ML", "AlphaTensor", "LangGraph", "GPU Optimization", "Scientific Computing", "Linear Algebra", "Performance Optimization", "Mathematical Modeling", "Computational Biology"],
+    items: ["Machine Learning", "AI/ML", "LangGraph", "GPU Optimization", "Scientific Computing", "Linear Algebra", "Performance Optimization", "Mathematical Modeling", "Computational Biology"],
   },
   {
     category: "Application Development",

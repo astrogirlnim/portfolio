@@ -38,7 +38,7 @@
     --cursor-secondary: 100 6% 50%;
     --cursor-accent: 120 6% 65%;
     --cursor-glow: 90 8% 45%;
-    --cursor-trail: 90 8% 45%;
+
   }
 
   .dark {
@@ -73,7 +73,7 @@
     --cursor-secondary: 90 6% 60%;
     --cursor-accent: 120 6% 70%;
     --cursor-glow: 100 8% 65%;
-    --cursor-trail: 100 8% 65%;
+
   }
 }
 
@@ -95,7 +95,7 @@
     position: relative;
   }
   
-  /* Enhanced custom cursor implementation */
+  /* Optimized custom cursor implementation */
   .custom-cursor {
     position: fixed;
     top: 0;
@@ -108,30 +108,15 @@
     z-index: 9999;
     will-change: transform;
     transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%);
-    transition: width 0.2s cubic-bezier(0.23, 1, 0.320, 1), 
-                height 0.2s cubic-bezier(0.23, 1, 0.320, 1), 
-                background 0.2s ease-out,
-                border-radius 0.2s ease-out;
-  }
-  
-  /* Trail particles for cursor */
-  .cursor-trail-particle {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 8px;
-    height: 8px;
-    background: hsl(var(--cursor-trail) / 0.6);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9998;
-    will-change: transform, opacity;
-    transition: opacity 0.1s ease-out;
+    transition: width 0.15s ease-out, 
+                height 0.15s ease-out, 
+                background 0.15s ease-out,
+                border-radius 0.15s ease-out;
   }
   
   /* Hide custom cursor on touch devices */
   @media (hover: none) and (pointer: coarse) {
-    .custom-cursor, .cursor-trail-particle {
+    .custom-cursor {
       display: none;
     }
     
@@ -150,20 +135,18 @@
     background: hsl(var(--cursor-secondary));
     border-radius: 50%;
     transform: translate3d(-50%, -50%, 0);
-    transition: width 0.2s cubic-bezier(0.23, 1, 0.320, 1), 
-                height 0.2s cubic-bezier(0.23, 1, 0.320, 1), 
-                background 0.2s ease-out;
+    transition: width 0.15s ease-out, 
+                height 0.15s ease-out, 
+                background 0.15s ease-out;
     will-change: transform;
   }
   
-  /* Enhanced cursor hover state */
+  /* Simplified cursor hover state */
   .custom-cursor.hover {
     width: 40px;
     height: 40px;
     background: transparent;
     border: 2px solid hsl(var(--cursor-primary));
-    box-shadow: 0 0 25px hsla(var(--cursor-glow), 0.4);
-    animation: cursor-hover-pulse 2s ease-in-out infinite;
   }
   
   .custom-cursor.hover::before {
@@ -172,26 +155,7 @@
     background: hsl(var(--cursor-primary));
   }
   
-  /* New magnetic cursor state */
-  .custom-cursor.magnetic {
-    width: 50px;
-    height: 50px;
-    background: transparent;
-    border: 3px solid hsl(var(--cursor-primary));
-    box-shadow: 
-      0 0 30px hsla(var(--cursor-glow), 0.5),
-      inset 0 0 20px hsla(var(--cursor-glow), 0.1);
-    animation: cursor-magnetic-pulse 1.5s ease-in-out infinite;
-  }
-  
-  .custom-cursor.magnetic::before {
-    width: 6px;
-    height: 6px;
-    background: hsl(var(--cursor-primary));
-    animation: cursor-inner-spin 3s linear infinite;
-  }
-  
-  /* Enhanced cursor loading state */
+  /* Simplified cursor loading state */
   .custom-cursor.loading {
     width: 35px;
     height: 35px;
@@ -200,14 +164,12 @@
     border-top: 4px solid hsl(var(--cursor-primary));
     border-right: 4px solid hsl(var(--cursor-secondary));
     animation: cursor-spin 0.8s linear infinite;
-    box-shadow: 0 0 20px hsla(var(--cursor-glow), 0.3);
   }
   
   .custom-cursor.loading::before {
     width: 8px;
     height: 8px;
     background: hsl(var(--cursor-accent));
-    animation: cursor-pulse 0.8s ease-in-out infinite alternate;
   }
   
   /* Cursor text interaction state */
@@ -216,7 +178,6 @@
     height: 24px;
     background: hsl(var(--cursor-primary));
     border-radius: 2px;
-    box-shadow: 0 0 10px hsla(var(--cursor-glow), 0.4);
     animation: cursor-blink 1s ease-in-out infinite;
   }
   
@@ -275,33 +236,7 @@
   100% { transform: translate3d(var(--cursor-x, 0px), var(--cursor-y, 0px), 0) translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes cursor-pulse {
-  0% { opacity: 0.6; transform: translate3d(-50%, -50%, 0) scale(0.9); }
-  100% { opacity: 1; transform: translate3d(-50%, -50%, 0) scale(1.1); }
-}
 
-@keyframes cursor-hover-pulse {
-  0%, 100% { box-shadow: 0 0 25px hsla(var(--cursor-glow), 0.4); }
-  50% { box-shadow: 0 0 35px hsla(var(--cursor-glow), 0.6); }
-}
-
-@keyframes cursor-magnetic-pulse {
-  0%, 100% { 
-    box-shadow: 
-      0 0 30px hsla(var(--cursor-glow), 0.5),
-      inset 0 0 20px hsla(var(--cursor-glow), 0.1);
-  }
-  50% { 
-    box-shadow: 
-      0 0 45px hsla(var(--cursor-glow), 0.7),
-      inset 0 0 30px hsla(var(--cursor-glow), 0.2);
-  }
-}
-
-@keyframes cursor-inner-spin {
-  0% { transform: translate3d(-50%, -50%, 0) rotate(0deg); }
-  100% { transform: translate3d(-50%, -50%, 0) rotate(360deg); }
-}
 
 @keyframes cursor-blink {
   0%, 50% { opacity: 1; }
