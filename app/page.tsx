@@ -69,7 +69,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="lg:col-span-3 space-y-6 flex flex-col justify-center">
-                <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow hero-animate w-fit">
+                <Badge variant="outline" className="px-4 py-2 text-base font-mono font-semibold hover-glow hero-animate w-fit border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm">
                   AI ENGINEER & SENIOR SOFTWARE DEVELOPER
                 </Badge>
                 <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold tracking-tight hero-animate-delay-1">
