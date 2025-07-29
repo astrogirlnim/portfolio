@@ -87,7 +87,6 @@ export default function WebDemoProjectShowcase({
                 loading="lazy"
               />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 to-accent/10 rounded-lg group-hover:from-primary/10 group-hover:to-accent/15 transition-all duration-300 pointer-events-none"></div>
           </div>
         </div>
         
