@@ -28,18 +28,18 @@ const skills = [
 
 export default function SkillGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {skills.map((skillGroup) => (
-        <div key={skillGroup.category} className="rounded-lg bg-card/30 text-card-foreground shadow-sm overflow-hidden hover-glow transition-all duration-300 hover:scale-105 card-gradient group backdrop-blur-sm">
-          <div className="bg-primary/8 p-4 group-hover:bg-primary/15 transition-colors duration-300">
-            <h3 className="font-semibold text-lg tracking-tight">{skillGroup.category}</h3>
+        <div key={skillGroup.category} className="rounded-lg bg-card/30 text-card-foreground shadow-sm overflow-hidden hover-glow transition-all duration-300 hover:scale-[1.02] card-gradient group backdrop-blur-sm">
+          <div className="bg-primary/8 px-4 py-3 group-hover:bg-primary/15 transition-colors duration-300">
+            <h3 className="font-semibold text-base tracking-tight">{skillGroup.category}</h3>
           </div>
-          <div className="p-4">
-            <ul className="grid grid-cols-2 gap-2">
+          <div className="px-4 pb-4 pt-2">
+            <ul className="grid grid-cols-2 gap-1.5">
               {skillGroup.items.map((skill) => (
-                <li key={skill} className="flex items-center gap-2 group/item">
-                  <div className="h-1.5 w-1.5 bg-primary rounded-full group-hover/item:bg-accent transition-colors duration-300"></div>
-                  <span className="text-sm group-hover/item:text-primary transition-colors duration-300 font-light leading-relaxed">{skill}</span>
+                <li key={skill} className="flex items-center gap-1.5 group/item py-0.5">
+                  <div className="h-1 w-1 bg-primary rounded-full group-hover/item:bg-accent transition-colors duration-300 flex-shrink-0"></div>
+                  <span className="text-xs group-hover/item:text-primary transition-colors duration-300 font-light leading-tight">{skill}</span>
                 </li>
               ))}
             </ul>

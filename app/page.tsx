@@ -176,9 +176,9 @@ export default function Home() {
         </section>
 
         {/* Technical Skills Section */}
-        <section id="skills" className="min-h-screen flex flex-col justify-center border-t border-border pt-20">
+        <section id="skills" className="py-16 border-t border-border">
           <div className="container">
-            <div className="space-y-4 max-w-3xl mb-10">
+            <div className="space-y-3 max-w-3xl mb-8">
               <h2 className="text-3xl font-display font-semibold tracking-tight">Technical Skills</h2>
               <p className="text-lg text-muted-foreground font-light leading-relaxed">
                 My core expertise spans multiple languages, frameworks, and platforms. I primarily use Python, C#, and custom Bash/Shell scripting, with experience across many other languages and cutting-edge frameworks for professional development.
