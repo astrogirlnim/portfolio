@@ -23,6 +23,7 @@ const NAVIGATION_IDS = [
 
 export default function ProjectNavigation() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0)
+  const [isProgrammaticScroll, setIsProgrammaticScroll] = useState(false)
 
   // Function to scroll to a specific section
   const scrollToSection = useCallback((index: number) => {
@@ -32,12 +33,22 @@ export default function ProjectNavigation() {
       const element = document.getElementById(NAVIGATION_IDS[index])
       if (element) {
         console.log(`[ProjectNavigation] Found element ${NAVIGATION_IDS[index]}, scrolling...`)
+        
+        // Set flag to prevent intersection observer from interfering
+        setIsProgrammaticScroll(true)
+        setCurrentSectionIndex(index)
+        
         element.scrollIntoView({ 
           behavior: "smooth", 
           block: "start",
           inline: "nearest"
         })
-        setCurrentSectionIndex(index)
+        
+        // Clear the flag after scroll animation completes
+        setTimeout(() => {
+          setIsProgrammaticScroll(false)
+          console.log(`[ProjectNavigation] Programmatic scroll completed, re-enabling observer`)
+        }, 1000) // Give enough time for smooth scroll to complete
       } else {
         console.warn(`[ProjectNavigation] Element with ID ${NAVIGATION_IDS[index]} not found`)
       }
@@ -110,6 +121,12 @@ export default function ProjectNavigation() {
     }
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      // Don't update during programmatic scrolling
+      if (isProgrammaticScroll) {
+        console.log(`[ProjectNavigation] Ignoring intersection changes during programmatic scroll`)
+        return
+      }
+      
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionIndex = NAVIGATION_IDS.indexOf(entry.target.id)
@@ -139,7 +156,7 @@ export default function ProjectNavigation() {
       observer.disconnect()
       console.log("[ProjectNavigation] Intersection observer disconnected")
     }
-  }, [currentSectionIndex])
+  }, [currentSectionIndex, isProgrammaticScroll])
 
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2">
