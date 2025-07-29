@@ -29,6 +29,9 @@ yarn-error.log*
 .env
 .env*.local
 
+# vercel
+.vercel
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
@@ -55,3 +58,10 @@ Thumbs.db
 
 # cursor rules
 .cursor/
+
+# Large video files (host externally)
+public/videos/*.mov
+public/videos/*.mp4
+*.mov
+*.avi
+*.mkv

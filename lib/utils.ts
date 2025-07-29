@@ -15,8 +15,9 @@ export function getAssetPath(path: string): string {
   
   // For production builds with static export on GitHub Pages
   if (process.env.NODE_ENV === 'production') {
-    // Since we have assetPrefix set to '/portfolio/', we need to add it manually for consistency
-    return `/portfolio/${normalizedPath}`
+    // Next.js assetPrefix and basePath automatically handle the '/portfolio/' prefix
+    // so we just need to add the leading slash for relative paths
+    return `/${normalizedPath}`
   }
   
   // For development, return the path with a leading slash
