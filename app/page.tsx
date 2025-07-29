@@ -224,6 +224,7 @@ export default function Home() {
                 ]}
                 githubLink="https://github.com/astrogirlnim/GeneKnow"
                 liveLink="https://astrogirlnim.github.io/GeneKnow/"
+                liveLinkText="Website"
                 whitepaperLink={getAssetPath("GeneKnow_Whitepaper_Final.pdf")}
                 imagePosition="right"
               />
@@ -262,6 +263,7 @@ export default function Home() {
                 video="https://www.youtube.com/embed/I7QM7lZqWgY"
                 githubLink="https://github.com/astrogirlnim/Children_of_Singularity"
                 liveLink="https://nisgames.itch.io/children-of-the-singularity"
+                liveLinkText="Website"
                 videoPosition="left"
               />
             </div>
@@ -287,6 +289,7 @@ export default function Home() {
                 demoUrl="https://wordwise-ai-mvp.web.app/"
                 githubLink="https://github.com/astrogirlnim/WordWiseAI"
                 liveLink="https://wordwise-ai-mvp.web.app/sign-in/"
+                liveLinkText="Website"
                 demoPosition="left"
               />
             </div>

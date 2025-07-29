@@ -15,6 +15,7 @@ interface ImageProjectShowcaseProps {
   images: string[]
   githubLink?: string
   liveLink?: string
+  liveLinkText?: string
   whitepaperLink?: string
   imagePosition?: "left" | "right"
 }
@@ -26,6 +27,7 @@ export default function ImageProjectShowcase({
   images, 
   githubLink, 
   liveLink,
+  liveLinkText = "Live Demo",
   whitepaperLink,
   imagePosition = "left"
 }: ImageProjectShowcaseProps) {
@@ -71,7 +73,7 @@ export default function ImageProjectShowcase({
                   <Button asChild className="hover-glow text-sm lg:text-base">
                     <Link href={liveLink} target="_blank" rel="noopener noreferrer">
                       <Play className="mr-2 h-4 w-4" />
-                      Live Demo
+                      {liveLinkText}
                     </Link>
                   </Button>
                 )}
@@ -163,7 +165,7 @@ export default function ImageProjectShowcase({
                   <Button asChild className="hover-glow text-sm lg:text-base">
                     <Link href={liveLink} target="_blank" rel="noopener noreferrer">
                       <Play className="mr-2 h-4 w-4" />
-                      Live Demo
+                      {liveLinkText}
                     </Link>
                   </Button>
                 )}

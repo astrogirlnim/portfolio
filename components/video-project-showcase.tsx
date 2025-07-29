@@ -10,6 +10,7 @@ interface VideoProjectShowcaseProps {
   video: string
   githubLink?: string
   liveLink?: string
+  liveLinkText?: string
   videoPosition?: "left" | "right"
 }
 
@@ -20,6 +21,7 @@ export default function VideoProjectShowcase({
   video, 
   githubLink, 
   liveLink,
+  liveLinkText = "Live Demo",
   videoPosition = "left"
 }: VideoProjectShowcaseProps) {
   const isVideoRight = videoPosition === "right"
@@ -64,7 +66,7 @@ export default function VideoProjectShowcase({
                   <Button asChild className="hover-glow text-sm lg:text-base">
                     <Link href={liveLink} target="_blank" rel="noopener noreferrer">
                       <Play className="mr-2 h-4 w-4" />
-                      Live Demo
+                      {liveLinkText}
                     </Link>
                   </Button>
                 )}
@@ -126,7 +128,7 @@ export default function VideoProjectShowcase({
                   <Button asChild className="hover-glow text-sm lg:text-base">
                     <Link href={liveLink} target="_blank" rel="noopener noreferrer">
                       <Play className="mr-2 h-4 w-4" />
-                      Live Demo
+                      {liveLinkText}
                     </Link>
                   </Button>
                 )}

@@ -12,6 +12,7 @@ interface WebDemoProjectShowcaseProps {
   demoUrl: string
   githubLink?: string
   liveLink?: string
+  liveLinkText?: string
   demoPosition?: "left" | "right"
 }
 
@@ -22,6 +23,7 @@ export default function WebDemoProjectShowcase({
   demoUrl, 
   githubLink, 
   liveLink,
+  liveLinkText = "Live App",
   demoPosition = "left"
 }: WebDemoProjectShowcaseProps) {
   const isDemoRight = demoPosition === "right"
@@ -66,7 +68,7 @@ export default function WebDemoProjectShowcase({
                   <Button asChild className="hover-glow text-sm lg:text-base">
                     <Link href={liveLink} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      Live App
+                      {liveLinkText}
                     </Link>
                   </Button>
                 )}
@@ -127,7 +129,7 @@ export default function WebDemoProjectShowcase({
                   <Button asChild className="hover-glow text-sm lg:text-base">
                     <Link href={liveLink} target="_blank" rel="noopener noreferrer">
                       <ExternalLink className="mr-2 h-4 w-4" />
-                      Live App
+                      {liveLinkText}
                     </Link>
                   </Button>
                 )}
