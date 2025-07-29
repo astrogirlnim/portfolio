@@ -94,6 +94,8 @@ const Carousel = React.forwardRef<
           event.preventDefault()
           scrollNext()
         }
+        // Allow ArrowUp and ArrowDown to propagate for global navigation
+        // Don't call preventDefault() for these keys
       },
       [scrollPrev, scrollNext]
     )
@@ -136,10 +138,11 @@ const Carousel = React.forwardRef<
       >
         <div
           ref={ref}
-          onKeyDownCapture={handleKeyDown}
+          onKeyDown={handleKeyDown}
           className={cn("relative", className)}
           role="region"
           aria-roledescription="carousel"
+          tabIndex={-1}
           {...props}
         >
           {children}

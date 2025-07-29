@@ -62,22 +62,40 @@ export default function ProjectNavigation() {
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       // Handle arrow keys globally when on the page
-      console.log(`[ProjectNavigation] Key pressed: ${event.key}`)
+      console.log(`[ProjectNavigation] Key pressed: ${event.key}, target:`, event.target)
+      
+      // Check if the event is coming from an input, textarea, or contenteditable element
+      const target = event.target as HTMLElement
+      const isInputElement = target && (
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA' ||
+        target.contentEditable === 'true' ||
+        target.isContentEditable
+      )
+      
+      // Don't interfere with typing in input fields
+      if (isInputElement) {
+        console.log(`[ProjectNavigation] Ignoring key press in input element:`, target.tagName)
+        return
+      }
       
       if (event.key === "ArrowUp") {
         event.preventDefault()
+        console.log(`[ProjectNavigation] Handling ArrowUp navigation`)
         navigateToPrevious()
       } else if (event.key === "ArrowDown") {
         event.preventDefault()
+        console.log(`[ProjectNavigation] Handling ArrowDown navigation`)
         navigateToNext()
       }
     }
 
-    window.addEventListener("keydown", handleKeyDown)
+    // Use capture phase to ensure we get the events even if child elements handle them
+    window.addEventListener("keydown", handleKeyDown, true)
     
     // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("keydown", handleKeyDown, true)
     }
   }, [currentSectionIndex])
 
