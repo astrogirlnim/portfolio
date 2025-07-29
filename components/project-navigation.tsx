@@ -9,6 +9,7 @@ const NAVIGATION_IDS = [
   "hero",
   "about", 
   "skills",
+  "experience",
   "projects",
   "project-geneknow",
   "project-lapack-ai", 
@@ -17,7 +18,6 @@ const NAVIGATION_IDS = [
   "project-personyx",
   "project-funnelfluent",
   "additional-projects",
-  "experience",
   "contact"
 ]
 

@@ -31,11 +31,11 @@ export default function Home() {
             <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               Skills
             </Link>
-            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
-              Projects
-            </Link>
             <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               Experience
+            </Link>
+            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
+              Projects
             </Link>
             <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               Contact
@@ -188,6 +188,19 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Relevant Experience Section */}
+        <section id="experience" className="min-h-screen flex flex-col justify-center pt-20">
+          <div className="container">
+            <div className="space-y-4 max-w-3xl mb-10">
+              <h2 className="text-3xl font-display font-semibold tracking-tight">Relevant Experience</h2>
+              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+                My career path and key milestones that have shaped my expertise and approach to software development.
+              </p>
+            </div>
+            <Timeline />
+          </div>
+        </section>
+
         {/* Featured Projects Section */}
         <section id="projects" className="min-h-screen flex flex-col justify-center pt-20">
           <div className="container">
@@ -313,19 +326,6 @@ export default function Home() {
                 image={getImagePath("images/project_icon_4.png")}
               />
             </div>
-          </div>
-        </section>
-
-        {/* Relevant Experience Section */}
-        <section id="experience" className="min-h-screen flex flex-col justify-center pt-20">
-          <div className="container">
-            <div className="space-y-4 max-w-3xl mb-10">
-              <h2 className="text-3xl font-display font-semibold tracking-tight">Relevant Experience</h2>
-              <p className="text-lg text-muted-foreground font-light leading-relaxed">
-                My career path and key milestones that have shaped my expertise and approach to software development.
-              </p>
-            </div>
-            <Timeline />
           </div>
         </section>
 
