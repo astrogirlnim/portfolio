@@ -30,7 +30,7 @@ export default function WebDemoProjectShowcase({
   
   return (
     <div className="group transition-all duration-300 hover-glow overflow-hidden rounded-lg">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 min-h-[70vh] lg:min-h-[60vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 min-h-[50vh] sm:min-h-[60vh] lg:min-h-[60vh]">
         {/* Content Section - Shows first when demo is on right */}
         {isDemoRight && (
           <div className="lg:col-span-1 p-4 lg:p-6 flex flex-col justify-center bg-gradient-to-br from-background/80 to-muted/30 rounded-lg">
@@ -80,7 +80,7 @@ export default function WebDemoProjectShowcase({
         {/* Web Demo Section - Takes up 3/4 of the space */}
         <div className="lg:col-span-3 relative flex items-center justify-center p-4 lg:p-6 bg-gradient-to-br from-background/50 to-muted/20 rounded-lg overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center">
-            <div className="w-full h-full min-h-[500px] lg:min-h-[600px] rounded-lg overflow-hidden shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
+            <div className="w-full h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] rounded-lg overflow-hidden shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
               <iframe
                 src={demoUrl}
                 className="w-full h-full border-0 rounded-lg"

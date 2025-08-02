@@ -35,7 +35,7 @@ export default function ImageProjectShowcase({
   
   return (
     <div className="group transition-all duration-300 hover-glow overflow-hidden rounded-lg">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 min-h-[70vh] lg:min-h-[60vh]">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 min-h-[50vh] sm:min-h-[60vh] lg:min-h-[60vh]">
         {/* Content Section - Shows first when images are on right */}
         {isImageRight && (
           <div className="lg:col-span-1 p-4 lg:p-6 flex flex-col justify-center bg-gradient-to-br from-background/80 to-muted/30 rounded-lg">

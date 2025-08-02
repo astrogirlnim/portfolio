@@ -1,6 +1,8 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Code2, Database, Github, Linkedin, Mail, Server } from "lucide-react"
+import { ArrowRight, Code2, Database, Github, Linkedin, Mail, Server, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -14,8 +16,14 @@ import ThemeToggle from "@/components/theme-toggle"
 import ProjectNavigation from "@/components/project-navigation"
 import InteractiveTerminal from "@/components/interactive-terminal"
 import { getImagePath, getAssetPath } from "@/lib/utils"
+import { useState } from "react"
 
 export default function Home() {
+  // Mobile menu state - only affects mobile view
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  // Close mobile menu when a link is clicked
+  const closeMobileMenu = () => setIsMobileMenuOpen(false)
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation */}
@@ -24,6 +32,8 @@ export default function Home() {
           <Link href="#hero" className="font-mono text-lg font-bold hover:text-primary transition-colors cursor-magnetic">
             NATALY.DEV
           </Link>
+          
+          {/* Desktop Navigation - unchanged */}
           <nav className="hidden md:flex items-center gap-6">
             <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
               About
@@ -41,22 +51,92 @@ export default function Home() {
               Contact
             </Link>
           </nav>
+          
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <Button variant="outline" size="sm" asChild className="cursor-magnetic">
+            {/* Desktop Get in touch button */}
+            <Button variant="outline" size="sm" asChild className="hidden md:flex cursor-magnetic">
               <Link href="#contact">Get in touch</Link>
+            </Button>
+            
+            {/* Mobile menu button - only visible on mobile */}
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden cursor-magnetic"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
         </div>
+        
+        {/* Mobile Navigation Menu - only visible on mobile when open */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/40 shadow-lg">
+            <nav className="container py-4">
+              <div className="flex flex-col space-y-4">
+                <Link 
+                  href="#about" 
+                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  onClick={closeMobileMenu}
+                >
+                  About
+                </Link>
+                <Link 
+                  href="#skills" 
+                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  onClick={closeMobileMenu}
+                >
+                  Skills
+                </Link>
+                <Link 
+                  href="#experience" 
+                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  onClick={closeMobileMenu}
+                >
+                  Experience
+                </Link>
+                <Link 
+                  href="#projects" 
+                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  onClick={closeMobileMenu}
+                >
+                  Projects
+                </Link>
+                <Link 
+                  href="#contact" 
+                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  onClick={closeMobileMenu}
+                >
+                  Contact
+                </Link>
+                {/* Mobile Get in touch button */}
+                <div className="pt-2">
+                  <Button variant="outline" size="sm" asChild className="cursor-magnetic w-full">
+                    <Link href="#contact" onClick={closeMobileMenu}>
+                      Get in touch
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            </nav>
+          </div>
+        )}
       </header>
 
       <main>
         {/* Hero Section */}
         <section id="hero" className="min-h-screen flex flex-col justify-center items-start gap-8 pt-16">
           <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center w-full">
-              <div className="lg:col-span-2 flex justify-center">
-                <div className="relative group hero-animate-delay-2 w-full max-w-[400px] lg:max-w-none">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-16 items-center w-full">
+              <div className="lg:col-span-2 flex justify-center order-1 lg:order-none">
+                <div className="relative group hero-animate-delay-2 w-full max-w-[280px] sm:max-w-[350px] lg:max-w-none">
                   <Image
                     src={getImagePath("images/Profile_pic_new.jpg")}
                     alt="Nataly Smith"
@@ -68,26 +148,26 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-tr from-primary/8 to-accent/15 rounded-3xl group-hover:from-primary/12 group-hover:to-accent/20 transition-all duration-500"></div>
                 </div>
               </div>
-              <div className="lg:col-span-3 space-y-6 flex flex-col justify-center">
-                <Badge variant="outline" className="px-4 py-2 text-base font-mono font-semibold hover-glow hero-animate w-fit border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm">
+              <div className="lg:col-span-3 space-y-4 sm:space-y-6 flex flex-col justify-center order-2 lg:order-none">
+                <Badge variant="outline" className="px-3 sm:px-4 py-2 text-sm sm:text-base font-mono font-semibold hover-glow hero-animate w-fit border-primary/40 bg-primary/5 hover:bg-primary/10 hover:border-primary/60 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm">
                   AI ENGINEER & SENIOR SOFTWARE DEVELOPER
                 </Badge>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-semibold tracking-tight hero-animate-delay-1">
+                <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-semibold tracking-tight hero-animate-delay-1 leading-tight">
                   Hi, I'm <span className="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nataly</span> Smith
                 </h1>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl hero-animate-delay-2 font-light leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl hero-animate-delay-2 font-light leading-relaxed">
                   I specialize in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>.
                 </p>
-                <div className="flex flex-wrap gap-4 pt-4 hero-animate-delay-3">
-                  <Button size="lg" asChild className="hover-glow font-medium cursor-magnetic">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4 hero-animate-delay-3">
+                  <Button size="lg" asChild className="hover-glow font-medium cursor-magnetic w-full sm:w-auto">
                     <Link href="#projects">
                       View Work <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button variant="outline" size="lg" asChild className="hover-glow font-medium cursor-magnetic">
+                  <Button variant="outline" size="lg" asChild className="hover-glow font-medium cursor-magnetic w-full sm:w-auto">
                     <Link href="#contact">Contact Me</Link>
                   </Button>
-                  <Button variant="ghost" size="lg" asChild className="hover-glow font-medium cursor-magnetic">
+                  <Button variant="ghost" size="lg" asChild className="hover-glow font-medium cursor-magnetic w-full sm:w-auto">
                     <Link href={getImagePath("images/NMM_Resume_Updated.pdf")} target="_blank">
                       Download Resume
                     </Link>
@@ -107,19 +187,19 @@ export default function Home() {
         <section id="about" className="py-20">
           <div className="container">
             {/* Header Section */}
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-semibold tracking-tight mb-4">About & Expertise</h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-display font-semibold tracking-tight mb-3 sm:mb-4">About & Expertise</h2>
+              <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
                 Senior Software Developer who specializes in <span className="font-semibold text-[#b0b4ab]">full-stack vertical web development</span>, <span className="font-semibold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-semibold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-semibold text-[#b0b4ab]">pipeline architecture</span>.
               </p>
             </div>
 
             {/* Detailed Description */}
-            <div className="max-w-4xl mx-auto mb-12">
-              <p className="text-lg text-muted-foreground font-light leading-relaxed mb-4">
+            <div className="max-w-4xl mx-auto mb-8 sm:mb-12">
+              <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed mb-3 sm:mb-4">
                 I blend cutting-edge technology with mathematical rigor to solve complex problems across multiple domains. From <span className="font-semibold text-[#b0b4ab]">implementing DeepMind's AlphaTensor algorithm in LAPACK</span> to building <span className="font-semibold text-[#b0b4ab]">privacy-first genomic platforms</span>, my work spans the intersection of AI, scientific computing, and real-world applications.
               </p>
-              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+              <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
                 My expertise extends from low-level <span className="font-semibold text-[#b0b4ab]">C and C++ optimization</span> to high-level <span className="font-semibold text-[#b0b4ab]">Python development</span>, modern <span className="font-semibold text-[#b0b4ab]">C# applications</span>, <span className="font-semibold text-[#b0b4ab]">Rust/Tauri desktop applications</span>, <span className="font-semibold text-[#b0b4ab]">Flutter mobile development</span>, and <span className="font-semibold text-[#b0b4ab]">AI-powered full-stack systems</span>.
               </p>
             </div>
@@ -178,9 +258,9 @@ export default function Home() {
         {/* Technical Skills Section */}
         <section id="skills" className="py-16">
           <div className="container">
-            <div className="space-y-3 max-w-3xl mb-8">
-              <h2 className="text-3xl font-display font-semibold tracking-tight">Technical Skills</h2>
-              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+            <div className="space-y-2 sm:space-y-3 max-w-3xl mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl font-display font-semibold tracking-tight">Technical Skills</h2>
+              <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
                 My core expertise spans multiple languages, frameworks, and platforms. I primarily use Python, C#, and custom Bash/Shell scripting, with experience across many other languages and cutting-edge frameworks for professional development.
               </p>
             </div>
@@ -191,9 +271,9 @@ export default function Home() {
         {/* Relevant Experience Section */}
         <section id="experience" className="min-h-screen flex flex-col justify-center pt-20">
           <div className="container">
-            <div className="space-y-4 max-w-3xl mb-10">
-              <h2 className="text-3xl font-display font-semibold tracking-tight">Relevant Experience</h2>
-              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+            <div className="space-y-3 sm:space-y-4 max-w-3xl mb-8 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl font-display font-semibold tracking-tight">Relevant Experience</h2>
+              <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
                 My career path and key milestones that have shaped my expertise and approach to software development.
               </p>
             </div>
@@ -204,9 +284,9 @@ export default function Home() {
         {/* Featured Projects Section */}
         <section id="projects" className="min-h-screen flex flex-col justify-center pt-20">
           <div className="container">
-            <div className="space-y-4 max-w-3xl mb-6">
-              <h2 className="text-3xl font-display font-semibold tracking-tight">Featured Projects</h2>
-              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+            <div className="space-y-3 sm:space-y-4 max-w-3xl mb-4 sm:mb-6">
+              <h2 className="text-2xl sm:text-3xl font-display font-semibold tracking-tight">Featured Projects</h2>
+              <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
                 A selection of projects that demonstrate my technical capabilities across AI-enhanced vertical full-stack app development, mobile development, game development, mathematical modeling, and more.
               </p>
             </div>
@@ -295,9 +375,9 @@ export default function Home() {
             </div>
             
             {/* Additional Projects Grid */}
-            <div id="additional-projects" className="space-y-4 mb-8">
-              <h3 className="text-2xl font-display font-semibold tracking-tight">Additional Projects</h3>
-              <p className="text-muted-foreground font-light leading-relaxed">
+            <div id="additional-projects" className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+              <h3 className="text-xl sm:text-2xl font-display font-semibold tracking-tight">Additional Projects</h3>
+              <p className="text-sm sm:text-base text-muted-foreground font-light leading-relaxed">
                 Research and engineering projects spanning computational biology, medical devices, and aerospace systems.
               </p>
             </div>
@@ -335,13 +415,13 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contact" className="min-h-screen flex flex-col justify-center pt-20">
           <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-display font-semibold tracking-tight">Get in Touch</h2>
-              <p className="text-lg text-muted-foreground font-light leading-relaxed">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className="space-y-4 md:space-y-6">
+              <h2 className="text-2xl sm:text-3xl font-display font-semibold tracking-tight">Get in Touch</h2>
+              <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
                 Interested in working together? Reach out to discuss potential projects or opportunities.
               </p>
-              <div className="flex flex-col gap-4 mt-6">
+              <div className="flex flex-col gap-3 sm:gap-4 mt-6">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-muted-foreground" />
                   <span>nmmsoftware@gmail.com</span>
@@ -364,14 +444,14 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="space-y-6">
-              <div className="text-center space-y-4">
-                <h3 className="text-2xl font-display font-semibold">Let's Connect</h3>
-                <p className="text-lg text-muted-foreground font-light leading-relaxed">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="text-center space-y-3 sm:space-y-4">
+                <h3 className="text-xl sm:text-2xl font-display font-semibold">Let's Connect</h3>
+                <p className="text-base sm:text-lg text-muted-foreground font-light leading-relaxed">
                   Ready to discuss your next project? I'd love to hear from you.
                 </p>
-                <div className="space-y-4">
-                  <Button size="lg" asChild className="hover-glow cursor-magnetic">
+                <div className="space-y-3 sm:space-y-4">
+                  <Button size="lg" asChild className="hover-glow cursor-magnetic w-full sm:w-auto">
                     <Link href="mailto:nmmsoftware@gmail.com">
                       <Mail className="mr-2 h-5 w-5" />
                       Send me an email
@@ -398,12 +478,12 @@ export default function Home() {
       <ProjectNavigation />
 
       {/* Footer */}
-      <footer className="py-8">
+      <footer className="py-6 sm:py-8">
         <div className="container flex flex-col md:flex-row justify-between items-center">
-          <div className="font-mono text-sm mb-4 md:mb-0">
+          <div className="font-mono text-xs sm:text-sm mb-4 md:mb-0 text-center md:text-left">
             © {new Date().getFullYear()} Nataly Smith • Built with precision and purpose
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <Button variant="ghost" size="icon" asChild className="cursor-magnetic">
               <Link href="https://github.com/astrogirlnim">
                 <Github className="h-5 w-5" />
