@@ -86,12 +86,12 @@
     position: relative;
   }
   
-  /* Simple green circle cursor */
+  /* Simple cursor using theme colors */
   .simple-cursor {
     position: fixed;
     width: 16px;
     height: 16px;
-    background: #22c55e; /* Green */
+    background: hsl(var(--primary));
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
