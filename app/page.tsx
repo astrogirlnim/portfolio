@@ -29,25 +29,25 @@ export default function Home() {
       {/* Navigation */}
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
-          <Link href="#hero" className="font-mono text-lg font-bold hover:text-primary transition-colors cursor-magnetic">
+          <Link href="#hero" className="font-mono text-lg font-bold hover:text-primary transition-colors ">
             NATALY.DEV
           </Link>
           
           {/* Desktop Navigation - unchanged */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
+            <Link href="#about" className="text-sm font-medium hover:text-primary transition-colors ">
               About
             </Link>
-            <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
+            <Link href="#skills" className="text-sm font-medium hover:text-primary transition-colors ">
               Skills
             </Link>
-            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
+            <Link href="#experience" className="text-sm font-medium hover:text-primary transition-colors ">
               Experience
             </Link>
-            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
+            <Link href="#projects" className="text-sm font-medium hover:text-primary transition-colors ">
               Projects
             </Link>
-            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors cursor-magnetic">
+            <Link href="#contact" className="text-sm font-medium hover:text-primary transition-colors ">
               Contact
             </Link>
           </nav>
@@ -55,7 +55,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <ThemeToggle />
             {/* Desktop Get in touch button */}
-            <Button variant="outline" size="sm" asChild className="hidden md:flex cursor-magnetic">
+            <Button variant="outline" size="sm" asChild className="hidden md:flex ">
               <Link href="#contact">Get in touch</Link>
             </Button>
             
@@ -63,7 +63,7 @@ export default function Home() {
             <Button
               variant="ghost"
               size="sm"
-              className="md:hidden cursor-magnetic"
+              className="md:hidden "
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
             >
@@ -83,42 +83,42 @@ export default function Home() {
               <div className="flex flex-col space-y-4">
                 <Link 
                   href="#about" 
-                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  className="text-base font-medium hover:text-primary transition-colors  py-2"
                   onClick={closeMobileMenu}
                 >
                   About
                 </Link>
                 <Link 
                   href="#skills" 
-                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  className="text-base font-medium hover:text-primary transition-colors  py-2"
                   onClick={closeMobileMenu}
                 >
                   Skills
                 </Link>
                 <Link 
                   href="#experience" 
-                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  className="text-base font-medium hover:text-primary transition-colors  py-2"
                   onClick={closeMobileMenu}
                 >
                   Experience
                 </Link>
                 <Link 
                   href="#projects" 
-                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  className="text-base font-medium hover:text-primary transition-colors  py-2"
                   onClick={closeMobileMenu}
                 >
                   Projects
                 </Link>
                 <Link 
                   href="#contact" 
-                  className="text-base font-medium hover:text-primary transition-colors cursor-magnetic py-2"
+                  className="text-base font-medium hover:text-primary transition-colors  py-2"
                   onClick={closeMobileMenu}
                 >
                   Contact
                 </Link>
                 {/* Mobile Get in touch button */}
                 <div className="pt-2">
-                  <Button variant="outline" size="sm" asChild className="cursor-magnetic w-full">
+                  <Button variant="outline" size="sm" asChild className=" w-full">
                     <Link href="#contact" onClick={closeMobileMenu}>
                       Get in touch
                     </Link>
@@ -159,15 +159,15 @@ export default function Home() {
                   I specialize in <span className="font-bold text-[#b0b4ab]">full-stack app development</span>, <span className="font-bold text-[#b0b4ab]">mathematical modeling</span>, with expertise in <span className="font-bold text-[#b0b4ab]">cloud technologies/infrastructure</span> and <span className="font-bold text-[#b0b4ab]">pipeline architecture</span>.
                 </p>
                 <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4 hero-animate-delay-3">
-                  <Button size="lg" asChild className="hover-glow font-medium cursor-magnetic w-full sm:w-auto">
+                  <Button size="lg" asChild className="hover-glow font-medium  w-full sm:w-auto">
                     <Link href="#projects">
                       View Work <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button variant="outline" size="lg" asChild className="hover-glow font-medium cursor-magnetic w-full sm:w-auto">
+                  <Button variant="outline" size="lg" asChild className="hover-glow font-medium  w-full sm:w-auto">
                     <Link href="#contact">Contact Me</Link>
                   </Button>
-                  <Button variant="ghost" size="lg" asChild className="hover-glow font-medium cursor-magnetic w-full sm:w-auto">
+                  <Button variant="ghost" size="lg" asChild className="hover-glow font-medium  w-full sm:w-auto">
                     <Link href={getImagePath("images/NMM_Resume_Updated.pdf")} target="_blank">
                       Download Resume
                     </Link>
@@ -206,7 +206,7 @@ export default function Home() {
 
             {/* Expertise Cards - Core Areas */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced ">
                 <Code2 className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl font-semibold mb-3">Full-Stack Vertical Development</h3>
                 <p className="text-muted-foreground mb-3 font-light leading-relaxed">
@@ -217,7 +217,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced ">
                 <Server className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl font-semibold mb-3">Cloud Infrastructure</h3>
                 <p className="text-muted-foreground mb-3 font-light leading-relaxed">
@@ -228,7 +228,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced ">
                 <Database className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl font-semibold mb-3">Mathematical Modeling</h3>
                 <p className="text-muted-foreground mb-3 font-light leading-relaxed">
@@ -239,7 +239,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced cursor-magnetic">
+              <div className="rounded-lg bg-card/50 text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient group p-6 project-card-enhanced ">
                 <div className="h-10 w-10 mb-4 text-primary group-hover:scale-110 transition-transform duration-300 flex items-center justify-center border border-primary/20 rounded-lg">
                   <span className="text-lg font-semibold">AI</span>
                 </div>
@@ -428,13 +428,13 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <Linkedin className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://www.linkedin.com/in/nataly-smith/" className="hover:text-primary transition-colors cursor-magnetic">
+                  <Link href="https://www.linkedin.com/in/nataly-smith/" className="hover:text-primary transition-colors ">
                     linkedin.com/in/nataly-smith/
                   </Link>
                 </div>
                 <div className="flex items-center gap-3">
                   <Github className="h-5 w-5 text-muted-foreground" />
-                  <Link href="https://github.com/astrogirlnim" className="hover:text-primary transition-colors cursor-magnetic">
+                  <Link href="https://github.com/astrogirlnim" className="hover:text-primary transition-colors ">
                     github.com/astrogirlnim
                   </Link>
                 </div>
@@ -451,7 +451,7 @@ export default function Home() {
                   Ready to discuss your next project? I'd love to hear from you.
                 </p>
                 <div className="space-y-3 sm:space-y-4">
-                  <Button size="lg" asChild className="hover-glow cursor-magnetic w-full sm:w-auto">
+                  <Button size="lg" asChild className="hover-glow  w-full sm:w-auto">
                     <Link href="mailto:nmmsoftware@gmail.com">
                       <Mail className="mr-2 h-5 w-5" />
                       Send me an email
@@ -461,7 +461,7 @@ export default function Home() {
                     Click the button above to open your email client, or reach out to me directly at{" "}
                     <Link 
                       href="mailto:nmmsoftware@gmail.com" 
-                      className="text-primary hover:underline font-medium cursor-magnetic"
+                      className="text-primary hover:underline font-medium "
                     >
                       nmmsoftware@gmail.com
                     </Link>
@@ -484,19 +484,19 @@ export default function Home() {
             © {new Date().getFullYear()} Nataly Smith • Built with precision and purpose
           </div>
           <div className="flex items-center gap-3 sm:gap-4">
-            <Button variant="ghost" size="icon" asChild className="cursor-magnetic">
+            <Button variant="ghost" size="icon" asChild className="">
               <Link href="https://github.com/astrogirlnim">
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" asChild className="cursor-magnetic">
+            <Button variant="ghost" size="icon" asChild className="">
               <Link href="https://www.linkedin.com/in/nataly-smith/">
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
-            <Button variant="ghost" size="icon" asChild className="cursor-magnetic">
+            <Button variant="ghost" size="icon" asChild className="">
               <Link href="mailto:nmmsoftware@gmail.com">
                 <Mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>

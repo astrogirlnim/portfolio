@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, tags, image, link }: ProjectCardProps) {
   const CardContent = () => (
-    <div className="group rounded-lg bg-card text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient overflow-hidden project-card-enhanced cursor-magnetic">
+    <div className="group rounded-lg bg-card text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient overflow-hidden project-card-enhanced ">
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={image}
