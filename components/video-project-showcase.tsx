@@ -1,3 +1,6 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -24,7 +27,12 @@ export default function VideoProjectShowcase({
   liveLinkText = "Live Demo",
   videoPosition = "left"
 }: VideoProjectShowcaseProps) {
+  const [isMounted, setIsMounted] = useState(false)
   const isVideoRight = videoPosition === "right"
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
   
   return (
     <div className="group transition-all duration-300 hover-glow overflow-hidden rounded-lg">
@@ -79,14 +87,20 @@ export default function VideoProjectShowcase({
         <div className="lg:col-span-3 relative flex items-center justify-center p-4 lg:p-6 bg-gradient-to-br from-background/50 to-muted/20 rounded-lg overflow-hidden">
           <div className="relative w-full h-full flex items-center justify-center">
             <div className="w-full h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] rounded-lg overflow-hidden shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
-              <iframe
-                src={video}
-                className="w-full h-full border-0 rounded-lg"
-                title={`${title} Demo Video`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              />
+              {isMounted ? (
+                <iframe
+                  src={video}
+                  className="w-full h-full border-0 rounded-lg"
+                  title={`${title} Demo Video`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen={true}
+                />
+              ) : (
+                <div className="w-full h-full bg-muted/20 rounded-lg flex items-center justify-center">
+                  <div className="text-muted-foreground">Loading video...</div>
+                </div>
+              )}
             </div>
           </div>
         </div>
