@@ -23,9 +23,15 @@ const resumeData = {
   },
   experience: [
     {
+      company: "Function Health",
+      role: "Senior AI Platform Developer",
+      period: "August 2025 - Present",
+      location: "Remote"
+    },
+    {
       company: "Gauntlet AI",
       role: "Fellowship: Cohort II AI Challenger",
-      period: "June 2025 - Present",
+      period: "June 2025 - August 2025",
       location: "Austin, TX"
     },
     {
@@ -58,12 +64,12 @@ const resumeData = {
 
 const commands = {
   help: "Available commands: help, about, skills, experience, education, contact, clear, summary",
-  about: "AI Engineer & Senior Software Developer specializing in full-stack development, mathematical modeling, and cloud infrastructure at GauntletAI.",
+  about: "AI Engineer & Senior Software Developer specializing in full-stack development, mathematical modeling, and cloud infrastructure.",
   skills: "Core expertise: Python, C#, AI/ML (PyTorch, TensorFlow), Cloud Platforms (AWS, GCP, Azure), and modern frameworks like .NET, React, and Flask.",
-  experience: "4+ years spanning AI fellowship at GauntletAI, Senior Developer at Bruker Cellular Analysis, and Systems Engineering at McMaster-Carr.",
+  experience: "4+ years spanning Senior AI Platform Dev at Function Health, AI fellowship at GauntletAI, Senior Developer at Bruker Cellular Analysis, and Systems Engineering at McMaster-Carr.",
   education: "Bachelor of Science in Biomedical Engineering from Yale University (2017-2021) with GPA 3.64, focused on biocomputation and research.",
   contact: `Email: ${resumeData.about.email} | Phone: ${resumeData.about.phone} | LinkedIn: ${resumeData.about.linkedin} | GitHub: ${resumeData.about.github}`,
-  summary: "Nataly Smith - AI Engineer with 4+ years experience in full-stack development, mathematical modeling, and cloud infrastructure, currently developing cutting-edge AI applications at GauntletAI."
+  summary: "Nataly Smith - AI Engineer with 4+ years experience in full-stack development, mathematical modeling, and cloud infrastructure, currently developing cutting-edge AI applications at Function Health."
 }
 
 interface TerminalLine {

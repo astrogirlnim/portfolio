@@ -3,7 +3,19 @@ import { Badge } from "@/components/ui/badge"
 
 const timelineItems = [
   {
-    year: "June 2025 - Present",
+    year: "August 2025 - Present",
+    role: "Senior Software Developer, AI Platform",
+    company: "Function Health",
+    location: "Austin, TX",
+    description: "Developing and integrating LLMs and agentic workflows into modern applications.",
+    achievements: [
+      "Optimization of LLM-based agentic workflows for improved productivity and efficiency.",
+      "Development of customer-facing applications that leverage LLMs and agentic workflows.",
+      "Specializing in advanced AI-first development of enterprise grade applications.",
+    ],
+  },
+  {
+    year: "June 2025 - August 2025",
     role: "Fellowship: Cohort II AI Challenger",
     company: "Gauntlet AI",
     location: "Austin, TX",

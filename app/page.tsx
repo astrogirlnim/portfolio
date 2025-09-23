@@ -30,7 +30,7 @@ export default function Home() {
       <header className="fixed top-0 w-full border-b border-border/40 backdrop-blur-sm z-50">
         <div className="container flex items-center justify-between h-16">
           <Link href="#hero" className="font-mono text-lg font-bold hover:text-primary transition-colors ">
-            NATALY.DEV
+            NATALY SMITH
           </Link>
           
           {/* Desktop Navigation - unchanged */}
