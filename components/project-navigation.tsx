@@ -27,13 +27,9 @@ export default function ProjectNavigation() {
 
   // Function to scroll to a specific section
   const scrollToSection = useCallback((index: number) => {
-    console.log(`[ProjectNavigation] Scrolling to section ${index}: ${NAVIGATION_IDS[index]}`)
-    
     if (index >= 0 && index < NAVIGATION_IDS.length) {
       const element = document.getElementById(NAVIGATION_IDS[index])
       if (element) {
-        console.log(`[ProjectNavigation] Found element ${NAVIGATION_IDS[index]}, scrolling...`)
-        
         // Set flag to prevent intersection observer from interfering
         setIsProgrammaticScroll(true)
         setCurrentSectionIndex(index)
@@ -47,24 +43,19 @@ export default function ProjectNavigation() {
         // Clear the flag after scroll animation completes
         setTimeout(() => {
           setIsProgrammaticScroll(false)
-          console.log(`[ProjectNavigation] Programmatic scroll completed, re-enabling observer`)
         }, 1000) // Give enough time for smooth scroll to complete
-      } else {
-        console.warn(`[ProjectNavigation] Element with ID ${NAVIGATION_IDS[index]} not found`)
       }
     }
   }, [])
 
   // Navigate to previous section
   const navigateToPrevious = useCallback(() => {
-    console.log(`[ProjectNavigation] Navigate to previous from index ${currentSectionIndex}`)
     const prevIndex = currentSectionIndex > 0 ? currentSectionIndex - 1 : NAVIGATION_IDS.length - 1
     scrollToSection(prevIndex)
   }, [currentSectionIndex, scrollToSection])
 
   // Navigate to next section
   const navigateToNext = useCallback(() => {
-    console.log(`[ProjectNavigation] Navigate to next from index ${currentSectionIndex}`)
     const nextIndex = currentSectionIndex < NAVIGATION_IDS.length - 1 ? currentSectionIndex + 1 : 0
     scrollToSection(nextIndex)
   }, [currentSectionIndex, scrollToSection])
@@ -72,9 +63,6 @@ export default function ProjectNavigation() {
   // Keyboard event handler
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      // Handle arrow keys globally when on the page
-      console.log(`[ProjectNavigation] Key pressed: ${event.key}, target:`, event.target)
-      
       // Check if the event is coming from an input, textarea, or contenteditable element
       const target = event.target as HTMLElement
       const isInputElement = target && (
@@ -86,17 +74,14 @@ export default function ProjectNavigation() {
       
       // Don't interfere with typing in input fields
       if (isInputElement) {
-        console.log(`[ProjectNavigation] Ignoring key press in input element:`, target.tagName)
         return
       }
       
       if (event.key === "ArrowUp") {
         event.preventDefault()
-        console.log(`[ProjectNavigation] Handling ArrowUp navigation`)
         navigateToPrevious()
       } else if (event.key === "ArrowDown") {
         event.preventDefault()
-        console.log(`[ProjectNavigation] Handling ArrowDown navigation`)
         navigateToNext()
       }
     }
@@ -112,8 +97,6 @@ export default function ProjectNavigation() {
 
   // Intersection Observer to track which section is currently visible
   useEffect(() => {
-    console.log("[ProjectNavigation] Setting up intersection observer")
-    
     const observerOptions = {
       root: null,
       rootMargin: "-40% 0px -40% 0px", // Only trigger when section is in the middle 20% of viewport
@@ -123,7 +106,6 @@ export default function ProjectNavigation() {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
       // Don't update during programmatic scrolling
       if (isProgrammaticScroll) {
-        console.log(`[ProjectNavigation] Ignoring intersection changes during programmatic scroll`)
         return
       }
       
@@ -131,7 +113,6 @@ export default function ProjectNavigation() {
         if (entry.isIntersecting) {
           const sectionIndex = NAVIGATION_IDS.indexOf(entry.target.id)
           if (sectionIndex !== -1 && sectionIndex !== currentSectionIndex) {
-            console.log(`[ProjectNavigation] Section ${entry.target.id} is now visible, updating index to ${sectionIndex}`)
             setCurrentSectionIndex(sectionIndex)
           }
         }
@@ -145,16 +126,12 @@ export default function ProjectNavigation() {
       const element = document.getElementById(id)
       if (element) {
         observer.observe(element)
-        console.log(`[ProjectNavigation] Observing element: ${id}`)
-      } else {
-        console.warn(`[ProjectNavigation] Could not find element to observe: ${id}`)
       }
     })
 
     // Cleanup observer on component unmount
     return () => {
       observer.disconnect()
-      console.log("[ProjectNavigation] Intersection observer disconnected")
     }
   }, [currentSectionIndex, isProgrammaticScroll])
 
