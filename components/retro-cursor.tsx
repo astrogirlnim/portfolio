@@ -12,9 +12,19 @@ export default function RetroCursor() {
       return
     }
 
+    let rafId: number
+    
     const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
-      setIsVisible(true)
+      // Cancel previous animation frame if still pending
+      if (rafId) {
+        cancelAnimationFrame(rafId)
+      }
+      
+      // Use requestAnimationFrame for smooth updates
+      rafId = requestAnimationFrame(() => {
+        setPosition({ x: e.clientX, y: e.clientY })
+        setIsVisible(true)
+      })
     }
 
     const handleMouseLeave = () => setIsVisible(false)
@@ -25,6 +35,9 @@ export default function RetroCursor() {
     document.addEventListener("mouseenter", handleMouseEnter)
 
     return () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId)
+      }
       window.removeEventListener("mousemove", updatePosition)
       document.removeEventListener("mouseleave", handleMouseLeave)
       document.removeEventListener("mouseenter", handleMouseEnter)
