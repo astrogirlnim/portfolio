@@ -70,7 +70,7 @@ export default function RetroCursor() {
     <div ref={cursorRef} className="site-cursor" aria-hidden="true">
       <svg viewBox="0 0 32 32" className="site-cursor-mark">
         <circle className="site-cursor-ring" cx="16" cy="16" r="11" />
-        <circle className="site-cursor-core" cx="16" cy="16" r="1.6" />
+        <circle className="site-cursor-core" cx="16" cy="16" r="2.4" />
         <path className="site-cursor-ticks" d="M16 2v6M16 24v6M2 16h6M24 16h6" />
       </svg>
     </div>
