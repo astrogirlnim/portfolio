@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight, Github, Linkedin, Mail, Menu, X, Phone } from "lucide-react"
+import { ArrowRight, Github, Linkedin, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import ProjectCard from "@/components/project-card"
 import VideoProjectShowcase from "@/components/video-project-showcase"
@@ -11,19 +11,11 @@ import WebDemoProjectShowcase from "@/components/web-demo-project-showcase"
 import SkillGrid from "@/components/skill-grid"
 import Timeline from "@/components/timeline"
 import EducationSection from "@/components/education-section"
-import ThemeToggle from "@/components/theme-toggle"
 import ProjectNavigation from "@/components/project-navigation"
 import InteractiveTerminal from "@/components/interactive-terminal"
+import SiteHeader from "@/components/site-header"
+import SiteFooter from "@/components/site-footer"
 import { getImagePath, getAssetPath } from "@/lib/utils"
-import { useState } from "react"
-
-const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
-]
 
 const rangeEntries = [
   { id: "01", field: "AI platform", note: "Function Health" },
@@ -65,65 +57,9 @@ function RangePlate() {
 }
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const closeMobileMenu = () => setIsMobileMenuOpen(false)
-
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="fixed top-0 z-50 w-full border-b border-border/70 bg-background/80 backdrop-blur-xl">
-        <div className="container flex h-14 items-center justify-between sm:h-16">
-          <Link href="#hero" className="font-mono text-[0.7rem] font-medium tracking-[0.28em] transition-colors hover:text-primary sm:text-xs">
-            N. SMITH · VOL. 01
-          </Link>
-
-          <nav className="hidden items-center gap-5 lg:gap-7 md:flex">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="font-mono text-xs tracking-[0.12em] uppercase transition-colors hover:text-primary"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="flex items-center gap-2 sm:gap-4">
-            <ThemeToggle />
-            <Button variant="outline" size="sm" asChild className="hidden font-mono text-xs tracking-widest uppercase md:flex">
-              <Link href="#contact">Get in touch</Link>
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
-          </div>
-        </div>
-
-        {isMobileMenuOpen && (
-          <div className="absolute inset-x-0 top-full z-50 border-b border-border bg-background md:hidden">
-            <nav className="container py-3">
-              <div className="flex flex-col">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="py-3 font-mono text-sm tracking-widest uppercase"
-                    onClick={closeMobileMenu}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            </nav>
-          </div>
-        )}
-      </header>
+      <SiteHeader />
 
       <main>
         <section id="hero" className="flex min-h-[100svh] flex-col items-start justify-center gap-8 pb-16 pt-20 sm:pt-24">
@@ -162,12 +98,12 @@ export default function Home() {
                 </p>
                 <div className="hero-animate-delay-3 mt-8 flex flex-col flex-wrap gap-3 sm:flex-row">
                   <Button size="lg" asChild className="hover-glow w-full font-mono text-xs tracking-widest uppercase sm:w-auto">
-                    <Link href="#projects">
+                    <Link href="/#projects">
                       View projects <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                   <Button variant="outline" size="lg" asChild className="hover-glow w-full font-mono text-xs tracking-widest uppercase sm:w-auto">
-                    <Link href="#contact">Contact</Link>
+                    <Link href="/#contact">Contact</Link>
                   </Button>
                   <Button variant="ghost" size="lg" asChild className="hover-glow w-full font-mono text-xs tracking-widest uppercase sm:w-auto">
                     <Link href={getImagePath("images/NMM_Resume_Updated.pdf")} target="_blank">
@@ -445,34 +381,7 @@ export default function Home() {
       </main>
 
       <ProjectNavigation />
-
-      <footer className="py-6 sm:py-8">
-        <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
-          <div className="text-center font-mono text-[0.65rem] tracking-[0.18em] uppercase text-muted-foreground sm:text-xs md:text-left">
-            © {new Date().getFullYear()} Nataly Smith · Vol. 01
-          </div>
-          <div className="flex items-center gap-3 sm:gap-4">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/astrogirlnim">
-                <Github className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://www.linkedin.com/in/nataly-smith/">
-                <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="mailto:nmmsoftware@gmail.com">
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

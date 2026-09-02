@@ -69,11 +69,12 @@ const resumeData = {
 }
 
 const commands = {
-  help: "Available commands: help, about, skills, experience, education, contact, clear, summary",
+  help: "Available commands: help, about, skills, experience, education, blog, contact, clear, summary",
   about: "Senior Software Engineer, AI Platform at Function Health. Yale Biomedical Engineering. Work across AI, infrastructure, genomics, and scientific computing.",
   skills: "Core expertise: Python, C#, AI/ML (PyTorch, TensorFlow), Cloud Platforms (AWS, GCP, Azure), and modern frameworks like .NET, React, and Flask.",
   experience: "Function Health (Senior Software Engineer, AI Platform), Gauntlet AI fellowship, Bruker Cellular Analysis, McMaster-Carr, and co-founder of SYMon Holdings.",
   education: "Bachelor of Science in Biomedical Engineering from Yale University (2017-2021) with GPA 3.64, focused on biocomputation and research.",
+  blog: "Weekly log at /blog/. One post a week on AI, systems, formal methods, and science.",
   contact: `Email: ${resumeData.about.email} | Phone: ${resumeData.about.phone} | LinkedIn: ${resumeData.about.linkedin} | GitHub: ${resumeData.about.github}`,
   summary: "Ambitious software at the intersection of AI, systems, and science. Senior Software Engineer, AI Platform at Function Health. Yale BME. Austin.",
 }
