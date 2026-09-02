@@ -1,49 +1,78 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+
+function isFinePointer() {
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches
+}
 
 export default function RetroCursor() {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
-  const [isVisible, setIsVisible] = useState(false)
+  const cursorRef = useRef<HTMLDivElement>(null)
+  const [enabled, setEnabled] = useState(false)
 
   useEffect(() => {
-    const isCoarseOrNarrow = () =>
-      window.matchMedia("(max-width: 767px)").matches ||
-      window.matchMedia("(hover: none) and (pointer: coarse)").matches
+    if (!isFinePointer()) return
+    setEnabled(true)
 
-    if (isCoarseOrNarrow() || "ontouchstart" in window || navigator.maxTouchPoints > 0) {
-      return
+    const media = window.matchMedia("(hover: hover) and (pointer: fine)")
+    const onMedia = () => {
+      if (!media.matches) setEnabled(false)
     }
+    media.addEventListener("change", onMedia)
 
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
-      setIsVisible(true)
-    }
-
-    const handleMouseLeave = () => setIsVisible(false)
-    const handleMouseEnter = () => setIsVisible(true)
-
-    window.addEventListener("mousemove", updatePosition)
-    document.addEventListener("mouseleave", handleMouseLeave)
-    document.addEventListener("mouseenter", handleMouseEnter)
-
-    return () => {
-      window.removeEventListener("mousemove", updatePosition)
-      document.removeEventListener("mouseleave", handleMouseLeave)
-      document.removeEventListener("mouseenter", handleMouseEnter)
-    }
+    return () => media.removeEventListener("change", onMedia)
   }, [])
 
-  if (!isVisible) return null
+  useEffect(() => {
+    if (!enabled) return
+    const node = cursorRef.current
+    if (!node) return
+
+    const setMode = (target: EventTarget | null) => {
+      const el = target instanceof Element ? target : null
+      if (!el) {
+        node.dataset.mode = "default"
+        return
+      }
+      if (el.closest("input, textarea, select, [contenteditable='true']")) {
+        node.dataset.mode = "text"
+        return
+      }
+      if (el.closest("a, button, [role='button'], label, summary, .hero-portrait")) {
+        node.dataset.mode = "pointer"
+        return
+      }
+      node.dataset.mode = "default"
+    }
+
+    const onMove = (event: MouseEvent) => {
+      node.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`
+      node.dataset.on = "true"
+      setMode(event.target)
+    }
+
+    const onLeave = () => {
+      node.dataset.on = "false"
+    }
+
+    window.addEventListener("mousemove", onMove, { passive: true })
+    document.addEventListener("mouseleave", onLeave)
+
+    return () => {
+      window.removeEventListener("mousemove", onMove)
+      document.removeEventListener("mouseleave", onLeave)
+    }
+  }, [enabled])
+
+  if (!enabled) return null
 
   return (
-    <div
-      className="simple-cursor"
-      style={{
-        left: position.x,
-        top: position.y,
-      }}
-      aria-hidden="true"
-    />
+    <div ref={cursorRef} className="site-cursor" aria-hidden="true">
+      <svg viewBox="0 0 32 32" className="site-cursor-mark">
+        <circle className="site-cursor-ring" cx="16" cy="16" r="11" />
+        <circle className="site-cursor-core" cx="16" cy="16" r="1.6" />
+        <path className="site-cursor-ticks" d="M16 2v6M16 24v6M2 16h6M24 16h6" />
+      </svg>
+    </div>
   )
 }

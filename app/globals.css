@@ -84,33 +84,79 @@
     position: relative;
   }
   
-  /* Simple cursor using theme colors */
-  .simple-cursor {
+  .site-cursor {
     position: fixed;
-    width: 16px;
-    height: 16px;
-    background: hsl(var(--primary));
-    border-radius: 50%;
-    pointer-events: none;
+    top: 0;
+    left: 0;
     z-index: 9999;
-    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    margin: -16px 0 0 -16px;
+    pointer-events: none;
+    opacity: 0;
+    color: hsl(var(--primary));
+    mix-blend-mode: difference;
+    will-change: transform;
   }
-  
-  /* Hide cursor on touch devices */
-  @media (hover: none) and (pointer: coarse) {
-    .simple-cursor {
-      display: none;
-    }
-    
-    *, *::before, *::after {
-      cursor: auto !important;
+
+  .site-cursor[data-on="true"] {
+    opacity: 1;
+  }
+
+  .site-cursor-mark {
+    display: block;
+    width: 32px;
+    height: 32px;
+    overflow: visible;
+  }
+
+  .site-cursor-ring {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    transform-origin: center;
+    transform-box: fill-box;
+    transform: scale(0.55);
+    transition: transform 0.22s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.22s ease;
+  }
+
+  .site-cursor-core {
+    fill: currentColor;
+  }
+
+  .site-cursor-ticks {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    opacity: 0;
+    transition: opacity 0.22s ease;
+  }
+
+  .site-cursor[data-mode="pointer"] .site-cursor-ring {
+    transform: scale(1);
+  }
+
+  .site-cursor[data-mode="pointer"] .site-cursor-ticks {
+    opacity: 1;
+  }
+
+  .site-cursor[data-mode="text"] {
+    opacity: 0;
+  }
+
+  @media (hover: none), (pointer: coarse) {
+    .site-cursor {
+      display: none !important;
     }
   }
-  
-  /* Hide default cursor on desktop */
+
   @media (hover: hover) and (pointer: fine) {
-    *, *::before, *::after {
+    html, body, * {
       cursor: none !important;
+    }
+
+    input, textarea, select, [contenteditable="true"] {
+      cursor: text !important;
     }
   }
   
@@ -374,7 +420,8 @@ div[id="additional-projects"] {
     display: none;
   }
 
-  .simple-cursor {
+  .simple-cursor,
+  .site-cursor {
     display: none !important;
   }
 
@@ -407,5 +454,10 @@ div[id="additional-projects"] {
   .hero-portrait img {
     transition: none !important;
     transform: none !important;
+  }
+
+  .site-cursor-ring,
+  .site-cursor-ticks {
+    transition: none !important;
   }
 }
