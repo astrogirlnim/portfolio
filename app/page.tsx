@@ -128,23 +128,8 @@ export default function Home() {
       <main>
         <section id="hero" className="flex min-h-[100svh] flex-col items-start justify-center gap-8 pb-16 pt-20 sm:pt-24">
           <div className="container">
-            <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
-              <div className="flex justify-center order-1 lg:col-span-4 lg:order-none">
-                <figure className="hero-animate-delay-2 w-full max-w-[240px] sm:max-w-[320px] lg:max-w-none">
-                  <Image
-                    src={getImagePath("images/Profile_pic_new.jpg")}
-                    alt="Nataly Smith"
-                    width={450}
-                    height={600}
-                    className="h-auto w-full border border-border object-cover"
-                    priority
-                  />
-                  <figcaption className="fig-kicker mt-3">
-                    FIG. 00 · Portrait, Austin
-                  </figcaption>
-                </figure>
-              </div>
-              <div className="flex flex-col justify-center order-2 lg:col-span-8 lg:order-none">
+            <div className="grid w-full grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+              <div className="order-2 flex min-w-0 flex-col justify-center lg:order-1 lg:col-span-7">
                 <p className="hero-animate fig-kicker mb-4">01 · Intro</p>
                 <h1 className="hero-animate-delay-1 font-display text-[2.6rem] leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
                   Hi, I&apos;m Nataly Smith.
@@ -177,6 +162,21 @@ export default function Home() {
                 <div className="hero-animate-delay-3 mt-8 hidden lg:block">
                   <InteractiveTerminal />
                 </div>
+              </div>
+              <div className="order-1 flex min-w-0 justify-center lg:order-2 lg:col-span-5">
+                <figure className="hero-animate-delay-2 w-full max-w-[420px] lg:max-w-none">
+                  <Image
+                    src={getImagePath("images/Profile_pic_new.jpg")}
+                    alt="Nataly Smith"
+                    width={681}
+                    height={1024}
+                    className="h-auto w-full border border-border object-cover"
+                    priority
+                  />
+                  <figcaption className="fig-kicker mt-3">
+                    FIG. 00 · Portrait, Austin
+                  </figcaption>
+                </figure>
               </div>
             </div>
           </div>
