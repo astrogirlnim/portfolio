@@ -27,7 +27,7 @@ const skills = [
 
 export default function SkillGrid() {
   return (
-    <div>
+    <div className="divide-y divide-border border-y border-border">
       {skills.map((skillGroup) => (
         <div
           key={skillGroup.category}

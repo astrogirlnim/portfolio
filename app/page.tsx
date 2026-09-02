@@ -34,40 +34,6 @@ const rangeEntries = [
   { id: "06", field: "Full-stack", note: "Web, mobile, desktop" },
 ]
 
-const saturdayRungs = [
-  { id: "R0", field: "Resolution", note: "Soundness and completeness, certified" },
-  { id: "R1", field: "Haken PHP", note: "Exponential pigeonhole bound, active" },
-  { id: "R2", field: "Width machinery", note: "Ben-Sasson-Wigderson, Tseitin" },
-  { id: "R3", field: "Above resolution", note: "One certified bound past resolution" },
-  { id: "R4", field: "Open frontier", note: "AC0[p]-Frege and beyond" },
-  { id: "R5", field: "Cook-Reckhow", note: "Super-polynomial bounds imply P != NP" },
-]
-
-function SaturdayLadderPlate() {
-  return (
-    <div className="border border-border">
-      <div className="flex items-baseline justify-between border-b border-border px-5 py-3">
-        <span className="fig-kicker">Ladder</span>
-        <span className="fig-kicker">Lean 4</span>
-      </div>
-      <ol>
-        {saturdayRungs.map((rung) => (
-          <li
-            key={rung.id}
-            className="grid grid-cols-[2.75rem_1fr] items-start border-b border-border px-5 py-3.5 last:border-b-0"
-          >
-            <span className="fig-kicker pt-1">{rung.id}</span>
-            <div className="min-w-0">
-              <p className="font-display text-lg leading-tight tracking-tight">{rung.field}</p>
-              <p className="mt-1 text-sm leading-snug text-muted-foreground">{rung.note}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  )
-}
-
 function RangePlate() {
   return (
     <figure className="w-full max-w-md lg:max-w-none lg:justify-self-end">
@@ -192,7 +158,7 @@ export default function Home() {
                 Senior Software Engineer specializing in full-stack app development, with expertise in cloud technologies, mathematical modeling, and pipeline architecture. 
                 </p>
                 <p className="mt-3 font-mono text-xs tracking-[0.2em] uppercase text-muted-foreground">
-                  Austin, Texas · Function Health · Yale Alumni
+                  Austin, Texas · Yale Alumni
                 </p>
                 <div className="hero-animate-delay-3 mt-8 flex flex-col flex-wrap gap-3 sm:flex-row">
                   <Button size="lg" asChild className="hover-glow w-full font-mono text-xs tracking-widest uppercase sm:w-auto">
@@ -278,11 +244,13 @@ export default function Home() {
                 figureLabel="FIG. 02"
                 title="SATurday"
                 why="Certified proof complexity, or it does not exist."
-                description="A local research program climbing toward P vs NP. Each rung is a falsifiable statement about propositional proof systems. Results are Lean 4 certificates with no sorries. SAT runs calibrate conjectures under hard budgets and never become axioms."
-                tags={["Lean 4", "Proof Complexity", "SAT", "Formal Verification", "P vs NP", "Python"]}
-                panel={<SaturdayLadderPlate />}
+                description="A zero-cost research platform toward P vs NP. Formal proofs in Lean 4. SAT experiments in Python. Each rung is a falsifiable statement about propositional proof systems. Results are Lean 4 certificates with no sorries. SAT runs calibrate conjectures under hard budgets and never become axioms."
+                tags={["Lean 4", "Proof Complexity", "SAT", "DRAT/LRAT", "Formal Verification", "P vs NP", "Python"]}
+                images={[getAssetPath("images/SATurday_thumbnail.png")]}
                 githubLink="https://github.com/astrogirlnim/SATurday"
-                imagePosition="right"
+                imagePosition="left"
+                featured
+                status="Ongoing"
               />
             </div>
 
