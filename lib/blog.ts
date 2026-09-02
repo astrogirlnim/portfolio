@@ -1,3 +1,12 @@
+export type BlogSection = {
+  heading?: string
+  paragraphs: string[]
+  bullets?: {
+    lead: string
+    items: string[]
+  }
+}
+
 export type BlogPost = {
   slug: string
   title: string
@@ -8,7 +17,8 @@ export type BlogPost = {
   nameNote?: string
   image?: string
   imageCaption?: string
-  paragraphs: string[]
+  sections?: BlogSection[]
+  paragraphs?: string[]
   bullets?: {
     lead: string
     items: string[]
@@ -40,33 +50,56 @@ const posts: BlogPost[] = [
       "**SATurday** is SAT (Boolean satisfiability, the canonical NP-complete problem) plus **Saturday**: weekend side research I do for love and fun.",
     image: "images/blog/issue-01-saturday.jpg",
     imageCaption: "FIG. B1 · The pun",
-    paragraphs: [
-      "I've been meaning to write in public for a while. I want to keep a regular journal of what I'm actually building and investigating, so here it is: welcome to the ongoings of Nataly's time!",
-      "I would like to begin the blog series by introducing you to [SATurday](https://github.com/astrogirlnim/SATurday), a project based around a mathematical question which has been pestering engineers and mathematicians since the 1970s. It's a common question at the forefront of computer science, textbooks, forums, and the like.",
-      "The premise is as follows: is a proposed solution that can be checked in polynomial time solvable in the same?",
-      "Given that math is a language entrenched in nearly everything we do, answering this question has deep implications. As an example, cryptographic algorithms rely on the guarantee of their difficulty to solve. **If P = NP is proven, their security is brought into question.** To that end, several theorists have explored and attempted different approaches to this problem, catalogued nicely [here](https://mikinty.github.io/P-vs-NP/).",
-      "P.S. A conjecture of P=NP does not automatically imply that cryptographic algorithms are insecure. They can still take enormous amounts of time (especially those with large polynomial exponents). ",
-      "The advent of AI multiplies this research in a few ways. In general, I believe AI to be a force multiplier for human intelligence, and science and research to be one of the best applications for it. Hence, I am attacking this problem as if I had a swarm of researchers to aggregate knowledge accross different domains and fields.",
-      "That being said, I'm under no illusion that throwing AI at P vs NP makes the problem any less intractable - just more accessible to a novice, single researcher like me. This is why SATurday is deliberately built with the assumption that most conjectures will be wrong. AI will make it easier to find failures faster.",
-      "[SATurday](https://github.com/astrogirlnim/SATurday) is built around a central tenant that **if a claim about proof complexity isn't certified in Lean 4 (our programming language of choice), it doesn't count.**",
-      "We build a [ladder of conjectures](https://github.com/astrogirlnim/SATurday/blob/main/docs/ladder/ladder.md) based on this premise, and each step on the ladder is and should be falsifiable. Thereafter, we simulate a research team of agents with a custom harness, run on loop (or with human intervention) towards a single goal.",
-      "Necessarily, our SAT experiments can stress-test ideas under tight budgets, but they never become axioms. I do not have an infinite compute budget, and am one person among many attempting this investigation. However, retaining a meaningful result is the part I care about. SATurday is the most extreme version of this rabbit-hole. It's slow, it's speculative, and it might go nowhere.",
-      "This blog is where I'll document my work while it's still messy. I don't expect perfection, but I require progress.",
-      "In the hopes that mathematicians more experienced than me will enjoy, and take some interest, thank you for reading! Issue 01.",
+    sections: [
+      {
+        heading: "Hello World",
+        paragraphs: [
+          "I've been meaning to write in public for a while. I want to keep a regular journal of what I'm actually building and investigating, so here it is: welcome to the ongoings of Nataly's time!",
+          "This blog is where I'll document my work while it's still messy. I don't expect perfection, but I require progress.",
+        ],
+      },
+      {
+        heading: "Th P vs NP question",
+        paragraphs: [
+          "The premise is as follows: is a proposed solution that can be checked in polynomial time solvable in the same?",
+          "Given that math is a language entrenched in nearly everything we do, answering this question has deep implications. As an example, cryptographic algorithms rely on the guarantee of their difficulty to solve. **If P = NP is proven, their security is brought into question.** To that end, several theorists have explored and attempted different approaches to this problem, catalogued nicely [here](https://mikinty.github.io/P-vs-NP/).",
+          "P.S. A conjecture of P=NP does not automatically imply that cryptographic algorithms are insecure. They can still take enormous amounts of time (especially those with large polynomial exponents). ",
+        ],
+      },
+      {
+        heading: "SATurday",
+        paragraphs: [
+          "I would like to begin the blog series by introducing you to [SATurday](https://github.com/astrogirlnim/SATurday), a project based around a mathematical question which has been pestering engineers and mathematicians since the 1970s. It's a common question at the forefront of computer science, textbooks, forums, and the like.",
+          "[SATurday](https://github.com/astrogirlnim/SATurday) is built around a central tenant that **if a claim about proof complexity isn't certified in Lean 4 (our programming language of choice), it doesn't count.**",
+        ],
+      },
+      {
+        heading: "AI and Math Research",
+        paragraphs: [
+          "The advent of AI multiplies this research in a few ways. In general, I believe AI to be a force multiplier for human intelligence, and science and research to be one of the best applications for it. Hence, I am attacking this problem as if I had a swarm of researchers to aggregate knowledge accross different domains and fields.",
+          "That being said, I'm under no illusion that throwing AI at P vs NP makes the problem any less intractable - just more accessible to a novice, single researcher like me. This is why SATurday is deliberately built with the assumption that most conjectures will be wrong. AI will make it easier to find failures faster.",
+          "We build a [ladder of conjectures](https://github.com/astrogirlnim/SATurday/blob/main/docs/ladder/ladder.md) based on this premise, and each step on the ladder is and should be falsifiable. Thereafter, we simulate a research team of agents with a custom harness, run on loop (or with human intervention) towards a single goal.",
+          "Necessarily, our SAT experiments can stress-test ideas under tight budgets, but they never become axioms. I do not have an infinite compute budget, and am one person among many attempting this investigation. However, retaining a meaningful result is the part I care about. SATurday is the most extreme version of this rabbit-hole. It's slow, it's speculative, and it might go nowhere.",
+        ],
+        bullets: {
+          lead: "Latest on SATurday:",
+          items: [
+            `Full program reboot in August 2026 after an audit; earlier dead ends are in [postmortems](${saturdayPostmortems}), not quietly dropped.`,
+            `R0 (certified): resolution soundness and refutational completeness in [Lean 4](${saturdayResolution}), zero sorries.`,
+            `R1 (active): Haken's exponential pigeonhole bound. The family and non-vacuity witness are certified in [PHP.lean](${saturdayPhp}); the full bound sits in a quarantined Frontier namespace for now.`,
+            `R2 through R5 on deck: width machinery, a bound above resolution, AC0[p]-Frege, and the Cook-Reckhow bridge. See the [ladder](${saturdayLadder}).`,
+            `Prose-first pipeline: natural-language arguments with gap lists before formalization, in the spirit of the [OpenAI ten-proofs release](${openAiTenProofs}).`,
+            `Budgeted falsifier runs (Kissat, hard wall-clock caps). Artifacts are hash-addressed and never promoted to axioms.`,
+            `Session harness: one rung, one action per cycle (prove, formalize, falsify, or audit). Repo: [github.com/astrogirlnim/SATurday](${saturdayRepo}).`,
+          ],
+        },
+      },
+      {
+        paragraphs: [
+          "In the hopes that mathematicians more experienced than me will enjoy, and take some interest, thank you for reading! Issue 01.",
+        ],
+      },
     ],
-    bullets: {
-      lead: "Latest on SATurday:",
-      items: [
-        `Full program reboot in August 2026 after an audit; earlier dead ends are in [postmortems](${saturdayPostmortems}), not quietly dropped.`,
-        `R0 (certified): resolution soundness and refutational completeness in [Lean 4](${saturdayResolution}), zero sorries.`,
-        `R1 (active): Haken's exponential pigeonhole bound. The family and non-vacuity witness are certified in [PHP.lean](${saturdayPhp}); the full bound sits in a quarantined Frontier namespace for now.`,
-        `R2 through R5 on deck: width machinery, a bound above resolution, AC0[p]-Frege, and the Cook-Reckhow bridge. See the [ladder](${saturdayLadder}).`,
-        `Prose-first pipeline: natural-language arguments with gap lists before formalization, in the spirit of the [OpenAI ten-proofs release](${openAiTenProofs}).`,
-        `Budgeted falsifier runs (Kissat, hard wall-clock caps). Artifacts are hash-addressed and never promoted to axioms.`,
-        `Session harness: one rung, one action per cycle (prove, formalize, falsify, or audit). Repo: [github.com/astrogirlnim/SATurday](${saturdayRepo}).`,
-      ],
-    },
-    bulletInsertAfter: 5,
   },
 ]
 

@@ -91,28 +91,55 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </p>
           )}
 
-          <div className="space-y-6 border-t border-border pt-8">
-            {post.paragraphs.map((paragraph, index) => (
-              <div key={`${post.slug}-${index}`}>
-                <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
-                  {renderBlogText(paragraph)}
-                </p>
-                {post.bullets &&
-                  index === (post.bulletInsertAfter ?? post.paragraphs.length - 1) && (
-                    <div className="mt-6 border border-border px-5 py-4">
-                      <p className="fig-kicker mb-4">{post.bullets.lead}</p>
-                      <ul className="space-y-3 font-mono text-sm leading-relaxed text-muted-foreground">
-                        {post.bullets.items.map((item) => (
-                          <li key={item} className="flex gap-3">
-                            <span className="fig-kicker pt-0.5">·</span>
-                            <span>{renderBlogText(item)}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-              </div>
-            ))}
+          <div className="space-y-12 border-t border-border pt-8">
+            {post.sections
+              ? post.sections.map((section, sectionIndex) => (
+                  <section key={`${post.slug}-section-${sectionIndex}`} className="space-y-6">
+                    {section.heading && <p className="fig-kicker">{section.heading}</p>}
+                    {section.paragraphs.map((paragraph, index) => (
+                      <p
+                        key={`${post.slug}-${sectionIndex}-${index}`}
+                        className="text-lg leading-relaxed text-muted-foreground sm:text-xl"
+                      >
+                        {renderBlogText(paragraph)}
+                      </p>
+                    ))}
+                    {section.bullets && (
+                      <div className="border border-border px-5 py-4">
+                        <p className="fig-kicker mb-4">{section.bullets.lead}</p>
+                        <ul className="space-y-3 font-mono text-sm leading-relaxed text-muted-foreground">
+                          {section.bullets.items.map((item) => (
+                            <li key={item} className="flex gap-3">
+                              <span className="fig-kicker pt-0.5">·</span>
+                              <span>{renderBlogText(item)}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </section>
+                ))
+              : post.paragraphs?.map((paragraph, index) => (
+                  <div key={`${post.slug}-${index}`}>
+                    <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                      {renderBlogText(paragraph)}
+                    </p>
+                    {post.bullets &&
+                      index === (post.bulletInsertAfter ?? post.paragraphs!.length - 1) && (
+                        <div className="mt-6 border border-border px-5 py-4">
+                          <p className="fig-kicker mb-4">{post.bullets.lead}</p>
+                          <ul className="space-y-3 font-mono text-sm leading-relaxed text-muted-foreground">
+                            {post.bullets.items.map((item) => (
+                              <li key={item} className="flex gap-3">
+                                <span className="fig-kicker pt-0.5">·</span>
+                                <span>{renderBlogText(item)}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                  </div>
+                ))}
           </div>
           <div className="mt-12 border-t border-border pt-6">
             <Link
