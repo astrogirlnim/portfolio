@@ -46,13 +46,18 @@ export default function ImageProjectShowcase({
   const singleImage = hasImages && images.length === 1 ? images[0] : null
 
   return (
-    <figure className={featured ? "featured-project py-8 lg:py-12" : "border-t border-border py-8 lg:py-10"}>
+    <figure className={`py-8 lg:py-10 ${featured ? "" : "border-t border-border"}`}>
+      {featured && (
+        <div className="mb-6 flex items-baseline justify-between gap-4 border-y border-foreground py-2">
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-foreground">Current research</p>
+          {status && (
+            <p className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-foreground">{status}</p>
+          )}
+        </div>
+      )}
       <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10">
-        <div className={`order-1 flex flex-col justify-center py-2 lg:col-span-5 ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
-          <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
-            {figureLabel && <p className="fig-kicker">{figureLabel}</p>}
-            {status && <span className="featured-status">{status}</span>}
-          </div>
+        <div className={`order-1 flex flex-col py-0 lg:col-span-5 ${featured ? "justify-start" : "justify-center py-2"} ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
+          {figureLabel && <p className="fig-kicker mb-3">{figureLabel}</p>}
           <h3 className="mb-3 font-display text-3xl italic tracking-tight lg:text-4xl">{title}</h3>
           {why && (
             <p className="mb-3 font-display text-lg italic leading-relaxed text-foreground/90 lg:text-xl">
@@ -95,16 +100,14 @@ export default function ImageProjectShowcase({
           {panel ? (
             panel
           ) : singleImage ? (
-            <div className={featured ? "featured-project-media" : ""}>
-              <Image
-                src={singleImage}
-                alt={`${title} thumbnail`}
-                width={1536}
-                height={1024}
-                className="h-auto w-full border border-border object-contain"
-                priority
-              />
-            </div>
+            <Image
+              src={singleImage}
+              alt={`${title} thumbnail`}
+              width={1536}
+              height={1024}
+              className="h-auto w-full border border-border object-contain"
+              priority
+            />
           ) : hasImages ? (
           <Carousel
             className="w-full"
