@@ -1,17 +1,26 @@
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-const timelineItems = [
+interface TimelineItem {
+  year: string
+  role: string
+  company: string
+  location: string
+  description: string
+  achievements: string[]
+}
+
+const timelineItems: TimelineItem[] = [
   {
     year: "August 2025 - Present",
-    role: "Senior Software Developer, AI Platform",
+    role: "Senior Software Engineer, AI Platform",
     company: "Function Health",
     location: "Austin, TX",
-    description: "Developing and integrating LLMs and agentic workflows into modern applications.",
+    description: "Lead engineer on new AI platform projects. Currently using AI to build AI systems, integrating LLMs and agentic workflows into production applications.",
     achievements: [
-      "Optimization of LLM-based agentic workflows for improved productivity and efficiency.",
-      "Development of customer-facing applications that leverage LLMs and agentic workflows.",
-      "Specializing in advanced AI-first development of enterprise grade applications.",
+      "Lead engineer on new AI platform initiatives",
+      "Optimization of LLM-based agentic workflows for productivity and efficiency",
+      "Development of customer-facing applications that leverage LLMs and agentic workflows",
+      "Advanced AI-first development of enterprise-grade applications",
     ],
   },
   {
@@ -19,12 +28,11 @@ const timelineItems = [
     role: "Fellowship: Cohort II AI Challenger",
     company: "Gauntlet AI",
     location: "Austin, TX",
-    description: "Senior software engineer and second cohort member in highly selective AI training fellowship program.",
+    description: "Senior software engineer and second cohort member in a highly selective AI training fellowship program.",
     achievements: [
-      "Senior software engineer and second cohort member in highly selective AI training fellowship program",
-      "Developing and integrating LLMs and agentic workflows into modern applications",
-      "Collaborating with top-tier engineers on innovative AI-first projects and AI-assisted research",
-      "Specializing in advanced AI-first development of enterprise grade applications",
+      "Built and integrated LLMs and agentic workflows into modern applications",
+      "Collaborated with top-tier engineers on AI-first projects and AI-assisted research",
+      "Specialized in advanced AI-first development of enterprise-grade applications",
     ],
   },
   {
@@ -32,12 +40,14 @@ const timelineItems = [
     role: "Senior Software Developer",
     company: "Bruker Cellular Analysis",
     location: "Remote",
-    description: "Leading development of cloud-native applications and infrastructure automation tools.",
+    description: "Led development of cloud-native applications, infrastructure automation, and genomic sequencing systems.",
     achievements: [
-      "Completed full-scale Azure DevOps migration in just 3 months by coordinating team efforts and creating custom tools",
-      "Re-architectured long-running critical application, improving performance by 400% through code optimization",
-      "Decreased data processing algorithm runtime by 75% with code rewrite, meeting critical product specifications",
-      "Built required testing functionality ahead of schedule, expediting product release by 2 weeks",
+      "Completed a full-scale Azure DevOps migration in 3 months by coordinating team efforts, automating migration processes, and creating custom programmatic tools",
+      "Increased critical application performance by 400% by leading a re-architecture of existing code",
+      "Expedited application runtime by 75% in another project, hitting product specifications with an on-time release",
+      "Built critical testing functionality ahead of schedule, expediting product release by 2 weeks",
+      "Enriched deployment life cycle and scalability through Docker and CI/CD orchestration",
+      "Constructed a multi-cloud implementation of genomic sequencing testing infrastructure",
     ],
   },
   {
@@ -45,12 +55,11 @@ const timelineItems = [
     role: "Software Developer",
     company: "Bruker Cellular Analysis",
     location: "Remote",
-    description: "Main developer in creating research tools for next-gen sequencing and genomic analysis.",
+    description: "Main developer creating research tools for next-generation sequencing and genomic analysis.",
     achievements: [
-      "Main developer in creating research tools for next-gen sequencing and genomic analysis",
       "Independently developed a web portal that enabled interdepartmental teams to access research tools",
-      "Introduced automated unit testing and integration testing into CICD pipelines",
-      "Incorporated C++ computer vision libraries to improve sequencing technologies",
+      "Introduced automated unit testing and integration testing into development packages",
+      "Worked with C++ computer vision libraries to improve sequencing technologies",
     ],
   },
   {
@@ -58,12 +67,23 @@ const timelineItems = [
     role: "Computer Systems Engineer",
     company: "McMaster-Carr",
     location: "Elmhurst, IL",
-    description: "Full-stack development and system integration for business-critical applications.",
+    description: "Systems engineer specializing in web development for business-critical applications.",
     achievements: [
-      "Improved company knowledge sharing and education by creating an internal communications hub",
-      "Delivered business value by developing website features end to end, including Database Schemas and APIs",
-      "Integrated legacy systems to interface with modern business-critical applications",
-      "Worked with legacy SDLC, testing, and release schedules and architecture",
+      "Improved company knowledge sharing by creating an internal communications hub",
+      "Worked with an established SDLC involving cross-team coordination, testing, and release schedules",
+      "Delivered website features end to end: database schemas, business logic, REST APIs, and front-end",
+      "Interfaced with legacy systems for modern business-critical applications",
+    ],
+  },
+  {
+    year: "January 2021 - January 2024",
+    role: "Co-Founder",
+    company: "SYMon Holdings, LLC",
+    location: "United States",
+    description: "Medical technology startup developing wearable technology for continuous analyte monitoring in humans, with a primary application in preventing chronic emergency admissions in dialysis patients. Funded with an initial seed grant of $1500.",
+    achievements: [
+      "Co-founded a medtech startup focused on continuous analyte monitoring",
+      "Directed product vision toward reducing emergency admissions for dialysis patients",
     ],
   },
   {
@@ -71,147 +91,71 @@ const timelineItems = [
     role: "Directed Research: Miller-Jensen Laboratory",
     company: "Yale University",
     location: "New Haven, CT",
-    description: "Computational research focused on HIV gene expression modeling and bioinformatics analysis.",
+    description: "Directed research building predictive models for the activation of latent HIV, specializing in computational analysis of phenotype states and gene expression.",
     achievements: [
-      "Built predictive computational models to discover activation behavior of latent HIV using NFsim",
-      "Generated parameter-phenotype interactome network based on mRNA and protein expression levels",
-      "Utilized R and MATLAB programming to analyze HIV expression data and visualize trends",
-      "Published research findings in peer-reviewed computational biology journal",
+      "Computational modeling of phenotype states using Network-Free Stochastic Simulator, NFsim",
+      "R and MATLAB programming to analyze HIV expression data",
+      "Generation of a parameter-phenotype interactome network",
+      "Visualization of data trends in latent HIV mathematical models",
+      "Published research findings in a peer-reviewed computational biology journal",
     ],
   },
   {
-    year: "August 2017 - May 2021",
-    role: "Bachelor of Science - Biomedical Engineering",
-    company: "Yale University",
-    location: "New Haven, CT",
-    description: "Focus on Biocomputation with research experience in computational modeling and bioinformatics.",
+    year: "May 2019 - August 2019",
+    role: "Directed Research",
+    company: "Oden Institute for Computational Engineering and Sciences",
+    location: "Austin, TX",
+    description: "Research focused on analyzing highly expressed proteins in cancer, combining molecular and statistical exploration of gene expression pathways.",
     achievements: [
-      "GPA: 3.64 with focus on Biocomputation",
-      "Cum Laude Graduate, National Hispanic Scholar, Vincent Cordova Diversity Award",
-      "Yale CBIT Healthcare Hackathon Runner-Up, Tsai City Accelerator program participant",
-      "Fluent in English, Spanish, French",
+      "Visualized protein-protein interactions using R, ChimeraX, and bioinformatic tools",
+      "Generated and explored 3D models of protein interfaces",
+      "Used TCGA high-throughput human data for gene enrichment analyses",
+      "Compared interfacial amino acid residue frequencies with structural protein data",
+      "Applied linear regression, frequency calculations, and original random models to gene expression data",
     ],
   },
 ]
 
 export default function Timeline() {
   return (
-    <div className="relative max-w-6xl mx-auto px-4">
-      {/* Enhanced center line with gradient - hidden on mobile, visible on desktop */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 transform -translate-x-px">
-        <div className="w-full h-full bg-gradient-to-b from-primary/20 via-primary/60 to-primary/20 relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/30 to-transparent animate-pulse"></div>
-        </div>
-      </div>
+    <ol className="relative mx-auto max-w-4xl">
+      <div
+        aria-hidden="true"
+        className="absolute bottom-2 left-[0.4375rem] top-2 w-px bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20 md:left-[0.4375rem]"
+      />
 
-      {/* Mobile timeline container with enhanced left border */}
-      <div className="md:hidden timeline-mobile relative">
-        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/20 via-primary/60 to-primary/20"></div>
-        <div className="space-y-8 pl-8">
-          {timelineItems.map((item, index) => (
-            <div key={index} className="timeline-card mobile-timeline-card relative">
-              <div className="absolute -left-10 top-6 w-3 h-3 bg-primary border-2 border-background rounded-full shadow-lg animate-pulse"></div>
-              <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border-0 backdrop-blur-sm bg-background/95">
-                <CardContent className="p-4 sm:p-5">
-                  <Badge variant="outline" className="mb-2 font-mono hover-glow text-xs">
-                    {item.year}
-                  </Badge>
-                  <h3 className="text-lg sm:text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 leading-tight">
-                    {item.role}
-                  </h3>
-                  <p className="text-primary font-medium mb-1 text-sm sm:text-base">{item.company}</p>
-                  <p className="text-xs sm:text-sm text-muted-foreground mb-3">{item.location}</p>
-                  <p className="text-sm sm:text-base text-muted-foreground mb-3 group-hover:text-foreground transition-colors duration-300 leading-relaxed">
-                    {item.description}
-                  </p>
-                                      <ul className="space-y-2">
-                    {item.achievements.map((achievement, i) => (
-                      <li key={i} className="text-xs sm:text-sm flex items-start gap-3 group/item">
-                        <div className="relative mt-2 flex-shrink-0">
-                          <div className="h-1.5 w-1.5 bg-primary rounded-full group-hover/item:bg-accent transition-all duration-300 group-hover/item:scale-125"></div>
-                          <div className="absolute inset-0 h-1.5 w-1.5 bg-primary/30 rounded-full animate-ping group-hover/item:bg-accent/30"></div>
-                        </div>
-                        <span className="group-hover/item:text-primary transition-colors duration-300 leading-relaxed">
-                          {achievement}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Enhanced desktop timeline */}
-      <div className="hidden md:block space-y-20">
-        {timelineItems.map((item, index) => (
+      {timelineItems.map((item) => (
+        <li key={`${item.company}-${item.role}-${item.year}`} className="relative pl-9 pb-8 last:pb-0 sm:pb-10 md:pl-10">
           <div
-            key={index}
-            className={`relative flex flex-row gap-12 timeline-item ${
-              index % 2 === 0 ? "flex-row-reverse" : ""
-            }`}
-            style={{
-              animationDelay: `${index * 0.2}s`
-            }}
-          >
-            {/* Card Container with enhanced styling */}
-            <div className="w-1/2 flex justify-end">
-              <div className={`w-full max-w-xl lg:max-w-2xl relative transition-all duration-700 hover:translate-y-[-4px] ${
-                index % 2 === 0 ? "mr-20" : "ml-20"
-              }`}>
-                <Card className="hover-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl card-gradient group border-0 backdrop-blur-sm bg-background/95 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <CardContent className="p-6">
-                    <Badge variant="outline" className="mb-3 font-mono hover-glow text-xs">
-                      {item.year}
-                    </Badge>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors duration-300 leading-tight">
-                      {item.role}
-                    </h3>
-                    <p className="text-primary font-medium mb-1 text-base">{item.company}</p>
-                    <p className="text-sm text-muted-foreground mb-3">{item.location}</p>
-                    <p className="text-base text-muted-foreground mb-4 group-hover:text-foreground transition-colors duration-300 leading-relaxed">
-                      {item.description}
-                    </p>
-                    <ul className="space-y-3 relative z-10">
-                      {item.achievements.map((achievement, i) => (
-                        <li key={i} className="text-sm flex items-start gap-3 group/item">
-                          <div className="relative mt-1.5 flex-shrink-0">
-                            <div className="h-1.5 w-1.5 bg-primary rounded-full group-hover/item:bg-accent transition-all duration-300 group-hover/item:scale-125 shadow-sm"></div>
-                            <div className="absolute inset-0 h-1.5 w-1.5 bg-primary/30 rounded-full animate-ping group-hover/item:bg-accent/30"></div>
-                          </div>
-                          <span className="group-hover/item:text-primary transition-colors duration-300 leading-relaxed">
-                            {achievement}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+            aria-hidden="true"
+            className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-primary shadow-[0_0_0_3px_hsl(var(--background))]"
+          />
 
-            {/* Enhanced center dot with pulsing animation */}
-            <div className="absolute left-1/2 top-8 transform -translate-x-1/2 z-20">
-              <div className="relative">
-                {/* Outer pulsing ring */}
-                <div className="absolute inset-0 w-6 h-6 bg-primary/20 rounded-full animate-ping -translate-x-1 -translate-y-1"></div>
-                {/* Middle glow ring */}
-                <div className="absolute inset-0 w-5 h-5 bg-primary/40 rounded-full animate-pulse -translate-x-0.5 -translate-y-0.5"></div>
-                {/* Center dot */}
-                <div className="relative w-4 h-4 bg-gradient-to-br from-primary to-primary/80 border-3 border-background rounded-full shadow-xl group-hover:scale-110 transition-transform duration-300">
-                  <div className="absolute inset-0.5 bg-gradient-to-br from-primary-foreground/20 to-transparent rounded-full"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Empty space for layout balance */}
-            <div className="w-1/2"></div>
-          </div>
-        ))}
-      </div>
-    </div>
+          <article className="rounded-2xl border border-border/60 bg-card/70 p-4 shadow-sm backdrop-blur-sm transition-colors duration-300 hover:border-primary/30 hover:bg-card sm:p-6">
+            <Badge variant="outline" className="mb-3 font-mono text-xs tracking-wide sm:text-sm">
+              {item.year}
+            </Badge>
+            <h3 className="text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+              {item.role}
+            </h3>
+            <p className="mt-1 text-base font-medium text-primary sm:text-lg">
+              {item.company}
+              <span className="text-muted-foreground"> · {item.location}</span>
+            </p>
+            <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+              {item.description}
+            </p>
+            <ul className="mt-4 space-y-2">
+              {item.achievements.map((achievement) => (
+                <li key={achievement} className="flex items-start gap-2.5 text-base leading-relaxed text-foreground/80">
+                  <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
+                  <span>{achievement}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        </li>
+      ))}
+    </ol>
   )
 }

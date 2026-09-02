@@ -77,7 +77,7 @@
   html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    min-height: 100%;
     overflow-x: hidden;
   }
   
@@ -176,33 +176,36 @@
     box-shadow: 4px 4px 0px 0px theme("colors.foreground");
   }
   
-  /* Enhanced hover effects with cursor integration */
-  .hover-glow:hover {
-    box-shadow: 0 0 25px hsla(var(--primary), 0.3);
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    transform: translateY(-2px);
+  /* Calm hover glow: shadow only, no layout shift */
+  .hover-glow {
+    transition: box-shadow 0.3s cubic-bezier(0.23, 1, 0.320, 1), border-color 0.3s ease;
   }
-  
 
-  
-  /* Enhanced project card animations */
-  .project-card-enhanced {
-    transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
-    will-change: transform;
+  @media (hover: hover) and (pointer: fine) {
+    .hover-glow:hover {
+      box-shadow: 0 12px 32px hsla(var(--primary), 0.16);
+    }
   }
   
-  .project-card-enhanced:hover {
-    transform: translateY(-8px) rotateX(5deg);
-    box-shadow: 
-      0 20px 40px hsla(var(--primary), 0.1),
-      0 15px 25px hsla(var(--primary), 0.08);
+  /* Project card lift stays desktop-only so mobile cards do not overflow */
+  .project-card-enhanced {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1), box-shadow 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  @media (hover: hover) and (min-width: 768px) {
+    .project-card-enhanced:hover {
+      transform: translateY(-6px);
+      box-shadow: 
+        0 20px 40px hsla(var(--primary), 0.1),
+        0 15px 25px hsla(var(--primary), 0.08);
+    }
   }
 }
 
 /* Enhanced smooth scrolling with offset for fixed header */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 8rem;
+  scroll-padding-top: 5rem;
 }
 
 /* Enhanced smooth scrolling for all anchor links */
@@ -327,84 +330,43 @@ section[id] {
 
 
 
-/* Mobile responsive enhancements */
+section[id],
+div[id^="project-"],
+div[id="additional-projects"] {
+  scroll-margin-top: 0;
+}
+
 @media (max-width: 768px) {
+  body::after {
+    display: none;
+  }
+
+  .simple-cursor {
+    display: none !important;
+  }
+
+  *, *::before, *::after {
+    cursor: auto !important;
+  }
+
   .mobile-hero-icon {
     width: 200px;
     height: 200px;
   }
-  
-  .timeline-mobile {
-    border-left: 2px solid hsl(var(--border));
-    margin-left: 1rem;
-    padding-left: 1.5rem;
-  }
-  
-  .timeline-mobile .timeline-card {
-    position: relative;
-  }
-  
-  .timeline-mobile .timeline-card::before {
-    content: '';
-    position: absolute;
-    left: -2rem;
-    top: 1rem;
-    width: 8px;
-    height: 8px;
-    background: hsl(var(--primary));
-    border-radius: 50%;
-    border: 2px solid hsl(var(--background));
-    box-shadow: 0 0 0 2px hsl(var(--border));
-  }
 }
 
-/* Enhanced mobile spacing and animations */
-@media (max-width: 640px) {
-  .hero-animate {
-    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.320, 1) forwards;
-    opacity: 0;
-  }
-  
-  .hero-animate-delay-1 {
-    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.320, 1) 0.2s forwards;
-    opacity: 0;
-  }
-  
-  .hero-animate-delay-2 {
-    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.320, 1) 0.4s forwards;
-    opacity: 0;
-  }
-  
-  .hero-animate-delay-3 {
-    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.320, 1) 0.6s forwards;
-    opacity: 0;
-  }
-  
-  .mobile-timeline-card {
-    margin-bottom: 1.5rem;
-    border-radius: 0.75rem;
-    background: linear-gradient(135deg, 
-      hsl(var(--card)) 0%, 
-      hsl(var(--muted)/0.3) 100%);
-  }
-}
-
-/* Smooth timeline connector animations */
-@media (min-width: 768px) {
-  .timeline-connector {
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-  }
-  
-  .timeline-connector:hover {
-    background: hsl(var(--primary));
-    box-shadow: 0 0 12px hsla(var(--primary), 0.5);
-    transform: scale(1.1);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 
-  /* Fix for header overlap when navigating to sections */
-  section[id], 
-  div[id^="project-"],
-  div[id="additional-projects"] {
-    scroll-margin-top: 5rem;
+  .hero-animate,
+  .hero-animate-delay-1,
+  .hero-animate-delay-2,
+  .hero-animate-delay-3,
+  body::before,
+  body::after {
+    animation: none !important;
+    opacity: 1;
   }
 }

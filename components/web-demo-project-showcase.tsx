@@ -1,9 +1,10 @@
 "use client"
 
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, Play, ExternalLink } from "lucide-react"
+import { Github, ExternalLink } from "lucide-react"
 
 interface WebDemoProjectShowcaseProps {
   title: string
@@ -16,128 +17,119 @@ interface WebDemoProjectShowcaseProps {
   demoPosition?: "left" | "right"
 }
 
-export default function WebDemoProjectShowcase({ 
-  title, 
-  description, 
-  tags, 
-  demoUrl, 
-  githubLink, 
+const PREVIEW_WIDTH = 1280
+const PREVIEW_HEIGHT = 800
+
+export default function WebDemoProjectShowcase({
+  title,
+  description,
+  tags,
+  demoUrl,
+  githubLink,
   liveLink,
   liveLinkText = "Live App",
-  demoPosition = "left"
+  demoPosition = "left",
 }: WebDemoProjectShowcaseProps) {
+  const [isMounted, setIsMounted] = useState(false)
+  const [scale, setScale] = useState(0.5)
   const isDemoRight = demoPosition === "right"
-  
+  const frameRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+    const node = frameRef.current
+    if (!node) return
+
+    const updateScale = () => {
+      const width = node.getBoundingClientRect().width
+      if (width > 0) {
+        setScale(width / PREVIEW_WIDTH)
+      }
+    }
+
+    updateScale()
+    const observer = new ResizeObserver(updateScale)
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [isMounted])
+
   return (
-    <div className="group transition-all duration-300 hover-glow overflow-hidden rounded-lg">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-8 min-h-[50vh] sm:min-h-[60vh] lg:min-h-[60vh]">
-        {/* Content Section - Shows first when demo is on right */}
-        {isDemoRight && (
-          <div className="lg:col-span-1 p-4 lg:p-6 flex flex-col justify-center bg-gradient-to-br from-background/80 to-muted/30 rounded-lg">
-            <div className="space-y-4 lg:space-y-6">
-              <div>
-                <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow mb-3 lg:mb-4">
-                  FEATURED PROJECT
-                </Badge>
-                <h3 className="text-2xl lg:text-3xl font-bold group-hover:text-primary transition-colors duration-300 mb-3 lg:mb-4">
-                  {title}
-                </h3>
-                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300">
-                  {description}
-                </p>
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="font-mono text-xs hover-glow">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              
-              <div className="flex flex-wrap gap-3 lg:gap-4 pt-2 lg:pt-4">
-                {githubLink && (
-                  <Button variant="outline" asChild className="hover-glow text-sm lg:text-base">
-                    <Link href={githubLink} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-4 w-4" />
-                      View Code
-                    </Link>
-                  </Button>
-                )}
-                {liveLink && (
-                  <Button asChild className="hover-glow text-sm lg:text-base">
-                    <Link href={liveLink} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      {liveLinkText}
-                    </Link>
-                  </Button>
-                )}
-              </div>
-            </div>
+    <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/40">
+      <div className="grid grid-cols-1 lg:grid-cols-12">
+        <div className={`order-1 flex flex-col justify-center p-5 sm:p-6 lg:col-span-5 lg:p-8 ${isDemoRight ? "lg:order-1" : "lg:order-2"}`}>
+          <Badge variant="outline" className="mb-3 w-fit px-3 py-1 font-mono text-sm sm:mb-4">
+            FEATURED PROJECT
+          </Badge>
+          <h3 className="mb-3 text-2xl font-semibold tracking-tight lg:text-3xl">{title}</h3>
+          <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">{description}</p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="font-mono text-sm">
+                {tag}
+              </Badge>
+            ))}
           </div>
-        )}
-        
-        {/* Web Demo Section - Takes up 3/4 of the space */}
-        <div className="lg:col-span-3 relative flex items-center justify-center p-4 lg:p-6 bg-gradient-to-br from-background/50 to-muted/20 rounded-lg overflow-hidden">
-          <div className="relative w-full h-full flex items-center justify-center">
-            <div className="w-full h-full min-h-[300px] sm:min-h-[400px] lg:min-h-[600px] rounded-lg overflow-hidden shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]">
-              <iframe
-                src={demoUrl}
-                className="w-full h-full border-0 rounded-lg"
-                title={`${title} Live Demo`}
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-                loading="lazy"
-              />
-            </div>
+          <div className="mt-5 flex flex-wrap gap-3">
+            {githubLink && (
+              <Button variant="outline" asChild className="text-sm">
+                <Link href={githubLink} target="_blank" rel="noopener noreferrer">
+                  <Github className="mr-2 h-4 w-4" />
+                  View Code
+                </Link>
+              </Button>
+            )}
+            {liveLink && (
+              <Button asChild className="text-sm">
+                <Link href={liveLink} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="mr-2 h-4 w-4" />
+                  {liveLinkText}
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
-        
-        {/* Content Section - Shows last when demo is on left */}
-        {!isDemoRight && (
-          <div className="lg:col-span-1 p-4 lg:p-6 flex flex-col justify-center bg-gradient-to-br from-background/80 to-muted/30 rounded-lg">
-            <div className="space-y-4 lg:space-y-6">
-              <div>
-                <Badge variant="outline" className="px-3 py-1 text-sm font-mono hover-glow mb-3 lg:mb-4">
-                  FEATURED PROJECT
-                </Badge>
-                <h3 className="text-2xl lg:text-3xl font-bold group-hover:text-primary transition-colors duration-300 mb-3 lg:mb-4">
-                  {title}
-                </h3>
-                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors duration-300">
-                  {description}
-                </p>
+
+        <div className={`order-2 bg-muted/20 p-3 sm:p-4 lg:col-span-7 lg:p-6 ${isDemoRight ? "lg:order-2" : "lg:order-1"}`}>
+          <div
+            ref={frameRef}
+            className="relative w-full overflow-hidden rounded-xl border border-border/50 bg-background shadow-xl"
+            style={{ aspectRatio: `${PREVIEW_WIDTH} / ${PREVIEW_HEIGHT}` }}
+          >
+            {isMounted ? (
+              <iframe
+                src={demoUrl}
+                title={`${title} Live Demo`}
+                className="absolute left-0 top-0 origin-top-left border-0"
+                style={{
+                  width: PREVIEW_WIDTH,
+                  height: PREVIEW_HEIGHT,
+                  transform: `scale(${scale})`,
+                }}
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+              />
+            ) : (
+              <div className="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground">
+                Loading live preview...
               </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <Badge key={tag} variant="secondary" className="font-mono text-xs hover-glow">
-                    {tag}
-                  </Badge>
-                ))}
-              </div>
-              
-              <div className="flex flex-wrap gap-3 lg:gap-4 pt-2 lg:pt-4">
-                {githubLink && (
-                  <Button variant="outline" asChild className="hover-glow text-sm lg:text-base">
-                    <Link href={githubLink} target="_blank" rel="noopener noreferrer">
-                      <Github className="mr-2 h-4 w-4" />
-                      View Code
-                    </Link>
-                  </Button>
-                )}
-                {liveLink && (
-                  <Button asChild className="hover-glow text-sm lg:text-base">
-                    <Link href={liveLink} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      {liveLinkText}
-                    </Link>
-                  </Button>
-                )}
-              </div>
-            </div>
+            )}
+            {liveLink && (
+              <Link
+                href={liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-3 right-3 inline-flex items-center rounded-full border border-border/70 bg-background/90 px-3 py-1.5 text-sm font-medium shadow-sm backdrop-blur-sm transition-colors hover:bg-background"
+              >
+                Open live site
+                <ExternalLink className="ml-1.5 h-3 w-3" />
+              </Link>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </div>
   )
-} 
+}

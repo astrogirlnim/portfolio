@@ -6,7 +6,7 @@ import React, { useState, useEffect, useRef } from 'react'
 const resumeData = {
   about: {
     name: "Nataly Smith",
-    title: "AI Engineer & Senior Software Developer", 
+    title: "Senior Software Engineer, AI Platform", 
     email: "nmmsoftware@gmail.com",
     phone: "+1-505-203-6058",
     linkedin: "linkedin.com/in/nataly-smith/",
@@ -24,9 +24,9 @@ const resumeData = {
   experience: [
     {
       company: "Function Health",
-      role: "Senior AI Platform Developer",
+      role: "Senior Software Engineer, AI Platform",
       period: "August 2025 - Present",
-      location: "Remote"
+      location: "Austin, TX"
     },
     {
       company: "Gauntlet AI",
@@ -49,8 +49,14 @@ const resumeData = {
     {
       company: "McMaster-Carr",
       role: "Computer Systems Engineer",
-      period: "September 2021 - January 2022", 
+      period: "September 2021 - January 2022",
       location: "Elmhurst, IL"
+    },
+    {
+      company: "SYMon Holdings, LLC",
+      role: "Co-Founder",
+      period: "January 2021 - January 2024",
+      location: "United States"
     }
   ],
   education: {
@@ -64,12 +70,12 @@ const resumeData = {
 
 const commands = {
   help: "Available commands: help, about, skills, experience, education, contact, clear, summary",
-  about: "AI Engineer & Senior Software Developer specializing in full-stack development, mathematical modeling, and cloud infrastructure.",
+  about: "Senior Software Engineer, AI Platform specializing in full-stack development, mathematical modeling, and cloud infrastructure. Currently using AI to build AI systems.",
   skills: "Core expertise: Python, C#, AI/ML (PyTorch, TensorFlow), Cloud Platforms (AWS, GCP, Azure), and modern frameworks like .NET, React, and Flask.",
-  experience: "4+ years spanning Senior AI Platform Dev at Function Health, AI fellowship at GauntletAI, Senior Developer at Bruker Cellular Analysis, and Systems Engineering at McMaster-Carr.",
+  experience: "Function Health (Senior Software Engineer, AI Platform), Gauntlet AI fellowship, Bruker Cellular Analysis, McMaster-Carr, and co-founder of SYMon Holdings.",
   education: "Bachelor of Science in Biomedical Engineering from Yale University (2017-2021) with GPA 3.64, focused on biocomputation and research.",
   contact: `Email: ${resumeData.about.email} | Phone: ${resumeData.about.phone} | LinkedIn: ${resumeData.about.linkedin} | GitHub: ${resumeData.about.github}`,
-  summary: "Nataly Smith - AI Engineer with 4+ years experience in full-stack development, mathematical modeling, and cloud infrastructure, currently developing cutting-edge AI applications at Function Health."
+  summary: "Nataly Smith - Senior Software Engineer, AI Platform. Full-stack development, mathematical modeling, and cloud infrastructure. Currently at Function Health. Yale alumni.",
 }
 
 interface TerminalLine {

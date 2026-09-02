@@ -1,8 +1,7 @@
-// Comprehensive skills including featured project technologies
 const skills = [
   {
     category: "Languages",
-    items: ["Python", "R", "C#", "C", "C++", "TypeScript", "JavaScript", "Dart", "Fortran", "GDScript", "VB", "Bash", "Matlab", "HTML", "CSS", "SQL", "Racket", "Lisp"],
+    items: ["Python", "R", "C#", "C", "C++", "TypeScript", "JavaScript", "Dart", "Fortran", "GDScript", "VB", "Bash", "MATLAB", "HTML", "CSS", "SQL", "Racket", "Lisp"],
   },
   {
     category: "Frameworks & Libraries",
@@ -28,21 +27,24 @@ const skills = [
 
 export default function SkillGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {skills.map((skillGroup) => (
-        <div key={skillGroup.category} className="rounded-lg bg-card/30 text-card-foreground shadow-sm overflow-hidden hover-glow transition-all duration-300 hover:scale-[1.02] card-gradient group backdrop-blur-sm">
-          <div className="bg-primary/8 px-4 py-3 group-hover:bg-primary/15 transition-colors duration-300">
-            <h3 className="font-semibold text-base tracking-tight">{skillGroup.category}</h3>
+        <div
+          key={skillGroup.category}
+          className="overflow-hidden rounded-2xl border border-border/60 bg-card/60 shadow-sm backdrop-blur-sm transition-colors duration-300 hover:border-primary/30"
+        >
+          <div className="border-b border-border/50 px-4 py-3">
+            <h3 className="text-base font-semibold tracking-tight sm:text-lg">{skillGroup.category}</h3>
           </div>
-          <div className="px-4 pb-4 pt-2">
-            <ul className="grid grid-cols-2 gap-1.5">
-              {skillGroup.items.map((skill) => (
-                <li key={skill} className="flex items-center gap-1.5 group/item py-0.5">
-                  <div className="h-1 w-1 bg-primary rounded-full group-hover/item:bg-accent transition-colors duration-300 flex-shrink-0"></div>
-                  <span className="text-xs group-hover/item:text-primary transition-colors duration-300 font-light leading-tight">{skill}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="flex flex-wrap gap-2 p-4">
+            {skillGroup.items.map((skill) => (
+              <span
+                key={skill}
+                className="rounded-full border border-border/70 bg-background/50 px-3 py-1.5 text-sm leading-tight text-muted-foreground"
+              >
+                {skill}
+              </span>
+            ))}
           </div>
         </div>
       ))}

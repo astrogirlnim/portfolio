@@ -7,8 +7,11 @@ export default function RetroCursor() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    // Hide on mobile devices
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+    const isCoarseOrNarrow = () =>
+      window.matchMedia("(max-width: 767px)").matches ||
+      window.matchMedia("(hover: none) and (pointer: coarse)").matches
+
+    if (isCoarseOrNarrow() || "ontouchstart" in window || navigator.maxTouchPoints > 0) {
       return
     }
 

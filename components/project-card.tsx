@@ -14,7 +14,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, tags, image, link }: ProjectCardProps) {
   const CardContent = () => (
-    <div className="group rounded-lg bg-card text-card-foreground shadow-sm hover-glow transition-all duration-300 hover:scale-105 card-gradient overflow-hidden project-card-enhanced ">
+    <div className="group project-card-enhanced overflow-hidden rounded-2xl border border-border/60 bg-card text-card-foreground shadow-sm">
       <div className="relative aspect-video overflow-hidden">
         <Image
           src={image}
@@ -28,12 +28,12 @@ export default function ProjectCard({ title, description, tags, image, link }: P
         <h3 className="text-xl font-semibold leading-tight group-hover:text-primary transition-colors duration-300">
           {title}
         </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors duration-300">
+        <p className="text-muted-foreground text-base leading-relaxed group-hover:text-foreground transition-colors duration-300">
           {description}
         </p>
         <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="text-xs px-2 py-1 font-medium">
+            <Badge key={tag} variant="secondary" className="text-sm px-2 py-1 font-medium">
               {tag}
             </Badge>
           ))}
