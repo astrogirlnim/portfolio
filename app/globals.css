@@ -89,13 +89,11 @@
     top: 0;
     left: 0;
     z-index: 9999;
-    width: 32px;
-    height: 32px;
-    margin: -16px 0 0 -16px;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
     pointer-events: none;
     opacity: 0;
-    color: hsl(var(--primary));
-    filter: drop-shadow(0 0 1px hsl(var(--background))) drop-shadow(0 0 1px hsl(var(--background)));
     will-change: transform;
   }
 
@@ -103,44 +101,41 @@
     opacity: 1;
   }
 
-  .site-cursor-mark {
-    display: block;
-    width: 32px;
-    height: 32px;
-    overflow: visible;
-  }
-
-  .site-cursor-ring {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.25;
-    vector-effect: non-scaling-stroke;
-    transform-origin: center;
-    transform-box: fill-box;
-    transform: scale(0.55);
-    transition: transform 0.22s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.22s ease;
+  .site-cursor-core,
+  .site-cursor-halo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 0.35rem;
+    transform: translate(-50%, -50%);
   }
 
   .site-cursor-core {
-    fill: currentColor;
-    stroke: hsl(var(--background));
-    stroke-width: 1.5;
+    width: 12px;
+    height: 12px;
+    background: hsl(var(--primary));
+    box-shadow:
+      0 0 0 2px hsl(var(--background)),
+      0 0 0 3px hsl(var(--primary) / 0.55);
+    transition: width 0.2s cubic-bezier(0.23, 1, 0.320, 1), height 0.2s cubic-bezier(0.23, 1, 0.320, 1), border-radius 0.2s ease;
   }
 
-  .site-cursor-ticks {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.25;
-    vector-effect: non-scaling-stroke;
+  .site-cursor-halo {
+    width: 12px;
+    height: 12px;
+    background: hsl(var(--primary) / 0.18);
     opacity: 0;
-    transition: opacity 0.22s ease;
+    transition: width 0.2s cubic-bezier(0.23, 1, 0.320, 1), height 0.2s cubic-bezier(0.23, 1, 0.320, 1), opacity 0.2s ease;
   }
 
-  .site-cursor[data-mode="pointer"] .site-cursor-ring {
-    transform: scale(1);
+  .site-cursor[data-mode="pointer"] .site-cursor-core {
+    width: 10px;
+    height: 10px;
   }
 
-  .site-cursor[data-mode="pointer"] .site-cursor-ticks {
+  .site-cursor[data-mode="pointer"] .site-cursor-halo {
+    width: 28px;
+    height: 28px;
     opacity: 1;
   }
 
@@ -460,8 +455,8 @@ div[id="additional-projects"] {
     transform: none !important;
   }
 
-  .site-cursor-ring,
-  .site-cursor-ticks {
+  .site-cursor-core,
+  .site-cursor-halo {
     transition: none !important;
   }
 }
