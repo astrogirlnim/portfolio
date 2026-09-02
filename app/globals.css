@@ -191,6 +191,26 @@
         0 15px 25px hsla(var(--primary), 0.08);
     }
   }
+
+  .hero-portrait {
+    transform: translateZ(0);
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.320, 1), box-shadow 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  .hero-portrait img {
+    transition: transform 0.7s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hero-portrait:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 44px hsla(var(--primary), 0.2);
+    }
+
+    .hero-portrait:hover img {
+      transform: scale(1.05);
+    }
+  }
 }
 
 /* Enhanced smooth scrolling with offset for fixed header */
@@ -381,5 +401,11 @@ div[id="additional-projects"] {
   body::after {
     animation: none !important;
     opacity: 1;
+  }
+
+  .hero-portrait,
+  .hero-portrait img {
+    transition: none !important;
+    transform: none !important;
   }
 }
