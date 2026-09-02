@@ -22,17 +22,65 @@ const NAVIGATION_IDS = [
 
 const HEADER_GAP = 12
 
+function getScrollElement() {
+  return document.scrollingElement ?? document.documentElement
+}
+
+function getScrollTop() {
+  return getScrollElement().scrollTop
+}
+
+function scrollPageTo(top: number) {
+  const el = getScrollElement()
+  el.scrollTo({ top, behavior: "smooth" })
+  if (top === 0) {
+    document.documentElement.scrollTo({ top: 0, behavior: "smooth" })
+    document.body.scrollTo({ top: 0, behavior: "smooth" })
+  }
+}
+
 function getTargetScrollTop(element: HTMLElement, id: string) {
   if (id === "hero") return 0
   const header = document.querySelector("header")
   const headerHeight = header?.getBoundingClientRect().height ?? 64
-  return Math.max(0, window.scrollY + element.getBoundingClientRect().top - headerHeight - HEADER_GAP)
+  return Math.max(0, getScrollTop() + element.getBoundingClientRect().top - headerHeight - HEADER_GAP)
+}
+
+function getActiveSectionIndex() {
+  const header = document.querySelector("header")
+  const probe = (header?.getBoundingClientRect().height ?? 64) + HEADER_GAP + 1
+  let activeIndex = 0
+
+  NAVIGATION_IDS.forEach((id, index) => {
+    const element = document.getElementById(id)
+    if (!element) return
+    if (element.getBoundingClientRect().top <= probe) {
+      activeIndex = index
+    }
+  })
+
+  return activeIndex
 }
 
 export default function ProjectNavigation() {
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0)
   const isProgrammaticScroll = useRef(false)
   const currentIndexRef = useRef(0)
+  const programmaticTimer = useRef<number | null>(null)
+  const scrollGeneration = useRef(0)
+
+  const setIndex = useCallback((index: number) => {
+    currentIndexRef.current = index
+    setCurrentSectionIndex(index)
+  }, [])
+
+  const releaseProgrammaticScroll = useCallback(() => {
+    isProgrammaticScroll.current = false
+    if (programmaticTimer.current !== null) {
+      window.clearTimeout(programmaticTimer.current)
+      programmaticTimer.current = null
+    }
+  }, [])
 
   const scrollToSection = useCallback((index: number) => {
     if (index < 0 || index >= NAVIGATION_IDS.length) return
@@ -42,18 +90,25 @@ export default function ProjectNavigation() {
     if (!element) return
 
     isProgrammaticScroll.current = true
-    currentIndexRef.current = index
-    setCurrentSectionIndex(index)
+    setIndex(index)
+    const generation = ++scrollGeneration.current
 
-    window.scrollTo({
-      top: getTargetScrollTop(element, id),
-      behavior: "smooth",
-    })
+    scrollPageTo(getTargetScrollTop(element, id))
 
-    window.setTimeout(() => {
-      isProgrammaticScroll.current = false
-    }, 700)
-  }, [])
+    if (programmaticTimer.current !== null) {
+      window.clearTimeout(programmaticTimer.current)
+    }
+
+    const finish = () => {
+      if (generation !== scrollGeneration.current) return
+      window.removeEventListener("scrollend", finish)
+      releaseProgrammaticScroll()
+      setIndex(getActiveSectionIndex())
+    }
+
+    window.addEventListener("scrollend", finish, { once: true })
+    programmaticTimer.current = window.setTimeout(finish, 1400)
+  }, [releaseProgrammaticScroll, setIndex])
 
   const navigateToPrevious = useCallback(() => {
     const prevIndex = currentIndexRef.current > 0 ? currentIndexRef.current - 1 : NAVIGATION_IDS.length - 1
@@ -90,36 +145,25 @@ export default function ProjectNavigation() {
   }, [navigateToPrevious, navigateToNext])
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (isProgrammaticScroll.current) return
-
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-
-        const topEntry = visible[0]
-        if (!topEntry) return
-
-        const sectionIndex = NAVIGATION_IDS.indexOf(topEntry.target.id)
-        if (sectionIndex !== -1 && sectionIndex !== currentIndexRef.current) {
-          currentIndexRef.current = sectionIndex
-          setCurrentSectionIndex(sectionIndex)
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-80px 0px -45% 0px",
-        threshold: [0.1, 0.25, 0.5],
+    const syncFromScroll = () => {
+      if (isProgrammaticScroll.current) return
+      const nextIndex = getActiveSectionIndex()
+      if (nextIndex !== currentIndexRef.current) {
+        setIndex(nextIndex)
       }
-    )
+    }
 
-    NAVIGATION_IDS.forEach((id) => {
-      const element = document.getElementById(id)
-      if (element) observer.observe(element)
-    })
+    window.addEventListener("scroll", syncFromScroll, { passive: true })
+    syncFromScroll()
+    return () => window.removeEventListener("scroll", syncFromScroll)
+  }, [setIndex])
 
-    return () => observer.disconnect()
+  useEffect(() => {
+    return () => {
+      if (programmaticTimer.current !== null) {
+        window.clearTimeout(programmaticTimer.current)
+      }
+    }
   }, [])
 
   return (
