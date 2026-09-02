@@ -9,24 +9,8 @@ const keyCourses = [
 
 const honors = [
   {
-    title: "Cum Laude",
-    detail: "Yale University",
-  },
-  {
-    title: "National Hispanic Scholar",
-    detail: "College Board",
-  },
-  {
     title: "Yale Domestic Summer Award",
     detail: "May 2020",
-  },
-  {
-    title: "Letter of Commendation",
-    detail: "Department of History, Yale University",
-  },
-  {
-    title: "Letter of Commendation",
-    detail: "Department of English, Yale University",
   },
   {
     title: "Runner Up",
@@ -35,10 +19,6 @@ const honors = [
   {
     title: "Tsai City Accelerator Program",
     detail: "Yale Tsai Center for Innovative Thinking, November 2020",
-  },
-  {
-    title: "Vincent Cordova Diversity Award",
-    detail: "Yale University",
   },
 ]
 
