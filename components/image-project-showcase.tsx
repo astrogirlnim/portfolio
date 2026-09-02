@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import type { ReactNode } from "react"
 import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Github, Play, FileText } from "lucide-react"
@@ -11,7 +12,8 @@ interface ImageProjectShowcaseProps {
   title: string
   description: string
   tags: string[]
-  images: string[]
+  images?: string[]
+  panel?: ReactNode
   githubLink?: string
   liveLink?: string
   liveLinkText?: string
@@ -25,7 +27,8 @@ export default function ImageProjectShowcase({
   title,
   description,
   tags,
-  images,
+  images = [],
+  panel,
   githubLink,
   liveLink,
   liveLinkText = "Live Demo",
@@ -35,6 +38,7 @@ export default function ImageProjectShowcase({
   why,
 }: ImageProjectShowcaseProps) {
   const isImageRight = imagePosition === "right"
+  const hasImages = images.length > 0
 
   return (
     <figure className="border-t border-border py-8 lg:py-10">
@@ -79,7 +83,10 @@ export default function ImageProjectShowcase({
           </div>
         </div>
 
-        <div className={`order-2 relative mt-6 overflow-hidden lg:col-span-7 lg:mt-0 ${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
+        <div className={`order-2 relative mt-6 lg:col-span-7 lg:mt-0 ${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
+          {panel ? (
+            panel
+          ) : hasImages ? (
           <Carousel
             className="w-full"
             plugins={[AutoPlay({ delay: 4000 })]}
@@ -104,6 +111,7 @@ export default function ImageProjectShowcase({
             <CarouselPrevious className="left-2 h-8 w-8 border-border bg-background/80 hover:bg-background" />
             <CarouselNext className="right-2 h-8 w-8 border-border bg-background/80 hover:bg-background" />
           </Carousel>
+          ) : null}
         </div>
       </div>
     </figure>

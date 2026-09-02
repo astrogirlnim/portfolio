@@ -34,6 +34,40 @@ const rangeEntries = [
   { id: "06", field: "Full-stack", note: "Web, mobile, desktop" },
 ]
 
+const saturdayRungs = [
+  { id: "R0", field: "Resolution", note: "Soundness and completeness, certified" },
+  { id: "R1", field: "Haken PHP", note: "Exponential pigeonhole bound, active" },
+  { id: "R2", field: "Width machinery", note: "Ben-Sasson-Wigderson, Tseitin" },
+  { id: "R3", field: "Above resolution", note: "One certified bound past resolution" },
+  { id: "R4", field: "Open frontier", note: "AC0[p]-Frege and beyond" },
+  { id: "R5", field: "Cook-Reckhow", note: "Super-polynomial bounds imply P != NP" },
+]
+
+function SaturdayLadderPlate() {
+  return (
+    <div className="border border-border">
+      <div className="flex items-baseline justify-between border-b border-border px-5 py-3">
+        <span className="fig-kicker">Ladder</span>
+        <span className="fig-kicker">Lean 4</span>
+      </div>
+      <ol>
+        {saturdayRungs.map((rung) => (
+          <li
+            key={rung.id}
+            className="grid grid-cols-[2.75rem_1fr] items-start border-b border-border px-5 py-3.5 last:border-b-0"
+          >
+            <span className="fig-kicker pt-1">{rung.id}</span>
+            <div className="min-w-0">
+              <p className="font-display text-lg leading-tight tracking-tight">{rung.field}</p>
+              <p className="mt-1 text-sm leading-snug text-muted-foreground">{rung.note}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
 function RangePlate() {
   return (
     <figure className="w-full max-w-md lg:max-w-none lg:justify-self-end">
@@ -236,12 +270,25 @@ export default function Home() {
             <p className="fig-kicker mb-4">05 · Projects</p>
             <h2 className="mb-3 font-display text-4xl tracking-tight sm:text-5xl">Projects</h2>
             <p className="mb-10 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Selected work across AI, scientific computing, tools, and games.
+              Selected work across AI, proof complexity, scientific computing, tools, and games.
             </p>
+
+            <div className="mb-4 sm:mb-6" id="project-saturday">
+              <ImageProjectShowcase
+                figureLabel="FIG. 02"
+                title="SATurday"
+                why="Certified proof complexity, or it does not exist."
+                description="A local research program climbing toward P vs NP. Each rung is a falsifiable statement about propositional proof systems. Results are Lean 4 certificates with no sorries. SAT runs calibrate conjectures under hard budgets and never become axioms."
+                tags={["Lean 4", "Proof Complexity", "SAT", "Formal Verification", "P vs NP", "Python"]}
+                panel={<SaturdayLadderPlate />}
+                githubLink="https://github.com/astrogirlnim/SATurday"
+                imagePosition="right"
+              />
+            </div>
 
             <div className="mb-4 sm:mb-6" id="project-geneknow">
               <ImageProjectShowcase
-                figureLabel="FIG. 02"
+                figureLabel="FIG. 03"
                 title="GeneKnow"
                 why="Built so genetic data never has to leave the machine."
                 description="A privacy-first, local-first genomic risk assessment platform. It processes genetic data entirely on your machine. Nothing leaves the device."
@@ -261,7 +308,7 @@ export default function Home() {
 
             <div className="mb-4 sm:mb-6" id="project-lapack-ai">
               <VideoProjectShowcase
-                figureLabel="FIG. 03"
+                figureLabel="FIG. 04"
                 title="LAPACK AI"
                 why="AlphaTensor inside LAPACK, not only in a paper. Fortran, C, and a fair amount of numerical weirdness."
                 description="An open-source implementation of the AlphaTensor 4x4 matrix multiplication algorithm in LAPACK: 49 operations, CPU optimizations, OpenCL GPU kernels on NVIDIA hardware, and real LAPACK integration."
@@ -274,7 +321,7 @@ export default function Home() {
 
             <div className="mb-4 sm:mb-6" id="project-marketsnap">
               <VideoProjectShowcase
-                figureLabel="FIG. 04"
+                figureLabel="FIG. 05"
                 title="MarketSnap"
                 why="Offline-first stock posts for vendors, before produce spoils."
                 description="Vendors share fresh-stock photos and short clips that work offline, sync when the signal comes back, and expire after 24 hours. Flutter, iOS and Android."
@@ -287,7 +334,7 @@ export default function Home() {
 
             <div className="mb-4 sm:mb-6" id="project-funnelfluent">
               <WebDemoProjectShowcase
-                figureLabel="FIG. 05"
+                figureLabel="FIG. 06"
                 title="FunnelFluent"
                 why="Writing assistance for sales funnels, not generic grammar."
                 description="A Next.js writing assistant for business proposals and marketing copy. Firebase, real-time collaboration, and AI suggestions. Grammarly, but for funnels."
@@ -302,7 +349,7 @@ export default function Home() {
 
             <div className="mb-4 sm:mb-6" id="project-personyx">
               <VideoProjectShowcase
-                figureLabel="FIG. 06"
+                figureLabel="FIG. 07"
                 title="Personyx"
                 why="Interview evidence, usable while a product is still being built."
                 description="A desktop app that clusters customer interviews into personas, scores PRDs against that evidence, and lets you chat with persona bots while you work."
@@ -315,7 +362,7 @@ export default function Home() {
 
             <div className="mb-4 sm:mb-6" id="project-children-of-singularity">
               <VideoProjectShowcase
-                figureLabel="FIG. 07"
+                figureLabel="FIG. 08"
                 title="Children of Singularity"
                 why="A salvage sim in the orbit of Moebius, Planetes, and Nausicaä."
                 description="A 2.5D/3D multiplayer salvage sim. Explore cluttered orbital zones, trade debris, upgrade your ship, and slowly figure out what is running the place."
@@ -336,7 +383,7 @@ export default function Home() {
               </p>
               <div>
                 <ProjectCard
-                  index="08"
+                  index="09"
                   title="Stochastic Computational Modeling of HIV"
                   venue="PLOS Computational Biology"
                   why="A published model of noisy latent HIV activation."
@@ -345,7 +392,7 @@ export default function Home() {
                   link="https://doi.org/10.1371/journal.pcbi.1010152"
                 />
                 <ProjectCard
-                  index="09"
+                  index="10"
                   title="Simplifying Fracture Treatment: Medical Device Set"
                   venue="Yale School of Engineering and Applied Science"
                   why="External fastening for Kirschner wires that otherwise migrate."
@@ -354,7 +401,7 @@ export default function Home() {
                   link="https://seas.yale.edu/news-events/news/students-present-medical-innovations"
                 />
                 <ProjectCard
-                  index="10"
+                  index="11"
                   title="Project Rocket: Yale Undergraduate Aerospace"
                   venue="YUAA · IREC"
                   why="Hybrid propulsion for a national IREC rocket."
@@ -362,7 +409,7 @@ export default function Home() {
                   tags={["MATLAB", "CAD", "Aerospace Engineering", "Propulsion"]}
                 />
                 <ProjectCard
-                  index="11"
+                  index="12"
                   title="Bioinformatics of Protein-Protein Interactions"
                   venue="Oden Institute for Computational Engineering and Sciences"
                   why="Protein interfaces and gene enrichment on TCGA data."
