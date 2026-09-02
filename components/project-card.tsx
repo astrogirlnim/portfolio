@@ -1,62 +1,52 @@
 import Link from "next/link"
-import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { ExternalLink } from "lucide-react"
 
 interface ProjectCardProps {
+  index?: string
   title: string
   description: string
   tags: string[]
-  image: string
   link?: string
+  venue?: string
+  why?: string
 }
 
-export default function ProjectCard({ title, description, tags, image, link }: ProjectCardProps) {
-  const CardContent = () => (
-    <div className="group project-card-enhanced overflow-hidden rounded-2xl border border-border/60 bg-card text-card-foreground shadow-sm">
-      <div className="relative aspect-video overflow-hidden">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
-      <div className="p-6 space-y-4">
-        <h3 className="text-xl font-semibold leading-tight group-hover:text-primary transition-colors duration-300">
+export default function ProjectCard({ index, title, description, tags, link, venue, why }: ProjectCardProps) {
+  const inner = (
+    <article className="group grid grid-cols-[auto_1fr] gap-x-4 gap-y-2 border-b border-border py-7 first:border-t">
+      {index ? <span className="fig-kicker pt-2">{index}</span> : <span />}
+      <div>
+        <h3 className="font-display text-2xl italic tracking-tight transition-colors duration-300 group-hover:text-primary">
           {title}
+          {link && <ExternalLink className="ml-2 inline h-3.5 w-3.5 align-baseline opacity-60" />}
         </h3>
-        <p className="text-muted-foreground text-base leading-relaxed group-hover:text-foreground transition-colors duration-300">
+        {venue && (
+          <p className="mt-1 font-mono text-xs tracking-[0.16em] uppercase text-muted-foreground">
+            {venue}
+          </p>
+        )}
+        {why && (
+          <p className="mt-2 font-display text-base italic leading-relaxed text-foreground/90">
+            {why}
+          </p>
+        )}
+        <p className="mt-2 text-base leading-relaxed text-muted-foreground">
           {description}
         </p>
-        <div className="flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="text-sm px-2 py-1 font-medium">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-        {link && (
-          <div className="flex justify-between items-center pt-2">
-            <div className="flex items-center gap-2 text-sm text-primary font-medium group-hover:text-primary/80 transition-colors duration-300">
-              <ExternalLink className="h-4 w-4" />
-              View Project
-            </div>
-          </div>
-        )}
+        <p className="mt-3 font-mono text-xs tracking-wide text-muted-foreground">
+          {tags.join("  ·  ")}
+        </p>
       </div>
-    </div>
+    </article>
   )
 
   if (link) {
     return (
       <Link href={link} target="_blank" rel="noopener noreferrer" className="block">
-        <CardContent />
+        {inner}
       </Link>
     )
   }
 
-  return <CardContent />
+  return inner
 }

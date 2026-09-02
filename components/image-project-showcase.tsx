@@ -2,7 +2,6 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import { Github, Play, FileText } from "lucide-react"
@@ -18,6 +17,8 @@ interface ImageProjectShowcaseProps {
   liveLinkText?: string
   whitepaperLink?: string
   imagePosition?: "left" | "right"
+  figureLabel?: string
+  why?: string
 }
 
 export default function ImageProjectShowcase({
@@ -30,25 +31,26 @@ export default function ImageProjectShowcase({
   liveLinkText = "Live Demo",
   whitepaperLink,
   imagePosition = "left",
+  figureLabel,
+  why,
 }: ImageProjectShowcaseProps) {
   const isImageRight = imagePosition === "right"
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/40">
-      <div className="grid grid-cols-1 lg:grid-cols-12">
-        <div className={`order-1 flex flex-col justify-center p-5 sm:p-6 lg:col-span-5 lg:p-8 ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
-          <Badge variant="outline" className="mb-3 w-fit px-3 py-1 font-mono text-sm sm:mb-4">
-            FEATURED PROJECT
-          </Badge>
-          <h3 className="mb-3 text-2xl font-semibold tracking-tight lg:text-3xl">{title}</h3>
+    <figure className="border-t border-border py-8 lg:py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10">
+        <div className={`order-1 flex flex-col justify-center py-2 lg:col-span-5 ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
+          {figureLabel && <p className="fig-kicker mb-3">{figureLabel}</p>}
+          <h3 className="mb-3 font-display text-3xl italic tracking-tight lg:text-4xl">{title}</h3>
+          {why && (
+            <p className="mb-3 font-display text-lg italic leading-relaxed text-foreground/90 lg:text-xl">
+              {why}
+            </p>
+          )}
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">{description}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="font-mono text-sm">
-                {tag}
-              </Badge>
-            ))}
-          </div>
+          <p className="mt-4 font-mono text-xs tracking-wide text-muted-foreground">
+            {tags.join("  ·  ")}
+          </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {githubLink && (
               <Button variant="outline" asChild className="text-sm">
@@ -77,7 +79,7 @@ export default function ImageProjectShowcase({
           </div>
         </div>
 
-        <div className={`order-2 relative overflow-hidden bg-muted/20 p-3 sm:p-4 lg:col-span-7 lg:p-6 ${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
+        <div className={`order-2 relative mt-6 overflow-hidden lg:col-span-7 lg:mt-0 ${isImageRight ? "lg:order-2" : "lg:order-1"}`}>
           <Carousel
             className="w-full"
             plugins={[AutoPlay({ delay: 4000 })]}
@@ -92,7 +94,7 @@ export default function ImageProjectShowcase({
                       alt={`${title} screenshot ${index + 1}`}
                       width={1200}
                       height={800}
-                      className="h-auto w-full rounded-lg object-contain shadow-xl"
+                      className="h-auto w-full border border-border object-contain"
                       priority={index === 0}
                     />
                   </div>
@@ -104,6 +106,6 @@ export default function ImageProjectShowcase({
           </Carousel>
         </div>
       </div>
-    </div>
+    </figure>
   )
 }

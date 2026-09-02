@@ -25,8 +25,9 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-inter)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
+        serif: ["var(--font-serif)", ...require("tailwindcss/defaultTheme").fontFamily.serif],
         mono: ["var(--font-jetbrains-mono)", ...require("tailwindcss/defaultTheme").fontFamily.mono],
-        display: ["var(--font-inter)", ...require("tailwindcss/defaultTheme").fontFamily.sans],
+        display: ["var(--font-serif)", ...require("tailwindcss/defaultTheme").fontFamily.serif],
       },
       colors: {
         border: "hsl(var(--border))",

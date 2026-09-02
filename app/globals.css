@@ -6,63 +6,61 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 4% 25%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 4% 25%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 4% 25%;
-    --primary: 90 8% 45%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 120 4% 88%;
-    --secondary-foreground: 20 4% 30%;
-    --muted: 120 3% 94%;
-    --muted-foreground: 30 3% 50%;
-    --accent: 100 6% 75%;
-    --accent-foreground: 20 4% 25%;
+    --background: 40 18% 97%;
+    --foreground: 230 18% 12%;
+    --card: 40 20% 99%;
+    --card-foreground: 230 18% 12%;
+    --popover: 40 20% 99%;
+    --popover-foreground: 230 18% 12%;
+    --primary: 90 12% 32%;
+    --primary-foreground: 40 20% 98%;
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 230 12% 22%;
+    --muted: 40 12% 93%;
+    --muted-foreground: 230 8% 38%;
+    --accent: 90 8% 82%;
+    --accent-foreground: 230 18% 12%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 120 4% 90%;
-    --input: 120 4% 92%;
-    --ring: 90 8% 45%;
-    --radius: 0.5rem;
+    --border: 40 10% 82%;
+    --input: 40 10% 86%;
+    --ring: 90 12% 32%;
+    --radius: 0.125rem;
     
-    /* Photo-accurate neutral tone variables */
-    --wave-primary: 90 8% 55%;
-    --wave-secondary: 120 6% 65%;
-    --wave-accent: 100 6% 75%;
-    --wave-highlight: 80 4% 80%;
+    --wave-primary: 90 8% 45%;
+    --wave-secondary: 220 12% 55%;
+    --wave-accent: 40 10% 70%;
+    --wave-highlight: 200 8% 75%;
     
 
 
   }
 
   .dark {
-    --background: 20 8% 11%;
-    --foreground: 120 4% 88%;
-    --card: 20 6% 15%;
-    --card-foreground: 120 4% 88%;
-    --popover: 20 6% 15%;
-    --popover-foreground: 120 4% 88%;
-    --primary: 100 8% 65%;
-    --primary-foreground: 20 8% 15%;
-    --secondary: 30 3% 22%;
-    --secondary-foreground: 120 4% 82%;
-    --muted: 20 6% 18%;
-    --muted-foreground: 30 3% 60%;
-    --accent: 90 6% 28%;
-    --accent-foreground: 120 4% 82%;
+    --background: 228 28% 6%;
+    --foreground: 42 18% 90%;
+    --card: 228 22% 8%;
+    --card-foreground: 42 18% 90%;
+    --popover: 228 22% 8%;
+    --popover-foreground: 42 18% 90%;
+    --primary: 86 28% 62%;
+    --primary-foreground: 228 28% 8%;
+    --secondary: 228 16% 12%;
+    --secondary-foreground: 42 12% 82%;
+    --muted: 228 18% 10%;
+    --muted-foreground: 220 8% 62%;
+    --accent: 228 14% 16%;
+    --accent-foreground: 42 12% 82%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 30 3% 22%;
-    --input: 20 6% 18%;
-    --ring: 100 8% 65%;
+    --border: 228 14% 16%;
+    --input: 228 16% 12%;
+    --ring: 86 28% 62%;
     
-    /* Dark mode slate-like variables using photo colors */
-    --wave-primary: 90 6% 35%;
-    --wave-secondary: 100 4% 30%;
-    --wave-accent: 30 3% 28%;
-    --wave-highlight: 20 4% 25%;
+    --wave-primary: 220 40% 18%;
+    --wave-secondary: 86 20% 18%;
+    --wave-accent: 260 20% 14%;
+    --wave-highlight: 200 30% 12%;
     
 
 
@@ -116,43 +114,36 @@
     }
   }
   
-  /* Enhanced background particles */
+  /* Notebook grid + starfield */
   body::before {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.04;
+    inset: 0;
     z-index: -1;
-    background: 
-      radial-gradient(circle at 20% 80%, hsl(var(--wave-primary)) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, hsl(var(--wave-secondary)) 0%, transparent 50%),
-      radial-gradient(circle at 40% 40%, hsl(var(--wave-accent)) 0%, transparent 50%),
-      radial-gradient(circle at 70% 70%, hsl(var(--wave-highlight)) 0%, transparent 50%);
-    animation: colorwave 25s ease-in-out infinite;
+    pointer-events: none;
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.45) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 78%);
+    opacity: 0.35;
   }
   
-  /* Floating particles animation */
   body::after {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.02;
+    inset: 0;
     z-index: -1;
+    pointer-events: none;
+    opacity: 0.45;
     background-image: 
-      radial-gradient(2px 2px at 20px 30px, hsl(var(--primary)), transparent),
-      radial-gradient(2px 2px at 40px 70px, hsl(var(--accent)), transparent),
-      radial-gradient(1px 1px at 90px 40px, hsl(var(--secondary)), transparent),
-      radial-gradient(1px 1px at 130px 80px, hsl(var(--primary)), transparent),
-      radial-gradient(2px 2px at 160px 30px, hsl(var(--accent)), transparent);
-    background-repeat: repeat;
-    background-size: 200px 100px;
-    animation: particles-float 30s linear infinite;
+      radial-gradient(1px 1px at 12% 18%, hsl(var(--foreground) / 0.35), transparent),
+      radial-gradient(1px 1px at 28% 72%, hsl(var(--primary) / 0.4), transparent),
+      radial-gradient(1.5px 1.5px at 64% 24%, hsl(var(--foreground) / 0.25), transparent),
+      radial-gradient(1px 1px at 82% 58%, hsl(var(--primary) / 0.3), transparent),
+      radial-gradient(1px 1px at 47% 88%, hsl(var(--foreground) / 0.2), transparent),
+      radial-gradient(circle at 18% 80%, hsl(var(--wave-primary)) 0%, transparent 42%),
+      radial-gradient(circle at 86% 14%, hsl(var(--wave-secondary)) 0%, transparent 38%);
   }
 }
 
@@ -320,12 +311,34 @@ section[id] {
   opacity: 0;
 }
 
-/* Enhanced card gradient */
-.card-gradient {
-  background: linear-gradient(135deg, 
-    hsl(var(--card)) 0%, 
-    hsl(var(--muted) / 0.8) 50%,
-    hsl(var(--card)) 100%);
+.fig-kicker {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+.rule-x {
+  height: 1px;
+  width: 100%;
+  background: hsl(var(--border));
+}
+
+@keyframes dash-orbit {
+  from { stroke-dashoffset: 180; }
+  to { stroke-dashoffset: 0; }
+}
+
+.orbit-line {
+  stroke-dasharray: 6 8;
+  animation: dash-orbit 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-line {
+    animation: none;
+  }
 }
 
 

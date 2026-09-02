@@ -13,9 +13,9 @@ const NAVIGATION_IDS = [
   "project-geneknow",
   "project-lapack-ai",
   "project-marketsnap",
-  "project-children-of-singularity",
-  "project-personyx",
   "project-funnelfluent",
+  "project-personyx",
+  "project-children-of-singularity",
   "additional-projects",
   "contact",
 ]
@@ -128,7 +128,7 @@ export default function ProjectNavigation() {
         variant="outline"
         size="icon"
         onClick={navigateToPrevious}
-        className="h-9 w-9 rounded-full border-border bg-background/80 shadow-md backdrop-blur-sm hover:bg-background"
+        className="h-8 w-8 border-border bg-background/80 backdrop-blur-sm hover:bg-background"
         aria-label="Previous section"
       >
         <ChevronUp className="h-4 w-4" />
@@ -139,7 +139,7 @@ export default function ProjectNavigation() {
           <button
             key={id}
             onClick={() => scrollToSection(index)}
-            className={`rounded-full transition-all duration-300 ${
+            className={`transition-all duration-300 ${
               index === currentSectionIndex
                 ? "h-2 w-2 bg-primary"
                 : "h-1.5 w-1.5 bg-muted-foreground/35 hover:bg-muted-foreground/60"
@@ -153,7 +153,7 @@ export default function ProjectNavigation() {
         variant="outline"
         size="icon"
         onClick={navigateToNext}
-        className="h-9 w-9 rounded-full border-border bg-background/80 shadow-md backdrop-blur-sm hover:bg-background"
+        className="h-8 w-8 border-border bg-background/80 backdrop-blur-sm hover:bg-background"
         aria-label="Next section"
       >
         <ChevronDown className="h-4 w-4" />

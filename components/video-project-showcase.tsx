@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Github, Play } from "lucide-react"
 
@@ -15,6 +14,8 @@ interface VideoProjectShowcaseProps {
   liveLink?: string
   liveLinkText?: string
   videoPosition?: "left" | "right"
+  figureLabel?: string
+  why?: string
 }
 
 export default function VideoProjectShowcase({
@@ -26,6 +27,8 @@ export default function VideoProjectShowcase({
   liveLink,
   liveLinkText = "Live Demo",
   videoPosition = "left",
+  figureLabel,
+  why,
 }: VideoProjectShowcaseProps) {
   const [isMounted, setIsMounted] = useState(false)
   const isVideoRight = videoPosition === "right"
@@ -35,21 +38,20 @@ export default function VideoProjectShowcase({
   }, [])
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/40">
-      <div className="grid grid-cols-1 lg:grid-cols-12">
-        <div className={`order-1 flex flex-col justify-center p-5 sm:p-6 lg:col-span-5 lg:p-8 ${isVideoRight ? "lg:order-1" : "lg:order-2"}`}>
-          <Badge variant="outline" className="mb-3 w-fit px-3 py-1 font-mono text-sm sm:mb-4">
-            FEATURED PROJECT
-          </Badge>
-          <h3 className="mb-3 text-2xl font-semibold tracking-tight lg:text-3xl">{title}</h3>
+    <figure className="border-t border-border py-8 lg:py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10">
+        <div className={`order-1 flex flex-col justify-center py-2 lg:col-span-5 ${isVideoRight ? "lg:order-1" : "lg:order-2"}`}>
+          {figureLabel && <p className="fig-kicker mb-3">{figureLabel}</p>}
+          <h3 className="mb-3 font-display text-3xl italic tracking-tight lg:text-4xl">{title}</h3>
+          {why && (
+            <p className="mb-3 font-display text-lg italic leading-relaxed text-foreground/90 lg:text-xl">
+              {why}
+            </p>
+          )}
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">{description}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="font-mono text-sm">
-                {tag}
-              </Badge>
-            ))}
-          </div>
+          <p className="mt-4 font-mono text-xs tracking-wide text-muted-foreground">
+            {tags.join("  ·  ")}
+          </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {githubLink && (
               <Button variant="outline" asChild className="text-sm">
@@ -70,8 +72,8 @@ export default function VideoProjectShowcase({
           </div>
         </div>
 
-        <div className={`order-2 bg-muted/20 p-3 sm:p-4 lg:col-span-7 lg:p-6 ${isVideoRight ? "lg:order-2" : "lg:order-1"}`}>
-          <div className="aspect-video w-full overflow-hidden rounded-lg shadow-xl">
+        <div className={`order-2 mt-6 lg:col-span-7 lg:mt-0 ${isVideoRight ? "lg:order-2" : "lg:order-1"}`}>
+          <div className="aspect-video w-full overflow-hidden border border-border">
             {isMounted ? (
               <iframe
                 src={video}
@@ -89,6 +91,6 @@ export default function VideoProjectShowcase({
           </div>
         </div>
       </div>
-    </div>
+    </figure>
   )
 }

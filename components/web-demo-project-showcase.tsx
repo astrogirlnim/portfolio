@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink } from "lucide-react"
 
@@ -15,6 +14,8 @@ interface WebDemoProjectShowcaseProps {
   liveLink?: string
   liveLinkText?: string
   demoPosition?: "left" | "right"
+  figureLabel?: string
+  why?: string
 }
 
 const PREVIEW_WIDTH = 1280
@@ -29,6 +30,8 @@ export default function WebDemoProjectShowcase({
   liveLink,
   liveLinkText = "Live App",
   demoPosition = "left",
+  figureLabel,
+  why,
 }: WebDemoProjectShowcaseProps) {
   const [isMounted, setIsMounted] = useState(false)
   const [scale, setScale] = useState(0.5)
@@ -58,21 +61,20 @@ export default function WebDemoProjectShowcase({
   }, [isMounted])
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/40">
-      <div className="grid grid-cols-1 lg:grid-cols-12">
-        <div className={`order-1 flex flex-col justify-center p-5 sm:p-6 lg:col-span-5 lg:p-8 ${isDemoRight ? "lg:order-1" : "lg:order-2"}`}>
-          <Badge variant="outline" className="mb-3 w-fit px-3 py-1 font-mono text-sm sm:mb-4">
-            FEATURED PROJECT
-          </Badge>
-          <h3 className="mb-3 text-2xl font-semibold tracking-tight lg:text-3xl">{title}</h3>
+    <figure className="border-t border-border py-8 lg:py-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10">
+        <div className={`order-1 flex flex-col justify-center py-2 lg:col-span-5 ${isDemoRight ? "lg:order-1" : "lg:order-2"}`}>
+          {figureLabel && <p className="fig-kicker mb-3">{figureLabel}</p>}
+          <h3 className="mb-3 font-display text-3xl italic tracking-tight lg:text-4xl">{title}</h3>
+          {why && (
+            <p className="mb-3 font-display text-lg italic leading-relaxed text-foreground/90 lg:text-xl">
+              {why}
+            </p>
+          )}
           <p className="text-lg leading-relaxed text-muted-foreground lg:text-xl">{description}</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="font-mono text-sm">
-                {tag}
-              </Badge>
-            ))}
-          </div>
+          <p className="mt-4 font-mono text-xs tracking-wide text-muted-foreground">
+            {tags.join("  ·  ")}
+          </p>
           <div className="mt-5 flex flex-wrap gap-3">
             {githubLink && (
               <Button variant="outline" asChild className="text-sm">
@@ -93,10 +95,10 @@ export default function WebDemoProjectShowcase({
           </div>
         </div>
 
-        <div className={`order-2 bg-muted/20 p-3 sm:p-4 lg:col-span-7 lg:p-6 ${isDemoRight ? "lg:order-2" : "lg:order-1"}`}>
+        <div className={`order-2 mt-6 lg:col-span-7 lg:mt-0 ${isDemoRight ? "lg:order-2" : "lg:order-1"}`}>
           <div
             ref={frameRef}
-            className="relative w-full overflow-hidden rounded-xl border border-border/50 bg-background shadow-xl"
+            className="relative w-full overflow-hidden border border-border bg-background"
             style={{ aspectRatio: `${PREVIEW_WIDTH} / ${PREVIEW_HEIGHT}` }}
           >
             {isMounted ? (
@@ -121,7 +123,7 @@ export default function WebDemoProjectShowcase({
                 href={liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="absolute bottom-3 right-3 inline-flex items-center rounded-full border border-border/70 bg-background/90 px-3 py-1.5 text-sm font-medium shadow-sm backdrop-blur-sm transition-colors hover:bg-background"
+                className="absolute bottom-3 right-3 inline-flex items-center border border-border bg-background/90 px-3 py-1.5 text-sm backdrop-blur-sm transition-colors hover:bg-background"
               >
                 Open live site
                 <ExternalLink className="ml-1.5 h-3 w-3" />
@@ -130,6 +132,6 @@ export default function WebDemoProjectShowcase({
           </div>
         </div>
       </div>
-    </div>
+    </figure>
   )
 }

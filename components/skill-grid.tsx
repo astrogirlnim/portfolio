@@ -27,25 +27,16 @@ const skills = [
 
 export default function SkillGrid() {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="divide-y divide-border border-y border-border">
       {skills.map((skillGroup) => (
         <div
           key={skillGroup.category}
-          className="overflow-hidden rounded-2xl border border-border/60 bg-card/60 shadow-sm backdrop-blur-sm transition-colors duration-300 hover:border-primary/30"
+          className="grid grid-cols-1 gap-3 py-5 md:grid-cols-[13rem_1fr] md:gap-8"
         >
-          <div className="border-b border-border/50 px-4 py-3">
-            <h3 className="text-base font-semibold tracking-tight sm:text-lg">{skillGroup.category}</h3>
-          </div>
-          <div className="flex flex-wrap gap-2 p-4">
-            {skillGroup.items.map((skill) => (
-              <span
-                key={skill}
-                className="rounded-full border border-border/70 bg-background/50 px-3 py-1.5 text-sm leading-tight text-muted-foreground"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
+          <h3 className="fig-kicker pt-0.5">{skillGroup.category}</h3>
+          <p className="font-mono text-sm leading-relaxed text-muted-foreground">
+            {skillGroup.items.join("  ·  ")}
+          </p>
         </div>
       ))}
     </div>

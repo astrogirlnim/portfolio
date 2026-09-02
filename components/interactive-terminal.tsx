@@ -70,12 +70,12 @@ const resumeData = {
 
 const commands = {
   help: "Available commands: help, about, skills, experience, education, contact, clear, summary",
-  about: "Senior Software Engineer, AI Platform specializing in full-stack development, mathematical modeling, and cloud infrastructure. Currently using AI to build AI systems.",
+  about: "Senior Software Engineer, AI Platform at Function Health. Yale Biomedical Engineering. Work across AI, infrastructure, genomics, and scientific computing.",
   skills: "Core expertise: Python, C#, AI/ML (PyTorch, TensorFlow), Cloud Platforms (AWS, GCP, Azure), and modern frameworks like .NET, React, and Flask.",
   experience: "Function Health (Senior Software Engineer, AI Platform), Gauntlet AI fellowship, Bruker Cellular Analysis, McMaster-Carr, and co-founder of SYMon Holdings.",
   education: "Bachelor of Science in Biomedical Engineering from Yale University (2017-2021) with GPA 3.64, focused on biocomputation and research.",
   contact: `Email: ${resumeData.about.email} | Phone: ${resumeData.about.phone} | LinkedIn: ${resumeData.about.linkedin} | GitHub: ${resumeData.about.github}`,
-  summary: "Nataly Smith - Senior Software Engineer, AI Platform. Full-stack development, mathematical modeling, and cloud infrastructure. Currently at Function Health. Yale alumni.",
+  summary: "Ambitious software at the intersection of AI, systems, and science. Senior Software Engineer, AI Platform at Function Health. Yale BME. Austin.",
 }
 
 interface TerminalLine {
@@ -201,7 +201,7 @@ export default function InteractiveTerminal() {
   }
 
   return (
-    <div className="w-full max-w-2xl bg-background/10 backdrop-blur-sm rounded-lg">
+    <div className="w-full max-w-2xl">
       {/* Terminal Content */}
       <div className="p-0">
         <div 

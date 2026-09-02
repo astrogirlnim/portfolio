@@ -1,5 +1,3 @@
-import { Badge } from "@/components/ui/badge"
-
 interface TimelineItem {
   year: string
   role: string
@@ -121,24 +119,24 @@ export default function Timeline() {
     <ol className="relative mx-auto max-w-4xl">
       <div
         aria-hidden="true"
-        className="absolute bottom-2 left-[0.4375rem] top-2 w-px bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20 md:left-[0.4375rem]"
+        className="absolute bottom-4 left-[0.3rem] top-2 w-px bg-border md:left-[0.3rem]"
       />
 
-      {timelineItems.map((item) => (
-        <li key={`${item.company}-${item.role}-${item.year}`} className="relative pl-9 pb-8 last:pb-0 sm:pb-10 md:pl-10">
+      {timelineItems.map((item, index) => (
+        <li key={`${item.company}-${item.role}-${item.year}`} className="relative pl-8 pb-10 last:pb-0 md:pl-10">
           <div
             aria-hidden="true"
-            className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full border-2 border-background bg-primary shadow-[0_0_0_3px_hsl(var(--background))]"
+            className="absolute left-0 top-1.5 h-2.5 w-2.5 border border-primary bg-background"
           />
 
-          <article className="rounded-2xl border border-border/60 bg-card/70 p-4 shadow-sm backdrop-blur-sm transition-colors duration-300 hover:border-primary/30 hover:bg-card sm:p-6">
-            <Badge variant="outline" className="mb-3 font-mono text-xs tracking-wide sm:text-sm">
-              {item.year}
-            </Badge>
-            <h3 className="text-xl font-semibold leading-snug tracking-tight sm:text-2xl">
+          <article>
+            <p className="fig-kicker">
+              {String(index + 1).padStart(2, "0")} · {item.year}
+            </p>
+            <h3 className="mt-2 font-display text-2xl italic leading-snug tracking-tight sm:text-3xl">
               {item.role}
             </h3>
-            <p className="mt-1 text-base font-medium text-primary sm:text-lg">
+            <p className="mt-1 font-mono text-xs tracking-[0.16em] uppercase text-primary">
               {item.company}
               <span className="text-muted-foreground"> · {item.location}</span>
             </p>
@@ -147,8 +145,8 @@ export default function Timeline() {
             </p>
             <ul className="mt-4 space-y-2">
               {item.achievements.map((achievement) => (
-                <li key={achievement} className="flex items-start gap-2.5 text-base leading-relaxed text-foreground/80">
-                  <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-primary" />
+                <li key={achievement} className="flex items-start gap-3 text-base leading-relaxed text-foreground/80">
+                  <span className="mt-2 h-px w-3 flex-shrink-0 bg-primary" />
                   <span>{achievement}</span>
                 </li>
               ))}
