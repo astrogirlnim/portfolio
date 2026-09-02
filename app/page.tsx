@@ -181,8 +181,8 @@ export default function Home() {
               <ImageProjectShowcase
                 figureLabel="FIG. 02"
                 title="SATurday"
-                why="Certified proof complexity, or it does not exist."
-                description="A zero-cost research platform toward P vs NP. Formal proofs in Lean 4. SAT experiments in Python. Each rung is a falsifiable statement about propositional proof systems. Results are Lean 4 certificates with no sorries. SAT runs calibrate conjectures under hard budgets and never become axioms."
+                why="Exploring the P vs NP question with the help of AI."
+                description="A zero-cost local research endeavortoward P vs NP. Formal proofs in Lean 4. SAT experiments in Python. Each rung is a falsifiable statement about propositional proof systems. Results are Lean 4 certificates with no sorries."
                 tags={["Lean 4", "Proof Complexity", "SAT", "DRAT/LRAT", "Formal Verification", "P vs NP", "Python"]}
                 images={[getAssetPath("images/SATurday_thumbnail.png")]}
                 githubLink="https://github.com/astrogirlnim/SATurday"

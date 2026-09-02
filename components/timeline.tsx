@@ -16,9 +16,8 @@ const timelineItems: TimelineItem[] = [
     description: "Lead engineer on new AI platform projects. Currently using AI to build AI systems, integrating LLMs and agentic workflows into production applications.",
     achievements: [
       "Lead engineer on new AI platform initiatives",
-      "Optimization of LLM-based agentic workflows for productivity and efficiency",
-      "Development of customer-facing applications that leverage LLMs and agentic workflows",
-      "Advanced AI-first development of enterprise-grade applications",
+      "LLM-based agentic workflows for productivity and efficiency",
+      "Development of customer-facing applications that leverage LLMs and agentic workflows"
     ],
   },
   {
