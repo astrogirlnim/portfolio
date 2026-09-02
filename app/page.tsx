@@ -184,7 +184,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="border-t border-border py-16 sm:py-20 md:py-24">
+        <section id="about" className="py-16 sm:py-20 md:py-24">
           <div className="container">
             <p className="fig-kicker mb-4">02 · About</p>
             <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-12">
@@ -208,7 +208,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="skills" className="border-t border-border py-16 sm:py-20">
+        <section id="skills" className="py-16 sm:py-20">
           <div className="container">
             <p className="fig-kicker mb-4">03 · Skills</p>
             <h2 className="mb-3 font-display text-4xl tracking-tight sm:text-5xl">Skills</h2>
@@ -219,7 +219,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="border-t border-border py-16 sm:py-20 md:py-24">
+        <section id="experience" className="py-16 sm:py-20 md:py-24">
           <div className="container">
             <p className="fig-kicker mb-4">04 · Experience</p>
             <h2 className="mb-3 font-display text-4xl tracking-tight sm:text-5xl">Experience</h2>
@@ -231,7 +231,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="projects" className="border-t border-border py-16 sm:py-20 md:py-24">
+        <section id="projects" className="py-16 sm:py-20 md:py-24">
           <div className="container">
             <p className="fig-kicker mb-4">05 · Projects</p>
             <h2 className="mb-3 font-display text-4xl tracking-tight sm:text-5xl">Projects</h2>
@@ -374,7 +374,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="border-t border-border py-16 sm:py-20 md:py-24">
+        <section id="contact" className="py-16 sm:py-20 md:py-24">
           <div className="container">
             <p className="fig-kicker mb-4">07 · Contact</p>
             <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
@@ -431,7 +431,7 @@ export default function Home() {
 
       <ProjectNavigation />
 
-      <footer className="border-t border-border py-6 sm:py-8">
+      <footer className="py-6 sm:py-8">
         <div className="container flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-center font-mono text-[0.65rem] tracking-[0.18em] uppercase text-muted-foreground sm:text-xs md:text-left">
             © {new Date().getFullYear()} Nataly Smith · Vol. 01
