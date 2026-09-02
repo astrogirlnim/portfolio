@@ -196,7 +196,7 @@ export default function Home() {
               <ImageProjectShowcase
                 figureLabel="FIG. 03"
                 title="GeneKnow"
-                why="Built so genetic data never has to leave the machine."
+                why="Genetic data never has to leave the machine."
                 description="A privacy-first, local-first genomic risk assessment platform. It processes genetic data entirely on your machine. Nothing leaves the device."
                 tags={["Tauri", "Rust", "React", "TypeScript", "LangGraph", "Genomics", "Privacy-First", "Machine Learning"]}
                 images={[
@@ -216,7 +216,7 @@ export default function Home() {
               <VideoProjectShowcase
                 figureLabel="FIG. 04"
                 title="LAPACK AI"
-                why="AlphaTensor inside LAPACK, not only in a paper. Fortran, C, and a fair amount of numerical weirdness."
+                why="AlphaTensor inside LAPACK using Fortran and C."
                 description="An open-source implementation of the AlphaTensor 4x4 matrix multiplication algorithm in LAPACK: 49 operations, CPU optimizations, OpenCL GPU kernels on NVIDIA hardware, and real LAPACK integration."
                 tags={["Fortran", "C/C++", "AI/ML", "Linear Algebra", "Scientific Computing", "Performance Optimization"]}
                 video="https://www.youtube.com/embed/p7Ov3YXzEOA"
@@ -242,7 +242,7 @@ export default function Home() {
               <WebDemoProjectShowcase
                 figureLabel="FIG. 06"
                 title="FunnelFluent"
-                why="Writing assistance for sales funnels, not generic grammar."
+                why="Writing assistance for sales funnels."
                 description="A Next.js writing assistant for business proposals and marketing copy. Firebase, real-time collaboration, and AI suggestions. Grammarly, but for funnels."
                 tags={["Next.js", "Firebase", "TypeScript", "React", "AI/ML", "Real-time Collaboration", "Writing Assistant"]}
                 demoUrl="https://wordwise-ai-mvp.web.app/"
@@ -257,7 +257,7 @@ export default function Home() {
               <VideoProjectShowcase
                 figureLabel="FIG. 07"
                 title="Personyx"
-                why="Interview evidence, usable while a product is still being built."
+                why="Interview evidence to be used during product development."
                 description="A desktop app that clusters customer interviews into personas, scores PRDs against that evidence, and lets you chat with persona bots while you work."
                 tags={["Electron", "TypeScript", "React", "AI/ML", "Desktop App", "Product Management"]}
                 video="https://www.youtube.com/embed/XyqOMLz7ZkI"
@@ -270,7 +270,7 @@ export default function Home() {
               <VideoProjectShowcase
                 figureLabel="FIG. 08"
                 title="Children of Singularity"
-                why="A salvage sim in the orbit of Moebius, Planetes, and Nausicaä."
+                why="A salvage sim inspired by Moebius, Planetes, and Nausicaä."
                 description="A 2.5D/3D multiplayer salvage sim. Explore cluttered orbital zones, trade debris, upgrade your ship, and slowly figure out what is running the place."
                 tags={["Godot", "Game Development", "Sci-fi", "Multiplayer", "GDScript", "2D/2.5D"]}
                 video="https://www.youtube.com/embed/I7QM7lZqWgY"
