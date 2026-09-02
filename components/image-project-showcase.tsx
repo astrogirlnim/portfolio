@@ -46,16 +46,15 @@ export default function ImageProjectShowcase({
   const singleImage = hasImages && images.length === 1 ? images[0] : null
 
   return (
-    <figure className={`py-8 lg:py-10 ${featured ? "" : "border-t border-border"}`}>
+    <figure className={featured ? "featured-project" : "border-t border-border py-8 lg:py-10"}>
       {featured && (
-        <div className="mb-6 flex items-baseline justify-between gap-4 border-y border-foreground py-2">
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-foreground">Current research</p>
-          {status && (
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.28em] text-foreground">{status}</p>
-          )}
+        <div className="featured-project-masthead">
+          <p>Current research</p>
+          {status && <p>{status}</p>}
         </div>
       )}
-      <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10">
+      <div className={featured ? "featured-project-body" : ""}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 lg:gap-10">
           <div className={`order-1 flex flex-col py-0 lg:col-span-5 ${featured ? "justify-start" : "justify-center py-2"} ${isImageRight ? "lg:order-1" : "lg:order-2"}`}>
             {figureLabel && <p className="fig-kicker mb-3">{figureLabel}</p>}
             <h3 className="mb-3 font-display text-3xl italic tracking-tight lg:text-4xl">{title}</h3>
@@ -70,7 +69,7 @@ export default function ImageProjectShowcase({
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               {githubLink && (
-                <Button variant="outline" asChild className="text-sm">
+                <Button variant={featured ? "default" : "outline"} asChild className="text-sm">
                   <Link href={githubLink} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2 h-4 w-4" />
                     View Code
@@ -136,6 +135,7 @@ export default function ImageProjectShowcase({
             ) : null}
           </div>
         </div>
+      </div>
     </figure>
   )
 }

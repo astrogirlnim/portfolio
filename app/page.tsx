@@ -15,6 +15,7 @@ import ProjectNavigation from "@/components/project-navigation"
 import InteractiveTerminal from "@/components/interactive-terminal"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
+import HomeHashScroll from "@/components/home-hash-scroll"
 import { getImagePath, getAssetPath } from "@/lib/utils"
 
 const rangeEntries = [
@@ -59,6 +60,7 @@ function RangePlate() {
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <HomeHashScroll />
       <SiteHeader />
 
       <main>
