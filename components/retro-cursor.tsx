@@ -32,12 +32,20 @@ export default function RetroCursor() {
       const el = target instanceof Element ? target : null
       if (!el) {
         node.dataset.mode = "default"
+        node.dataset.on = "true"
+        return
+      }
+      if (el.closest("iframe, object, embed, video")) {
+        node.dataset.mode = "media"
+        node.dataset.on = "false"
         return
       }
       if (el.closest("input, textarea, select, [contenteditable='true']")) {
         node.dataset.mode = "text"
+        node.dataset.on = "false"
         return
       }
+      node.dataset.on = "true"
       if (el.closest("a, button, [role='button'], label, summary, .hero-portrait")) {
         node.dataset.mode = "pointer"
         return
@@ -47,7 +55,6 @@ export default function RetroCursor() {
 
     const onMove = (event: MouseEvent) => {
       node.style.transform = `translate3d(${event.clientX}px, ${event.clientY}px, 0)`
-      node.dataset.on = "true"
       setMode(event.target)
     }
 
@@ -67,9 +74,6 @@ export default function RetroCursor() {
   if (!enabled) return null
 
   return (
-    <div ref={cursorRef} className="site-cursor" aria-hidden="true">
-      <span className="site-cursor-halo" />
-      <span className="site-cursor-core" />
-    </div>
+    <div ref={cursorRef} className="site-cursor" aria-hidden="true" />
   )
 }
