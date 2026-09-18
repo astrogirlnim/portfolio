@@ -56,7 +56,7 @@ const openAiTenProofs = "https://openai.com/index/openai-ten-proofs/"
 
 /** Canonical papers linked from issue 02 rung statements. Prefer open PDFs when available. */
 const paperRobinson1965 = "https://doi.org/10.1145/321250.321253"
-const paperHaken1985 = "https://doi.org/10.1016/0304-3975(85)90144-6"
+const paperHaken1985 = "https://doi.org/10.1016/0304-3975%2885%2990144-6"
 const paperBeamePitassi1996 = "https://homes.cs.washington.edu/~beame/papers/focsclause.pdf"
 const paperBsw2001 = "https://eccc.weizmann.ac.il/report/1999/022/download"
 const paperUrquhart1987 = "https://doi.org/10.1145/7531.8928"

@@ -44,7 +44,7 @@ function renderSegment(part: string, keyPrefix: string): ReactNode {
     return renderMath(inlineMath[1], false, keyPrefix)
   }
 
-  const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
+  const linkMatch = part.match(/^\[([^\]]+)\]\(((?:[^()]|\([^()]*\))*)\)$/)
   if (linkMatch) {
     const [, label, href] = linkMatch
     if (href.startsWith("/")) {
@@ -84,7 +84,9 @@ function renderSegment(part: string, keyPrefix: string): ReactNode {
 
 export function renderBlogText(text: string): ReactNode[] {
   return text
-    .split(/(\$\$[\s\S]+?\$\$|\$[^$]+\$|\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\)|`[^`]+`)/g)
+    .split(
+      /(\$\$[\s\S]+?\$\$|\$[^$]+\$|\*\*[^*]+\*\*|\[[^\]]+\]\((?:[^()]|\([^()]*\))*\)|`[^`]+`)/g
+    )
     .map((part, index) => renderSegment(part, `${index}`))
     .filter(Boolean)
 }
