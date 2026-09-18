@@ -56,6 +56,8 @@ const paperPitassiBeameImpagliazzo1993 = "https://doi.org/10.1007/BF01200026"
 const paperRazborov1987 = "https://doi.org/10.1007/BF01621094"
 const paperSmolensky1987 = "https://doi.org/10.1145/28395.28404"
 const paperCookReckhow1979 = "https://www.cs.toronto.edu/~sacook/homepage/cook_reckhow.pdf"
+const paperSabharwalProofComplexity =
+  "https://www.cs.cornell.edu/~sabhar/publications/iaspcmi-proofcomplexity00.pdf"
 
 const posts: BlogPost[] = [
   {
@@ -63,25 +65,41 @@ const posts: BlogPost[] = [
     title: "Issue 02: Attention is All You Need",
     date: "2026-09-19",
     excerpt:
-      "LLMs lack attention. SATurday enforces focus with a locked proof-complexity ladder, one-rung sessions, and human guardrails.",
+      "Transformers are great, but LLMs have an attention problem. SATurday makes the problem smaller.",
     tags: ["SATurday", "P vs NP", "Lean 4", "Architecture"],
     tldr: [
-      "Machine models have rudimentary math knowledge, but without a hard selector they generate certificates of nothing.",
-      "[SATurday](https://github.com/astrogirlnim/SATurday) climbs P vs NP on falsifiable Lean 4 rungs: one claim, one deduction stage per wake.",
-      "Attention is enforced by software and by a human guide, not by sheer chance our models keep their interest on our central problem.",
+      "LLMs can produce useful deductions and proof sketches, then spend forever generating certificates of nothing.",
+      "[SATurday](https://github.com/astrogirlnim/SATurday) makes the problem smaller: falsifiable Lean 4 rungs, one claim per wake.",
+      "The intelligence rests in the harness, not the parameter count.",
     ],
     sections: [
       {
         paragraphs: [
-          "LLMs lack attention and cannot learn or induce the way human beings can. That is the hard-earned lesson of this SATurday’s next installment; machine models have rudimentary math knowledge, but without a hard selector and clear guidance, they will run amok generating certificates of nothing. Let’s dive deeper into model and software architecture to understand why.",
+          "Transformers are great, but LLMs have an attention problem. They are easy to distract when deciding what deserves attention over the course of a long, uncertain research trek. That is the hard-earned lesson of this SATurday installment; machine models have rudimentary mathematical knowledge and can produce useful deductions, proof sketches, counterexamples, and even formal code. Provide an agent a frontier problem and enough time, however, and it can happily spend it generating certificates of nothing. SATurday’s solution is not to use smarter models and hope they make better choices; rather, it is to make the problem smaller. Before we talk architecture, below is the research context.",
+        ],
+      },
+      {
+        heading: "A Prelim",
+        paragraphs: [
+          `[SATurday](${saturdayRepo}) is a research project toward **P vs NP** whose bet is emphatically not “ask a chatbot for a proof.” The route this project explores is proof complexity, the study of how large a proof must be inside a particular formal proof system ([lecture notes](${paperSabharwalProofComplexity})). We know explicit families of formulas for which weak systems require enormous computational proofs. Stronger systems are even harder to understand. At the far end, Cook-Reckhow connects sufficiently strong propositional proof systems to the complexity classes NP and coNP. This territory is already established mathematics, which runs directly into major open problems in proof complexity.`,
+          "SATurday’s research ladder is a map across proof complexity territory, formalized in code. The idea is to break apart uncharted territory into small, falsifiable pieces, called rungs. A rung is one claim on the chain: a foundational axiom, a lower bound, or a bridge theorem. Each rung has a mathematical statement, a status, a Lean home, and a memory file to which it is written. Finally, a rung is stateful and can be classified as open or closed. Closing a rung changes what the system is allowed to treat as ground truth. Until Lean accepts the relevant declaration with zero `sorry`, or no ambiguity, it does not count as formally certified.",
+          "The distinction between assumed and certified matters. Lean can verify that a formal theorem follows from its stated assumptions, but cannot magically guarantee that what was formalized was what was intended. Humans still have to inspect the correspondence between the mathematics on paper and those in code. Hence, the rungs serve two purposes, to organize the mathematics and constrain the agent’s attention.",
+          "The agent works on one claim. It records what happened. Then it stops. If it succeeds, the next wake cycle inherits a stronger foundation. Fail, and a claim is discarded. The agents thrash and trash, generating logs of hallucinations which look like progress.",
+          "We implement a smart system to reduce hallucinations. A smart system, however, does not mean a bigger model. It means a deliberately boring mechanical loop wrapped around a relatively small local model, broken up into the following four stages:",
+        ],
+        codeBlock: "Pick one rung → run one stage → check the result → write to memory → stop.",
+      },
+      {
+        paragraphs: [
+          "Humans still gate progression across the research tree. The intelligence here rests increasingly in the harness rather than the model size or parameters.",
         ],
         image: "images/blog/issue-02-rungs.jpg",
         imageCaption: "FIG. B2 · Proof-complexity ladder",
       },
       {
         paragraphs: [
-          "SATurday climbs **P vs NP** through a locked proof-complexity ladder, made of falsifiable **rungs** of claims. The premise is simple; we build a final proof on building blocks of simpler, dummy claims, or “rungs.” Each rung is certified in **Lean 4** with zero `sorry` on the accepted tree, a fully complete proof without ambiguities. Using a programming language enables recursive mathematical grounding. Each sub-theorem builds on another, and each proof combinatorially certifies what is written in a plain-English math publication.",
-          "The greatest strength of this method underlies its central problem; empirically proving math in computer notation is an arduous, meticulous, often fractal-like process that stumps machines with finite memories unless heavy memory and parallelization are employed, or a smart system is applied.",
+          "SATurday climbs toward **P vs NP** through a locked proof-complexity ladder made of falsifiable claims. The premise is simple: don’t ask a machine to solve one enormous problem. Decompose it into smaller claims whose truth or falsity can be tested.",
+          "Each accepted rung is formalized in **Lean 4** with zero `sorry` on the accepted declaration. In practical terms, Lean forces every accepted claim to rest on previously checked definitions, theorems, and allowed axioms. Though this is enormously useful, it is also a trap. Spelling mathematics out so that a machine can check every logical dependency is a slow, meticulous, and fractal-like process. A two-line argument on paper can explode into definitions, helper lemmas, coercions, edge cases, imported methods, proof obligations, and even vagueness. A model with finite context eventually drowns in residue. This issue can be attacked with larger models, bigger context windows, enormous memory, and ungodly parallelism. Alternatively, you can try making the thing the model is allowed to think about much smaller. SATurday does the latter.",
         ],
       },
       {
