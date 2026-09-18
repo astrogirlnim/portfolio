@@ -162,7 +162,18 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                     key={`${post.slug}-cell-${sectionIndex}-${rowIndex}-${cellIndex}`}
                                     className="px-4 py-4 align-top text-sm leading-relaxed text-muted-foreground sm:text-base"
                                   >
-                                    {renderBlogText(cell)}
+                                    {cell.split("\n").map((line, lineIndex) => (
+                                      <span key={`${post.slug}-line-${sectionIndex}-${rowIndex}-${cellIndex}-${lineIndex}`}>
+                                        {lineIndex > 0 ? <br /> : null}
+                                        {lineIndex > 0 ? (
+                                          <span className="mt-2 inline-block">
+                                            {renderBlogText(line)}
+                                          </span>
+                                        ) : (
+                                          renderBlogText(line)
+                                        )}
+                                      </span>
+                                    ))}
                                   </td>
                                 ))}
                               </tr>
