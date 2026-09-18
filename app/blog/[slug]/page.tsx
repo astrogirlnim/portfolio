@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     )}
                     {section.table && (
                       <div className="overflow-x-auto border border-border">
-                        <table className="w-full min-w-[40rem] border-collapse text-left">
+                        <table className="w-full min-w-[72rem] border-collapse text-left">
                           <thead>
                             <tr className="border-b border-border bg-muted/40">
                               {section.table.headers.map((header) => (
@@ -160,20 +160,24 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                 {row.map((cell, cellIndex) => (
                                   <td
                                     key={`${post.slug}-cell-${sectionIndex}-${rowIndex}-${cellIndex}`}
-                                    className="px-4 py-4 align-top text-sm leading-relaxed text-muted-foreground sm:text-base"
+                                    className="min-w-[10rem] px-4 py-4 align-top text-sm leading-relaxed text-muted-foreground sm:text-base"
                                   >
-                                    {cell.split("\n").map((line, lineIndex) => (
-                                      <span key={`${post.slug}-line-${sectionIndex}-${rowIndex}-${cellIndex}-${lineIndex}`}>
-                                        {lineIndex > 0 ? <br /> : null}
-                                        {lineIndex > 0 ? (
-                                          <span className="mt-2 inline-block">
-                                            {renderBlogText(line)}
+                                    {cell
+                                      ? cell.split("\n").map((line, lineIndex) => (
+                                          <span
+                                            key={`${post.slug}-line-${sectionIndex}-${rowIndex}-${cellIndex}-${lineIndex}`}
+                                          >
+                                            {lineIndex > 0 ? <br /> : null}
+                                            {lineIndex > 0 ? (
+                                              <span className="mt-2 inline-block">
+                                                {renderBlogText(line)}
+                                              </span>
+                                            ) : (
+                                              renderBlogText(line)
+                                            )}
                                           </span>
-                                        ) : (
-                                          renderBlogText(line)
-                                        )}
-                                      </span>
-                                    ))}
+                                        ))
+                                      : null}
                                   </td>
                                 ))}
                               </tr>
