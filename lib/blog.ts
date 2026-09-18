@@ -62,7 +62,8 @@ const posts: BlogPost[] = [
           "LLMs lack attention and cannot learn or induce the way human beings can. That is the hard-earned lesson of this SATurday’s next installment: machine models have rudimentary math knowledge, but without a hard selector and clear guidance, they will run amok generating certificates of nothing. Let’s dive deeper into model and software architecture to understand why.",
         ],
         image: "images/blog/issue-02-rungs.jpg",
-        imageCaption: "FIG. B2 · Resolution Tree",
+        imageCaption:
+          "FIG. B2 · Placeholder art (labels incorrect: not Cook–Levin / P=BPP). Real DAG is below.",
       },
       {
         paragraphs: [
@@ -82,55 +83,64 @@ const posts: BlogPost[] = [
       {
         heading: "A Note on Our Rungs",
         paragraphs: [
-          `Our P vs NP proof ladder certifies hardness for successively stronger proof systems, then (via Cook–Reckhow) connect that hardness to complexity classes. Each rung is a falsifiable claim with its own Lean home and session memory under [\`docs/ladder/rungs/\`](${saturdayRungs}).`,
-          "Outline of the ladder:",
+          `Program: proof-complexity ladder toward P ≠ NP. Source of truth: [\`docs/ladder/ladder.md\`](${saturdayLadder}); per-rung memory under [\`docs/ladder/rungs/\`](${saturdayRungs}). A claim counts only if Lean compiles it with zero \`sorry\` on accepted declarations (axioms limited to propext, Classical.choice, Quot.sound).`,
+          "DAG:",
         ],
-        codeBlock: `R0 → R1 → R2 → R3 → R4 → Summit
-         ↘               ↗
-           R5 (bridge) ─┘`,
+        codeBlock: `R0 → R1 → R2 → R3 → R4 ─┐
+         ↘               ├→ P ≠ NP
+           R5 ───────────┘`,
         bullets: {
-          lead: "How the pieces fit:",
+          lead: "Edge conditions:",
           items: [
-            "**Climb (R0–R4):** stronger and stronger lower bounds on proof systems.",
-            "**Bridge (R5):** formalize how “no short proofs for all tautologies” relates to **NP ≠ coNP**, and thus to **P ≠ NP**.",
-            "**Summit:** R4-class hardness **plus** a certified R5 bridge—not either alone.",
+            "**Climb (R0–R4):** successive size lower bounds for stronger propositional proof systems.",
+            "**R5 (Cook–Reckhow):** poly-bounded PPS ↔ NP = coNP; P = NP ⇒ NP = coNP. Opens after R1.",
+            "**Summit:** R4-class “no poly-bounded PPS” plus certified R5 ⇒ P ≠ NP. Hardness alone is not enough; the bridge alone is not enough.",
           ],
         },
         table: {
-          headers: ["Rung", "Status (now)", "Plain English"],
+          headers: ["Rung", "Status", "Statement"],
           rows: [
             [
-              "**R0 — Resolution foundations**",
+              "**R0** Resolution",
               "Certified",
-              "Define the basic language of SAT proofs in Lean: clauses, resolution steps, proof size. Prove the system is sound and complete (if you derive a contradiction, the formula really is unsat—and every unsat formula has some resolution proof). This is the alphabet.",
+              "Resolution calculus + Derivation.size; soundness and refutational completeness (Resolution.lean).",
             ],
             [
-              "**R1 — PHP / Haken lower bound**",
+              "**R1** Haken PHP",
               "Certified",
-              "The everyday fact “n+1 pigeons don’t fit in n holes” is easy. R1 is harder: **every resolution proof** of that fact must be **exponentially long**. Local proof rules force a combinatorial bottleneck. First real hardness trophy.",
+              "For n ≥ 288, every resolution refutation d of phpCNF n satisfies 2^((n − 3n/4 − 36)/35) ≤ d.size (php_resolution_size_lower_bound). Paper rate 2^(n/20) not claimed.",
             ],
             [
-              "**R2 — Width machinery**",
-              "Prose accepted; still formalizing",
-              "Build a reusable machine: if every proof must be **wide** (some clauses mention many variables), then every proof must be **huge** (many steps)—the Ben-Sasson–Wigderson tradeoff—then apply it to hard families (expanders / Tseitin; random CNF attempts kept dying). Factory, not one trophy.",
+              "**R2** Width / families",
+              "Prose accepted; item 2 open",
+              "(1) BSW: if every refutation has width ≥ W, then size ≥ 2^((W − cnfWidth)^2 / (c · |V|)) (bsw_size_lower_bound). (2) Width LBs for random k-CNF and/or expander Tseitin (primary pin: HasExpansionInv / MGG).",
             ],
             [
-              "**R3 — Stronger systems**",
+              "**R3** Above resolution",
               "Proposed",
-              "One certified lower bound **above** plain resolution (e.g. Res(k), cutting planes, or bounded-depth Frege). First step past the system R0–R2 live in.",
+              "One super-polynomial LB for a system strictly stronger than resolution: Res(k), cutting planes (interpolation), or bounded-depth Frege PHP.",
             ],
             [
-              "**R4 — Open frontier**",
+              "**R4** Open frontier",
               "Proposed",
-              "Super-polynomial lower bounds for systems where **none are known** (starting target: AC⁰[p]-Frege, then stronger). This is where new mathematics—not just formalization—is required.",
+              "Super-polynomial LB for a system with no known such LB. Order: AC⁰[p]-Frege, then TC⁰-Frege, Frege, Extended Frege.",
             ],
             [
-              "**R5 — Cook–Reckhow bridge**",
+              "**R5** Cook–Reckhow",
               "Active",
-              "Define P/NP (and proof systems) over a real machine model in Lean, and prove the textbook link: a polynomially bounded proof system for tautologies exists **iff** NP = coNP (and P = NP would imply that). Without this, hardness on the climb doesn’t officially mean P ≠ NP in our locked story.",
+              "Define InP / InNP / IsPropProofSystem via TM2ComputableInPolyTime. Prove: ∃ poly-bounded PPS ↔ NP = coNP; P = NP ⇒ NP = coNP; hence (∀ PPS ¬poly-bounded) ⇒ P ≠ NP.",
             ],
           ],
         },
+      },
+      {
+        heading: "What R5 Does",
+        paragraphs: [
+          "**R5 is not a hardness proof.** It is the Cook–Reckhow (1979) dictionary between propositional proof systems and complexity classes, formalized in Lean (`Bridge/`).",
+          "Define P / NP / coNP with mathlib TM2 poly-time machines on bitstrings. A propositional proof system is a poly-time map onto TAUT (sound + complete). It is polynomially bounded if every tautology has a proof of length ≤ q(|φ|) for some fixed polynomial q.",
+          "Bridge theorems: (1) ∃ poly-bounded PPS ↔ NP = coNP. (2) P = NP ⇒ NP = coNP. (3) If every PPS fails to be poly-bounded, then P ≠ NP.",
+          "R0–R4 produce size lower bounds for concrete systems and families. Those bounds do not imply P ≠ NP by themselves. Without R5, either the summit link stays informal or it gets smuggled in as an axiom (forbidden). R5 makes the link a theorem in the same acceptance bar as the climb.",
+        ],
       },
     ],
   },
