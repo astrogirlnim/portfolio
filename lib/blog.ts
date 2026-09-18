@@ -116,8 +116,7 @@ const posts: BlogPost[] = [
       {
         heading: "Smart Systems to Address LLM Lack of Focus",
         paragraphs: [
-          "The human brain contains 100 to 500 trillion synaptic connections, and uses only 20% of the body’s total energy production, or less power than a dim lightbulb. Frontier models attempt to emulate this efficiency with an order of magnitude fewer neural nodes (1.5-5+ trillion) and require 50k-250k Watts of power. SATurday currently runs much of its inference locally, including small Qwen-class models on a personal MacBook. That constraint is intentional.",
-          "SATurday operates on the premise that we can emulate the human brain and “dumb down” math theorems with smart systems that require less “thinking.” It is less interested in whether a giant frontier model can produce a brilliant mathematical continuation than whether a small model becomes substantially more useful when the surrounding software narrows its job. It does not assume that a 2.5-billion-parameter model emulates a human mathematician. Almost the opposite, it makes the machine’s job dumb enough that it doesn’t have to.",
+          "SATurday currently runs much of its inference locally, including small Qwen-class models on a personal MacBook. That constraint is intentional. The premise is to “dumb down” math theorems with smart systems that require less unconstrained “thinking.” SATurday is less interested in whether a giant frontier model can produce a brilliant mathematical continuation than whether a small model becomes substantially more useful when the surrounding software narrows its job.",
           "SATurday’s loop is deliberately mechanical. Each wake loads the P vs. NP proof ladder state, picks one rung/claim, and applies a deduction stage. Available stages are prove, audit, formalize, or falsify.",
         ],
         bullets: {

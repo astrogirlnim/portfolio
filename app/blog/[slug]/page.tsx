@@ -187,15 +187,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       </div>
                     )}
                     {section.rungs && (
-                      <div className="-mx-1 overflow-x-auto border border-border sm:mx-0">
-                        <table className="w-full min-w-[44rem] border-collapse text-left lg:table-fixed">
-                          <colgroup>
-                            <col className="lg:w-[18%]" />
-                            <col className="lg:w-[12%]" />
-                            <col className="lg:w-[28%]" />
-                            <col className="lg:w-[22%]" />
-                            <col className="lg:w-[20%]" />
-                          </colgroup>
+                      <div className="overflow-x-auto border border-border">
+                        <table className="w-full min-w-[64rem] border-collapse text-left">
                           <thead>
                             <tr className="border-b border-border bg-muted/40">
                               {["Rung", "Status", "Idea", "Formal", "Summary"].map((header) => (
@@ -214,7 +207,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                 key={rung.title}
                                 className="border-b border-border last:border-b-0"
                               >
-                                <td className="min-w-[9rem] px-3 py-4 align-top">
+                                <td className="min-w-[10rem] px-3 py-4 align-top">
                                   <p className="font-display text-base italic leading-snug text-foreground">
                                     {rung.title}
                                   </p>
@@ -222,11 +215,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                     {renderBlogText(rung.references)}
                                   </p>
                                 </td>
-                                <td className="min-w-[6.5rem] px-3 py-4 align-top">
+                                <td className="min-w-[7rem] px-3 py-4 align-top">
                                   <p className="fig-kicker leading-snug">{rung.status}</p>
                                 </td>
                                 <td
-                                  className="group/idea relative min-w-[12rem] px-3 py-4 align-top text-sm leading-relaxed text-muted-foreground"
+                                  className="group/idea relative min-w-[14rem] px-3 py-4 align-top text-sm leading-relaxed text-muted-foreground"
                                   tabIndex={rung.detail ? 0 : undefined}
                                 >
                                   <p
@@ -264,7 +257,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                     </>
                                   )}
                                 </td>
-                                <td className="min-w-[11rem] px-3 py-4 align-top text-xs leading-relaxed text-muted-foreground">
+                                <td className="min-w-[14rem] px-3 py-4 align-top text-xs leading-relaxed text-muted-foreground">
                                   {rung.formal ? (
                                     <div className="space-y-2 break-words font-mono">
                                       {rung.formal.split("\n").map((line, lineIndex) => (
@@ -278,7 +271,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                     </div>
                                   ) : null}
                                 </td>
-                                <td className="min-w-[11rem] px-3 py-4 align-top text-sm leading-relaxed text-foreground">
+                                <td className="min-w-[14rem] px-3 py-4 align-top text-sm leading-relaxed text-foreground">
                                   {renderBlogText(rung.summary)}
                                 </td>
                               </tr>
