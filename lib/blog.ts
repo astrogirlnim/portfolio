@@ -141,94 +141,65 @@ const posts: BlogPost[] = [
           `The full ladder lives in [\`docs/ladder/ladder.md\`](${saturdayLadder}), with individual rung files under [\`docs/ladder/rungs/\`](${saturdayRungs}).`,
           "Acceptance means Lean 4 with zero `sorry` on accepted declarations, under the project’s allowed axioms.",
         ],
-      },
-      {
-        heading: "R0 · Resolution · Certified",
-        paragraphs: [
-          "The idea: Resolution is the basic proof system underlying this branch of the project. It repeatedly combines clauses by eliminating a contradictory variable. If this process derives contradiction, the original Boolean formula cannot be satisfied.",
-          `What SATurday has: A resolution calculus with $\\mathsf{Derivation.size}$, plus soundness and refutational completeness in [\`Resolution.lean\`](${saturdayResolution}).`,
-          `Reference: [Robinson, 1965](${paperRobinson1965}).`,
-          "In one line: Cancel one variable at a time; you can derive contradiction exactly when the CNF has no satisfying assignment.",
-        ],
-      },
-      {
-        heading: "R1 · Haken PHP · Certified",
-        paragraphs: [
-          "The idea: The pigeonhole principle gives us an explicit family of formulas that resolution cannot refute efficiently.",
-          "Imagine trying to place too many pigeons into too few holes while insisting that no two pigeons share one. The constraints are impossible. But a resolution proof still has to demonstrate that impossibility.",
-          "Haken’s lower bound shows that such proofs eventually have to pass through clauses of intermediate complexity. Only a limited number of assignments can survive each of those clauses, forcing the proof to contain exponentially many of them.",
-          "Formal target:",
-        ],
-        codeBlock: `∀ n ≥ 288, every resolution refutation d of phpCNF n satisfies
-
-2^((n−3n/4−36)/35) ≤ d.size
-
-implemented as php_resolution_size_lower_bound.`,
-      },
-      {
-        paragraphs: [
-          `References: [Haken, 1985](${paperHaken1985}); bottleneck formulation following [Beame-Pitassi, 1996](${paperBeamePitassi1996}).`,
-          "In one line: Every proof must pass through a narrow bottleneck, and too few assignments fit through each opening, so exponentially many clauses are required.",
-        ],
-      },
-      {
-        heading: "R2 · Width / Families · Prose accepted; item 2 open",
-        paragraphs: [
-          "The idea: R1 gives us one famous hard family. R2 tries to build a more general machine for producing lower bounds.",
-          "Ben-Sasson and Wigderson connect two notions: the width of clauses appearing in a resolution proof and the size of the proof itself.",
-          "Roughly: if every refutation must eventually contain very wide clauses, then every refutation must also be very large.",
-          "That turns the problem into finding formula families where large width is unavoidable.",
-          "Random $k$-CNF formulas and Tseitin formulas built from expander graphs are candidates because their combinatorial structure can force exactly that behavior.",
-          "Formal BSW target:",
-        ],
-        codeBlock: `width ≥ W ⇒ size ≥ 2^((W−cnfWidth)^2/(c·|V|))
-
-implemented as bsw_size_lower_bound.`,
-      },
-      {
-        paragraphs: [
-          "The remaining work concerns width lower bounds for hard families, including random $k$-CNF and/or expander Tseitin constructions.",
-          `References: [Ben-Sasson-Wigderson, 2001](${paperBsw2001}); [Chvatal-Szemeredi, 1988](${paperChvatalSzemeredi1988}); [Urquhart, 1987](${paperUrquhart1987}).`,
-          "In one line: Short resolution proofs have to stay narrow; certain formulas force proofs to become wide; therefore those proofs cannot stay short.",
-        ],
-      },
-      {
-        heading: "R3 · Above Resolution · Proposed",
-        paragraphs: [
-          "The idea: Proving that resolution is weak is not enough. We have to climb to proof systems that can express arguments resolution cannot.",
-          "Candidate systems include $\\mathrm{Res}(k)$, cutting planes, and bounded-depth Frege.",
-          "The goal is a super-polynomial proof-size lower bound for some system strictly stronger than resolution.",
-          "This is where the ladder starts leaving the comfortable ground underneath R0-R2.",
-          `References: [Pudlak, 1997](${paperPudlak1997}); [Ajtai, 1988](${paperAjtai1988}); [Pitassi-Beame-Impagliazzo, 1993](${paperPitassiBeameImpagliazzo1993}).`,
-          "In one line: Show that the hardness survives even after we give the proof system more powerful reasoning rules.",
-        ],
-      },
-      {
-        heading: "R4 · Open Frontier · Proposed",
-        paragraphs: [
-          "The idea: Keep climbing.",
-          "A major target is a super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege, followed eventually by still stronger systems such as $\\mathrm{TC}^0$-Frege, Frege, and Extended Frege.",
-          "There is an important analogy here. We know strong lower bounds for related classes of Boolean circuits through work such as Razborov and Smolensky. But translating that kind of hardness into comparable lower bounds for these Frege-style proof systems is another matter.",
-          "That is not bookkeeping.",
-          "It is open research.",
-          `References: [Razborov, 1987](${paperRazborov1987}); [Smolensky, 1987](${paperSmolensky1987}).`,
-          "In one line: We know how to prove that certain shallow circuits are weak; proving analogous limitations for the corresponding strong proof systems remains a major frontier.",
-        ],
-      },
-      {
-        heading: "R5 · Cook-Reckhow · Active",
-        paragraphs: [
-          "R5 is a different branch of the ladder. It opens after the basic resolution foundation rather than waiting for every lower-bound rung above it.",
-          "The idea: Cook-Reckhow supplies the bridge between propositional proof systems and complexity classes.",
-          "SAT has short certificates for yes instances: give me a satisfying assignment and I can efficiently check it.",
-          "TAUT asks the complementary kind of question: whether a Boolean formula is true under every assignment. A polynomially bounded propositional proof system would provide efficiently checkable short proofs for tautologies as well.",
-          "The Cook-Reckhow framework makes this precise through the relationship: a polynomially bounded propositional proof system exists exactly when $\\mathrm{NP} = \\mathrm{coNP}$.",
-          "SATurday formalizes the surrounding machinery through $\\mathsf{InP}$, $\\mathsf{InNP}$, $\\mathsf{IsPropProofSystem}$, and $\\mathsf{TM2ComputableInPolyTime}$, together with the implications connecting polynomially bounded proof systems to NP/coNP and ultimately to the P vs NP question.",
-          "This branch tells us what kind of proof-complexity result would actually be strong enough to matter.",
-          "It does not make the missing lower bounds easy.",
-          `Reference: [Cook-Reckhow, 1979](${paperCookReckhow1979}).`,
-          "In one line: If every propositional proof system requires super-polynomial proofs somewhere, then $\\mathrm{NP} \\neq \\mathrm{coNP}$, and since $\\mathrm{P} = \\mathrm{NP}$ would imply $\\mathrm{NP} = \\mathrm{coNP}$, that would give $\\mathrm{P} \\neq \\mathrm{NP}$.",
-        ],
+        table: {
+          headers: ["Rung", "Status", "Idea", "Detail", "Formal", "References", "Summary"],
+          rows: [
+            [
+              "**R0** Resolution",
+              "Certified",
+              "Resolution is the basic proof system underlying this branch of the project. It repeatedly combines clauses by eliminating a contradictory variable. If this process derives contradiction, the original Boolean formula cannot be satisfied.",
+              "",
+              `A resolution calculus with $\\mathsf{Derivation.size}$, plus soundness and refutational completeness in [\`Resolution.lean\`](${saturdayResolution}).`,
+              `[Robinson, 1965](${paperRobinson1965})`,
+              "Cancel one variable at a time; you can derive contradiction exactly when the CNF has no satisfying assignment.",
+            ],
+            [
+              "**R1** Haken PHP",
+              "Certified",
+              "The pigeonhole principle gives us an explicit family of formulas that resolution cannot refute efficiently.",
+              "Imagine trying to place too many pigeons into too few holes while insisting that no two pigeons share one. The constraints are impossible. But a resolution proof still has to demonstrate that impossibility.\nHaken’s lower bound shows that such proofs eventually have to pass through clauses of intermediate complexity. Only a limited number of assignments can survive each of those clauses, forcing the proof to contain exponentially many of them.",
+              `∀ n ≥ 288, every resolution refutation d of phpCNF n satisfies\n$2^{((n-3n/4-36)/35)} \\le d.\\mathsf{size}$\nimplemented as \`php_resolution_size_lower_bound\`.`,
+              `[Haken, 1985](${paperHaken1985}); bottleneck formulation following [Beame-Pitassi, 1996](${paperBeamePitassi1996})`,
+              "Every proof must pass through a narrow bottleneck, and too few assignments fit through each opening, so exponentially many clauses are required.",
+            ],
+            [
+              "**R2** Width / families",
+              "Prose accepted; item 2 open",
+              "R1 gives us one famous hard family. R2 tries to build a more general machine for producing lower bounds.",
+              "Ben-Sasson and Wigderson connect two notions: the width of clauses appearing in a resolution proof and the size of the proof itself.\nRoughly: if every refutation must eventually contain very wide clauses, then every refutation must also be very large.\nThat turns the problem into finding formula families where large width is unavoidable.\nRandom $k$-CNF formulas and Tseitin formulas built from expander graphs are candidates because their combinatorial structure can force exactly that behavior.\nThe remaining work concerns width lower bounds for hard families, including random $k$-CNF and/or expander Tseitin constructions.",
+              `width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{((W-\\mathsf{cnfWidth})^2/(c\\cdot|V|))}$\nimplemented as \`bsw_size_lower_bound\`.`,
+              `[Ben-Sasson-Wigderson, 2001](${paperBsw2001}); [Chvatal-Szemeredi, 1988](${paperChvatalSzemeredi1988}); [Urquhart, 1987](${paperUrquhart1987})`,
+              "Short resolution proofs have to stay narrow; certain formulas force proofs to become wide; therefore those proofs cannot stay short.",
+            ],
+            [
+              "**R3** Above resolution",
+              "Proposed",
+              "Proving that resolution is weak is not enough. We have to climb to proof systems that can express arguments resolution cannot.",
+              "Candidate systems include $\\mathrm{Res}(k)$, cutting planes, and bounded-depth Frege.\nThe goal is a super-polynomial proof-size lower bound for some system strictly stronger than resolution.\nThis is where the ladder starts leaving the comfortable ground underneath R0-R2.",
+              "",
+              `[Pudlak, 1997](${paperPudlak1997}); [Ajtai, 1988](${paperAjtai1988}); [Pitassi-Beame-Impagliazzo, 1993](${paperPitassiBeameImpagliazzo1993})`,
+              "Show that the hardness survives even after we give the proof system more powerful reasoning rules.",
+            ],
+            [
+              "**R4** Open frontier",
+              "Proposed",
+              "Keep climbing toward a super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege, then still stronger systems such as $\\mathrm{TC}^0$-Frege, Frege, and Extended Frege.",
+              "There is an important analogy here. We know strong lower bounds for related classes of Boolean circuits through work such as Razborov and Smolensky. But translating that kind of hardness into comparable lower bounds for these Frege-style proof systems is another matter.\nThat is not bookkeeping.\nIt is open research.",
+              "",
+              `[Razborov, 1987](${paperRazborov1987}); [Smolensky, 1987](${paperSmolensky1987})`,
+              "We know how to prove that certain shallow circuits are weak; proving analogous limitations for the corresponding strong proof systems remains a major frontier.",
+            ],
+            [
+              "**R5** Cook-Reckhow",
+              "Active",
+              "Cook-Reckhow supplies the bridge between propositional proof systems and complexity classes.",
+              "R5 is a different branch of the ladder. It opens after the basic resolution foundation rather than waiting for every lower-bound rung above it.\nSAT has short certificates for yes instances: give me a satisfying assignment and I can efficiently check it.\nTAUT asks the complementary kind of question: whether a Boolean formula is true under every assignment. A polynomially bounded propositional proof system would provide efficiently checkable short proofs for tautologies as well.\nThe Cook-Reckhow framework makes this precise through the relationship: a polynomially bounded propositional proof system exists exactly when $\\mathrm{NP} = \\mathrm{coNP}$.\nSATurday formalizes the surrounding machinery through $\\mathsf{InP}$, $\\mathsf{InNP}$, $\\mathsf{IsPropProofSystem}$, and $\\mathsf{TM2ComputableInPolyTime}$, together with the implications connecting polynomially bounded proof systems to NP/coNP and ultimately to the P vs NP question.\nThis branch tells us what kind of proof-complexity result would actually be strong enough to matter.\nIt does not make the missing lower bounds easy.",
+              "",
+              `[Cook-Reckhow, 1979](${paperCookReckhow1979})`,
+              "If every propositional proof system requires super-polynomial proofs somewhere, then $\\mathrm{NP} \\neq \\mathrm{coNP}$, and since $\\mathrm{P} = \\mathrm{NP}$ would imply $\\mathrm{NP} = \\mathrm{coNP}$, that would give $\\mathrm{P} \\neq \\mathrm{NP}$.",
+            ],
+          ],
+        },
       },
     ],
   },
