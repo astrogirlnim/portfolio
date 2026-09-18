@@ -3,6 +3,16 @@ export type BlogTable = {
   rows: string[][]
 }
 
+export type BlogRung = {
+  title: string
+  status: string
+  idea: string
+  detail?: string
+  formal?: string
+  references: string
+  summary: string
+}
+
 export type BlogSection = {
   heading?: string
   paragraphs: string[]
@@ -14,6 +24,7 @@ export type BlogSection = {
   imageCaption?: string
   codeBlock?: string
   table?: BlogTable
+  rungs?: BlogRung[]
 }
 
 export type BlogPost = {
@@ -141,65 +152,73 @@ const posts: BlogPost[] = [
           `The full ladder lives in [\`docs/ladder/ladder.md\`](${saturdayLadder}), with individual rung files under [\`docs/ladder/rungs/\`](${saturdayRungs}).`,
           "Acceptance means Lean 4 with zero `sorry` on accepted declarations, under the project’s allowed axioms.",
         ],
-        table: {
-          headers: ["Rung", "Status", "Idea", "Detail", "Formal", "References", "Summary"],
-          rows: [
-            [
-              "**R0** Resolution",
-              "Certified",
+        rungs: [
+          {
+            title: "R0 · Resolution",
+            status: "Certified",
+            idea:
               "Resolution repeatedly combines clauses by eliminating a contradictory variable. If this process derives contradiction, the original Boolean formula cannot be satisfied.",
-              "",
-              `A resolution calculus with $\\mathsf{Derivation.size}$, plus soundness and refutational completeness in [\`Resolution.lean\`](${saturdayResolution}).`,
-              `[Robinson, 1965](${paperRobinson1965})`,
+            formal: `A resolution calculus with $\\mathsf{Derivation.size}$, plus soundness and refutational completeness in [\`Resolution.lean\`](${saturdayResolution}).`,
+            references: `[Robinson, 1965](${paperRobinson1965})`,
+            summary:
               "Cancel one variable at a time; you can derive contradiction exactly when the CNF has no satisfying assignment.",
-            ],
-            [
-              "**R1** Haken PHP",
-              "Certified",
+          },
+          {
+            title: "R1 · Haken PHP",
+            status: "Certified",
+            idea:
               "The pigeonhole principle gives an explicit family of formulas that resolution cannot refute efficiently.",
+            detail:
               "Haken’s lower bound shows that such proofs eventually pass through clauses of intermediate complexity. Only a limited number of assignments can survive each of those clauses, so the proof must contain exponentially many of them.",
-              `∀ n ≥ 288, every resolution refutation d of phpCNF n satisfies\n$2^{((n-3n/4-36)/35)} \\le d.\\mathsf{size}$\nimplemented as \`php_resolution_size_lower_bound\`.`,
-              `[Haken, 1985](${paperHaken1985}); bottleneck formulation following [Beame-Pitassi, 1996](${paperBeamePitassi1996})`,
+            formal: `∀ n ≥ 288, every resolution refutation d of phpCNF n satisfies\n$2^{((n-3n/4-36)/35)} \\le d.\\mathsf{size}$\nimplemented as \`php_resolution_size_lower_bound\`.`,
+            references: `[Haken, 1985](${paperHaken1985}); bottleneck formulation following [Beame-Pitassi, 1996](${paperBeamePitassi1996})`,
+            summary:
               "Every proof must pass through a narrow bottleneck, and too few assignments fit through each opening, so exponentially many clauses are required.",
-            ],
-            [
-              "**R2** Width / families",
-              "Prose accepted; item 2 open",
+          },
+          {
+            title: "R2 · Width / families",
+            status: "Prose accepted; item 2 open",
+            idea:
               "Build reusable width-to-size lower-bound machinery, then apply it to hard formula families beyond a single example.",
+            detail:
               "Ben-Sasson and Wigderson relate clause width in a resolution proof to proof size: if every refutation must contain very wide clauses, then every refutation must also be very large.\nCandidate families include random $k$-CNF and Tseitin formulas on expander graphs.\nRemaining work: width lower bounds for those families.",
-              `width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{((W-\\mathsf{cnfWidth})^2/(c\\cdot|V|))}$\nimplemented as \`bsw_size_lower_bound\`.`,
-              `[Ben-Sasson-Wigderson, 2001](${paperBsw2001}); [Chvatal-Szemeredi, 1988](${paperChvatalSzemeredi1988}); [Urquhart, 1987](${paperUrquhart1987})`,
+            formal: `width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{((W-\\mathsf{cnfWidth})^2/(c\\cdot|V|))}$\nimplemented as \`bsw_size_lower_bound\`.`,
+            references: `[Ben-Sasson-Wigderson, 2001](${paperBsw2001}); [Chvatal-Szemeredi, 1988](${paperChvatalSzemeredi1988}); [Urquhart, 1987](${paperUrquhart1987})`,
+            summary:
               "If large width is forced, large size follows; random $k$-CNF and expander Tseitin are the candidate families.",
-            ],
-            [
-              "**R3** Above resolution",
-              "Proposed",
+          },
+          {
+            title: "R3 · Above resolution",
+            status: "Proposed",
+            idea:
               "A super-polynomial size lower bound for a proof system strictly stronger than resolution.",
-              "Candidate systems: $\\mathrm{Res}(k)$, cutting planes, or bounded-depth Frege.",
-              "",
-              `[Pudlak, 1997](${paperPudlak1997}); [Ajtai, 1988](${paperAjtai1988}); [Pitassi-Beame-Impagliazzo, 1993](${paperPitassiBeameImpagliazzo1993})`,
-              "Certify hardness one simulation level above resolution.",
-            ],
-            [
-              "**R4** Open frontier",
-              "Proposed",
+            detail: "Candidate systems: $\\mathrm{Res}(k)$, cutting planes, or bounded-depth Frege.",
+            references: `[Pudlak, 1997](${paperPudlak1997}); [Ajtai, 1988](${paperAjtai1988}); [Pitassi-Beame-Impagliazzo, 1993](${paperPitassiBeameImpagliazzo1993})`,
+            summary: "Certify hardness one simulation level above resolution.",
+          },
+          {
+            title: "R4 · Open frontier",
+            status: "Proposed",
+            idea:
               "A super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege, then $\\mathrm{TC}^0$-Frege, Frege, and Extended Frege.",
+            detail:
               "Related $\\mathrm{AC}^0[p]$ circuit lower bounds exist (Razborov, Smolensky). Matching Frege-style proof lower bounds do not.",
-              "",
-              `[Razborov, 1987](${paperRazborov1987}); [Smolensky, 1987](${paperSmolensky1987})`,
+            references: `[Razborov, 1987](${paperRazborov1987}); [Smolensky, 1987](${paperSmolensky1987})`,
+            summary:
               "$\\mathrm{AC}^0[p]$ circuit hardness is known; $\\mathrm{AC}^0[p]$-Frege hardness is the open target.",
-            ],
-            [
-              "**R5** Cook-Reckhow",
-              "Active",
+          },
+          {
+            title: "R5 · Cook-Reckhow",
+            status: "Active",
+            idea:
               "A polynomially bounded propositional proof system exists exactly when $\\mathrm{NP} = \\mathrm{coNP}$.",
+            detail:
               "R5 opens after the resolution foundation rather than after every lower-bound rung above it.\nSAT has short certificates for yes instances (satisfying assignments).\nA polynomially bounded propositional proof system would give the same for tautologies.\nSATurday formalizes $\\mathsf{InP}$, $\\mathsf{InNP}$, $\\mathsf{IsPropProofSystem}$, and $\\mathsf{TM2ComputableInPolyTime}$, with the implications linking polynomially bounded proof systems to NP/coNP and to P vs NP.",
-              "",
-              `[Cook-Reckhow, 1979](${paperCookReckhow1979})`,
+            references: `[Cook-Reckhow, 1979](${paperCookReckhow1979})`,
+            summary:
               "If every propositional proof system requires super-polynomial proofs somewhere, then $\\mathrm{NP} \\neq \\mathrm{coNP}$, and since $\\mathrm{P} = \\mathrm{NP}$ would imply $\\mathrm{NP} = \\mathrm{coNP}$, that would give $\\mathrm{P} \\neq \\mathrm{NP}$.",
-            ],
-          ],
-        },
+          },
+        ],
       },
       {
         heading: "Conclusion",

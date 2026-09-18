@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                     )}
                     {section.table && (
                       <div className="overflow-x-auto border border-border">
-                        <table className="w-full min-w-[72rem] border-collapse text-left">
+                        <table className="w-full min-w-[40rem] border-collapse text-left">
                           <thead>
                             <tr className="border-b border-border bg-muted/40">
                               {section.table.headers.map((header) => (
@@ -160,7 +160,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                 {row.map((cell, cellIndex) => (
                                   <td
                                     key={`${post.slug}-cell-${sectionIndex}-${rowIndex}-${cellIndex}`}
-                                    className="min-w-[10rem] px-4 py-4 align-top text-sm leading-relaxed text-muted-foreground sm:text-base"
+                                    className="px-4 py-4 align-top text-sm leading-relaxed text-muted-foreground sm:text-base"
                                   >
                                     {cell
                                       ? cell.split("\n").map((line, lineIndex) => (
@@ -184,6 +184,50 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             ))}
                           </tbody>
                         </table>
+                      </div>
+                    )}
+                    {section.rungs && (
+                      <div className="divide-y divide-border border-y border-border">
+                        {section.rungs.map((rung) => (
+                          <article key={rung.title} className="space-y-4 py-7">
+                            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+                              <h3 className="font-display text-2xl italic tracking-tight text-foreground">
+                                {rung.title}
+                              </h3>
+                              <p className="fig-kicker">{rung.status}</p>
+                            </div>
+                            <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                              {renderBlogText(rung.idea)}
+                            </p>
+                            {rung.detail &&
+                              rung.detail.split("\n").map((line) => (
+                                <p
+                                  key={`${rung.title}-detail-${line.slice(0, 24)}`}
+                                  className="text-base leading-relaxed text-muted-foreground sm:text-lg"
+                                >
+                                  {renderBlogText(line)}
+                                </p>
+                              ))}
+                            {rung.formal && (
+                              <pre className="overflow-x-auto border border-border bg-muted/40 px-4 py-3 font-mono text-sm leading-relaxed text-muted-foreground">
+                                <code>
+                                  {rung.formal.split("\n").map((line, lineIndex) => (
+                                    <span key={`${rung.title}-formal-${lineIndex}`}>
+                                      {lineIndex > 0 ? "\n" : null}
+                                      {renderBlogText(line)}
+                                    </span>
+                                  ))}
+                                </code>
+                              </pre>
+                            )}
+                            <p className="border-l-2 border-foreground pl-4 text-base leading-relaxed text-foreground sm:text-lg">
+                              {renderBlogText(rung.summary)}
+                            </p>
+                            <p className="font-mono text-xs leading-relaxed tracking-wide text-muted-foreground">
+                              {renderBlogText(rung.references)}
+                            </p>
+                          </article>
+                        ))}
                       </div>
                     )}
                   </section>
