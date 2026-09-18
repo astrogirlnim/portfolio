@@ -43,6 +43,20 @@ const saturdayPhp = `${saturdayRepo}/blob/main/theory/Theory/ProofComplexity/PHP
 const saturdayPostmortems = `${saturdayRepo}/tree/main/docs/postmortems`
 const openAiTenProofs = "https://openai.com/index/openai-ten-proofs/"
 
+/** Canonical papers linked from issue 02 rung statements. */
+const paperRobinson1965 = "https://doi.org/10.1145/321250.321253"
+const paperHaken1985 = "https://doi.org/10.1016/0304-3975(85)90144-6"
+const paperBeamePitassi1996 = "https://homes.cs.washington.edu/~beame/papers/focsclause.pdf"
+const paperBsw2001 = "https://www.math.ias.edu/~avi/PUBLICATIONS/ABSTRACT/bw02.pdf"
+const paperUrquhart1987 = "https://doi.org/10.2307/2273868"
+const paperChvatalSzemeredi1988 = "https://doi.org/10.1137/0217056"
+const paperPudlak1997 = "https://doi.org/10.2307/2275541"
+const paperAjtai1988 = "https://doi.org/10.1109/SFCS.1988.21951"
+const paperPitassiBeameImpagliazzo1993 = "https://doi.org/10.1007/BF01200026"
+const paperRazborov1987 = "https://doi.org/10.1007/BF01621094"
+const paperSmolensky1987 = "https://doi.org/10.1145/28395.28404"
+const paperCookReckhow1979 = "https://www.cs.toronto.edu/~sacook/homepage/cook_reckhow.pdf"
+
 const posts: BlogPost[] = [
   {
     slug: "issue-02-attention-is-all-you-need",
@@ -80,9 +94,9 @@ const posts: BlogPost[] = [
         ],
       },
       {
-        heading: "A Note on Our Rungs",
+        heading: "Footnote: The Rungs in Math Parlance",
         paragraphs: [
-          `Source: [\`docs/ladder/ladder.md\`](${saturdayLadder}), [\`docs/ladder/rungs/\`](${saturdayRungs}). Acceptance: Lean 4, zero \`sorry\` on accepted declarations; axioms $\\subseteq$ $\{\\mathsf{propext},\\,\\mathsf{Classical.choice},\\,\\mathsf{Quot.sound}\}$.`,
+          `[Ladder](${saturdayLadder}) and [rung](${saturdayRungs}) outlines. Our rungs are accepted in Lean 4 with zero \`sorry\` on declarations.`
         ],
         table: {
           headers: ["Rung", "Status", "Statement"],
@@ -90,32 +104,32 @@ const posts: BlogPost[] = [
             [
               "**R0** Resolution",
               "Certified",
-              "Resolution calculus with $\\mathsf{Derivation.size}$; soundness and refutational completeness (`Resolution.lean`).\nCancel one variable at a time: reach $\\bot$ exactly when the CNF has no satisfying assignment.",
+              `Resolution calculus with $\\mathsf{Derivation.size}$; soundness and refutational completeness (\`Resolution.lean\`). [Robinson 1965](${paperRobinson1965}).\nCancel one variable at a time: reach $\\bot$ exactly when the CNF has no satisfying assignment.`,
             ],
             [
               "**R1** Haken PHP",
               "Certified",
-              "$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies $2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$ (`php_resolution_size_lower_bound`).\nHaken/Beame bottleneck: every assignment must flow through a medium-complexity clause that only a few assignments pass—so you need exponentially many clauses.",
+              `$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies $2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$ (\`php_resolution_size_lower_bound\`). [Haken 1985](${paperHaken1985}); bottleneck form [Beame–Pitassi 1996](${paperBeamePitassi1996}).\nEvery assignment must flow through a medium-complexity clause that only a few assignments pass—so you need exponentially many clauses.`,
             ],
             [
               "**R2** Width / families",
               "Prose accepted; item 2 open",
-              "(1) BSW: width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$ (`bsw_size_lower_bound`). (2) Width lower bounds for random $k$-CNF and/or expander Tseitin (pin: $\\mathsf{HasExpansionInv}$ / MGG).\nBen-Sasson–Wigderson: short proofs are narrow; expander/Tseitin axioms force large width, hence large size.",
+              `(1) BSW: width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$ (\`bsw_size_lower_bound\`) — [Ben-Sasson–Wigderson 2001](${paperBsw2001}). (2) Width lower bounds for random $k$-CNF ([Chvátal–Szemerédi 1988](${paperChvatalSzemeredi1988})) and/or expander Tseitin ([Urquhart 1987](${paperUrquhart1987}); pin: $\\mathsf{HasExpansionInv}$ / MGG).\nShort proofs are narrow; expander/Tseitin axioms force large width, hence large size.`,
             ],
             [
               "**R3** Above resolution",
               "Proposed",
-              "Super-polynomial size lower bound for a system strictly stronger than resolution: $\\mathrm{Res}(k)$, cutting planes, or bounded-depth Frege on PHP.\nHardness one simulation level above resolution (e.g. cutting planes via feasible interpolation).",
+              `Super-polynomial size lower bound for a system strictly stronger than resolution: $\\mathrm{Res}(k)$, cutting planes ([Pudlák 1997](${paperPudlak1997})), or bounded-depth Frege on PHP ([Ajtai 1988](${paperAjtai1988}); [Pitassi–Beame–Impagliazzo 1993](${paperPitassiBeameImpagliazzo1993})).\nHardness one simulation level above resolution (e.g. cutting planes via feasible interpolation).`,
             ],
             [
               "**R4** Open frontier",
               "Proposed",
-              "Super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege (then $\\mathrm{TC}^0$-Frege, Frege, Extended Frege).\nRazborov–Smolensky lower-bounds $\\mathrm{AC}^0[p]$ circuits; matching Frege-style proof lower bounds remain open.",
+              `Super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege (then $\\mathrm{TC}^0$-Frege, Frege, Extended Frege). Circuit analogue: [Razborov 1987](${paperRazborov1987}), [Smolensky 1987](${paperSmolensky1987}).\n$\\mathrm{AC}^0[p]$ circuit lower bounds exist; matching Frege-style proof lower bounds remain open.`,
             ],
             [
               "**R5** Cook–Reckhow",
               "Active",
-              "$\\mathsf{InP}$ / $\\mathsf{InNP}$ / $\\mathsf{IsPropProofSystem}$ via $\\mathsf{TM2ComputableInPolyTime}$; $\\exists$ poly-bounded PPS $\\Leftrightarrow$ $\\mathrm{NP}=\\mathrm{coNP}$; $\\mathrm{P}=\\mathrm{NP}\\Rightarrow\\mathrm{NP}=\\mathrm{coNP}$; $(\\forall\\,\\mathrm{PPS},\\,\\neg\\mathsf{PolynomiallyBounded})\\Rightarrow\\mathrm{P}\\neq\\mathrm{NP}$.\nSAT has short yes-certificates (assignments); a poly-bounded proof system would give the same for TAUT—exactly $\\mathrm{NP}=\\mathrm{coNP}$.",
+              `$\\mathsf{InP}$ / $\\mathsf{InNP}$ / $\\mathsf{IsPropProofSystem}$ via $\\mathsf{TM2ComputableInPolyTime}$; $\\exists$ poly-bounded PPS $\\Leftrightarrow$ $\\mathrm{NP}=\\mathrm{coNP}$; $\\mathrm{P}=\\mathrm{NP}\\Rightarrow\\mathrm{NP}=\\mathrm{coNP}$; $(\\forall\\,\\mathrm{PPS},\\,\\neg\\mathsf{PolynomiallyBounded})\\Rightarrow\\mathrm{P}\\neq\\mathrm{NP}$. [Cook–Reckhow 1979](${paperCookReckhow1979}).\nSAT has short yes-certificates (assignments); a poly-bounded proof system would give the same for TAUT—exactly $\\mathrm{NP}=\\mathrm{coNP}$.`,
             ],
           ],
         },
