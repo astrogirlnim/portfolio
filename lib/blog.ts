@@ -54,17 +54,17 @@ const saturdayPhp = `${saturdayRepo}/blob/main/theory/Theory/ProofComplexity/PHP
 const saturdayPostmortems = `${saturdayRepo}/tree/main/docs/postmortems`
 const openAiTenProofs = "https://openai.com/index/openai-ten-proofs/"
 
-/** Canonical papers linked from issue 02 rung statements. */
+/** Canonical papers linked from issue 02 rung statements. Prefer open PDFs when available. */
 const paperRobinson1965 = "https://doi.org/10.1145/321250.321253"
 const paperHaken1985 = "https://doi.org/10.1016/0304-3975(85)90144-6"
 const paperBeamePitassi1996 = "https://homes.cs.washington.edu/~beame/papers/focsclause.pdf"
-const paperBsw2001 = "https://www.math.ias.edu/~avi/PUBLICATIONS/ABSTRACT/bw02.pdf"
-const paperUrquhart1987 = "https://doi.org/10.2307/2273868"
-const paperChvatalSzemeredi1988 = "https://doi.org/10.1137/0217056"
-const paperPudlak1997 = "https://doi.org/10.2307/2275541"
+const paperBsw2001 = "https://eccc.weizmann.ac.il/report/1999/022/download"
+const paperUrquhart1987 = "https://doi.org/10.1145/7531.8928"
+const paperChvatalSzemeredi1988 = "https://doi.org/10.1145/48014.48016"
+const paperPudlak1997 = "https://doi.org/10.2307/2275583"
 const paperAjtai1988 = "https://doi.org/10.1109/SFCS.1988.21951"
-const paperPitassiBeameImpagliazzo1993 = "https://doi.org/10.1007/BF01200026"
-const paperRazborov1987 = "https://doi.org/10.1007/BF01621094"
+const paperPitassiBeameImpagliazzo1993 = "https://homes.cs.washington.edu/~beame/papers/php.pdf"
+const paperRazborov1987 = "https://doi.org/10.1007/BF01137685"
 const paperSmolensky1987 = "https://doi.org/10.1145/28395.28404"
 const paperCookReckhow1979 = "https://www.cs.toronto.edu/~sacook/homepage/cook_reckhow.pdf"
 const paperSabharwalProofComplexity =
@@ -170,7 +170,7 @@ const posts: BlogPost[] = [
               "The pigeonhole principle gives an explicit family of formulas that resolution cannot refute efficiently.",
             detail:
               "Haken’s lower bound shows that such proofs eventually pass through clauses of intermediate complexity. Only a limited number of assignments can survive each of those clauses, so the proof must contain exponentially many of them.",
-            formal: `∀ n ≥ 288, every resolution refutation d of phpCNF n satisfies\n$2^{((n-3n/4-36)/35)} \\le d.\\mathsf{size}$\nimplemented as \`php_resolution_size_lower_bound\`.`,
+            formal: `$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies\n$2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$\nimplemented as \`php_resolution_size_lower_bound\`.`,
             references: `[Haken, 1985](${paperHaken1985}); bottleneck formulation following [Beame-Pitassi, 1996](${paperBeamePitassi1996})`,
             summary:
               "Every proof must pass through a narrow bottleneck, and too few assignments fit through each opening, so exponentially many clauses are required.",
@@ -182,7 +182,7 @@ const posts: BlogPost[] = [
               "Build reusable width-to-size lower-bound machinery, then apply it to hard formula families beyond a single example.",
             detail:
               "Ben-Sasson and Wigderson relate clause width in a resolution proof to proof size: if every refutation must contain very wide clauses, then every refutation must also be very large.\nCandidate families include random $k$-CNF and Tseitin formulas on expander graphs.\nRemaining work: width lower bounds for those families.",
-            formal: `width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{((W-\\mathsf{cnfWidth})^2/(c\\cdot|V|))}$\nimplemented as \`bsw_size_lower_bound\`.`,
+            formal: `$\\mathrm{width} \\ge W \\Rightarrow \\mathrm{size} \\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$\nimplemented as \`bsw_size_lower_bound\`.`,
             references: `[Ben-Sasson-Wigderson, 2001](${paperBsw2001}); [Chvatal-Szemeredi, 1988](${paperChvatalSzemeredi1988}); [Urquhart, 1987](${paperUrquhart1987})`,
             summary:
               "If large width is forced, large size follows; random $k$-CNF and expander Tseitin are the candidate families.",
