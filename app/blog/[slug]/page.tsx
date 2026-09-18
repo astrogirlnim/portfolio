@@ -187,14 +187,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       </div>
                     )}
                     {section.rungs && (
-                      <div className="border border-border">
-                        <table className="w-full table-fixed border-collapse text-left">
+                      <div className="-mx-1 overflow-x-auto border border-border sm:mx-0">
+                        <table className="w-full min-w-[44rem] border-collapse text-left lg:table-fixed">
                           <colgroup>
-                            <col className="w-[18%]" />
-                            <col className="w-[14%]" />
-                            <col className="w-[28%]" />
-                            <col className="w-[20%]" />
-                            <col className="w-[20%]" />
+                            <col className="lg:w-[18%]" />
+                            <col className="lg:w-[12%]" />
+                            <col className="lg:w-[28%]" />
+                            <col className="lg:w-[22%]" />
+                            <col className="lg:w-[20%]" />
                           </colgroup>
                           <thead>
                             <tr className="border-b border-border bg-muted/40">
@@ -214,25 +214,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                 key={rung.title}
                                 className="border-b border-border last:border-b-0"
                               >
-                                <td className="px-3 py-4 align-top">
+                                <td className="min-w-[9rem] px-3 py-4 align-top">
                                   <p className="font-display text-base italic leading-snug text-foreground">
                                     {rung.title}
                                   </p>
-                                  <p className="mt-2 font-mono text-[0.7rem] leading-relaxed tracking-wide text-muted-foreground">
+                                  <p className="mt-2 break-words font-mono text-[0.7rem] leading-relaxed tracking-wide text-muted-foreground">
                                     {renderBlogText(rung.references)}
                                   </p>
                                 </td>
-                                <td className="px-3 py-4 align-top">
+                                <td className="min-w-[6.5rem] px-3 py-4 align-top">
                                   <p className="fig-kicker leading-snug">{rung.status}</p>
                                 </td>
                                 <td
-                                  className="group/idea relative px-3 py-4 align-top text-sm leading-relaxed text-muted-foreground"
+                                  className="group/idea relative min-w-[12rem] px-3 py-4 align-top text-sm leading-relaxed text-muted-foreground"
                                   tabIndex={rung.detail ? 0 : undefined}
                                 >
                                   <p
                                     className={
                                       rung.detail
-                                        ? "border-b border-dotted border-muted-foreground/50 pb-0.5"
+                                        ? "underline decoration-dotted decoration-muted-foreground/60 underline-offset-4"
                                         : undefined
                                     }
                                   >
@@ -240,10 +240,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                   </p>
                                   {rung.detail && (
                                     <>
-                                      <p className="fig-kicker mt-2 [@media(hover:hover)]:hidden">
-                                        Detail
-                                      </p>
-                                      <div className="mt-2 space-y-2 text-xs leading-relaxed text-muted-foreground [@media(hover:hover)]:hidden">
+                                      <div className="mt-3 space-y-2 border-t border-border pt-3 text-xs leading-relaxed text-muted-foreground [@media(hover:hover)]:hidden">
+                                        <p className="fig-kicker">Detail</p>
                                         {rung.detail.split("\n").map((line) => (
                                           <p key={`${rung.title}-detail-inline-${line.slice(0, 24)}`}>
                                             {renderBlogText(line)}
@@ -252,7 +250,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                       </div>
                                       <div
                                         role="tooltip"
-                                        className="pointer-events-none absolute left-0 top-[calc(100%-0.25rem)] z-20 hidden w-[min(22rem,70vw)] border border-border bg-background p-4 opacity-0 shadow-sm transition-opacity duration-150 [@media(hover:hover)]:group-hover/idea:block [@media(hover:hover)]:group-hover/idea:opacity-100 [@media(hover:hover)]:group-focus-within/idea:block [@media(hover:hover)]:group-focus-within/idea:opacity-100"
+                                        className="pointer-events-none absolute left-0 top-full z-20 mt-1 hidden w-[min(22rem,calc(100vw-2rem))] border border-border bg-background p-4 opacity-0 shadow-sm transition-opacity duration-150 [@media(hover:hover)]:group-hover/idea:block [@media(hover:hover)]:group-hover/idea:opacity-100 [@media(hover:hover)]:group-focus-within/idea:block [@media(hover:hover)]:group-focus-within/idea:opacity-100"
                                       >
                                         <p className="fig-kicker mb-3">Detail</p>
                                         <div className="space-y-2 text-xs leading-relaxed text-muted-foreground">
@@ -266,19 +264,21 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                     </>
                                   )}
                                 </td>
-                                <td className="px-3 py-4 align-top font-mono text-xs leading-relaxed text-muted-foreground">
-                                  {rung.formal
-                                    ? rung.formal.split("\n").map((line, lineIndex) => (
-                                        <span key={`${rung.title}-formal-${lineIndex}`}>
-                                          {lineIndex > 0 ? <br /> : null}
-                                          <span className={lineIndex > 0 ? "mt-1 inline-block" : undefined}>
-                                            {renderBlogText(line)}
-                                          </span>
-                                        </span>
-                                      ))
-                                    : null}
+                                <td className="min-w-[11rem] px-3 py-4 align-top text-xs leading-relaxed text-muted-foreground">
+                                  {rung.formal ? (
+                                    <div className="space-y-2 break-words font-mono">
+                                      {rung.formal.split("\n").map((line, lineIndex) => (
+                                        <p
+                                          key={`${rung.title}-formal-${lineIndex}`}
+                                          className="leading-relaxed"
+                                        >
+                                          {renderBlogText(line)}
+                                        </p>
+                                      ))}
+                                    </div>
+                                  ) : null}
                                 </td>
-                                <td className="px-3 py-4 align-top text-sm leading-relaxed text-foreground">
+                                <td className="min-w-[11rem] px-3 py-4 align-top text-sm leading-relaxed text-foreground">
                                   {renderBlogText(rung.summary)}
                                 </td>
                               </tr>
