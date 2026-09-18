@@ -6,7 +6,7 @@ import { formatPostDate, getAllPosts } from "@/lib/blog"
 
 export const metadata: Metadata = {
   title: "Blog | Nataly Smith",
-  description: "A weekly log on software at the intersection of AI, systems, and science.",
+  description: "A log on software at the intersection of AI, systems, and science.",
 }
 
 export default function BlogIndexPage() {
@@ -18,9 +18,9 @@ export default function BlogIndexPage() {
       <main className="pb-16 pt-24 sm:pt-28">
         <div className="container">
           <p className="fig-kicker mb-4">Blog</p>
-          <h1 className="mb-3 font-display text-4xl tracking-tight sm:text-5xl">Weekly log</h1>
+          <h1 className="mb-3 font-display text-4xl tracking-tight sm:text-5xl">Log</h1>
           <p className="mb-12 max-w-3xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            One post a week. Notes from building across AI, systems, formal methods, and science.
+            Notes from building across AI, systems, formal methods, and science.
           </p>
 
           <div className="divide-y divide-border border-y border-border">

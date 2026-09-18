@@ -62,7 +62,7 @@ const paperSabharwalProofComplexity =
 const posts: BlogPost[] = [
   {
     slug: "issue-02-attention-is-all-you-need",
-    title: "Issue 02: Attention is All You Need",
+    title: "Issue 02: Attention is Not All You Need",
     date: "2026-09-19",
     excerpt:
       "Transformers are great, but LLMs have an attention problem. SATurday makes the problem smaller.",
@@ -70,7 +70,7 @@ const posts: BlogPost[] = [
     tldr: [
       "LLMs can produce useful deductions and proof sketches, then spend forever generating certificates of nothing.",
       "[SATurday](https://github.com/astrogirlnim/SATurday) makes the problem smaller: falsifiable Lean 4 rungs, one claim per wake.",
-      "The intelligence rests in the harness, not the parameter count.",
+      "The intelligence rests in the harness.",
     ],
     sections: [
       {
