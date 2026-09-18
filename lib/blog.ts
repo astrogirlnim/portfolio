@@ -68,35 +68,35 @@ const posts: BlogPost[] = [
     tldr: [
       "Machine models have rudimentary math knowledge, but without a hard selector they generate certificates of nothing.",
       "[SATurday](https://github.com/astrogirlnim/SATurday) climbs P vs NP on falsifiable Lean 4 rungs: one claim, one deduction stage per wake.",
-      "Attention is enforced by software and a human guide.",
+      "Attention is enforced by software and by a human guide, not by sheer chance our models keep their interest on our central problem.",
     ],
     sections: [
       {
         paragraphs: [
-          "LLMs lack attention and cannot learn or induce the way human beings can. That is the hard-earned lesson of this SATurday’s next installment: machine models have rudimentary math knowledge, but without a hard selector and clear guidance, they will run amok generating certificates of nothing. Let’s dive deeper into model and software architecture to understand why.",
+          "LLMs lack attention and cannot learn or induce the way human beings can. That is the hard-earned lesson of this SATurday’s next installment; machine models have rudimentary math knowledge, but without a hard selector and clear guidance, they will run amok generating certificates of nothing. Let’s dive deeper into model and software architecture to understand why.",
         ],
         image: "images/blog/issue-02-rungs.jpg",
         imageCaption: "FIG. B2 · Proof-complexity ladder",
       },
       {
         paragraphs: [
-          "SATurday climbs **P vs NP** through a locked proof-complexity ladder made of falsifiable **rungs**—claims. The premise is simple: we build toward a final result on building blocks of simpler claims, or “rungs.” Each rung is certified in **Lean 4** with zero `sorry` on the accepted tree: a fully complete proof without ambiguities. Using a programming language enables recursive mathematical grounding. Each sub-theorem builds on another, and each proof combinatorially certifies what is written in a plain-English math publication.",
-          "The greatest strength of this method underlies its central problem: empirically proving math in computer notation is an arduous, meticulous, often fractal-like process that stumps machines with finite memories unless heavy memory and parallelization are employed—or a smart system is applied.",
+          "SATurday climbs **P vs NP** through a locked proof-complexity ladder, made of falsifiable **rungs** of claims. The premise is simple; we build a final proof on building blocks of simpler, dummy claims, or “rungs.” Each rung is certified in **Lean 4** with zero `sorry` on the accepted tree, a fully complete proof without ambiguities. Using a programming language enables recursive mathematical grounding. Each sub-theorem builds on another, and each proof combinatorially certifies what is written in a plain-English math publication.",
+          "The greatest strength of this method underlies its central problem; empirically proving math in computer notation is an arduous, meticulous, often fractal-like process that stumps machines with finite memories unless heavy memory and parallelization are employed, or a smart system is applied.",
         ],
       },
       {
         heading: "Smart Systems to Address LLM Lack of Focus",
         paragraphs: [
-          "The human brain contains on the order of 100 to 500 trillion synaptic connections, and uses only about 20% of the body’s total energy production—less power than a dim lightbulb. Frontier models attempt to emulate this efficiency with an order of magnitude fewer parameters (on the order of trillions) and require on the order of tens to hundreds of kilowatts of power. SATurday localizes inference by using models a further order of magnitude smaller (Qwen2.5-class models on a personal MacBook). The human brain still performs vastly more ongoing computation than any of our LLMs. SATurday operates on the premise that we can emulate human focus by “dumbing down” theorems into smart systems that require less unconstrained “thinking.”",
-          "SATurday’s loop is deliberately mechanical. Each wake loads the P vs NP ladder state, picks **one** rung/claim, and applies **one** deduction stage. The system selects **prove**, **audit**, **formalize**, or **falsify**. It writes to memory, logs one session line, and stops. **Prove** comes up with a mathematical argument in prose. **Audit** uses an LLM to interpret and stress-test that argument against predefined criteria the way a mathematician would (e.g. vague constants, vacuous claims, known barriers). **Falsify** runs non-LLM solvers on formula instances for the claim—empirical calibration, not Lean. Assuming a line of attack survives these gauntlets, **formalize** produces a Lean certificate, which I can then interpret and, eventually, send toward publication.",
-          "This is, of course, an idealistic picture of the loop. In reality, a research agent that has no reliable capacity for mathematical induction cannot tell lemmas from thrash, and will certify noise forever. Without dedicated systems and guardrails, our agents are just as lost as the regular populace when attempting to solve frontier problems.",
-          "To emulate human checkers and amplify LLM output, SATurday uses parallelism of workstreams. Certain rungs or claims are unrelated and do not collide (for example, R2 vs R5), and can be explored at will. To avoid an induction plateau—and the incessant certification of trash—SATurday contains a manual kill switch and a monitoring dashboard. Attention is enforced by software and by a human guide, not by sheer chance that our models keep their interest on the central problem.",
+          "The human brain contains 100 to 500 trillion synaptic connections, and uses only 20% of the body’s total energy production, or less power than a dim lightbulb. Frontier models attempt to emulate this efficiency with an order of magnitude fewer neural nodes (1.5-5+ trillion) and require 50k-250k Watts of power. SATurday localizes inference by using models that are a further order of magnitude smaller (Qwen, 2.5B) on a personal MacBook computer. However, the human brain undergoes many more computations than any of our LLMs. SATurday operates on the premise that we can emulate the human brain and “dumb down” math theorems with smart systems that require less “thinking.”",
+          "SATurday’s loop is deliberately mechanical. Each wake loads the P vs. NP proof ladder state, picks one rung/claim, and applies a deduction stage. The system selects prove, audit, formalize, or falsify. It writes to memory, logs one session line, and stops. First, prove comes up with a mathematical claim in prose. The claim is sent to audit, which uses an LLM to interpret and stress-test the argument construction against a set of predefined criteria like a mathematician would (e.g. vague constants). Next, falsify runs non-LLM solvers for the argument, using empirical calibration on formula instances. Assuming our proof can survive these gauntlets, formalize produces a Lean certificate, which can then be interpreted by a human (me) and sent off to publication!",
+          "This is, of course, an idealistic loop. In reality, a research agent that has no ability for math induction cannot tell lemmas from thrash, and will certify noise forever. Without dedicated systems and guardrails, our agents are just as lost as the regular populace when attempting to solve frontier problems.",
+          "To emulate human checkers and amplify LLM output, SATurday uses parallelism of workstreams. Certain rungs or claims are unrelated and do not collide (for example, R2 vs R5), and can be explored at-will ad infinitum. To avoid an induction plateau (and the incessant certification of trash), SATurday contains a manual kill switch and a monitoring dashboard. Attention is enforced by software and by a human guide, not by sheer chance our models keep their interest on our central problem.",
         ],
       },
       {
-        heading: "Footnote: The Rungs in Math Parlance",
+        heading: "A Note on Our Rungs",
         paragraphs: [
-          `[Ladder](${saturdayLadder}) and [rung](${saturdayRungs}) outlines. Our rungs are accepted in Lean 4 with zero \`sorry\` on declarations.`
+          `Source: [\`docs/ladder/ladder.md\`](${saturdayLadder}), [\`docs/ladder/rungs/\`](${saturdayRungs}). Acceptance: Lean 4, zero \`sorry\` on accepted declarations; axioms $\\subseteq$ $\{\\mathsf{propext},\\,\\mathsf{Classical.choice},\\,\\mathsf{Quot.sound}\}$.`,
         ],
         table: {
           headers: ["Rung", "Status", "Statement"],
@@ -109,17 +109,17 @@ const posts: BlogPost[] = [
             [
               "**R1** Haken PHP",
               "Certified",
-              `$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies $2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$ (\`php_resolution_size_lower_bound\`). [Haken 1985](${paperHaken1985}); bottleneck form [Beame–Pitassi 1996](${paperBeamePitassi1996}).\nEvery assignment must flow through a medium-complexity clause that only a few assignments pass—so you need exponentially many clauses.`,
+              `$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies $2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$ (\`php_resolution_size_lower_bound\`). [Haken 1985](${paperHaken1985}); bottleneck form [Beame-Pitassi 1996](${paperBeamePitassi1996}).\nEvery assignment must flow through a medium-complexity clause that only a few assignments pass, so you need exponentially many clauses.`,
             ],
             [
               "**R2** Width / families",
               "Prose accepted; item 2 open",
-              `(1) BSW: width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$ (\`bsw_size_lower_bound\`) — [Ben-Sasson–Wigderson 2001](${paperBsw2001}). (2) Width lower bounds for random $k$-CNF ([Chvátal–Szemerédi 1988](${paperChvatalSzemeredi1988})) and/or expander Tseitin ([Urquhart 1987](${paperUrquhart1987}); pin: $\\mathsf{HasExpansionInv}$ / MGG).\nShort proofs are narrow; expander/Tseitin axioms force large width, hence large size.`,
+              `(1) BSW: width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$ (\`bsw_size_lower_bound\`), [Ben-Sasson-Wigderson 2001](${paperBsw2001}). (2) Width lower bounds for random $k$-CNF ([Chvatal-Szemeredi 1988](${paperChvatalSzemeredi1988})) and/or expander Tseitin ([Urquhart 1987](${paperUrquhart1987}); pin: $\\mathsf{HasExpansionInv}$ / MGG).\nShort proofs are narrow; expander/Tseitin axioms force large width, hence large size.`,
             ],
             [
               "**R3** Above resolution",
               "Proposed",
-              `Super-polynomial size lower bound for a system strictly stronger than resolution: $\\mathrm{Res}(k)$, cutting planes ([Pudlák 1997](${paperPudlak1997})), or bounded-depth Frege on PHP ([Ajtai 1988](${paperAjtai1988}); [Pitassi–Beame–Impagliazzo 1993](${paperPitassiBeameImpagliazzo1993})).\nHardness one simulation level above resolution (e.g. cutting planes via feasible interpolation).`,
+              `Super-polynomial size lower bound for a system strictly stronger than resolution: $\\mathrm{Res}(k)$, cutting planes ([Pudlak 1997](${paperPudlak1997})), or bounded-depth Frege on PHP ([Ajtai 1988](${paperAjtai1988}); [Pitassi-Beame-Impagliazzo 1993](${paperPitassiBeameImpagliazzo1993})).\nHardness one simulation level above resolution (e.g. cutting planes via feasible interpolation).`,
             ],
             [
               "**R4** Open frontier",
@@ -127,9 +127,9 @@ const posts: BlogPost[] = [
               `Super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege (then $\\mathrm{TC}^0$-Frege, Frege, Extended Frege). Circuit analogue: [Razborov 1987](${paperRazborov1987}), [Smolensky 1987](${paperSmolensky1987}).\n$\\mathrm{AC}^0[p]$ circuit lower bounds exist; matching Frege-style proof lower bounds remain open.`,
             ],
             [
-              "**R5** Cook–Reckhow",
+              "**R5** Cook-Reckhow",
               "Active",
-              `$\\mathsf{InP}$ / $\\mathsf{InNP}$ / $\\mathsf{IsPropProofSystem}$ via $\\mathsf{TM2ComputableInPolyTime}$; $\\exists$ poly-bounded PPS $\\Leftrightarrow$ $\\mathrm{NP}=\\mathrm{coNP}$; $\\mathrm{P}=\\mathrm{NP}\\Rightarrow\\mathrm{NP}=\\mathrm{coNP}$; $(\\forall\\,\\mathrm{PPS},\\,\\neg\\mathsf{PolynomiallyBounded})\\Rightarrow\\mathrm{P}\\neq\\mathrm{NP}$. [Cook–Reckhow 1979](${paperCookReckhow1979}).\nSAT has short yes-certificates (assignments); a poly-bounded proof system would give the same for TAUT—exactly $\\mathrm{NP}=\\mathrm{coNP}$.`,
+              `$\\mathsf{InP}$ / $\\mathsf{InNP}$ / $\\mathsf{IsPropProofSystem}$ via $\\mathsf{TM2ComputableInPolyTime}$; $\\exists$ poly-bounded PPS $\\Leftrightarrow$ $\\mathrm{NP}=\\mathrm{coNP}$; $\\mathrm{P}=\\mathrm{NP}\\Rightarrow\\mathrm{NP}=\\mathrm{coNP}$; $(\\forall\\,\\mathrm{PPS},\\,\\neg\\mathsf{PolynomiallyBounded})\\Rightarrow\\mathrm{P}\\neq\\mathrm{NP}$. [Cook-Reckhow 1979](${paperCookReckhow1979}).\nSAT has short yes-certificates (assignments); a poly-bounded proof system would give the same for TAUT, exactly $\\mathrm{NP}=\\mathrm{coNP}$.`,
             ],
           ],
         },
