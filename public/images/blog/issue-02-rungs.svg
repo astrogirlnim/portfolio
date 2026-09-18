@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-labelledby="rungsTitle rungsDesc">
+  <title id="rungsTitle">SATurday P vs NP rung ladder</title>
+  <desc id="rungsDesc">Climb R0 through R4 to Summit, with R5 as a bridge that rejoins before Summit.</desc>
+  <rect width="960" height="420" fill="#f7f4ef"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e2330"/>
+    </marker>
+  </defs>
+
+  <!-- Climb spine -->
+  <line x1="120" y1="210" x2="820" y2="210" stroke="#1e2330" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Bridge path R2 -> R5 -> Summit approach -->
+  <path d="M 320 250 C 420 340, 620 340, 720 250" fill="none" stroke="#1e2330" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+
+  <!-- Climb nodes -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" text-anchor="middle">
+    <g transform="translate(120,210)">
+      <circle r="28" fill="#f7f4ef" stroke="#1e2330" stroke-width="2"/>
+      <text y="6" fill="#1e2330">R0</text>
+      <text y="58" fill="#5c6170" font-size="12">foundations</text>
+    </g>
+    <g transform="translate(220,210)">
+      <circle r="28" fill="#f7f4ef" stroke="#1e2330" stroke-width="2"/>
+      <text y="6" fill="#1e2330">R1</text>
+      <text y="58" fill="#5c6170" font-size="12">PHP / Haken</text>
+    </g>
+    <g transform="translate(320,210)">
+      <circle r="28" fill="#f7f4ef" stroke="#1e2330" stroke-width="2"/>
+      <text y="6" fill="#1e2330">R2</text>
+      <text y="58" fill="#5c6170" font-size="12">width</text>
+    </g>
+    <g transform="translate(420,210)">
+      <circle r="28" fill="#f7f4ef" stroke="#1e2330" stroke-width="2"/>
+      <text y="6" fill="#1e2330">R3</text>
+      <text y="58" fill="#5c6170" font-size="12">stronger</text>
+    </g>
+    <g transform="translate(520,210)">
+      <circle r="28" fill="#f7f4ef" stroke="#1e2330" stroke-width="2"/>
+      <text y="6" fill="#1e2330">R4</text>
+      <text y="58" fill="#5c6170" font-size="12">frontier</text>
+    </g>
+    <g transform="translate(700,210)">
+      <rect x="-70" y="-28" width="140" height="56" rx="2" fill="#4f5a3a" stroke="#1e2330" stroke-width="2"/>
+      <text y="6" fill="#f7f4ef" font-size="16">Summit</text>
+      <text y="58" fill="#5c6170" font-size="12">R4 + R5</text>
+    </g>
+    <g transform="translate(520,330)">
+      <rect x="-70" y="-28" width="140" height="56" rx="2" fill="#f7f4ef" stroke="#1e2330" stroke-width="2"/>
+      <text y="0" fill="#1e2330">R5</text>
+      <text y="20" fill="#5c6170" font-size="12">CookReckhow</text>
+      <text y="58" fill="#5c6170" font-size="12">bridge</text>
+    </g>
+  </g>
+
+  <text x="48" y="48" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" fill="#5c6170" letter-spacing="2">FIG. B2 · RUNG LADDER</text>
+  <text x="48" y="78" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#1e2330">Climb R0R4. Bridge via R5. Summit needs both.</text>
+</svg>

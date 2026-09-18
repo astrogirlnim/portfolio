@@ -104,6 +104,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         {renderBlogText(paragraph)}
                       </p>
                     ))}
+                    {section.image && (
+                      <figure>
+                        <Image
+                          src={getAssetPath(section.image)}
+                          alt={section.imageCaption ?? section.heading ?? post.title}
+                          width={1200}
+                          height={520}
+                          className="h-auto w-full border border-border object-contain bg-muted/30"
+                        />
+                        {section.imageCaption && (
+                          <figcaption className="fig-kicker mt-3">{section.imageCaption}</figcaption>
+                        )}
+                      </figure>
+                    )}
+                    {section.codeBlock && (
+                      <pre className="overflow-x-auto border border-border bg-muted/40 px-5 py-4 font-mono text-sm leading-relaxed text-muted-foreground">
+                        <code>{section.codeBlock}</code>
+                      </pre>
+                    )}
                     {section.bullets && (
                       <div className="border border-border px-5 py-4">
                         <p className="fig-kicker mb-4">{section.bullets.lead}</p>
@@ -115,6 +134,41 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                             </li>
                           ))}
                         </ul>
+                      </div>
+                    )}
+                    {section.table && (
+                      <div className="overflow-x-auto border border-border">
+                        <table className="w-full min-w-[40rem] border-collapse text-left">
+                          <thead>
+                            <tr className="border-b border-border bg-muted/40">
+                              {section.table.headers.map((header) => (
+                                <th
+                                  key={header}
+                                  className="fig-kicker px-4 py-3 font-normal text-foreground"
+                                >
+                                  {header}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {section.table.rows.map((row, rowIndex) => (
+                              <tr
+                                key={`${post.slug}-table-${sectionIndex}-${rowIndex}`}
+                                className="border-b border-border last:border-b-0"
+                              >
+                                {row.map((cell, cellIndex) => (
+                                  <td
+                                    key={`${post.slug}-cell-${sectionIndex}-${rowIndex}-${cellIndex}`}
+                                    className="px-4 py-4 align-top text-sm leading-relaxed text-muted-foreground sm:text-base"
+                                  >
+                                    {renderBlogText(cell)}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </div>
                     )}
                   </section>
