@@ -68,7 +68,7 @@ const posts: BlogPost[] = [
     tldr: [
       "Machine models have rudimentary math knowledge, but without a hard selector they generate certificates of nothing.",
       "[SATurday](https://github.com/astrogirlnim/SATurday) climbs P vs NP on falsifiable Lean 4 rungs: one claim, one deduction stage per wake.",
-      "Attention is enforced by software and a human guide, not by chance that frontier models stay interested.",
+      "Attention is enforced by software and a human guide.",
     ],
     sections: [
       {
