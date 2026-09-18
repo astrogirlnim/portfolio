@@ -187,47 +187,104 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                       </div>
                     )}
                     {section.rungs && (
-                      <div className="divide-y divide-border border-y border-border">
-                        {section.rungs.map((rung) => (
-                          <article key={rung.title} className="space-y-4 py-7">
-                            <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
-                              <h3 className="font-display text-2xl italic tracking-tight text-foreground">
-                                {rung.title}
-                              </h3>
-                              <p className="fig-kicker">{rung.status}</p>
-                            </div>
-                            <p className="text-lg leading-relaxed text-muted-foreground sm:text-xl">
-                              {renderBlogText(rung.idea)}
-                            </p>
-                            {rung.detail &&
-                              rung.detail.split("\n").map((line) => (
-                                <p
-                                  key={`${rung.title}-detail-${line.slice(0, 24)}`}
-                                  className="text-base leading-relaxed text-muted-foreground sm:text-lg"
+                      <div className="border border-border">
+                        <table className="w-full table-fixed border-collapse text-left">
+                          <colgroup>
+                            <col className="w-[18%]" />
+                            <col className="w-[14%]" />
+                            <col className="w-[28%]" />
+                            <col className="w-[20%]" />
+                            <col className="w-[20%]" />
+                          </colgroup>
+                          <thead>
+                            <tr className="border-b border-border bg-muted/40">
+                              {["Rung", "Status", "Idea", "Formal", "Summary"].map((header) => (
+                                <th
+                                  key={header}
+                                  className="fig-kicker px-3 py-3 font-normal text-foreground"
                                 >
-                                  {renderBlogText(line)}
-                                </p>
+                                  {header}
+                                </th>
                               ))}
-                            {rung.formal && (
-                              <pre className="overflow-x-auto border border-border bg-muted/40 px-4 py-3 font-mono text-sm leading-relaxed text-muted-foreground">
-                                <code>
-                                  {rung.formal.split("\n").map((line, lineIndex) => (
-                                    <span key={`${rung.title}-formal-${lineIndex}`}>
-                                      {lineIndex > 0 ? "\n" : null}
-                                      {renderBlogText(line)}
-                                    </span>
-                                  ))}
-                                </code>
-                              </pre>
-                            )}
-                            <p className="border-l-2 border-foreground pl-4 text-base leading-relaxed text-foreground sm:text-lg">
-                              {renderBlogText(rung.summary)}
-                            </p>
-                            <p className="font-mono text-xs leading-relaxed tracking-wide text-muted-foreground">
-                              {renderBlogText(rung.references)}
-                            </p>
-                          </article>
-                        ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {section.rungs.map((rung) => (
+                              <tr
+                                key={rung.title}
+                                className="border-b border-border last:border-b-0"
+                              >
+                                <td className="px-3 py-4 align-top">
+                                  <p className="font-display text-base italic leading-snug text-foreground">
+                                    {rung.title}
+                                  </p>
+                                  <p className="mt-2 font-mono text-[0.7rem] leading-relaxed tracking-wide text-muted-foreground">
+                                    {renderBlogText(rung.references)}
+                                  </p>
+                                </td>
+                                <td className="px-3 py-4 align-top">
+                                  <p className="fig-kicker leading-snug">{rung.status}</p>
+                                </td>
+                                <td
+                                  className="group/idea relative px-3 py-4 align-top text-sm leading-relaxed text-muted-foreground"
+                                  tabIndex={rung.detail ? 0 : undefined}
+                                >
+                                  <p
+                                    className={
+                                      rung.detail
+                                        ? "border-b border-dotted border-muted-foreground/50 pb-0.5"
+                                        : undefined
+                                    }
+                                  >
+                                    {renderBlogText(rung.idea)}
+                                  </p>
+                                  {rung.detail && (
+                                    <>
+                                      <p className="fig-kicker mt-2 [@media(hover:hover)]:hidden">
+                                        Detail
+                                      </p>
+                                      <div className="mt-2 space-y-2 text-xs leading-relaxed text-muted-foreground [@media(hover:hover)]:hidden">
+                                        {rung.detail.split("\n").map((line) => (
+                                          <p key={`${rung.title}-detail-inline-${line.slice(0, 24)}`}>
+                                            {renderBlogText(line)}
+                                          </p>
+                                        ))}
+                                      </div>
+                                      <div
+                                        role="tooltip"
+                                        className="pointer-events-none absolute left-0 top-[calc(100%-0.25rem)] z-20 hidden w-[min(22rem,70vw)] border border-border bg-background p-4 opacity-0 shadow-sm transition-opacity duration-150 [@media(hover:hover)]:group-hover/idea:block [@media(hover:hover)]:group-hover/idea:opacity-100 [@media(hover:hover)]:group-focus-within/idea:block [@media(hover:hover)]:group-focus-within/idea:opacity-100"
+                                      >
+                                        <p className="fig-kicker mb-3">Detail</p>
+                                        <div className="space-y-2 text-xs leading-relaxed text-muted-foreground">
+                                          {rung.detail.split("\n").map((line) => (
+                                            <p key={`${rung.title}-detail-tip-${line.slice(0, 24)}`}>
+                                              {renderBlogText(line)}
+                                            </p>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    </>
+                                  )}
+                                </td>
+                                <td className="px-3 py-4 align-top font-mono text-xs leading-relaxed text-muted-foreground">
+                                  {rung.formal
+                                    ? rung.formal.split("\n").map((line, lineIndex) => (
+                                        <span key={`${rung.title}-formal-${lineIndex}`}>
+                                          {lineIndex > 0 ? <br /> : null}
+                                          <span className={lineIndex > 0 ? "mt-1 inline-block" : undefined}>
+                                            {renderBlogText(line)}
+                                          </span>
+                                        </span>
+                                      ))
+                                    : null}
+                                </td>
+                                <td className="px-3 py-4 align-top text-sm leading-relaxed text-foreground">
+                                  {renderBlogText(rung.summary)}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
                       </div>
                     )}
                   </section>
