@@ -201,6 +201,12 @@ const posts: BlogPost[] = [
           ],
         },
       },
+      {
+        heading: "Conclusion",
+        paragraphs: [
+          "How much mathematical research can a small model do when it is never asked to be a mathematician all at once? Attention is not something we should trust our models have. SATurday is trying to build a framework around it.",
+        ],
+      },
     ],
   },
   {
