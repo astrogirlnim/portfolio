@@ -62,8 +62,7 @@ const posts: BlogPost[] = [
           "LLMs lack attention and cannot learn or induce the way human beings can. That is the hard-earned lesson of this SATurday’s next installment: machine models have rudimentary math knowledge, but without a hard selector and clear guidance, they will run amok generating certificates of nothing. Let’s dive deeper into model and software architecture to understand why.",
         ],
         image: "images/blog/issue-02-rungs.jpg",
-        imageCaption:
-          "FIG. B2 · Placeholder art (labels incorrect: not Cook–Levin / P=BPP). Real DAG is below.",
+        imageCaption: "FIG. B2 · Proof-complexity ladder",
       },
       {
         paragraphs: [
@@ -83,64 +82,43 @@ const posts: BlogPost[] = [
       {
         heading: "A Note on Our Rungs",
         paragraphs: [
-          `Program: proof-complexity ladder toward P ≠ NP. Source of truth: [\`docs/ladder/ladder.md\`](${saturdayLadder}); per-rung memory under [\`docs/ladder/rungs/\`](${saturdayRungs}). A claim counts only if Lean compiles it with zero \`sorry\` on accepted declarations (axioms limited to propext, Classical.choice, Quot.sound).`,
-          "DAG:",
+          `Source: [\`docs/ladder/ladder.md\`](${saturdayLadder}), [\`docs/ladder/rungs/\`](${saturdayRungs}). Acceptance: Lean 4, zero \`sorry\` on accepted declarations; axioms ⊆ {propext, Classical.choice, Quot.sound}.`,
         ],
-        codeBlock: `R0 → R1 → R2 → R3 → R4 ─┐
-         ↘               ├→ P ≠ NP
-           R5 ───────────┘`,
-        bullets: {
-          lead: "Edge conditions:",
-          items: [
-            "**Climb (R0–R4):** successive size lower bounds for stronger propositional proof systems.",
-            "**R5 (Cook–Reckhow):** poly-bounded PPS ↔ NP = coNP; P = NP ⇒ NP = coNP. Opens after R1.",
-            "**Summit:** R4-class “no poly-bounded PPS” plus certified R5 ⇒ P ≠ NP. Hardness alone is not enough; the bridge alone is not enough.",
-          ],
-        },
         table: {
           headers: ["Rung", "Status", "Statement"],
           rows: [
             [
               "**R0** Resolution",
               "Certified",
-              "Resolution calculus + Derivation.size; soundness and refutational completeness (Resolution.lean).",
+              "Resolution calculus with Derivation.size; soundness and refutational completeness (Resolution.lean).",
             ],
             [
               "**R1** Haken PHP",
               "Certified",
-              "For n ≥ 288, every resolution refutation d of phpCNF n satisfies 2^((n − 3n/4 − 36)/35) ≤ d.size (php_resolution_size_lower_bound). Paper rate 2^(n/20) not claimed.",
+              "∀ n ≥ 288, every resolution refutation d of phpCNF n satisfies 2^((n − 3n/4 − 36)/35) ≤ d.size (php_resolution_size_lower_bound).",
             ],
             [
               "**R2** Width / families",
               "Prose accepted; item 2 open",
-              "(1) BSW: if every refutation has width ≥ W, then size ≥ 2^((W − cnfWidth)^2 / (c · |V|)) (bsw_size_lower_bound). (2) Width LBs for random k-CNF and/or expander Tseitin (primary pin: HasExpansionInv / MGG).",
+              "(1) BSW: every width-≥W refutation family implies size ≥ 2^((W − cnfWidth)^2 / (c · |V|)) (bsw_size_lower_bound). (2) Width lower bounds for random k-CNF and/or expander Tseitin (pin: HasExpansionInv / MGG).",
             ],
             [
               "**R3** Above resolution",
               "Proposed",
-              "One super-polynomial LB for a system strictly stronger than resolution: Res(k), cutting planes (interpolation), or bounded-depth Frege PHP.",
+              "Super-polynomial size lower bound for a system strictly stronger than resolution: Res(k), cutting planes, or bounded-depth Frege on PHP.",
             ],
             [
               "**R4** Open frontier",
               "Proposed",
-              "Super-polynomial LB for a system with no known such LB. Order: AC⁰[p]-Frege, then TC⁰-Frege, Frege, Extended Frege.",
+              "Super-polynomial size lower bound for AC⁰[p]-Frege (then TC⁰-Frege, Frege, Extended Frege).",
             ],
             [
               "**R5** Cook–Reckhow",
               "Active",
-              "Define InP / InNP / IsPropProofSystem via TM2ComputableInPolyTime. Prove: ∃ poly-bounded PPS ↔ NP = coNP; P = NP ⇒ NP = coNP; hence (∀ PPS ¬poly-bounded) ⇒ P ≠ NP.",
+              "InP / InNP / IsPropProofSystem via TM2ComputableInPolyTime; ∃ poly-bounded PPS ↔ NP = coNP; P = NP ⇒ NP = coNP; (∀ PPS, ¬PolynomiallyBounded) ⇒ P ≠ NP.",
             ],
           ],
         },
-      },
-      {
-        heading: "What R5 Does",
-        paragraphs: [
-          "**R5 is not a hardness proof.** It is the Cook–Reckhow (1979) dictionary between propositional proof systems and complexity classes, formalized in Lean (`Bridge/`).",
-          "Define P / NP / coNP with mathlib TM2 poly-time machines on bitstrings. A propositional proof system is a poly-time map onto TAUT (sound + complete). It is polynomially bounded if every tautology has a proof of length ≤ q(|φ|) for some fixed polynomial q.",
-          "Bridge theorems: (1) ∃ poly-bounded PPS ↔ NP = coNP. (2) P = NP ⇒ NP = coNP. (3) If every PPS fails to be poly-bounded, then P ≠ NP.",
-          "R0–R4 produce size lower bounds for concrete systems and families. Those bounds do not imply P ≠ NP by themselves. Without R5, either the summit link stays informal or it gets smuggled in as an axiom (forbidden). R5 makes the link a theorem in the same acceptance bar as the climb.",
-        ],
       },
     ],
   },
