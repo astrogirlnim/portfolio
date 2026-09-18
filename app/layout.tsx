@@ -1,5 +1,6 @@
 import type React from "react"
 import "./globals.css"
+import "katex/dist/katex.min.css"
 import type { Metadata } from "next"
 import { Instrument_Serif, Inter, JetBrains_Mono } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"

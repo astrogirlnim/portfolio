@@ -82,7 +82,7 @@ const posts: BlogPost[] = [
       {
         heading: "A Note on Our Rungs",
         paragraphs: [
-          `Source: [\`docs/ladder/ladder.md\`](${saturdayLadder}), [\`docs/ladder/rungs/\`](${saturdayRungs}). Acceptance: Lean 4, zero \`sorry\` on accepted declarations; axioms ⊆ {propext, Classical.choice, Quot.sound}.`,
+          `Source: [\`docs/ladder/ladder.md\`](${saturdayLadder}), [\`docs/ladder/rungs/\`](${saturdayRungs}). Acceptance: Lean 4, zero \`sorry\` on accepted declarations; axioms $\\subseteq$ $\{\\mathsf{propext},\\,\\mathsf{Classical.choice},\\,\\mathsf{Quot.sound}\}$.`,
         ],
         table: {
           headers: ["Rung", "Status", "Statement"],
@@ -90,32 +90,32 @@ const posts: BlogPost[] = [
             [
               "**R0** Resolution",
               "Certified",
-              "Resolution calculus with Derivation.size; soundness and refutational completeness (Resolution.lean).",
+              "Resolution calculus with $\\mathsf{Derivation.size}$; soundness and refutational completeness (`Resolution.lean`).",
             ],
             [
               "**R1** Haken PHP",
               "Certified",
-              "∀ n ≥ 288, every resolution refutation d of phpCNF n satisfies 2^((n − 3n/4 − 36)/35) ≤ d.size (php_resolution_size_lower_bound).",
+              "$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies $2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$ (`php_resolution_size_lower_bound`).",
             ],
             [
               "**R2** Width / families",
               "Prose accepted; item 2 open",
-              "(1) BSW: every width-≥W refutation family implies size ≥ 2^((W − cnfWidth)^2 / (c · |V|)) (bsw_size_lower_bound). (2) Width lower bounds for random k-CNF and/or expander Tseitin (pin: HasExpansionInv / MGG).",
+              "(1) BSW: width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$ (`bsw_size_lower_bound`). (2) Width lower bounds for random $k$-CNF and/or expander Tseitin (pin: $\\mathsf{HasExpansionInv}$ / MGG).",
             ],
             [
               "**R3** Above resolution",
               "Proposed",
-              "Super-polynomial size lower bound for a system strictly stronger than resolution: Res(k), cutting planes, or bounded-depth Frege on PHP.",
+              "Super-polynomial size lower bound for a system strictly stronger than resolution: $\\mathrm{Res}(k)$, cutting planes, or bounded-depth Frege on PHP.",
             ],
             [
               "**R4** Open frontier",
               "Proposed",
-              "Super-polynomial size lower bound for AC⁰[p]-Frege (then TC⁰-Frege, Frege, Extended Frege).",
+              "Super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege (then $\\mathrm{TC}^0$-Frege, Frege, Extended Frege).",
             ],
             [
               "**R5** Cook–Reckhow",
               "Active",
-              "InP / InNP / IsPropProofSystem via TM2ComputableInPolyTime; ∃ poly-bounded PPS ↔ NP = coNP; P = NP ⇒ NP = coNP; (∀ PPS, ¬PolynomiallyBounded) ⇒ P ≠ NP.",
+              "$\\mathsf{InP}$ / $\\mathsf{InNP}$ / $\\mathsf{IsPropProofSystem}$ via $\\mathsf{TM2ComputableInPolyTime}$; $\\exists$ poly-bounded PPS $\\Leftrightarrow$ $\\mathrm{NP}=\\mathrm{coNP}$; $\\mathrm{P}=\\mathrm{NP}\\Rightarrow\\mathrm{NP}=\\mathrm{coNP}$; $(\\forall\\,\\mathrm{PPS},\\,\\neg\\mathsf{PolynomiallyBounded})\\Rightarrow\\mathrm{P}\\neq\\mathrm{NP}$.",
             ],
           ],
         },
