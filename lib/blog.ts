@@ -90,32 +90,32 @@ const posts: BlogPost[] = [
             [
               "**R0** Resolution",
               "Certified",
-              "Resolution calculus with $\\mathsf{Derivation.size}$; soundness and refutational completeness (`Resolution.lean`).",
+              "Resolution calculus with $\\mathsf{Derivation.size}$; soundness and refutational completeness (`Resolution.lean`). Analogy: the alphabet and grammar before you can write sentences.",
             ],
             [
               "**R1** Haken PHP",
               "Certified",
-              "$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies $2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$ (`php_resolution_size_lower_bound`).",
+              "$\\forall n \\ge 288$, every resolution refutation $d$ of $\\mathtt{phpCNF}\\,n$ satisfies $2^{(n-3n/4-36)/35} \\le d.\\mathsf{size}$ (`php_resolution_size_lower_bound`). Analogy: a one-line fact that still forces a book-length proof under rigid local rules.",
             ],
             [
               "**R2** Width / families",
               "Prose accepted; item 2 open",
-              "(1) BSW: width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$ (`bsw_size_lower_bound`). (2) Width lower bounds for random $k$-CNF and/or expander Tseitin (pin: $\\mathsf{HasExpansionInv}$ / MGG).",
+              "(1) BSW: width $\\ge W$ $\\Rightarrow$ size $\\ge 2^{(W-\\mathsf{cnfWidth})^2/(c\\cdot|V|)}$ (`bsw_size_lower_bound`). (2) Width lower bounds for random $k$-CNF and/or expander Tseitin (pin: $\\mathsf{HasExpansionInv}$ / MGG). Analogy: a machine that turns “must use fat clauses” into “must write a long proof,” then feed it hard instances.",
             ],
             [
               "**R3** Above resolution",
               "Proposed",
-              "Super-polynomial size lower bound for a system strictly stronger than resolution: $\\mathrm{Res}(k)$, cutting planes, or bounded-depth Frege on PHP.",
+              "Super-polynomial size lower bound for a system strictly stronger than resolution: $\\mathrm{Res}(k)$, cutting planes, or bounded-depth Frege on PHP. Analogy: hardness one notch above the system we already climbed.",
             ],
             [
               "**R4** Open frontier",
               "Proposed",
-              "Super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege (then $\\mathrm{TC}^0$-Frege, Frege, Extended Frege).",
+              "Super-polynomial size lower bound for $\\mathrm{AC}^0[p]$-Frege (then $\\mathrm{TC}^0$-Frege, Frege, Extended Frege). Analogy: the first wall with no known foothold in the literature.",
             ],
             [
               "**R5** Cook–Reckhow",
               "Active",
-              "$\\mathsf{InP}$ / $\\mathsf{InNP}$ / $\\mathsf{IsPropProofSystem}$ via $\\mathsf{TM2ComputableInPolyTime}$; $\\exists$ poly-bounded PPS $\\Leftrightarrow$ $\\mathrm{NP}=\\mathrm{coNP}$; $\\mathrm{P}=\\mathrm{NP}\\Rightarrow\\mathrm{NP}=\\mathrm{coNP}$; $(\\forall\\,\\mathrm{PPS},\\,\\neg\\mathsf{PolynomiallyBounded})\\Rightarrow\\mathrm{P}\\neq\\mathrm{NP}$.",
+              "$\\mathsf{InP}$ / $\\mathsf{InNP}$ / $\\mathsf{IsPropProofSystem}$ via $\\mathsf{TM2ComputableInPolyTime}$; $\\exists$ poly-bounded PPS $\\Leftrightarrow$ $\\mathrm{NP}=\\mathrm{coNP}$; $\\mathrm{P}=\\mathrm{NP}\\Rightarrow\\mathrm{NP}=\\mathrm{coNP}$; $(\\forall\\,\\mathrm{PPS},\\,\\neg\\mathsf{PolynomiallyBounded})\\Rightarrow\\mathrm{P}\\neq\\mathrm{NP}$. Analogy: the dictionary that turns “no short proofs for all tautologies” into $\\mathrm{P}\\neq\\mathrm{NP}$.",
             ],
           ],
         },
