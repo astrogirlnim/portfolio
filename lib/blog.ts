@@ -61,8 +61,8 @@ const posts: BlogPost[] = [
         paragraphs: [
           "LLMs lack attention and cannot learn or induce the way human beings can. That is the hard-earned lesson of this SATurday’s next installment: machine models have rudimentary math knowledge, but without a hard selector and clear guidance, they will run amok generating certificates of nothing. Let’s dive deeper into model and software architecture to understand why.",
         ],
-        image: "images/blog/issue-02-rungs.svg",
-        imageCaption: "FIG. B2 · The rung ladder",
+        image: "images/blog/issue-02-rungs.jpg",
+        imageCaption: "FIG. B2 · Resolution Tree",
       },
       {
         paragraphs: [
