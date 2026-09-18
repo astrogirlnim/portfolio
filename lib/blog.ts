@@ -105,10 +105,34 @@ const posts: BlogPost[] = [
       {
         heading: "Smart Systems to Address LLM Lack of Focus",
         paragraphs: [
-          "The human brain contains 100 to 500 trillion synaptic connections, and uses only 20% of the body’s total energy production, or less power than a dim lightbulb. Frontier models attempt to emulate this efficiency with an order of magnitude fewer neural nodes (1.5-5+ trillion) and require 50k-250k Watts of power. SATurday localizes inference by using models that are a further order of magnitude smaller (Qwen, 2.5B) on a personal MacBook computer. However, the human brain undergoes many more computations than any of our LLMs. SATurday operates on the premise that we can emulate the human brain and “dumb down” math theorems with smart systems that require less “thinking.”",
-          "SATurday’s loop is deliberately mechanical. Each wake loads the P vs. NP proof ladder state, picks one rung/claim, and applies a deduction stage. The system selects prove, audit, formalize, or falsify. It writes to memory, logs one session line, and stops. First, prove comes up with a mathematical claim in prose. The claim is sent to audit, which uses an LLM to interpret and stress-test the argument construction against a set of predefined criteria like a mathematician would (e.g. vague constants). Next, falsify runs non-LLM solvers for the argument, using empirical calibration on formula instances. Assuming our proof can survive these gauntlets, formalize produces a Lean certificate, which can then be interpreted by a human (me) and sent off to publication!",
-          "This is, of course, an idealistic loop. In reality, a research agent that has no ability for math induction cannot tell lemmas from thrash, and will certify noise forever. Without dedicated systems and guardrails, our agents are just as lost as the regular populace when attempting to solve frontier problems.",
-          "To emulate human checkers and amplify LLM output, SATurday uses parallelism of workstreams. Certain rungs or claims are unrelated and do not collide (for example, R2 vs R5), and can be explored at-will ad infinitum. To avoid an induction plateau (and the incessant certification of trash), SATurday contains a manual kill switch and a monitoring dashboard. Attention is enforced by software and by a human guide, not by sheer chance our models keep their interest on our central problem.",
+          "The human brain contains 100 to 500 trillion synaptic connections, and uses only 20% of the body’s total energy production, or less power than a dim lightbulb. Frontier models attempt to emulate this efficiency with an order of magnitude fewer neural nodes (1.5-5+ trillion) and require 50k-250k Watts of power. SATurday currently runs much of its inference locally, including small Qwen-class models on a personal MacBook. That constraint is intentional.",
+          "SATurday operates on the premise that we can emulate the human brain and “dumb down” math theorems with smart systems that require less “thinking.” It is less interested in whether a giant frontier model can produce a brilliant mathematical continuation than whether a small model becomes substantially more useful when the surrounding software narrows its job. It does not assume that a 2.5-billion-parameter model emulates a human mathematician. Almost the opposite, it makes the machine’s job dumb enough that it doesn’t have to.",
+          "SATurday’s loop is deliberately mechanical. Each wake loads the P vs. NP proof ladder state, picks one rung/claim, and applies a deduction stage. Available stages are prove, audit, formalize, or falsify.",
+        ],
+        bullets: {
+          lead: "Stages",
+          items: [
+            "**Prove** constructs a mathematical argument in prose.",
+            "**Audit** attempts to break the argument by any means necessary. Here, an LLM inspects the proof against predefined failure criteria: vague constants, hidden assumptions, unjustified asymptotics, circular dependencies, quantifier mistakes, or a lemma that quietly assumes the thing it is trying to prove.",
+            "**Falsify** avoids LLM calls where possible, and runs ordinary computational tools and solvers against finite instances of the claim. It looks for counterexamples and checks whether the proposed bounds behave the way the argument says they should.",
+            "**Formalize** translates the surviving argument into Lean 4, where the kernel gets the final word on whether the formal statement actually makes sense.",
+          ],
+        },
+      },
+      {
+        paragraphs: [
+          "It writes to memory, logs one session line, and stops. Ideally, there is no wandering off to a more interesting theorem, deciding midway through that P vs NP would be easier through an unrelated route, or a twenty-page monologue to use up tokens. Consider our current R2 rung falsify wake: the active claim states that a particular family of Tseitin formulas must have large resolution width. The agent receives the following prompt:",
+        ],
+        codeBlock:
+          "Here is the exact width claim and its dependencies. Here is what previous wakes established. Your job is to try to falsify it.",
+      },
+      {
+        paragraphs: [
+          "The agent searches for a counterexample, tests permitted instances, records the result, updates the rung’s memory, and exits. A later wake might audit the surviving argument, and another following wake might formalize one lemma. The final wake might discover that the whole direction is garbage. All outcomes are useful because the unit of work is small enough that failure is decisive and digestible. This is engineered attention.",
+          "Assuming our proofs can survive these gauntlets, we produce a Lean certificate, which can then be interpreted by a human and sent off to publication!",
+          "This is, of course, an idealistic loop. There is an obvious problem with all of this. A research agent that cannot reliably distinguish an important lemma from an attractive dead end will certify noise forever. Formal verification does not solve that problem.",
+          "Lean is extremely good for answering a particular class of questions. Does this theorem follow from these definitions and assumptions? Yes, or perhaps no. However, our loop cannot answer fundamental mathematical pondering. Is this theorem useful? Was what was formalized what was actually on paper? Is spending the next six months proving this lemma a good idea? Without dedicated systems and guardrails, our agents are just as lost as we are when attempting to solve frontier problems.",
+          "So SATurday adds another constraint to try to speed up the process: organized parallelism. Certain rungs or claims are unrelated and do not collide (for example, R2 vs R5), and can be explored at will ad infinitum. Those workstreams can therefore run in parallel while still obeying their own rung boundaries. But parallelism introduces another failure mode: instead of one agent generating trash forever, you can have ten agents generating trash ten times faster. SATurday therefore includes plateau detection, a monitoring dashboard, and a manual kill switch. Attention is therefore enforced by our software architecture and human guidance.",
         ],
       },
       {
